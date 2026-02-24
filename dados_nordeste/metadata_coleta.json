@@ -1,0 +1,57 @@
+{
+  "data_execucao": "2026-02-24T16:33:39.813506",
+  "duracao_total_segundos": 5715.28,
+  "periodo": "2015-2025",
+  "estados": [
+    "AL",
+    "BA",
+    "CE",
+    "MA",
+    "PB",
+    "PE",
+    "PI",
+    "RN",
+    "SE"
+  ],
+  "modulos_executados": [
+    "bacen",
+    "siconfi_rreo",
+    "siconfi_rgf",
+    "siconfi_dca",
+    "transferencias",
+    "bolsa_familia"
+  ],
+  "resumo": {
+    "bacen": 1361,
+    "siconfi_rreo": 1987525,
+    "siconfi_rgf": 95253,
+    "siconfi_dca": 232661,
+    "transferencias": 42205,
+    "bolsa_familia_urls": 132
+  },
+  "execucoes": [
+    {
+      "data": "2026-02-24T15:30:38",
+      "duracao_segundos": 2835.37,
+      "modulos": ["bacen", "siconfi_rreo", "siconfi_rgf", "siconfi_dca", "transferencias", "bolsa_familia"],
+      "nota": "Execução inicial. RGF e Transferências retornaram 0 (bugs corrigidos depois)."
+    },
+    {
+      "data": "2026-02-24T16:32:22",
+      "duracao_segundos": 3030.62,
+      "modulos": ["bacen", "siconfi_rgf", "transferencias"],
+      "nota": "Re-execução com correções: RGF +in_periodicidade=Q, Transferências via RREO Anexos 01/06."
+    },
+    {
+      "data": "2026-02-24T16:33:39",
+      "duracao_segundos": 19.29,
+      "modulos": ["bacen"],
+      "nota": "Re-execução BACEN com série SELIC 4189 (mensal) substituindo 432 (diária, erro 406)."
+    }
+  ],
+  "correcoes_aplicadas": {
+    "selic": "Série 432 (diária) substituída por 4189 (SELIC acumulada mensal anualizada) - série 432 retornava HTTP 406 para o período 2015-2025.",
+    "rgf": "Adicionado parâmetro obrigatório in_periodicidade=Q ao endpoint /rgf da API SICONFI.",
+    "transferencias": "Endpoint /transferencias descontinuado na API SICONFI. Dados extraídos dos Anexos 01 e 06 do RREO, filtrando contas de transferências (FPE, FPM, FUNDEB, CIDE, royalties, etc.)."
+  }
+}

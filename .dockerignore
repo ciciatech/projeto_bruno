@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.git/
+dados_nordeste/raw/
+dados_nordeste/logs/
+dados_nordeste/processed/*.pkl
+dados_nordeste/metadata_coleta.json
+pipeline_coleta_dados_nordeste.py
+etl_processar_dados.py
+*.md
+.gitignore
+.dockerignore

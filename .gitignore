@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+
+# Raw data (too large for git)
+dados_nordeste/raw/*.csv
+dados_nordeste/logs/
+
+# Old pickle files
+dados_nordeste/processed/*.pkl
