@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-from pathlib import Path
+
+from pipeline.config import PROCESSED_DIR
 
 st.set_page_config(
     page_title="Dados Nordeste - Tese DESP/UFC",
@@ -8,7 +9,7 @@ st.set_page_config(
     layout="wide",
 )
 
-PROC = Path("dados_nordeste/processed")
+PROC = PROCESSED_DIR
 
 st.title("Dados Públicos — Nordeste (2015–2025)")
 st.markdown("**Tese DESP/UFC** — Impactos do Crédito no Crescimento Econômico do Nordeste")
@@ -22,6 +23,7 @@ datasets = {
     "SICONFI RGF": ("rgf_resumo.parquet", "Gestão fiscal: pessoal, dívida consolidada"),
     "SICONFI DCA": ("dca_resumo.parquet", "Balanço patrimonial: ativo, passivo, patrimônio líquido"),
     "Transferências": ("transferencias.parquet", "Transferências constitucionais: FPE, FUNDEB e outras"),
+    "SIOF-CE": ("siof_ce.parquet", "Execução orçamentária do Ceará: dotação, empenho e pagamento (2015–2026)"),
 }
 
 cols = st.columns(3)
@@ -40,9 +42,9 @@ st.divider()
 
 st.subheader("Sobre")
 st.markdown("""
-- **Período**: 2015 a 2025 (BACEN, SICONFI) / 2024 a 2026 (Bolsa Família)
+- **Período**: 2015 a 2025 (BACEN, SICONFI, SIOF) / 2024 a 2026 (Bolsa Família)
 - **Região**: Nordeste — 9 estados (AL, BA, CE, MA, PB, PE, PI, RN, SE)
-- **Fontes**: BACEN-SGS, SICONFI/STN, Portal da Transparência
+- **Fontes**: BACEN-SGS, SICONFI/STN, Portal da Transparência, SIOF-CE (SEPLAG/CE)
 
 Use o menu lateral para navegar entre as páginas de cada fonte de dados.
 """)

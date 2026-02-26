@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from pathlib import Path
+
+from pipeline.config import PROCESSED_DIR
 
 st.set_page_config(page_title="Bolsa Família", layout="wide")
 st.title("Novo Bolsa Família — Capitais do Nordeste")
 
-PROC = Path("dados_nordeste/processed")
+PROC = PROCESSED_DIR
 path = PROC / "bolsa_familia.parquet"
 if not path.exists():
     st.warning("Dados do Bolsa Família não encontrados. Execute o ETL.")

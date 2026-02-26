@@ -2,48 +2,41 @@
 ETL - Processamento de dados brutos para o dashboard Streamlit.
 
 Lê CSVs de dados_nordeste/raw/, agrega e filtra,
-salva DataFrames processados como .pkl em dados_nordeste/processed/.
+salva DataFrames processados como .parquet em dados_nordeste/processed/.
 """
 
 import pandas as pd
-from pathlib import Path
 
-RAW = Path("dados_nordeste/raw")
-PROC = Path("dados_nordeste/processed")
-PROC.mkdir(parents=True, exist_ok=True)
-
-UF_NOMES = {
-    "AL": "Alagoas", "BA": "Bahia", "CE": "Ceará",
-    "MA": "Maranhão", "PB": "Paraíba", "PE": "Pernambuco",
-    "PI": "Piauí", "RN": "Rio Grande do Norte", "SE": "Sergipe",
-}
+from pipeline.config import RAW_DIR, PROCESSED_DIR, UF_NOMES
 
 
 def processar_bacen():
     print(">>> BACEN...")
-    df = pd.read_csv(RAW / "bacen_sgs_wide.csv")
+    df = pd.read_csv(RAW_DIR / "bacen_sgs_wide.csv")
     df["data"] = pd.to_datetime(df["data"])
     df.sort_values("data", inplace=True)
-    df.to_parquet(PROC / "bacen.parquet")
+    df.to_parquet(PROCESSED_DIR / "bacen.parquet")
     print(f"    {len(df)} registros -> bacen.parquet")
 
 
 def processar_bolsa_familia():
     print(">>> Bolsa Família...")
-    path = RAW / "bolsa_familia_capitais_ne.csv"
+    path = RAW_DIR / "bolsa_familia_capitais_ne.csv"
     if not path.exists():
         print("    Arquivo não encontrado, pulando.")
         return
     df = pd.read_csv(path)
-    df["data"] = pd.to_datetime(df["ano"].astype(str) + "-" + df["mes"].astype(str).str.zfill(2) + "-01")
+    df["data"] = pd.to_datetime(
+        df["ano"].astype(str) + "-" + df["mes"].astype(str).str.zfill(2) + "-01"
+    )
     df.sort_values(["data", "uf"], inplace=True)
-    df.to_parquet(PROC / "bolsa_familia.parquet")
+    df.to_parquet(PROCESSED_DIR / "bolsa_familia.parquet")
     print(f"    {len(df)} registros -> bolsa_familia.parquet")
 
 
 def processar_rreo():
     print(">>> SICONFI RREO...")
-    df = pd.read_csv(RAW / "siconfi_rreo_nordeste.csv", low_memory=False)
+    df = pd.read_csv(RAW_DIR / "siconfi_rreo_nordeste.csv", low_memory=False)
 
     contas_chave = [
         "ReceitasExcetoIntraOrcamentarias",
@@ -65,18 +58,21 @@ def processar_rreo():
         & df["coluna"].str.contains("Até o Bimestre", na=False)
         & (df["anexo"] == "RREO-Anexo 01")
     )
-    out = df.loc[mask, ["exercicio", "periodo", "uf", "cod_conta", "conta", "valor", "populacao"]].copy()
+    out = df.loc[
+        mask,
+        ["exercicio", "periodo", "uf", "cod_conta", "conta", "valor", "populacao"],
+    ].copy()
     out["valor"] = pd.to_numeric(out["valor"], errors="coerce")
     out["uf_nome"] = out["uf"].map(UF_NOMES)
     out.sort_values(["exercicio", "periodo", "uf"], inplace=True)
     out.reset_index(drop=True, inplace=True)
-    out.to_parquet(PROC / "rreo_resumo.parquet")
+    out.to_parquet(PROCESSED_DIR / "rreo_resumo.parquet")
     print(f"    {len(df)} -> {len(out)} registros -> rreo_resumo.parquet")
 
 
 def processar_rgf():
     print(">>> SICONFI RGF...")
-    df = pd.read_csv(RAW / "siconfi_rgf_nordeste.csv", low_memory=False)
+    df = pd.read_csv(RAW_DIR / "siconfi_rgf_nordeste.csv", low_memory=False)
 
     contas_chave = [
         "DespesaComPessoalBruta",
@@ -90,19 +86,34 @@ def processar_rgf():
         "DividaContratual",
     ]
 
-    mask = df["cod_conta"].isin(contas_chave) & (df["anexo"].isin(["RGF-Anexo 01", "RGF-Anexo 02"]))
-    out = df.loc[mask, ["exercicio", "periodo", "uf", "anexo", "cod_conta", "conta", "coluna", "valor", "populacao"]].copy()
+    mask = df["cod_conta"].isin(contas_chave) & (
+        df["anexo"].isin(["RGF-Anexo 01", "RGF-Anexo 02"])
+    )
+    out = df.loc[
+        mask,
+        [
+            "exercicio",
+            "periodo",
+            "uf",
+            "anexo",
+            "cod_conta",
+            "conta",
+            "coluna",
+            "valor",
+            "populacao",
+        ],
+    ].copy()
     out["valor"] = pd.to_numeric(out["valor"], errors="coerce")
     out["uf_nome"] = out["uf"].map(UF_NOMES)
     out.sort_values(["exercicio", "periodo", "uf"], inplace=True)
     out.reset_index(drop=True, inplace=True)
-    out.to_parquet(PROC / "rgf_resumo.parquet")
+    out.to_parquet(PROCESSED_DIR / "rgf_resumo.parquet")
     print(f"    {len(df)} -> {len(out)} registros -> rgf_resumo.parquet")
 
 
 def processar_dca():
     print(">>> SICONFI DCA...")
-    df = pd.read_csv(RAW / "siconfi_dca_nordeste.csv", low_memory=False)
+    df = pd.read_csv(RAW_DIR / "siconfi_dca_nordeste.csv", low_memory=False)
 
     contas_chave = {
         "P1.0.0.0.0.00.00": "Ativo Total",
@@ -114,20 +125,26 @@ def processar_dca():
         "P2.3.0.0.0.00.00": "Patrimônio Líquido",
     }
 
-    mask = df["cod_conta"].isin(contas_chave.keys()) & (df["anexo"] == "DCA-Anexo I-AB")
-    out = df.loc[mask, ["exercicio", "uf", "cod_conta", "conta", "valor", "populacao"]].copy()
+    mask = df["cod_conta"].isin(contas_chave.keys()) & (
+        df["anexo"] == "DCA-Anexo I-AB"
+    )
+    out = df.loc[
+        mask, ["exercicio", "uf", "cod_conta", "conta", "valor", "populacao"]
+    ].copy()
     out["valor"] = pd.to_numeric(out["valor"], errors="coerce")
     out["conta_resumo"] = out["cod_conta"].map(contas_chave)
     out["uf_nome"] = out["uf"].map(UF_NOMES)
     out.sort_values(["exercicio", "uf"], inplace=True)
     out.reset_index(drop=True, inplace=True)
-    out.to_parquet(PROC / "dca_resumo.parquet")
+    out.to_parquet(PROCESSED_DIR / "dca_resumo.parquet")
     print(f"    {len(df)} -> {len(out)} registros -> dca_resumo.parquet")
 
 
 def processar_transferencias():
     print(">>> Transferências Constitucionais...")
-    df = pd.read_csv(RAW / "transferencias_constitucionais_nordeste.csv", low_memory=False)
+    df = pd.read_csv(
+        RAW_DIR / "transferencias_constitucionais_nordeste.csv", low_memory=False
+    )
     df["valor"] = pd.to_numeric(df["valor"], errors="coerce")
 
     mask = df["coluna"].str.contains("Até o Bimestre", na=False)
@@ -136,11 +153,37 @@ def processar_transferencias():
     out["uf_nome"] = out["uf"].map(UF_NOMES)
     out.sort_values(["exercicio", "periodo", "uf"], inplace=True)
     out.reset_index(drop=True, inplace=True)
-    out.to_parquet(PROC / "transferencias.parquet")
+    out.to_parquet(PROCESSED_DIR / "transferencias.parquet")
     print(f"    {len(df)} -> {len(out)} registros -> transferencias.parquet")
 
 
-if __name__ == "__main__":
+def processar_siof():
+    print(">>> SIOF-CE...")
+    path = RAW_DIR / "siof_consolidado.parquet"
+    if not path.exists():
+        # Fallback para CSV
+        path_csv = RAW_DIR / "siof_consolidado.csv"
+        if not path_csv.exists():
+            print("    Arquivo não encontrado, pulando.")
+            return
+        df = pd.read_csv(path_csv)
+    else:
+        df = pd.read_parquet(path)
+
+    # Garantir tipos numéricos nas colunas de valor
+    for col in ["Lei", "Lei + Cred.", "Empenhado", "Pago", "% Emp.", "% Pago"]:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    df.sort_values(["ano", "Descrição"], inplace=True)
+    df.reset_index(drop=True, inplace=True)
+    df.to_parquet(PROCESSED_DIR / "siof_ce.parquet")
+    print(f"    {len(df)} registros -> siof_ce.parquet")
+
+
+def executar_etl():
+    """Executa todas as etapas do ETL."""
+    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     print("=" * 50)
     print("ETL - Processamento de dados brutos")
     print("=" * 50)
@@ -150,5 +193,10 @@ if __name__ == "__main__":
     processar_rgf()
     processar_dca()
     processar_transferencias()
+    processar_siof()
     print("=" * 50)
     print("ETL concluído.")
+
+
+if __name__ == "__main__":
+    executar_etl()

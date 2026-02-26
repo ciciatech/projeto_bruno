@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from pathlib import Path
+
+from pipeline.config import PROCESSED_DIR
 
 st.set_page_config(page_title="SICONFI RGF", layout="wide")
 st.title("SICONFI — Gestão Fiscal (RGF)")
 
-PROC = Path("dados_nordeste/processed")
+PROC = PROCESSED_DIR
 df = pd.read_parquet(PROC / "rgf_resumo.parquet")
 
 # --- Filtros ---

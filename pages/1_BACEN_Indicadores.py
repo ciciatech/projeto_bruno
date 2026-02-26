@@ -2,12 +2,13 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from pathlib import Path
+
+from pipeline.config import PROCESSED_DIR
 
 st.set_page_config(page_title="BACEN Indicadores", layout="wide")
 st.title("BACEN — Indicadores Econômicos")
 
-PROC = Path("dados_nordeste/processed")
+PROC = PROCESSED_DIR
 df = pd.read_parquet(PROC / "bacen.parquet")
 
 min_date, max_date = df["data"].min().date(), df["data"].max().date()

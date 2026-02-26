@@ -10,6 +10,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY .streamlit/ .streamlit/
+COPY pipeline/ pipeline/
 COPY app.py .
 COPY pages/ pages/
 COPY dados_nordeste/processed/ dados_nordeste/processed/

@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from pathlib import Path
+
+from pipeline.config import PROCESSED_DIR
 
 st.set_page_config(page_title="SICONFI RREO", layout="wide")
 st.title("SICONFI — Execução Orçamentária (RREO)")
 
-PROC = Path("dados_nordeste/processed")
+PROC = PROCESSED_DIR
 df = pd.read_parquet(PROC / "rreo_resumo.parquet")
 
 # --- Filtros ---
