@@ -15,6 +15,7 @@ if not path.exists():
     st.stop()
 
 df = pd.read_parquet(path)
+df = df.dropna(subset=["Descrição"])
 
 # --- Filtros ---
 col1, col2 = st.columns(2)
