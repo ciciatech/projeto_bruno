@@ -134,7 +134,7 @@ class CagedRais:
     @staticmethod
     def _processar_caged_antigo_mes(ano: int, mes: int) -> pd.DataFrame | None:
         """Baixa e processa microdados do CAGED Antigo (pré-2020). Retorna dados NE."""
-        competencia = f"{mes:02d}{str(ano)[2:]}"
+        competencia = f"{mes:02d}{ano}"
         remote_path = f"{CAGED_ANTIGO_FTP_BASE}/{ano}/CAGEDEST_{competencia}.7z"
 
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -525,75 +525,178 @@ class CagedRais:
     # RAIS — Relação Anual de Informações Sociais
     # =========================================================================
 
-    @staticmethod
-    def _processar_rais_ano(ano: int) -> pd.DataFrame | None:
-        """Baixa e lê o arquivo RAIS Nordeste de um ano."""
-        remote_path = f"{RAIS_FTP_BASE}/{ano}/RAIS_VINC_PUB_NORDESTE.7z"
+    # Colunas que precisamos da RAIS (ignora ~50 colunas desnecessárias)
+    RAIS_COLUNAS_ALVO = {
+        "Município": "municipio",
+        "CNAE 2.0 Subclasse": "cnae_subclasse",
+        "CNAE 2.0 Classe": "cnae_subclasse",
+        "Vl Remun Média Nom": "remuneracao_media",
+        "Qtd Hora Contr": "horas_contratadas",
+        "Escolaridade após 2005": "grau_instrucao",
+        "Sexo Trabalhador": "sexo",
+        "Raça Cor": "raca_cor",
+        "Vínculo Ativo 31/12": "vinculo_ativo",
+    }
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            local_7z = Path(tmpdir) / f"RAIS_VINC_PUB_NORDESTE_{ano}.7z"
+    @classmethod
+    def _baixar_rais_ano(cls, ano: int, tmpdir: str) -> list[Path]:
+        """
+        Baixa arquivo(s) RAIS do FTP para um ano.
+        2018+: arquivo consolidado RAIS_VINC_PUB_NORDESTE.7z
+        2015-2017: arquivos individuais por UF (AL2015.7z, BA2015.7z, ...)
+        Retorna lista de paths dos .7z baixados.
+        """
+        # Tentar arquivo consolidado Nordeste primeiro
+        remote_consolidado = f"{RAIS_FTP_BASE}/{ano}/RAIS_VINC_PUB_NORDESTE.7z"
+        local_consolidado = Path(tmpdir) / f"RAIS_VINC_PUB_NORDESTE_{ano}.7z"
+        try:
+            _ftp_download(remote_consolidado, str(local_consolidado))
+            return [local_consolidado]
+        except error_perm:
+            logger.info(f"RAIS {ano}: arquivo consolidado Nordeste não existe, tentando por UF...")
+        except Exception as e:
+            logger.warning(f"RAIS {ano}: erro no download consolidado ({e}), tentando por UF...")
 
+        # Fallback: baixar por UF individual
+        arquivos = []
+        siglas_ne = ["AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE"]
+        for uf in siglas_ne:
+            remote_uf = f"{RAIS_FTP_BASE}/{ano}/{uf}{ano}.7z"
+            local_uf = Path(tmpdir) / f"{uf}{ano}.7z"
             try:
-                _ftp_download(remote_path, str(local_7z))
+                _ftp_download(remote_uf, str(local_uf))
+                arquivos.append(local_uf)
             except error_perm:
-                logger.warning(f"RAIS {ano}: arquivo Nordeste não disponível.")
-                return None
+                logger.warning(f"RAIS {ano}/{uf}: não disponível.")
             except Exception as e:
-                logger.warning(f"RAIS {ano}: erro no download ({e})")
-                return None
+                logger.warning(f"RAIS {ano}/{uf}: erro download ({e})")
 
-            try:
-                df = _read_7z(str(local_7z), tmpdir)
-            except Exception as e:
-                logger.error(f"RAIS {ano}: erro ao extrair ({e})")
-                return None
+        return arquivos
 
-        # Logar colunas originais
-        logger.info(f"RAIS {ano} colunas: {list(df.columns)}")
+    @classmethod
+    def _ler_rais_chunked(cls, archive_path: str, extract_dir: str, ano: int) -> tuple[pd.DataFrame, pd.DataFrame]:
+        """
+        Lê RAIS de um .7z em chunks para evitar OOM.
+        Retorna (agg_vinculos_por_uf, agg_por_setor) já agregados.
+        """
+        import py7zr
 
-        # Normalizar colunas RAIS — mapear apenas a primeira ocorrência de cada tipo
+        with py7zr.SevenZipFile(archive_path, "r") as z:
+            names = z.getnames()
+            data_file = next(
+                (n for n in names if n.lower().endswith((".csv", ".txt"))), None
+            )
+            if data_file is None:
+                raise ValueError(f"Nenhum CSV/TXT em {archive_path}: {names}")
+            logger.info(f"Extraindo {data_file}...")
+            z.extractall(path=extract_dir)
+
+        file_path = Path(extract_dir) / data_file
+
+        # Detectar colunas disponíveis lendo apenas o header
+        try:
+            header_df = pd.read_csv(file_path, sep=";", encoding="latin-1", nrows=0)
+        except UnicodeDecodeError:
+            header_df = pd.read_csv(file_path, sep=";", encoding="utf-8", nrows=0)
+
+        all_cols = list(header_df.columns)
+        logger.info(f"RAIS {ano} colunas: {all_cols}")
+
+        # Mapear colunas disponíveis
+        usecols = []
         col_map = {}
-        mapped_targets = set()
-        for col in df.columns:
-            lc = col.lower().strip()
-            target = None
-            if ("município" in lc or "municipio" in lc) and "municipio" not in mapped_targets:
-                target = "municipio"
-            elif lc == "uf" and "uf" not in mapped_targets:
-                target = "uf"
-            elif "remun" in lc and ("méd" in lc or "med" in lc) and "nom" in lc and "remuneracao_media" not in mapped_targets:
-                target = "remuneracao_media"
-            elif "hora" in lc and "contr" in lc and "horas_contratadas" not in mapped_targets:
-                target = "horas_contratadas"
-            elif "cnae" in lc and ("sub" in lc or "2.0" in lc) and "cnae_subclasse" not in mapped_targets:
-                target = "cnae_subclasse"
-            elif ("sexo" in lc) and "sexo" not in mapped_targets:
-                target = "sexo"
-            elif ("raça" in lc or "raca" in lc) and "raca_cor" not in mapped_targets:
-                target = "raca_cor"
-            elif ("instrução" in lc or "instrucao" in lc or "escolaridade" in lc) and "grau_instrucao" not in mapped_targets:
-                target = "grau_instrucao"
+        for orig, target in cls.RAIS_COLUNAS_ALVO.items():
+            if orig in all_cols and target not in col_map.values():
+                usecols.append(orig)
+                col_map[orig] = target
 
-            if target:
-                col_map[col] = target
-                mapped_targets.add(target)
+        if not usecols:
+            raise ValueError(f"RAIS {ano}: nenhuma coluna conhecida encontrada.")
 
-        logger.info(f"RAIS {ano} mapeamento: {col_map}")
-        df.rename(columns=col_map, inplace=True)
-        df["ano"] = ano
+        logger.info(f"RAIS {ano} usando colunas: {usecols}")
 
-        # Converter UF e adicionar sigla
-        if "uf" in df.columns:
-            df["uf"] = pd.to_numeric(df["uf"], errors="coerce")
-            df["sigla_uf"] = df["uf"].map(UF_IBGE_SIGLA)
+        # Ler em chunks de 500k linhas
+        vinculos_aggs = []
+        setor_aggs = []
+        chunk_size = 500_000
+        total_rows = 0
 
-        if "remuneracao_media" in df.columns and isinstance(df["remuneracao_media"], pd.Series):
-            df["remuneracao_media"] = pd.to_numeric(
-                df["remuneracao_media"], errors="coerce"
+        try:
+            reader = pd.read_csv(
+                file_path, sep=";", encoding="latin-1",
+                usecols=usecols, low_memory=False, chunksize=chunk_size,
+            )
+        except UnicodeDecodeError:
+            reader = pd.read_csv(
+                file_path, sep=";", encoding="utf-8",
+                usecols=usecols, low_memory=False, chunksize=chunk_size,
             )
 
-        logger.info(f"RAIS {ano}: {len(df)} registros.")
-        return df
+        for chunk in reader:
+            chunk.rename(columns=col_map, inplace=True)
+            total_rows += len(chunk)
+
+            # Filtrar Nordeste se tiver coluna municipio (arquivo consolidado)
+            if "municipio" in chunk.columns:
+                chunk["municipio"] = pd.to_numeric(chunk["municipio"], errors="coerce")
+                chunk["uf_cod"] = chunk["municipio"] // 10000
+                chunk = chunk[chunk["uf_cod"].isin(UFS_NE_IBGE)]
+                chunk["sigla_uf"] = chunk["uf_cod"].map(UF_IBGE_SIGLA)
+            else:
+                # Arquivo por UF — extrair sigla do nome do arquivo
+                arquivo_nome = Path(archive_path).stem
+                uf_sigla = arquivo_nome[:2].upper()
+                chunk["sigla_uf"] = uf_sigla
+
+            if chunk.empty:
+                continue
+
+            chunk["ano"] = ano
+            if "remuneracao_media" in chunk.columns:
+                chunk["remuneracao_media"] = pd.to_numeric(chunk["remuneracao_media"], errors="coerce")
+
+            # Agregação 1: vínculos por UF
+            agg1 = chunk.groupby(["ano", "sigla_uf"], as_index=False).agg(
+                vinculos_ativos=("ano", "count"),
+                remuneracao_media=("remuneracao_media", "mean")
+                if "remuneracao_media" in chunk.columns
+                else ("ano", "count"),
+            )
+            vinculos_aggs.append(agg1)
+
+            # Agregação 2: por setor
+            if "cnae_subclasse" in chunk.columns:
+                chunk["divisao_cnae"] = chunk["cnae_subclasse"].astype(str).str[:2]
+                agg2 = chunk.groupby(
+                    ["ano", "sigla_uf", "divisao_cnae"], as_index=False
+                ).agg(
+                    vinculos_ativos=("ano", "count"),
+                    remuneracao_media=("remuneracao_media", "mean")
+                    if "remuneracao_media" in chunk.columns
+                    else ("ano", "count"),
+                )
+                setor_aggs.append(agg2)
+
+        logger.info(f"RAIS {ano}: {total_rows} registros lidos em chunks.")
+
+        # Re-agregar os chunks
+        df_vinculos = pd.DataFrame()
+        if vinculos_aggs:
+            df_v = pd.concat(vinculos_aggs, ignore_index=True)
+            df_vinculos = df_v.groupby(["ano", "sigla_uf"], as_index=False).agg(
+                vinculos_ativos=("vinculos_ativos", "sum"),
+                remuneracao_media=("remuneracao_media", "mean"),
+            )
+
+        df_setor = pd.DataFrame()
+        if setor_aggs:
+            df_s = pd.concat(setor_aggs, ignore_index=True)
+            df_setor = df_s.groupby(["ano", "sigla_uf", "divisao_cnae"], as_index=False).agg(
+                vinculos_ativos=("vinculos_ativos", "sum"),
+                remuneracao_media=("remuneracao_media", "mean"),
+            )
+
+        return df_vinculos, df_setor
 
     @classmethod
     def coletar_rais_nordeste(
@@ -603,9 +706,13 @@ class CagedRais:
         Coleta RAIS Nordeste e gera 2 arquivos agregados:
           - rais_vinculos.csv     (UF + ano)
           - rais_por_setor.csv   (UF + ano + seção CNAE)
+
+        Processa em chunks para evitar OOM (~12M linhas por ano).
+        2018+: arquivo consolidado RAIS_VINC_PUB_NORDESTE.7z
+        2015-2017: arquivos individuais por UF (AL2015.7z, BA2015.7z, ...)
         """
         if ano_fim is None:
-            ano_fim = PERIODO_FIM - 2  # RAIS tem ~2 anos de defasagem
+            ano_fim = PERIODO_FIM - 2
 
         cache = RAW_DIR / "rais" / "nordeste" / "rais_vinculos.csv"
         if cache.exists():
@@ -616,59 +723,47 @@ class CagedRais:
         setor_frames = []
 
         for ano in range(ano_inicio, ano_fim + 1):
-            df = cls._processar_rais_ano(ano)
-            if df is None:
-                continue
+            with tempfile.TemporaryDirectory() as tmpdir:
+                arquivos = cls._baixar_rais_ano(ano, tmpdir)
+                if not arquivos:
+                    logger.warning(f"RAIS {ano}: nenhum arquivo disponível.")
+                    continue
 
-            # --- Agregação 1: vínculos por UF ---
-            if "sigla_uf" in df.columns:
-                agg1_dict = {"sigla_uf": ("sigla_uf", "first")}
-                agg1_dict["vinculos_ativos"] = ("ano", "count")
+                for arq in arquivos:
+                    try:
+                        df_v, df_s = cls._ler_rais_chunked(str(arq), tmpdir, ano)
+                        if not df_v.empty:
+                            vinculos_frames.append(df_v)
+                        if not df_s.empty:
+                            setor_frames.append(df_s)
+                    except Exception as e:
+                        logger.error(f"RAIS {ano} ({arq.name}): erro ao processar ({e})")
+                        continue
 
-                if "remuneracao_media" in df.columns:
-                    agg1_dict["remuneracao_media"] = ("remuneracao_media", "mean")
-                if "horas_contratadas" in df.columns:
-                    agg1_dict["horas_media"] = ("horas_contratadas", "mean")
-
-                agg1 = df.groupby(["ano", "sigla_uf"], as_index=False).agg(
-                    vinculos_ativos=("ano", "count"),
-                    remuneracao_media=("remuneracao_media", "mean")
-                    if "remuneracao_media" in df.columns
-                    else ("ano", "count"),
-                )
-                vinculos_frames.append(agg1)
-
-            # --- Agregação 2: por setor ---
-            if "cnae_subclasse" in df.columns and "sigla_uf" in df.columns:
-                df["divisao_cnae"] = df["cnae_subclasse"].astype(str).str[:2]
-                agg2 = df.groupby(
-                    ["ano", "sigla_uf", "divisao_cnae"], as_index=False
-                ).agg(
-                    vinculos_ativos=("ano", "count"),
-                    remuneracao_media=("remuneracao_media", "mean")
-                    if "remuneracao_media" in df.columns
-                    else ("ano", "count"),
-                )
-                setor_frames.append(agg2)
-
-        # --- Salvar consolidados ---
         result = None
 
         if vinculos_frames:
             df_vinculos = pd.concat(vinculos_frames, ignore_index=True)
-            df_vinculos.sort_values(["ano", "sigla_uf"], inplace=True)
-            save_dataframe(
-                df_vinculos, "rais_vinculos", path_parts=["rais", "nordeste"]
+            # Re-agregar por UF (arquivos individuais geram 1 linha por arquivo)
+            df_vinculos = df_vinculos.groupby(["ano", "sigla_uf"], as_index=False).agg(
+                vinculos_ativos=("vinculos_ativos", "sum"),
+                remuneracao_media=("remuneracao_media", "mean"),
             )
+            df_vinculos.sort_values(["ano", "sigla_uf"], inplace=True)
+            save_dataframe(df_vinculos, "rais_vinculos", path_parts=["rais", "nordeste"])
             result = df_vinculos
             logger.info(f"RAIS vínculos: {len(df_vinculos)} registros salvos.")
 
         if setor_frames:
             df_setor = pd.concat(setor_frames, ignore_index=True)
-            df_setor.sort_values(["ano", "sigla_uf", "divisao_cnae"], inplace=True)
-            save_dataframe(
-                df_setor, "rais_por_setor", path_parts=["rais", "nordeste"]
+            df_setor = df_setor.groupby(
+                ["ano", "sigla_uf", "divisao_cnae"], as_index=False
+            ).agg(
+                vinculos_ativos=("vinculos_ativos", "sum"),
+                remuneracao_media=("remuneracao_media", "mean"),
             )
+            df_setor.sort_values(["ano", "sigla_uf", "divisao_cnae"], inplace=True)
+            save_dataframe(df_setor, "rais_por_setor", path_parts=["rais", "nordeste"])
             logger.info(f"RAIS por setor: {len(df_setor)} registros salvos.")
 
         if result is None:
