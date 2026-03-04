@@ -127,7 +127,7 @@ class Siconfi:
             return pd.DataFrame()
 
         df_all = pd.concat(frames, ignore_index=True)
-        save_dataframe(df_all, "siconfi_rreo_nordeste")
+        save_dataframe(df_all, "siconfi_rreo_nordeste", path_parts=["siconfi", "nordeste"])
         return df_all
 
     @classmethod
@@ -149,7 +149,7 @@ class Siconfi:
             return pd.DataFrame()
 
         df_all = pd.concat(frames, ignore_index=True)
-        save_dataframe(df_all, "siconfi_rgf_nordeste")
+        save_dataframe(df_all, "siconfi_rgf_nordeste", path_parts=["siconfi", "nordeste"])
         return df_all
 
     @classmethod
@@ -170,5 +170,5 @@ class Siconfi:
             return pd.DataFrame()
 
         df_all = pd.concat(frames, ignore_index=True)
-        save_dataframe(df_all, "siconfi_dca_nordeste")
+        save_dataframe(df_all, "siconfi_dca_nordeste", path_parts=["siconfi", "nordeste"])
         return df_all

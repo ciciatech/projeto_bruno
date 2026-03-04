@@ -20,6 +20,7 @@ from pipeline.extract.siconfi import Siconfi
 from pipeline.extract.portal_transparencia import PortalTransparencia
 from pipeline.extract.bolsa_familia import BolsaFamilia
 from pipeline.extract.transferencias import TransferenciasConstitucionais
+from pipeline.extract.caged_rais import CagedRais
 
 logger = logging.getLogger(__name__)
 
@@ -92,8 +93,18 @@ class PipelineColeta:
             logger.info("\n>>> MÓDULO 6: Bolsa Família / Auxílio Brasil <<<")
             urls = BolsaFamilia.gerar_urls_download_dados_abertos()
             urls_df = pd.DataFrame(urls)
-            save_dataframe(urls_df, "bolsa_familia_urls_download")
+            save_dataframe(
+                urls_df,
+                "bolsa_familia_urls_download",
+                path_parts=["bolsa_familia", "nacional"],
+            )
             self.resumo["bolsa_familia_urls"] = len(urls)
+
+        # --- CAGED / RAIS (FTP MTE/PDET) ---
+        if "caged_rais" in modulos:
+            logger.info("\n>>> MÓDULO 7: CAGED / RAIS (FTP MTE/PDET) <<<")
+            total = CagedRais.coletar_todas()
+            self.resumo["caged_rais"] = total
 
         # --- Resumo Final ---
         fim = datetime.now()
@@ -147,8 +158,9 @@ if __name__ == "__main__":
             "siconfi_dca",
             "transferencias",
             "bolsa_familia",
+            "caged_rais",
         ],
-        help="Módulos a executar (default: todos exceto bolsa_familia)",
+        help="Módulos a executar (default: todos exceto bolsa_familia e caged_rais)",
     )
     parser.add_argument(
         "--api-key",

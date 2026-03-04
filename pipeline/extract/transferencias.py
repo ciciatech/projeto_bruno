@@ -98,5 +98,9 @@ class TransferenciasConstitucionais:
             return pd.DataFrame()
 
         df_all = pd.concat(frames, ignore_index=True)
-        save_dataframe(df_all, "transferencias_constitucionais_nordeste")
+        save_dataframe(
+            df_all,
+            "transferencias_constitucionais_nordeste",
+            path_parts=["transferencias", "nordeste"],
+        )
         return df_all

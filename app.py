@@ -24,6 +24,7 @@ datasets = {
     "SICONFI DCA": ("dca_resumo.parquet", "Balanço patrimonial: ativo, passivo, patrimônio líquido"),
     "Transferências": ("transferencias.parquet", "Transferências constitucionais: FPE, FUNDEB e outras"),
     "SIOF-CE": ("siof_ce.parquet", "Execução orçamentária do Ceará: dotação, empenho e pagamento (2015–2026)"),
+    "Transparência AL": ("transparencia_al.parquet", "Execução orçamentária de Alagoas: dotação, empenho e pagamento (2015–2025)"),
 }
 
 cols = st.columns(3)

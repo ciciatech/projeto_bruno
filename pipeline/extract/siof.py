@@ -43,10 +43,16 @@ class SiofCE:
     @staticmethod
     def coletar_relatorio(ano: int, mes: int, relatorio: str = "101") -> pd.DataFrame:
         """Coleta um relatório específico do SIOF-CE para ano/mês."""
-        cache_path = RAW_DIR / f"siof_{ano}_{mes}_{relatorio}.parquet"
-        if cache_path.exists():
-            logger.info(f"SIOF-CE: Cache encontrado {cache_path.name}, pulando download.")
-            return pd.read_parquet(cache_path)
+        cache_paths = [
+            RAW_DIR / "execucao_orcamentaria" / "ce" / f"siof_{ano}_{mes}_{relatorio}.csv",
+            RAW_DIR / "siof" / "ce" / f"siof_{ano}_{mes}_{relatorio}.csv",
+        ]
+        if cache_paths[0].exists() or cache_paths[1].exists():
+            logger.info(f"SIOF-CE: cache encontrado, pulando download.")
+            for cache_path in cache_paths:
+                if cache_path.exists():
+                    logger.info(f"SIOF-CE: usando cache {cache_path.name}.")
+                    return pd.read_csv(cache_path)
 
         nome_rel = SiofCE.RELATORIOS.get(relatorio, relatorio)
         logger.info(f"SIOF-CE: Coletando relatório {relatorio} ({nome_rel}) — {ano}/{mes:02d}...")
@@ -143,7 +149,11 @@ class SiofCE:
                     logger.warning(f"SIOF-CE: Relatório {relatorio} {ano}/{mes:02d} retornou vazio.")
                     return df
 
-                save_dataframe(df, f"siof_{relatorio}_{ano}_{mes}")
+                save_dataframe(
+                    df,
+                    f"siof_{relatorio}_{ano}_{mes}",
+                    path_parts=["execucao_orcamentaria", "ce"],
+                )
                 return df
 
             except requests.exceptions.RequestException as e:
@@ -245,5 +255,5 @@ class SiofCE:
             return pd.DataFrame()
 
         df_all = pd.concat(frames, ignore_index=True)
-        save_dataframe(df_all, "siof_consolidado")
+        save_dataframe(df_all, "siof_consolidado", path_parts=["execucao_orcamentaria", "ce"])
         return df_all

@@ -4,8 +4,8 @@ Utilitários compartilhados do pipeline.
 Funções de request HTTP, persistência de DataFrames e logging.
 """
 
-import time
 import logging
+import time
 from datetime import datetime
 from typing import Optional
 
@@ -71,15 +71,19 @@ def safe_request(
     return None
 
 
-def save_dataframe(df: pd.DataFrame, filename: str, subdir: str = "raw"):
-    """Salva DataFrame como CSV e Parquet."""
-    target_dir = RAW_DIR if subdir == "raw" else PROCESSED_DIR
+def save_dataframe(
+    df: pd.DataFrame,
+    filename: str,
+    subdir: str = "raw",
+    path_parts: list[str] | tuple[str, ...] | None = None,
+):
+    """Salva DataFrame apenas como CSV, com suporte a subpastas."""
+    target_root = RAW_DIR if subdir == "raw" else PROCESSED_DIR
+    target_dir = target_root
+    if path_parts:
+        target_dir = target_root.joinpath(*path_parts)
+    target_dir.mkdir(parents=True, exist_ok=True)
+
     csv_path = target_dir / f"{filename}.csv"
     df.to_csv(csv_path, index=False, encoding="utf-8-sig")
     logger.info(f"Salvo: {csv_path} ({len(df)} registros)")
-    try:
-        parquet_path = target_dir / f"{filename}.parquet"
-        df.to_parquet(parquet_path, index=False)
-        logger.info(f"Salvo: {parquet_path}")
-    except Exception:
-        logger.warning(f"Parquet não disponível para {filename}. Apenas CSV salvo.")

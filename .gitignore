@@ -4,10 +4,10 @@ __pycache__/
 *.pyo
 .DS_Store
 
-# Raw data (too large for git)
-dados_nordeste/raw/*.csv
-dados_nordeste/raw/*.parquet
+# Dados brutos e processados (grandes demais para git)
+dados_nordeste/raw/**/*.csv
+dados_nordeste/raw/**/*.parquet
+dados_nordeste/processed/**/*.csv
+dados_nordeste/processed/**/*.parquet
+dados_nordeste/processed/**/*.pkl
 dados_nordeste/logs/
-
-# Old pickle files
-dados_nordeste/processed/*.pkl

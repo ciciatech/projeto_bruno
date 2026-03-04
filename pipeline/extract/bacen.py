@@ -41,6 +41,8 @@ class BacenSGS:
         20539: "credito_PF_brasil",
         # Saldo crédito PJ - Brasil (para comparação)
         20541: "credito_PJ_brasil",
+        # IBC-Br — Índice de Atividade Econômica (proxy mensal do PIB)
+        24364: "ibc_br",
     }
 
     @staticmethod
@@ -93,12 +95,12 @@ class BacenSGS:
             return pd.DataFrame()
 
         df_all = pd.concat(frames, ignore_index=True)
-        save_dataframe(df_all, "bacen_sgs_series")
+        save_dataframe(df_all, "bacen_sgs_series", path_parts=["bacen", "nacional"])
 
         # Pivot para formato wide (útil para análise)
         df_wide = df_all.pivot_table(
             index="data", columns="serie_nome", values="valor"
         ).reset_index()
-        save_dataframe(df_wide, "bacen_sgs_wide")
+        save_dataframe(df_wide, "bacen_sgs_wide", path_parts=["bacen", "nacional"])
 
         return df_all
