@@ -1,6 +1,6 @@
 {
-  "data_execucao": "2026-02-27T15:48:18.946325",
-  "duracao_segundos": 2314.229128,
+  "data_execucao": "2026-03-04T18:07:56.838374",
+  "duracao_segundos": 3489.757742,
   "periodo": "2015-2025",
   "estados": [
     "AL",
@@ -17,6 +17,6 @@
     "caged_rais"
   ],
   "resumo": {
-    "caged_rais": 648
+    "caged_rais": 1118
   }
 }

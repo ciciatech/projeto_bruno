@@ -1,0 +1,557 @@
+nohup: ignorando entrada
+2026-03-04 17:09:47,080 [WARNING] Portal da Transparência: Sem API Key. Cadastre-se em https://portaldatransparencia.gov.br/api-de-dados/cadastrar-email e configure via env var PORTAL_TRANSPARENCIA_API_KEY ou parâmetro api_key.
+2026-03-04 17:09:47,080 [INFO] ======================================================================
+2026-03-04 17:09:47,080 [INFO] PIPELINE DE COLETA DE DADOS - TESE DESP/UFC
+2026-03-04 17:09:47,080 [INFO] Módulos: ['caged_rais']
+2026-03-04 17:09:47,080 [INFO] Período: 2015-2025
+2026-03-04 17:09:47,080 [INFO] Diretório: /home/cassiopo/dev/projeto_bruno/dados_nordeste
+2026-03-04 17:09:47,080 [INFO] ======================================================================
+2026-03-04 17:09:47,080 [INFO] 
+>>> MÓDULO 7: CAGED / RAIS (FTP MTE/PDET) <<<
+2026-03-04 17:09:47,080 [INFO] ==================================================
+2026-03-04 17:09:47,080 [INFO] CAGED Antigo (2015–2019) via FTP/PDET
+2026-03-04 17:09:47,080 [INFO] ==================================================
+2026-03-04 17:09:47,080 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_012015.7z
+2026-03-04 17:10:02,173 [INFO] Download concluído: CAGEDEST_012015.7z
+2026-03-04 17:10:02,202 [INFO] Extraindo CAGEDEST_012015.txt...
+2026-03-04 17:10:02,247 [ERROR] CAGED Antigo 2015/01: erro ao extrair (Corrupt input data)
+2026-03-04 17:10:02,253 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_022015.7z
+2026-03-04 17:10:17,020 [INFO] Download concluído: CAGEDEST_022015.7z
+2026-03-04 17:10:17,020 [INFO] Extraindo CAGEDEST_022015.txt...
+2026-03-04 17:10:26,229 [INFO] CAGED Antigo 2015/02 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:10:26,414 [INFO] CAGED Antigo 2015/02: 431570 registros Nordeste.
+2026-03-04 17:10:26,482 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_032015.7z
+2026-03-04 17:10:44,113 [INFO] Download concluído: CAGEDEST_032015.7z
+2026-03-04 17:10:44,113 [INFO] Extraindo CAGEDEST_032015.txt...
+2026-03-04 17:10:44,353 [ERROR] CAGED Antigo 2015/03: erro ao extrair (Corrupt input data)
+2026-03-04 17:10:44,379 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_042015.7z
+2026-03-04 17:11:03,817 [INFO] Download concluído: CAGEDEST_042015.7z
+2026-03-04 17:11:03,817 [INFO] Extraindo CAGEDEST_042015.txt...
+2026-03-04 17:11:12,126 [INFO] CAGED Antigo 2015/04 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:11:12,308 [INFO] CAGED Antigo 2015/04: 459119 registros Nordeste.
+2026-03-04 17:11:12,378 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_052015.7z
+2026-03-04 17:11:29,223 [INFO] Download concluído: CAGEDEST_052015.7z
+2026-03-04 17:11:29,223 [INFO] Extraindo CAGEDEST_052015.txt...
+2026-03-04 17:11:37,291 [INFO] CAGED Antigo 2015/05 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:11:37,463 [INFO] CAGED Antigo 2015/05: 441967 registros Nordeste.
+2026-03-04 17:11:37,532 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_062015.7z
+2026-03-04 17:11:50,931 [INFO] Download concluído: CAGEDEST_062015.7z
+2026-03-04 17:11:50,932 [INFO] Extraindo CAGEDEST_062015.txt...
+2026-03-04 17:11:58,866 [INFO] CAGED Antigo 2015/06 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:11:59,035 [INFO] CAGED Antigo 2015/06: 413479 registros Nordeste.
+2026-03-04 17:11:59,102 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_072015.7z
+2026-03-04 17:12:13,013 [INFO] Download concluído: CAGEDEST_072015.7z
+2026-03-04 17:12:13,014 [INFO] Extraindo CAGEDEST_072015.txt...
+2026-03-04 17:12:13,199 [ERROR] CAGED Antigo 2015/07: erro ao extrair (Corrupt input data)
+2026-03-04 17:12:13,220 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_082015.7z
+2026-03-04 17:12:31,253 [INFO] Download concluído: CAGEDEST_082015.7z
+2026-03-04 17:12:31,253 [INFO] Extraindo CAGEDEST_082015.txt...
+2026-03-04 17:12:38,927 [INFO] CAGED Antigo 2015/08 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:12:39,097 [INFO] CAGED Antigo 2015/08: 423775 registros Nordeste.
+2026-03-04 17:12:39,161 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_092015.7z
+2026-03-04 17:12:52,614 [INFO] Download concluído: CAGEDEST_092015.7z
+2026-03-04 17:12:52,615 [INFO] Extraindo CAGEDEST092015.txt...
+2026-03-04 17:12:59,927 [INFO] CAGED Antigo 2015/09 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:13:00,099 [INFO] CAGED Antigo 2015/09: 420948 registros Nordeste.
+2026-03-04 17:13:00,167 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_102015.7z
+2026-03-04 17:13:15,237 [INFO] Download concluído: CAGEDEST_102015.7z
+2026-03-04 17:13:15,238 [INFO] Extraindo CAGEDEST102015.txt...
+2026-03-04 17:13:22,324 [INFO] CAGED Antigo 2015/10 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:13:22,476 [INFO] CAGED Antigo 2015/10: 391512 registros Nordeste.
+2026-03-04 17:13:22,542 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_112015.7z
+2026-03-04 17:13:34,790 [INFO] Download concluído: CAGEDEST_112015.7z
+2026-03-04 17:13:34,790 [INFO] Extraindo CAGEDEST_112015.txt...
+2026-03-04 17:13:35,043 [ERROR] CAGED Antigo 2015/11: erro ao extrair (Corrupt input data)
+2026-03-04 17:13:35,066 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2015/CAGEDEST_122015.7z
+2026-03-04 17:13:45,734 [INFO] Download concluído: CAGEDEST_122015.7z
+2026-03-04 17:13:45,734 [INFO] Extraindo CAGEDEST_122015.txt...
+2026-03-04 17:13:52,249 [INFO] CAGED Antigo 2015/12 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:13:52,384 [INFO] CAGED Antigo 2015/12: 334935 registros Nordeste.
+2026-03-04 17:13:52,437 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_012016.7z
+2026-03-04 17:14:03,927 [INFO] Download concluído: CAGEDEST_012016.7z
+2026-03-04 17:14:03,927 [INFO] Extraindo CAGEDEST_012016.txt...
+2026-03-04 17:14:10,579 [INFO] CAGED Antigo 2016/01 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:14:10,725 [INFO] CAGED Antigo 2016/01: 360483 registros Nordeste.
+2026-03-04 17:14:10,787 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_022016.7z
+2026-03-04 17:14:24,951 [INFO] Download concluído: CAGEDEST_022016.7z
+2026-03-04 17:14:24,951 [INFO] Extraindo CAGEDEST_022016.txt...
+2026-03-04 17:14:31,982 [INFO] CAGED Antigo 2016/02 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:14:32,130 [INFO] CAGED Antigo 2016/02: 359881 registros Nordeste.
+2026-03-04 17:14:32,192 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_032016.7z
+2026-03-04 17:14:44,279 [INFO] Download concluído: CAGEDEST_032016.7z
+2026-03-04 17:14:44,279 [INFO] Extraindo CAGEDEST_032016.txt...
+2026-03-04 17:14:45,767 [ERROR] CAGED Antigo 2016/03: erro ao extrair (Corrupt input data)
+2026-03-04 17:14:45,856 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_042016.7z
+2026-03-04 17:14:57,667 [INFO] Download concluído: CAGEDEST_042016.7z
+2026-03-04 17:14:57,667 [INFO] Extraindo CAGEDEST_042016.txt...
+2026-03-04 17:15:04,440 [INFO] CAGED Antigo 2016/04 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:15:04,584 [INFO] CAGED Antigo 2016/04: 356582 registros Nordeste.
+2026-03-04 17:15:04,639 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_052016.7z
+2026-03-04 17:15:15,213 [INFO] Download concluído: CAGEDEST_052016.7z
+2026-03-04 17:15:15,213 [INFO] Extraindo CAGEDEST_052016.txt...
+2026-03-04 17:15:16,096 [ERROR] CAGED Antigo 2016/05: erro ao extrair (Corrupt input data)
+2026-03-04 17:15:16,152 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_062016.7z
+2026-03-04 17:15:28,218 [INFO] Download concluído: CAGEDEST_062016.7z
+2026-03-04 17:15:28,218 [INFO] Extraindo CAGEDEST_062016.txt...
+2026-03-04 17:15:35,561 [INFO] CAGED Antigo 2016/06 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:15:35,704 [INFO] CAGED Antigo 2016/06: 339928 registros Nordeste.
+2026-03-04 17:15:35,758 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_072016.7z
+2026-03-04 17:15:49,836 [INFO] Download concluído: CAGEDEST_072016.7z
+2026-03-04 17:15:49,836 [INFO] Extraindo CAGEDEST_072016.txt...
+2026-03-04 17:15:56,384 [INFO] CAGED Antigo 2016/07 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:15:56,539 [INFO] CAGED Antigo 2016/07: 344110 registros Nordeste.
+2026-03-04 17:15:56,598 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_082016.7z
+2026-03-04 17:16:08,331 [INFO] Download concluído: CAGEDEST_082016.7z
+2026-03-04 17:16:08,332 [INFO] Extraindo CAGEDEST_082016.txt...
+2026-03-04 17:16:15,063 [INFO] CAGED Antigo 2016/08 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:16:15,213 [INFO] CAGED Antigo 2016/08: 379751 registros Nordeste.
+2026-03-04 17:16:15,281 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_092016.7z
+2026-03-04 17:16:28,933 [INFO] Download concluído: CAGEDEST_092016.7z
+2026-03-04 17:16:28,934 [INFO] Extraindo CAGEDEST_092016.txt...
+2026-03-04 17:16:35,256 [INFO] CAGED Antigo 2016/09 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:16:35,397 [INFO] CAGED Antigo 2016/09: 339988 registros Nordeste.
+2026-03-04 17:16:35,460 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_102016.7z
+2026-03-04 17:16:45,364 [INFO] Download concluído: CAGEDEST_102016.7z
+2026-03-04 17:16:45,364 [INFO] Extraindo CAGEDEST_102016.txt...
+2026-03-04 17:16:51,365 [INFO] CAGED Antigo 2016/10 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:16:51,503 [INFO] CAGED Antigo 2016/10: 330417 registros Nordeste.
+2026-03-04 17:16:51,567 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_112016.7z
+2026-03-04 17:17:02,364 [INFO] Download concluído: CAGEDEST_112016.7z
+2026-03-04 17:17:02,365 [INFO] Extraindo CAGEDEST_112016.txt...
+2026-03-04 17:17:08,530 [INFO] CAGED Antigo 2016/11 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:17:08,670 [INFO] CAGED Antigo 2016/11: 332572 registros Nordeste.
+2026-03-04 17:17:08,731 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2016/CAGEDEST_122016.7z
+2026-03-04 17:17:18,476 [INFO] Download concluído: CAGEDEST_122016.7z
+2026-03-04 17:17:18,477 [INFO] Extraindo CAGEDEST_122016.txt...
+2026-03-04 17:17:24,393 [INFO] CAGED Antigo 2016/12 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:17:24,522 [INFO] CAGED Antigo 2016/12: 301733 registros Nordeste.
+2026-03-04 17:17:24,583 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_012017.7z
+2026-03-04 17:17:35,861 [INFO] Download concluído: CAGEDEST_012017.7z
+2026-03-04 17:17:35,862 [INFO] Extraindo CAGEDEST_012017.txt...
+2026-03-04 17:17:42,478 [INFO] CAGED Antigo 2017/01 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:17:42,630 [INFO] CAGED Antigo 2017/01: 368329 registros Nordeste.
+2026-03-04 17:17:42,691 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_022017.7z
+2026-03-04 17:17:56,750 [INFO] Download concluído: CAGEDEST_022017.7z
+2026-03-04 17:17:56,750 [INFO] Extraindo CAGEDEST_022017.txt...
+2026-03-04 17:18:03,405 [INFO] CAGED Antigo 2017/02 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:18:03,575 [INFO] CAGED Antigo 2017/02: 347860 registros Nordeste.
+2026-03-04 17:18:03,647 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_032017.7z
+2026-03-04 17:18:16,117 [INFO] Download concluído: CAGEDEST_032017.7z
+2026-03-04 17:18:16,117 [INFO] Extraindo CAGEDEST_032017.txt...
+2026-03-04 17:18:23,103 [INFO] CAGED Antigo 2017/03 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:18:23,259 [INFO] CAGED Antigo 2017/03: 340219 registros Nordeste.
+2026-03-04 17:18:23,322 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_042017.7z
+2026-03-04 17:18:35,586 [INFO] Download concluído: CAGEDEST_042017.7z
+2026-03-04 17:18:35,586 [INFO] Extraindo CAGEDEST_042017.txt...
+2026-03-04 17:18:36,382 [ERROR] CAGED Antigo 2017/04: erro ao extrair (Corrupt input data)
+2026-03-04 17:18:36,429 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_052017.7z
+2026-03-04 17:18:51,197 [INFO] Download concluído: CAGEDEST_052017.7z
+2026-03-04 17:18:51,197 [INFO] Extraindo CAGEDEST_052017.txt...
+2026-03-04 17:18:58,017 [INFO] CAGED Antigo 2017/05 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:18:58,170 [INFO] CAGED Antigo 2017/05: 326560 registros Nordeste.
+2026-03-04 17:18:58,222 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_062017.7z
+2026-03-04 17:19:11,981 [INFO] Download concluído: CAGEDEST_062017.7z
+2026-03-04 17:19:11,981 [INFO] Extraindo CAGEDEST_062017.txt...
+2026-03-04 17:19:13,198 [ERROR] CAGED Antigo 2017/06: erro ao extrair (Corrupt input data)
+2026-03-04 17:19:13,274 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_072017.7z
+2026-03-04 17:19:26,992 [INFO] Download concluído: CAGEDEST_072017.7z
+2026-03-04 17:19:26,992 [INFO] Extraindo CAGEDEST_072017.txt...
+2026-03-04 17:19:33,042 [INFO] CAGED Antigo 2017/07 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:19:33,168 [INFO] CAGED Antigo 2017/07: 310821 registros Nordeste.
+2026-03-04 17:19:33,222 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_082017.7z
+2026-03-04 17:19:47,074 [INFO] Download concluído: CAGEDEST_082017.7z
+2026-03-04 17:19:47,074 [INFO] Extraindo CAGEDEST_082017.txt...
+2026-03-04 17:19:53,757 [INFO] CAGED Antigo 2017/08 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:19:53,906 [INFO] CAGED Antigo 2017/08: 345184 registros Nordeste.
+2026-03-04 17:19:53,969 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_092017.7z
+2026-03-04 17:20:03,647 [INFO] Download concluído: CAGEDEST_092017.7z
+2026-03-04 17:20:03,648 [INFO] Extraindo CAGEDEST_092017.txt...
+2026-03-04 17:20:09,815 [INFO] CAGED Antigo 2017/09 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:20:09,958 [INFO] CAGED Antigo 2017/09: 323588 registros Nordeste.
+2026-03-04 17:20:10,024 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_102017.7z
+2026-03-04 17:20:24,469 [INFO] Download concluído: CAGEDEST_102017.7z
+2026-03-04 17:20:24,469 [INFO] Extraindo CAGEDEST_102017.txt...
+2026-03-04 17:20:30,686 [INFO] CAGED Antigo 2017/10 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:20:30,820 [INFO] CAGED Antigo 2017/10: 328595 registros Nordeste.
+2026-03-04 17:20:30,875 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_112017.7z
+2026-03-04 17:20:43,454 [INFO] Download concluído: CAGEDEST_112017.7z
+2026-03-04 17:20:43,454 [INFO] Extraindo CAGEDEST_112017.txt...
+2026-03-04 17:20:49,421 [INFO] CAGED Antigo 2017/11 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:20:49,545 [INFO] CAGED Antigo 2017/11: 312168 registros Nordeste.
+2026-03-04 17:20:49,600 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2017/CAGEDEST_122017.7z
+2026-03-04 17:20:58,802 [INFO] Download concluído: CAGEDEST_122017.7z
+2026-03-04 17:20:58,803 [INFO] Extraindo CAGEDEST_122017.txt...
+2026-03-04 17:20:59,121 [ERROR] CAGED Antigo 2017/12: erro ao extrair (Corrupt input data)
+2026-03-04 17:20:59,146 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_012018.7z
+2026-03-04 17:21:09,736 [INFO] Download concluído: CAGEDEST_012018.7z
+2026-03-04 17:21:09,736 [INFO] Extraindo CAGEDEST_012018.txt...
+2026-03-04 17:21:16,290 [INFO] CAGED Antigo 2018/01 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:21:16,425 [INFO] CAGED Antigo 2018/01: 340059 registros Nordeste.
+2026-03-04 17:21:16,479 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_022018.7z
+2026-03-04 17:21:26,340 [INFO] Download concluído: CAGEDEST_022018.7z
+2026-03-04 17:21:26,340 [INFO] Extraindo CAGEDEST_022018.txt...
+2026-03-04 17:21:32,940 [INFO] CAGED Antigo 2018/02 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:21:33,074 [INFO] CAGED Antigo 2018/02: 326353 registros Nordeste.
+2026-03-04 17:21:33,139 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_032018.7z
+2026-03-04 17:21:43,549 [INFO] Download concluído: CAGEDEST_032018.7z
+2026-03-04 17:21:43,549 [INFO] Extraindo CAGEDEST_032018.txt...
+2026-03-04 17:21:50,406 [INFO] CAGED Antigo 2018/03 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:21:50,543 [INFO] CAGED Antigo 2018/03: 343480 registros Nordeste.
+2026-03-04 17:21:50,601 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_042018.7z
+2026-03-04 17:22:00,607 [INFO] Download concluído: CAGEDEST_042018.7z
+2026-03-04 17:22:00,608 [INFO] Extraindo CAGEDEST_042018.txt...
+2026-03-04 17:22:07,190 [INFO] CAGED Antigo 2018/04 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR']
+2026-03-04 17:22:07,330 [INFO] CAGED Antigo 2018/04: 325383 registros Nordeste.
+2026-03-04 17:22:07,388 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_052018.7z
+2026-03-04 17:22:21,635 [INFO] Download concluído: CAGEDEST_052018.7z
+2026-03-04 17:22:21,635 [INFO] Extraindo CAGEDEST_052018.txt...
+2026-03-04 17:22:28,509 [INFO] CAGED Antigo 2018/05 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:22:28,651 [INFO] CAGED Antigo 2018/05: 335130 registros Nordeste.
+2026-03-04 17:22:28,708 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_062018.7z
+2026-03-04 17:22:40,392 [INFO] Download concluído: CAGEDEST_062018.7z
+2026-03-04 17:22:40,393 [INFO] Extraindo CAGEDEST_062018.txt...
+2026-03-04 17:22:46,889 [INFO] CAGED Antigo 2018/06 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:22:47,029 [INFO] CAGED Antigo 2018/06: 311265 registros Nordeste.
+2026-03-04 17:22:47,087 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_072018.7z
+2026-03-04 17:22:58,175 [INFO] Download concluído: CAGEDEST_072018.7z
+2026-03-04 17:22:58,175 [INFO] Extraindo CAGEDEST_072018.txt...
+2026-03-04 17:23:04,835 [INFO] CAGED Antigo 2018/07 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:23:04,970 [INFO] CAGED Antigo 2018/07: 316357 registros Nordeste.
+2026-03-04 17:23:05,026 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_082018.7z
+2026-03-04 17:23:19,600 [INFO] Download concluído: CAGEDEST_082018.7z
+2026-03-04 17:23:19,601 [INFO] Extraindo CAGEDEST_082018.txt...
+2026-03-04 17:23:26,649 [INFO] CAGED Antigo 2018/08 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:23:26,795 [INFO] CAGED Antigo 2018/08: 360956 registros Nordeste.
+2026-03-04 17:23:26,854 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_092018.7z
+2026-03-04 17:23:37,845 [INFO] Download concluído: CAGEDEST_092018.7z
+2026-03-04 17:23:37,845 [INFO] Extraindo CAGEDEST_092018.txt...
+2026-03-04 17:23:44,237 [INFO] CAGED Antigo 2018/09 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:23:44,382 [INFO] CAGED Antigo 2018/09: 341943 registros Nordeste.
+2026-03-04 17:23:44,449 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_102018.7z
+2026-03-04 17:23:57,277 [INFO] Download concluído: CAGEDEST_102018.7z
+2026-03-04 17:23:57,278 [INFO] Extraindo CAGEDEST_102018.txt...
+2026-03-04 17:24:04,133 [INFO] CAGED Antigo 2018/10 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:24:04,271 [INFO] CAGED Antigo 2018/10: 333940 registros Nordeste.
+2026-03-04 17:24:04,331 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_112018.7z
+2026-03-04 17:24:17,350 [INFO] Download concluído: CAGEDEST_112018.7z
+2026-03-04 17:24:17,350 [INFO] Extraindo CAGEDEST_112018.txt...
+2026-03-04 17:24:23,702 [INFO] CAGED Antigo 2018/11 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:24:23,838 [INFO] CAGED Antigo 2018/11: 318989 registros Nordeste.
+2026-03-04 17:24:23,902 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2018/CAGEDEST_122018.7z
+2026-03-04 17:24:35,170 [INFO] Download concluído: CAGEDEST_122018.7z
+2026-03-04 17:24:35,171 [INFO] Extraindo CAGEDEST_122018.txt...
+2026-03-04 17:24:41,374 [INFO] CAGED Antigo 2018/12 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:24:41,514 [INFO] CAGED Antigo 2018/12: 301404 registros Nordeste.
+2026-03-04 17:24:41,570 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_012019.7z
+2026-03-04 17:24:57,280 [INFO] Download concluído: CAGEDEST_012019.7z
+2026-03-04 17:24:57,280 [INFO] Extraindo CAGEDEST_012019.txt...
+2026-03-04 17:24:57,467 [ERROR] CAGED Antigo 2019/01: erro ao extrair (Corrupt input data)
+2026-03-04 17:24:57,487 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_022019.7z
+2026-03-04 17:25:14,448 [INFO] Download concluído: CAGEDEST_022019.7z
+2026-03-04 17:25:14,448 [INFO] Extraindo CAGEDEST_022019.txt...
+2026-03-04 17:25:21,948 [INFO] CAGED Antigo 2019/02 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:25:22,096 [INFO] CAGED Antigo 2019/02: 353553 registros Nordeste.
+2026-03-04 17:25:22,156 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_032019.7z
+2026-03-04 17:25:33,818 [INFO] Download concluído: CAGEDEST_032019.7z
+2026-03-04 17:25:33,818 [INFO] Extraindo CAGEDEST_032019.txt...
+2026-03-04 17:25:34,756 [ERROR] CAGED Antigo 2019/03: erro ao extrair (Corrupt input data)
+2026-03-04 17:25:34,813 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_042019.7z
+2026-03-04 17:25:48,682 [INFO] Download concluído: CAGEDEST_042019.7z
+2026-03-04 17:25:48,683 [INFO] Extraindo CAGEDEST_042019.txt...
+2026-03-04 17:25:55,851 [INFO] CAGED Antigo 2019/04 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:25:55,993 [INFO] CAGED Antigo 2019/04: 338343 registros Nordeste.
+2026-03-04 17:25:56,047 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_052019.7z
+2026-03-04 17:26:07,954 [INFO] Download concluído: CAGEDEST_052019.7z
+2026-03-04 17:26:07,954 [INFO] Extraindo CAGEDEST_052019.txt...
+2026-03-04 17:26:15,101 [INFO] CAGED Antigo 2019/05 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:26:15,242 [INFO] CAGED Antigo 2019/05: 338107 registros Nordeste.
+2026-03-04 17:26:15,299 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_062019.7z
+2026-03-04 17:26:30,859 [INFO] Download concluído: CAGEDEST_062019.7z
+2026-03-04 17:26:30,859 [INFO] Extraindo CAGEDEST_062019.txt...
+2026-03-04 17:26:37,464 [INFO] CAGED Antigo 2019/06 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:26:37,599 [INFO] CAGED Antigo 2019/06: 318386 registros Nordeste.
+2026-03-04 17:26:37,663 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_072019.7z
+2026-03-04 17:26:57,615 [INFO] Download concluído: CAGEDEST_072019.7z
+2026-03-04 17:26:57,616 [INFO] Extraindo CAGEDEST_072019.txt...
+2026-03-04 17:27:04,654 [INFO] CAGED Antigo 2019/07 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:27:04,797 [INFO] CAGED Antigo 2019/07: 347264 registros Nordeste.
+2026-03-04 17:27:04,855 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_082019.7z
+2026-03-04 17:27:19,869 [INFO] Download concluído: CAGEDEST_082019.7z
+2026-03-04 17:27:19,870 [INFO] Extraindo CAGEDEST_082019.txt...
+2026-03-04 17:27:20,498 [ERROR] CAGED Antigo 2019/08: erro ao extrair (Corrupt input data)
+2026-03-04 17:27:20,541 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_092019.7z
+2026-03-04 17:27:41,982 [INFO] Download concluído: CAGEDEST_092019.7z
+2026-03-04 17:27:41,983 [INFO] Extraindo CAGEDEST_092019.txt...
+2026-03-04 17:27:43,120 [ERROR] CAGED Antigo 2019/09: erro ao extrair (Corrupt input data)
+2026-03-04 17:27:43,185 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_102019.7z
+2026-03-04 17:27:57,526 [INFO] Download concluído: CAGEDEST_102019.7z
+2026-03-04 17:27:57,527 [INFO] Extraindo CAGEDEST_102019.txt...
+2026-03-04 17:28:04,817 [INFO] CAGED Antigo 2019/10 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:28:04,966 [INFO] CAGED Antigo 2019/10: 357028 registros Nordeste.
+2026-03-04 17:28:05,029 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_112019.7z
+2026-03-04 17:28:19,599 [INFO] Download concluído: CAGEDEST_112019.7z
+2026-03-04 17:28:19,600 [INFO] Extraindo CAGEDEST_112019.txt...
+2026-03-04 17:28:26,203 [INFO] CAGED Antigo 2019/11 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:28:26,340 [INFO] CAGED Antigo 2019/11: 335962 registros Nordeste.
+2026-03-04 17:28:26,397 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_122019.7z
+2026-03-04 17:28:45,691 [INFO] Download concluído: CAGEDEST_122019.7z
+2026-03-04 17:28:45,691 [INFO] Extraindo CAGEDEST_122019.txt...
+2026-03-04 17:28:51,817 [INFO] CAGED Antigo 2019/12 colunas: ['Admitidos/Desligados', 'Competência Declarada', 'Município', 'Ano Declarado', 'CBO 2002 Ocupação', 'CNAE 1.0 Classe', 'CNAE 2.0 Classe', 'CNAE 2.0 Subclas', 'Faixa Empr Início Jan', 'Grau Instrução', 'Qtd Hora Contrat', 'IBGE Subsetor', 'Idade', 'Ind Aprendiz', 'Ind Portador Defic', 'Raça Cor', 'Salário Mensal', 'Saldo Mov', 'Sexo', 'Tempo Emprego', 'Tipo Estab', 'Tipo Defic', 'Tipo Mov Desagregado', 'UF', 'Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Distritos SP', 'Regiões Adm DF', 'Mesorregião', 'Microrregião', 'Região Adm RJ', 'Região Adm SP', 'Região Corede', 'Região Corede 04', 'Região Gov SP', 'Região Senac PR', 'Região Senai PR', 'Região Senai SP', 'Sub-Região Senai PR', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:28:51,940 [INFO] CAGED Antigo 2019/12: 303459 registros Nordeste.
+2026-03-04 17:28:52,006 [INFO] Salvo: dados_nordeste/raw/caged/nordeste/caged_antigo_saldo_mensal.csv (423 registros)
+2026-03-04 17:28:52,006 [INFO] CAGED Antigo saldo mensal: 423 registros salvos.
+2026-03-04 17:28:52,014 [INFO] Salvo: dados_nordeste/raw/caged/nordeste/caged_antigo_por_perfil.csv (1136 registros)
+2026-03-04 17:28:52,014 [INFO] CAGED Antigo por perfil: 1136 registros salvos.
+2026-03-04 17:28:52,018 [INFO] ==================================================
+2026-03-04 17:28:52,018 [INFO] CAGED — Novo CAGED (2020+) via FTP/PDET
+2026-03-04 17:28:52,018 [INFO] ==================================================
+2026-03-04 17:28:52,018 [INFO] CAGED Nordeste: cache encontrado, pulando coleta.
+2026-03-04 17:28:52,019 [INFO] ==================================================
+2026-03-04 17:28:52,019 [INFO] RAIS — Vínculos Nordeste via FTP/PDET
+2026-03-04 17:28:52,019 [INFO] ==================================================
+2026-03-04 17:28:52,019 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:28:52,588 [INFO] RAIS 2015: arquivo consolidado Nordeste não existe, tentando por UF...
+2026-03-04 17:28:52,589 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/AL2015.7z
+2026-03-04 17:29:07,448 [INFO] Download concluído: AL2015.7z
+2026-03-04 17:29:07,448 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/BA2015.7z
+2026-03-04 17:30:02,116 [INFO] Download concluído: BA2015.7z
+2026-03-04 17:30:02,116 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/CE2015.7z
+2026-03-04 17:30:45,485 [INFO] Download concluído: CE2015.7z
+2026-03-04 17:30:45,486 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/MA2015.7z
+2026-03-04 17:31:03,756 [INFO] Download concluído: MA2015.7z
+2026-03-04 17:31:03,756 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/PB2015.7z
+2026-03-04 17:31:15,699 [INFO] Download concluído: PB2015.7z
+2026-03-04 17:31:15,699 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/PE2015.7z
+2026-03-04 17:32:05,367 [INFO] Download concluído: PE2015.7z
+2026-03-04 17:32:05,367 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/PI2015.7z
+2026-03-04 17:32:16,717 [INFO] Download concluído: PI2015.7z
+2026-03-04 17:32:16,717 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/RN2015.7z
+2026-03-04 17:32:28,842 [INFO] Download concluído: RN2015.7z
+2026-03-04 17:32:28,843 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2015/SE2015.7z
+2026-03-04 17:32:38,717 [INFO] Download concluído: SE2015.7z
+2026-03-04 17:32:38,718 [INFO] Extraindo AL2015.txt...
+2026-03-04 17:32:39,996 [INFO] RAIS 2015 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC']
+2026-03-04 17:32:39,996 [INFO] RAIS 2015 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:32:42,413 [INFO] RAIS 2015: 694802 registros lidos em chunks.
+2026-03-04 17:32:42,428 [INFO] Extraindo BA2015.txt...
+2026-03-04 17:32:43,720 [ERROR] RAIS 2015 (BA2015.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:32:43,720 [INFO] Extraindo CE2015.txt...
+2026-03-04 17:32:46,088 [ERROR] RAIS 2015 (CE2015.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:32:46,089 [INFO] Extraindo MA2015.txt...
+2026-03-04 17:32:47,864 [INFO] RAIS 2015 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC']
+2026-03-04 17:32:47,864 [INFO] RAIS 2015 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:32:51,412 [INFO] RAIS 2015: 998534 registros lidos em chunks.
+2026-03-04 17:32:51,431 [INFO] Extraindo PB2015.txt...
+2026-03-04 17:32:52,160 [ERROR] RAIS 2015 (PB2015.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:32:52,161 [INFO] Extraindo PE2015.txt...
+2026-03-04 17:32:52,637 [ERROR] RAIS 2015 (PE2015.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:32:52,641 [INFO] Extraindo PI2015.txt...
+2026-03-04 17:32:53,487 [ERROR] RAIS 2015 (PI2015.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:32:53,491 [INFO] Extraindo RN2015.txt...
+2026-03-04 17:32:55,129 [INFO] RAIS 2015 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC']
+2026-03-04 17:32:55,129 [INFO] RAIS 2015 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:32:58,177 [INFO] RAIS 2015: 853661 registros lidos em chunks.
+2026-03-04 17:32:58,193 [INFO] Extraindo SE2015.txt...
+2026-03-04 17:32:59,263 [INFO] RAIS 2015 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC']
+2026-03-04 17:32:59,263 [INFO] RAIS 2015 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:33:01,255 [INFO] RAIS 2015: 554872 registros lidos em chunks.
+2026-03-04 17:33:01,823 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:33:02,281 [INFO] RAIS 2016: arquivo consolidado Nordeste não existe, tentando por UF...
+2026-03-04 17:33:02,281 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/AL2016.7z
+2026-03-04 17:33:13,249 [INFO] Download concluído: AL2016.7z
+2026-03-04 17:33:13,250 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/BA2016.7z
+2026-03-04 17:34:05,525 [INFO] Download concluído: BA2016.7z
+2026-03-04 17:34:05,525 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/CE2016.7z
+2026-03-04 17:34:33,648 [INFO] Download concluído: CE2016.7z
+2026-03-04 17:34:33,648 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/MA2016.7z
+2026-03-04 17:34:50,545 [INFO] Download concluído: MA2016.7z
+2026-03-04 17:34:50,546 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/PB2016.7z
+2026-03-04 17:35:10,958 [INFO] Download concluído: PB2016.7z
+2026-03-04 17:35:10,958 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/PE2016.7z
+2026-03-04 17:35:55,188 [INFO] Download concluído: PE2016.7z
+2026-03-04 17:35:55,188 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/PI2016.7z
+2026-03-04 17:36:04,032 [INFO] Download concluído: PI2016.7z
+2026-03-04 17:36:04,032 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/RN2016.7z
+2026-03-04 17:36:16,369 [INFO] Download concluído: RN2016.7z
+2026-03-04 17:36:16,369 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2016/SE2016.7z
+2026-03-04 17:36:27,987 [INFO] Download concluído: SE2016.7z
+2026-03-04 17:36:27,988 [INFO] Extraindo AL2016.txt...
+2026-03-04 17:36:29,299 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:36:29,299 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:36:31,781 [INFO] RAIS 2016: 663297 registros lidos em chunks.
+2026-03-04 17:36:31,792 [INFO] Extraindo BA2016.txt...
+2026-03-04 17:36:38,117 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:36:38,117 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:36:49,736 [INFO] RAIS 2016: 3100695 registros lidos em chunks.
+2026-03-04 17:36:49,743 [INFO] Extraindo CE2016.txt...
+2026-03-04 17:36:53,757 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:36:53,757 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:37:01,632 [INFO] RAIS 2016: 2099010 registros lidos em chunks.
+2026-03-04 17:37:01,638 [INFO] Extraindo MA2016.txt...
+2026-03-04 17:37:03,398 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:37:03,399 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:37:06,914 [INFO] RAIS 2016: 945011 registros lidos em chunks.
+2026-03-04 17:37:06,928 [INFO] Extraindo PB2016.txt...
+2026-03-04 17:37:08,464 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:37:08,464 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:37:11,616 [INFO] RAIS 2016: 831623 registros lidos em chunks.
+2026-03-04 17:37:11,630 [INFO] Extraindo PE2016.txt...
+2026-03-04 17:37:15,214 [ERROR] RAIS 2016 (PE2016.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:37:15,215 [INFO] Extraindo PI2016.txt...
+2026-03-04 17:37:16,343 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:37:16,343 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:37:18,581 [INFO] RAIS 2016: 586489 registros lidos em chunks.
+2026-03-04 17:37:18,591 [INFO] Extraindo RN2016.txt...
+2026-03-04 17:37:20,199 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:37:20,199 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:37:23,270 [INFO] RAIS 2016: 815252 registros lidos em chunks.
+2026-03-04 17:37:23,282 [INFO] Extraindo SE2016.txt...
+2026-03-04 17:37:24,345 [INFO] RAIS 2016 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil']
+2026-03-04 17:37:24,345 [INFO] RAIS 2016 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:37:26,338 [INFO] RAIS 2016: 523722 registros lidos em chunks.
+2026-03-04 17:37:27,264 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:37:27,779 [INFO] RAIS 2017: arquivo consolidado Nordeste não existe, tentando por UF...
+2026-03-04 17:37:27,779 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/AL2017.7z
+2026-03-04 17:37:38,720 [INFO] Download concluído: AL2017.7z
+2026-03-04 17:37:38,720 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/BA2017.7z
+2026-03-04 17:38:28,823 [INFO] Download concluído: BA2017.7z
+2026-03-04 17:38:28,823 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/CE2017.7z
+2026-03-04 17:38:56,063 [INFO] Download concluído: CE2017.7z
+2026-03-04 17:38:56,063 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/MA2017.7z
+2026-03-04 17:39:09,974 [INFO] Download concluído: MA2017.7z
+2026-03-04 17:39:09,975 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/PB2017.7z
+2026-03-04 17:39:21,510 [INFO] Download concluído: PB2017.7z
+2026-03-04 17:39:21,510 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/PE2017.7z
+2026-03-04 17:39:59,147 [INFO] Download concluído: PE2017.7z
+2026-03-04 17:39:59,147 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/PI2017.7z
+2026-03-04 17:40:12,340 [INFO] Download concluído: PI2017.7z
+2026-03-04 17:40:12,340 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/RN2017.7z
+2026-03-04 17:40:24,814 [INFO] Download concluído: RN2017.7z
+2026-03-04 17:40:24,814 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2017/SE2017.7z
+2026-03-04 17:40:36,542 [INFO] Download concluído: SE2017.7z
+2026-03-04 17:40:36,542 [INFO] Extraindo AL2017.txt...
+2026-03-04 17:40:37,851 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:40:37,851 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:40:40,344 [INFO] RAIS 2017: 650052 registros lidos em chunks.
+2026-03-04 17:40:40,354 [INFO] Extraindo BA2017.txt...
+2026-03-04 17:40:45,656 [ERROR] RAIS 2017 (BA2017.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:40:45,656 [INFO] Extraindo CE2017.txt...
+2026-03-04 17:40:49,761 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:40:49,761 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:40:57,642 [INFO] RAIS 2017: 2045503 registros lidos em chunks.
+2026-03-04 17:40:57,649 [INFO] Extraindo MA2017.txt...
+2026-03-04 17:40:59,389 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:40:59,389 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:41:02,895 [INFO] RAIS 2017: 929404 registros lidos em chunks.
+2026-03-04 17:41:02,909 [INFO] Extraindo PB2017.txt...
+2026-03-04 17:41:04,462 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:41:04,462 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:41:07,589 [INFO] RAIS 2017: 822624 registros lidos em chunks.
+2026-03-04 17:41:07,603 [INFO] Extraindo PE2017.txt...
+2026-03-04 17:41:11,966 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:41:11,966 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:41:20,215 [INFO] RAIS 2017: 2161116 registros lidos em chunks.
+2026-03-04 17:41:20,224 [INFO] Extraindo PI2017.txt...
+2026-03-04 17:41:21,335 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:41:21,335 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:41:23,564 [INFO] RAIS 2017: 580445 registros lidos em chunks.
+2026-03-04 17:41:23,573 [INFO] Extraindo RN2017.txt...
+2026-03-04 17:41:25,167 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:41:25,167 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:41:28,217 [INFO] RAIS 2017: 796016 registros lidos em chunks.
+2026-03-04 17:41:28,231 [INFO] Extraindo SE2017.txt...
+2026-03-04 17:41:29,285 [INFO] RAIS 2017 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Parcial', 'Ind Trab Intermitente']
+2026-03-04 17:41:29,285 [INFO] RAIS 2017 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:41:31,268 [INFO] RAIS 2017: 512116 registros lidos em chunks.
+2026-03-04 17:41:32,193 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2018/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:45:00,669 [INFO] Download concluído: RAIS_VINC_PUB_NORDESTE_2018.7z
+2026-03-04 17:45:00,670 [INFO] Extraindo RAIS_VINC_PUB_NORDESTE.txt...
+2026-03-04 17:45:24,467 [INFO] RAIS 2018 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro CC', 'Vl Rem Fevereiro CC', 'Vl Rem Março CC', 'Vl Rem Abril CC', 'Vl Rem Maio CC', 'Vl Rem Junho CC', 'Vl Rem Julho CC', 'Vl Rem Agosto CC', 'Vl Rem Setembro CC', 'Vl Rem Outubro CC', 'Vl Rem Novembro CC', 'Ano Chegada Brasil', 'Ind Trab Intermitente', 'Ind Trab Parcial', 'Tipo Salário', 'Vl Salário Contratual']
+2026-03-04 17:45:24,467 [INFO] RAIS 2018 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:46:08,746 [INFO] RAIS 2018: 11577913 registros lidos em chunks.
+2026-03-04 17:46:09,624 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2019/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:49:46,255 [INFO] Download concluído: RAIS_VINC_PUB_NORDESTE_2019.7z
+2026-03-04 17:49:46,256 [INFO] Extraindo RAIS_VINC_PUB_NORDESTE.txt...
+2026-03-04 17:50:08,575 [ERROR] RAIS 2019 (RAIS_VINC_PUB_NORDESTE_2019.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:50:09,382 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2020/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:53:24,196 [INFO] Download concluído: RAIS_VINC_PUB_NORDESTE_2020.7z
+2026-03-04 17:53:24,197 [INFO] Extraindo RAIS_VINC_PUB_NORDESTE.txt...
+2026-03-04 17:53:25,621 [ERROR] RAIS 2020 (RAIS_VINC_PUB_NORDESTE_2020.7z): erro ao processar (Corrupt input data)
+2026-03-04 17:53:25,746 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2021/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 17:56:49,424 [INFO] Download concluído: RAIS_VINC_PUB_NORDESTE_2021.7z
+2026-03-04 17:56:49,425 [INFO] Extraindo RAIS_VINC_PUB_NORDESTE.txt...
+2026-03-04 17:57:14,751 [INFO] RAIS 2021 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro SC', 'Vl Rem Fevereiro SC', 'Vl Rem Março SC', 'Vl Rem Abril SC', 'Vl Rem Maio SC', 'Vl Rem Junho SC', 'Vl Rem Julho SC', 'Vl Rem Agosto SC', 'Vl Rem Setembro SC', 'Vl Rem Outubro SC', 'Vl Rem Novembro SC', 'Ano Chegada Brasil', 'Ind Trab Intermitente', 'Ind Trab Parcial']
+2026-03-04 17:57:14,751 [INFO] RAIS 2021 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 17:58:00,300 [INFO] RAIS 2021: 12190056 registros lidos em chunks.
+2026-03-04 17:58:01,189 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2022/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 18:02:15,591 [INFO] Download concluído: RAIS_VINC_PUB_NORDESTE_2022.7z
+2026-03-04 18:02:15,592 [INFO] Extraindo RAIS_VINC_PUB_NORDESTE.txt...
+2026-03-04 18:02:42,472 [INFO] RAIS 2022 colunas: ['Bairros SP', 'Bairros Fortaleza', 'Bairros RJ', 'Causa Afastamento 1', 'Causa Afastamento 2', 'Causa Afastamento 3', 'Motivo Desligamento', 'CBO Ocupação 2002', 'CNAE 2.0 Classe', 'CNAE 95 Classe', 'Distritos SP', 'Vínculo Ativo 31/12', 'Faixa Etária', 'Faixa Hora Contrat', 'Faixa Remun Dezem (SM)', 'Faixa Remun Média (SM)', 'Faixa Tempo Emprego', 'Escolaridade após 2005', 'Qtd Hora Contr', 'Idade', 'Ind CEI Vinculado', 'Ind Simples', 'Mês Admissão', 'Mês Desligamento', 'Mun Trab', 'Município', 'Nacionalidade', 'Natureza Jurídica', 'Ind Portador Defic', 'Qtd Dias Afastamento', 'Raça Cor', 'Regiões Adm DF', 'Vl Remun Dezembro Nom', 'Vl Remun Dezembro (SM)', 'Vl Remun Média Nom', 'Vl Remun Média (SM)', 'CNAE 2.0 Subclasse', 'Sexo Trabalhador', 'Tamanho Estabelecimento', 'Tempo Emprego', 'Tipo Admissão', 'Tipo Estab', 'Tipo Estab.1', 'Tipo Defic', 'Tipo Vínculo', 'IBGE Subsetor', 'Vl Rem Janeiro SC', 'Vl Rem Fevereiro SC', 'Vl Rem Março SC', 'Vl Rem Abril SC', 'Vl Rem Maio SC', 'Vl Rem Junho SC', 'Vl Rem Julho SC', 'Vl Rem Agosto SC', 'Vl Rem Setembro SC', 'Vl Rem Outubro SC', 'Vl Rem Novembro SC', 'Ano Chegada Brasil', 'Ind Trab Intermitente', 'Ind Trab Parcial']
+2026-03-04 18:02:42,472 [INFO] RAIS 2022 usando colunas: ['Município', 'CNAE 2.0 Subclasse', 'Vl Remun Média Nom', 'Qtd Hora Contr', 'Escolaridade após 2005', 'Sexo Trabalhador', 'Raça Cor', 'Vínculo Ativo 31/12']
+2026-03-04 18:03:32,104 [INFO] RAIS 2022: 13584961 registros lidos em chunks.
+2026-03-04 18:03:33,108 [INFO] FTP download: ftp.mtps.gov.br/pdet/microdados/RAIS/2023/RAIS_VINC_PUB_NORDESTE.7z
+2026-03-04 18:07:56,714 [INFO] Download concluído: RAIS_VINC_PUB_NORDESTE_2023.7z
+2026-03-04 18:07:56,715 [ERROR] RAIS 2023 (RAIS_VINC_PUB_NORDESTE_2023.7z): erro ao processar (Nenhum CSV/TXT em /tmp/tmpwv7sb3w7/RAIS_VINC_PUB_NORDESTE_2023.7z: ['RAIS_VINC_PUB_NORDESTE.COMT'])
+2026-03-04 18:07:56,829 [INFO] Salvo: dados_nordeste/raw/rais/nordeste/rais_vinculos.csv (47 registros)
+2026-03-04 18:07:56,829 [INFO] RAIS vínculos: 47 registros salvos.
+2026-03-04 18:07:56,836 [INFO] Salvo: dados_nordeste/raw/rais/nordeste/rais_por_setor.csv (3732 registros)
+2026-03-04 18:07:56,837 [INFO] RAIS por setor: 3732 registros salvos.
+2026-03-04 18:07:56,838 [INFO] CAGED/RAIS total: 1118 registros.
+2026-03-04 18:07:56,838 [INFO] 
+======================================================================
+2026-03-04 18:07:56,838 [INFO] RESUMO DA COLETA
+2026-03-04 18:07:56,838 [INFO] ======================================================================
+2026-03-04 18:07:56,838 [INFO]   caged_rais: 1118 registros
+2026-03-04 18:07:56,838 [INFO]   Duração total: 0:58:09.757742
+2026-03-04 18:07:56,838 [INFO]   Dados salvos em: /home/cassiopo/dev/projeto_bruno/dados_nordeste
+2026-03-04 18:07:56,838 [INFO] ======================================================================
+2026-03-04 18:07:56,838 [INFO] Metadados: dados_nordeste/metadata_coleta.json
+==================================================
+ETL - Processamento de dados brutos
+==================================================
+>>> BACEN...
+    132 registros -> processed/bacen/nacional/bacen.csv
+>>> Bolsa Família...
+    Arquivo não encontrado, pulando.
+>>> SICONFI RREO...
+    1987525 -> 2989 registros -> processed/siconfi_rreo/<uf>/rreo_resumo.csv
+    Resultado Primário: 324 registros -> processed/siconfi_rreo/<uf>/rreo_resultado_primario.csv
+>>> SICONFI RGF...
+    95253 -> 15489 registros -> processed/siconfi_rgf/<uf>/rgf_resumo.csv
+    DCL: 2673 registros -> processed/siconfi_rgf/<uf>/rgf_divida.csv
+>>> SICONFI DCA...
+    232661 -> 630 registros -> processed/siconfi_dca/<uf>/dca_resumo.csv
+    Investimento público: 180 registros -> processed/siconfi_dca/<uf>/dca_investimento.csv
+>>> Transferências Constitucionais...
+    42205 -> 6075 registros -> processed/transferencias/<uf>/transferencias.csv
+>>> Transparência AL...
+    Arquivo não encontrado, pulando.
+>>> Transparencia PI...
+    Arquivo não encontrado, pulando.
+>>> SIOF-CE...
+    Arquivo não encontrado, pulando.
+>>> CAGED Antigo (2015–2019)...
+    CAGED Antigo saldo mensal: 423 registros
+    CAGED Antigo dados por setor não encontrados.
+    CAGED Antigo por perfil: 1136 registros
+>>> CAGED Novo (2020+)...
+    Saldo mensal: 648 registros
+    Por setor: 4263 registros
+    Por perfil: 1317 registros
+>>> RAIS (vínculos formais)...
+    Vínculos: 47 registros
+    Por setor: 3732 registros
+==================================================
+ETL concluído.
+==================================================
+PREPARAÇÃO DE DADOS PARA MODELO WAVELET
+==================================================
+
+--- Etapa 1: Deflacionamento ---
+    BACEN deflacionado: 132 registros, 5 séries deflacionadas.
+
+--- Etapa 2: Harmonização temporal → bimestral ---
+    BACEN bimestral: 66 registros.
+    CAGED bimestral: 594 registros (2015-2025).
+==================================================
+Preparação concluída.
