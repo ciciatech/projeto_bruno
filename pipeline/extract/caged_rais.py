@@ -70,13 +70,33 @@ def _read_7z(archive_path: str, extract_dir: str, sep: str = ";", encoding: str 
         return pd.read_csv(file_path, sep=sep, encoding="utf-8", low_memory=False)
 
 
+def _fix_mojibake(text: str) -> str:
+    """Corrige mojibake (UTF-8 lido como latin-1) em nomes de colunas."""
+    try:
+        return text.encode("latin-1").decode("utf-8")
+    except (UnicodeDecodeError, UnicodeEncodeError):
+        return text
+
+
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Normaliza nomes de colunas do CAGED (variações entre anos)."""
     logger.info(f"Colunas originais: {list(df.columns)}")
+    # Corrigir mojibake nos nomes de colunas antes do mapeamento
+    df.columns = [_fix_mojibake(c) for c in df.columns]
+    # Pré-detectar colunas com nomes duplicados para evitar conflitos
+    lower_cols = {col: col.lower().strip() for col in df.columns}
+    has_valor_salario = any(
+        lc in ("valorsaláriofixo", "valorsalariofixo") for lc in lower_cols.values()
+    )
+    has_competencia_mov = any(
+        "competenciamov" in lc or "competênciamov" in lc for lc in lower_cols.values()
+    )
     mapping = {}
     for col in df.columns:
-        lc = col.lower().strip()
-        if "competencia" in lc or "competência" in lc:
+        lc = lower_cols[col]
+        if "competenciamov" in lc or "competênciamov" in lc:
+            mapping[col] = "competencia"
+        elif ("competencia" in lc or "competência" in lc) and not has_competencia_mov and "competencia" not in mapping.values():
             mapping[col] = "competencia"
         elif lc == "uf":
             mapping[col] = "uf"
@@ -84,9 +104,9 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
             mapping[col] = "municipio"
         elif "saldomov" in lc:
             mapping[col] = "saldo_movimentacao"
-        elif lc in ("salário", "salario", "valorsaláriofixo", "valorsalariofixo"):
+        elif lc in ("valorsaláriofixo", "valorsalariofixo"):
             mapping[col] = "salario"
-        elif "salario" in lc or "salário" in lc:
+        elif lc in ("salário", "salario", "salmensal") and not has_valor_salario:
             mapping[col] = "salario"
         elif "grau" in lc and "instru" in lc:
             mapping[col] = "grau_instrucao"
@@ -117,6 +137,20 @@ def _filtrar_nordeste(df: pd.DataFrame) -> pd.DataFrame:
         df["regiao"] = pd.to_numeric(df["regiao"], errors="coerce")
         return df[df["regiao"] == 2].copy()
     return df
+
+
+def _all_paths_exist(paths: list[Path]) -> bool:
+    """Retorna True apenas se todos os arquivos esperados existirem."""
+    return all(path.exists() for path in paths)
+
+
+def _save_status_manifest(rows: list[dict], filename: str):
+    """Persistência simples de status de coleta para auditoria posterior."""
+    if not rows:
+        return
+    df = pd.DataFrame(rows)
+    df.sort_values([col for col in ["ano", "mes", "uf", "arquivo"] if col in df.columns], inplace=True)
+    save_dataframe(df, filename, path_parts=["coleta_status"])
 
 
 # =============================================================================
@@ -157,6 +191,9 @@ class CagedRais:
 
         logger.info(f"CAGED Antigo {ano}/{mes:02d} colunas: {list(df.columns)}")
 
+        # Corrigir mojibake nos nomes de colunas (UTF-8 lido como latin-1)
+        df.columns = [_fix_mojibake(c) for c in df.columns]
+
         # Normalizar colunas do layout antigo
         col_map = {}
         for col in df.columns:
@@ -169,7 +206,7 @@ class CagedRais:
                 col_map[col] = "regiao"
             elif lc in ("admitidos/desligados", "admitidosdesligados", "tipo_mov"):
                 col_map[col] = "admitidos_desligados"
-            elif lc in ("salário", "salario", "salmensal"):
+            elif "salario" in lc or "salário" in lc or lc == "salmensal":
                 col_map[col] = "salario"
             elif "grau" in lc and "instru" in lc:
                 col_map[col] = "grau_instrucao"
@@ -183,6 +220,16 @@ class CagedRais:
                 col_map[col] = "secao_cnae"
 
         df.rename(columns=col_map, inplace=True)
+
+        # Normalizar grau_instrucao: remover zero-padding e valores corrompidos
+        if "grau_instrucao" in df.columns:
+            df["grau_instrucao"] = pd.to_numeric(
+                df["grau_instrucao"].astype(str).str.strip(), errors="coerce"
+            )
+
+        # Normalizar sexo: manter codificação numérica padrão (1=M, 2=F)
+        if "sexo" in df.columns:
+            df["sexo"] = pd.to_numeric(df["sexo"], errors="coerce")
 
         # Filtrar Nordeste
         df = _filtrar_nordeste(df)
@@ -224,20 +271,42 @@ class CagedRais:
           - caged_antigo_por_setor.csv     (UF + ano + divisão CNAE)
           - caged_antigo_por_perfil.csv    (UF + ano + sexo + escolaridade)
         """
-        cache = RAW_DIR / "caged" / "nordeste" / "caged_antigo_saldo_mensal.csv"
-        if cache.exists():
+        outputs = [
+            RAW_DIR / "caged" / "nordeste" / "caged_antigo_saldo_mensal.csv",
+            RAW_DIR / "caged" / "nordeste" / "caged_antigo_por_setor.csv",
+            RAW_DIR / "caged" / "nordeste" / "caged_antigo_por_perfil.csv",
+        ]
+        if _all_paths_exist(outputs):
             logger.info("CAGED Antigo Nordeste: cache encontrado, pulando coleta.")
-            return pd.read_csv(cache)
+            return pd.read_csv(outputs[0])
 
         saldo_frames = []
         setor_frames = []
         perfil_frames = []
+        status_rows = []
 
         for ano in range(ano_inicio, ano_fim + 1):
             for mes in range(1, 13):
                 df = cls._processar_caged_antigo_mes(ano, mes)
                 if df is None:
+                    status_rows.append(
+                        {
+                            "fonte": "caged_antigo",
+                            "ano": ano,
+                            "mes": mes,
+                            "status": "falha_ou_ausente",
+                        }
+                    )
                     continue
+                status_rows.append(
+                    {
+                        "fonte": "caged_antigo",
+                        "ano": ano,
+                        "mes": mes,
+                        "status": "ok",
+                        "registros": len(df),
+                    }
+                )
 
                 # --- Saldo mensal por UF ---
                 if "sigla_uf" in df.columns and "saldo_movimentacao" in df.columns:
@@ -333,6 +402,7 @@ class CagedRais:
 
         if result is None:
             logger.error("CAGED Antigo: nenhum dado coletado.")
+        _save_status_manifest(status_rows, "caged_antigo_status")
         return result
 
     # =========================================================================
@@ -382,7 +452,18 @@ class CagedRais:
                 df["saldo_movimentacao"], errors="coerce"
             )
         if "salario" in df.columns:
-            df["salario"] = pd.to_numeric(df["salario"], errors="coerce")
+            df["salario"] = pd.to_numeric(
+                df["salario"].astype(str).str.replace(",", ".", regex=False), errors="coerce"
+            )
+
+        # Normalizar sexo: eSocial usa 3=feminino → padronizar para 2=feminino
+        if "sexo" in df.columns:
+            df["sexo"] = pd.to_numeric(df["sexo"], errors="coerce")
+            df["sexo"] = df["sexo"].replace({3: 2})
+
+        # Normalizar grau_instrucao para inteiro
+        if "grau_instrucao" in df.columns:
+            df["grau_instrucao"] = pd.to_numeric(df["grau_instrucao"], errors="coerce")
 
         logger.info(f"CAGED {competencia}: {len(df)} registros Nordeste.")
         return df
@@ -397,21 +478,42 @@ class CagedRais:
           - caged_por_setor.csv    (UF + ano + seção CNAE)
           - caged_por_perfil.csv   (UF + ano + sexo + escolaridade)
         """
-        # Verificar cache principal
-        cache = RAW_DIR / "caged" / "nordeste" / "caged_saldo_mensal.csv"
-        if cache.exists():
+        outputs = [
+            RAW_DIR / "caged" / "nordeste" / "caged_saldo_mensal.csv",
+            RAW_DIR / "caged" / "nordeste" / "caged_por_setor.csv",
+            RAW_DIR / "caged" / "nordeste" / "caged_por_perfil.csv",
+        ]
+        if _all_paths_exist(outputs):
             logger.info("CAGED Nordeste: cache encontrado, pulando coleta.")
-            return pd.read_csv(cache)
+            return pd.read_csv(outputs[0])
 
         saldo_frames = []
         setor_frames = []
         perfil_frames = []
+        status_rows = []
 
         for ano in range(ano_inicio, ano_fim + 1):
             for mes in range(1, 13):
                 df = cls._processar_caged_mes(ano, mes)
                 if df is None:
+                    status_rows.append(
+                        {
+                            "fonte": "caged_novo",
+                            "ano": ano,
+                            "mes": mes,
+                            "status": "falha_ou_ausente",
+                        }
+                    )
                     continue
+                status_rows.append(
+                    {
+                        "fonte": "caged_novo",
+                        "ano": ano,
+                        "mes": mes,
+                        "status": "ok",
+                        "registros": len(df),
+                    }
+                )
 
                 # --- Agregação 1: saldo mensal por UF ---
                 if "sigla_uf" in df.columns and "saldo_movimentacao" in df.columns:
@@ -519,6 +621,7 @@ class CagedRais:
 
         if result is None:
             logger.error("CAGED: nenhum dado coletado.")
+        _save_status_manifest(status_rows, "caged_novo_status")
         return result
 
     # =========================================================================
@@ -652,15 +755,34 @@ class CagedRais:
                 continue
 
             chunk["ano"] = ano
+            if "vinculo_ativo" in chunk.columns:
+                vinculo_ativo = chunk["vinculo_ativo"].astype(str).str.strip().str.upper()
+                chunk = chunk[vinculo_ativo.isin({"1", "S", "SIM", "TRUE"})].copy()
+            else:
+                logger.warning(
+                    "RAIS %s (%s): coluna 'vinculo_ativo' ausente; usando todos os registros.",
+                    ano,
+                    Path(archive_path).name,
+                )
+
+            if chunk.empty:
+                continue
+
             if "remuneracao_media" in chunk.columns:
-                chunk["remuneracao_media"] = pd.to_numeric(chunk["remuneracao_media"], errors="coerce")
+                chunk["remuneracao_media"] = pd.to_numeric(
+                    chunk["remuneracao_media"], errors="coerce"
+                )
+            else:
+                chunk["remuneracao_media"] = pd.NA
+
+            chunk["remuneracao_obs"] = chunk["remuneracao_media"].notna().astype(int)
+            chunk["remuneracao_total"] = chunk["remuneracao_media"].fillna(0)
 
             # Agregação 1: vínculos por UF
             agg1 = chunk.groupby(["ano", "sigla_uf"], as_index=False).agg(
                 vinculos_ativos=("ano", "count"),
-                remuneracao_media=("remuneracao_media", "mean")
-                if "remuneracao_media" in chunk.columns
-                else ("ano", "count"),
+                remuneracao_total=("remuneracao_total", "sum"),
+                remuneracao_obs=("remuneracao_obs", "sum"),
             )
             vinculos_aggs.append(agg1)
 
@@ -671,9 +793,8 @@ class CagedRais:
                     ["ano", "sigla_uf", "divisao_cnae"], as_index=False
                 ).agg(
                     vinculos_ativos=("ano", "count"),
-                    remuneracao_media=("remuneracao_media", "mean")
-                    if "remuneracao_media" in chunk.columns
-                    else ("ano", "count"),
+                    remuneracao_total=("remuneracao_total", "sum"),
+                    remuneracao_obs=("remuneracao_obs", "sum"),
                 )
                 setor_aggs.append(agg2)
 
@@ -685,16 +806,30 @@ class CagedRais:
             df_v = pd.concat(vinculos_aggs, ignore_index=True)
             df_vinculos = df_v.groupby(["ano", "sigla_uf"], as_index=False).agg(
                 vinculos_ativos=("vinculos_ativos", "sum"),
-                remuneracao_media=("remuneracao_media", "mean"),
+                remuneracao_total=("remuneracao_total", "sum"),
+                remuneracao_obs=("remuneracao_obs", "sum"),
             )
+            df_vinculos["remuneracao_media"] = (
+                df_vinculos["remuneracao_total"] / df_vinculos["remuneracao_obs"]
+            )
+            df_vinculos.loc[df_vinculos["remuneracao_obs"] == 0, "remuneracao_media"] = pd.NA
+            df_vinculos = df_vinculos[["ano", "sigla_uf", "vinculos_ativos", "remuneracao_media"]]
 
         df_setor = pd.DataFrame()
         if setor_aggs:
             df_s = pd.concat(setor_aggs, ignore_index=True)
             df_setor = df_s.groupby(["ano", "sigla_uf", "divisao_cnae"], as_index=False).agg(
                 vinculos_ativos=("vinculos_ativos", "sum"),
-                remuneracao_media=("remuneracao_media", "mean"),
+                remuneracao_total=("remuneracao_total", "sum"),
+                remuneracao_obs=("remuneracao_obs", "sum"),
             )
+            df_setor["remuneracao_media"] = (
+                df_setor["remuneracao_total"] / df_setor["remuneracao_obs"]
+            )
+            df_setor.loc[df_setor["remuneracao_obs"] == 0, "remuneracao_media"] = pd.NA
+            df_setor = df_setor[
+                ["ano", "sigla_uf", "divisao_cnae", "vinculos_ativos", "remuneracao_media"]
+            ]
 
         return df_vinculos, df_setor
 
@@ -714,19 +849,24 @@ class CagedRais:
         if ano_fim is None:
             ano_fim = PERIODO_FIM - 2
 
-        cache = RAW_DIR / "rais" / "nordeste" / "rais_vinculos.csv"
-        if cache.exists():
+        outputs = [
+            RAW_DIR / "rais" / "nordeste" / "rais_vinculos.csv",
+            RAW_DIR / "rais" / "nordeste" / "rais_por_setor.csv",
+        ]
+        if _all_paths_exist(outputs):
             logger.info("RAIS Nordeste: cache encontrado, pulando coleta.")
-            return pd.read_csv(cache)
+            return pd.read_csv(outputs[0])
 
         vinculos_frames = []
         setor_frames = []
+        status_rows = []
 
         for ano in range(ano_inicio, ano_fim + 1):
             with tempfile.TemporaryDirectory() as tmpdir:
                 arquivos = cls._baixar_rais_ano(ano, tmpdir)
                 if not arquivos:
                     logger.warning(f"RAIS {ano}: nenhum arquivo disponível.")
+                    status_rows.append({"fonte": "rais", "ano": ano, "status": "sem_arquivo"})
                     continue
 
                 for arq in arquivos:
@@ -736,8 +876,28 @@ class CagedRais:
                             vinculos_frames.append(df_v)
                         if not df_s.empty:
                             setor_frames.append(df_s)
+                        status_rows.append(
+                            {
+                                "fonte": "rais",
+                                "ano": ano,
+                                "arquivo": arq.name,
+                                "status": "ok",
+                                "registros_vinculos": 0 if df_v.empty else int(df_v["vinculos_ativos"].sum()),
+                                "linhas_agregadas_uf": len(df_v),
+                                "linhas_agregadas_setor": len(df_s),
+                            }
+                        )
                     except Exception as e:
                         logger.error(f"RAIS {ano} ({arq.name}): erro ao processar ({e})")
+                        status_rows.append(
+                            {
+                                "fonte": "rais",
+                                "ano": ano,
+                                "arquivo": arq.name,
+                                "status": "erro_processamento",
+                                "detalhe": str(e),
+                            }
+                        )
                         continue
 
         result = None
@@ -768,6 +928,7 @@ class CagedRais:
 
         if result is None:
             logger.error("RAIS: nenhum dado coletado.")
+        _save_status_manifest(status_rows, "rais_status")
         return result
 
     # =========================================================================

@@ -14,6 +14,7 @@ BASE_DIR = Path("./dados_nordeste")
 RAW_DIR = BASE_DIR / "raw"
 PROCESSED_DIR = BASE_DIR / "processed"
 LOGS_DIR = BASE_DIR / "logs"
+QUALITY_DIR = BASE_DIR / "quality"
 
 # ==============================================================================
 # ESTADOS DO NORDESTE

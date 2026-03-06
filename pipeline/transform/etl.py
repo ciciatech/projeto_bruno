@@ -75,6 +75,8 @@ def processar_bolsa_familia():
     try:
         df = _read_csv_candidates(
             [
+                "bolsa_familia/nordeste/bolsa_familia_uf_mensal.csv",
+                "bolsa_familia/nordeste/bolsa_familia_portal_transparencia.csv",
                 "bolsa_familia/nordeste/bolsa_familia_capitais_ne.csv",
                 "bolsa_familia_capitais_ne.csv",
             ]

@@ -11,7 +11,8 @@ import logging
 import pandas as pd
 
 from pipeline.config import PERIODO_INICIO, PERIODO_FIM
-from pipeline.utils import safe_request
+from pipeline.extract.portal_transparencia import PortalTransparencia
+from pipeline.utils import safe_request, save_dataframe
 
 logger = logging.getLogger(__name__)
 
@@ -79,3 +80,34 @@ class BolsaFamilia:
                     }
                 )
         return urls
+
+    @staticmethod
+    def coletar_nordeste(portal: PortalTransparencia | None = None) -> dict:
+        """
+        Tenta coletar Bolsa Família por UF via Portal da Transparência.
+        Se não houver API key ou não houver retorno, salva fallback de URLs.
+        """
+        resumo = {
+            "fonte_utilizada": "urls_download",
+            "registros_raw": 0,
+            "registros_uf_mensal": 0,
+            "urls_download": 0,
+        }
+
+        if portal is not None and portal.api_key:
+            raw_df, agg_df = portal.coletar_bolsa_familia_nordeste()
+            if not raw_df.empty:
+                resumo["fonte_utilizada"] = "portal_transparencia"
+                resumo["registros_raw"] = int(len(raw_df))
+                resumo["registros_uf_mensal"] = int(len(agg_df))
+                return resumo
+
+        urls = BolsaFamilia.gerar_urls_download_dados_abertos()
+        urls_df = pd.DataFrame(urls)
+        save_dataframe(
+            urls_df,
+            "bolsa_familia_urls_download",
+            path_parts=["bolsa_familia", "nacional"],
+        )
+        resumo["urls_download"] = len(urls)
+        return resumo

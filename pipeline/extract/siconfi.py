@@ -8,7 +8,11 @@ import time
 import logging
 
 import pandas as pd
-from tqdm import tqdm
+try:
+    from tqdm import tqdm
+except ImportError:  # pragma: no cover - fallback para ambientes mínimos
+    def tqdm(iterable, **kwargs):
+        return iterable
 
 from pipeline.config import ESTADOS_NE, PERIODO_INICIO, PERIODO_FIM
 from pipeline.utils import safe_request, save_dataframe

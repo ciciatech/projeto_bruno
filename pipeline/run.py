@@ -2,9 +2,10 @@
 Orquestrador principal do pipeline de coleta de dados.
 
 Uso:
-  python -m pipeline.run
-  python -m pipeline.run --apenas-bacen
-  python -m pipeline.run --modulos bacen siconfi_rreo
+  python3 -m pipeline.run
+  python3 -m pipeline.run --apenas-bacen
+  python3 -m pipeline.run --modulos bacen siconfi_rreo
+  python3 -m pipeline.run --full
 """
 
 import json
@@ -21,6 +22,9 @@ from pipeline.extract.portal_transparencia import PortalTransparencia
 from pipeline.extract.bolsa_familia import BolsaFamilia
 from pipeline.extract.transferencias import TransferenciasConstitucionais
 from pipeline.extract.caged_rais import CagedRais
+from pipeline.quality import executar_auditoria_qualidade
+from pipeline.transform.etl import executar_etl
+from pipeline.transform.preparacao_modelo import executar_preparacao
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +42,8 @@ class PipelineColeta:
 
         modulos: lista de módulos a executar. Se None, executa todos.
         Opções: ["bacen", "siconfi_rreo", "siconfi_rgf", "siconfi_dca",
-                 "transferencias", "bolsa_familia"]
+                 "transferencias", "bolsa_familia", "caged_rais",
+                 "auditoria_qualidade"]
         """
         if modulos is None:
             modulos = [
@@ -91,20 +96,24 @@ class PipelineColeta:
         # --- Bolsa Família (gera URLs para download) ---
         if "bolsa_familia" in modulos:
             logger.info("\n>>> MÓDULO 6: Bolsa Família / Auxílio Brasil <<<")
-            urls = BolsaFamilia.gerar_urls_download_dados_abertos()
-            urls_df = pd.DataFrame(urls)
-            save_dataframe(
-                urls_df,
-                "bolsa_familia_urls_download",
-                path_parts=["bolsa_familia", "nacional"],
-            )
-            self.resumo["bolsa_familia_urls"] = len(urls)
+            resumo_bf = BolsaFamilia.coletar_nordeste(self.portal)
+            self.resumo["bolsa_familia_raw"] = resumo_bf["registros_raw"]
+            self.resumo["bolsa_familia_uf_mensal"] = resumo_bf["registros_uf_mensal"]
+            self.resumo["bolsa_familia_urls"] = resumo_bf["urls_download"]
 
         # --- CAGED / RAIS (FTP MTE/PDET) ---
         if "caged_rais" in modulos:
             logger.info("\n>>> MÓDULO 7: CAGED / RAIS (FTP MTE/PDET) <<<")
             total = CagedRais.coletar_todas()
             self.resumo["caged_rais"] = total
+
+        # --- Auditoria de qualidade dos dados ---
+        if "auditoria_qualidade" in modulos:
+            logger.info("\n>>> MÓDULO 8: Auditoria de Qualidade <<<")
+            report = executar_auditoria_qualidade()
+            self.resumo["auditoria_qualidade_fontes"] = report["summary"]["total_sources"]
+            self.resumo["auditoria_qualidade_alertas"] = report["summary"]["alerta"]
+            self.resumo["auditoria_qualidade_erros"] = report["summary"]["erro"]
 
         # --- Resumo Final ---
         fim = datetime.now()
@@ -135,6 +144,28 @@ class PipelineColeta:
         return self.resumo
 
 
+def executar_fluxo_completo(api_key: str = None, modulos: list[str] = None) -> dict:
+    """
+    Executa a esteira principal:
+      1. coleta
+      2. etl
+      3. preparação do modelo
+      4. auditoria de qualidade
+    """
+    pipeline = PipelineColeta(api_key_portal=api_key)
+    resumo = pipeline.executar(modulos=modulos)
+    logger.info("\n>>> ETAPA EXTRA: ETL <<<")
+    executar_etl()
+    logger.info("\n>>> ETAPA EXTRA: PREPARAÇÃO DO MODELO <<<")
+    executar_preparacao()
+    logger.info("\n>>> ETAPA EXTRA: AUDITORIA DE QUALIDADE <<<")
+    report = executar_auditoria_qualidade()
+    resumo["painel_tese_fontes_auditadas"] = report["summary"]["total_sources"]
+    resumo["painel_tese_alertas"] = report["summary"]["alerta"]
+    resumo["painel_tese_erros"] = report["summary"]["erro"]
+    return resumo
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -159,8 +190,9 @@ if __name__ == "__main__":
             "transferencias",
             "bolsa_familia",
             "caged_rais",
+            "auditoria_qualidade",
         ],
-        help="Módulos a executar (default: todos exceto bolsa_familia e caged_rais)",
+        help="Módulos a executar (default: todos exceto bolsa_familia, caged_rais e auditoria_qualidade)",
     )
     parser.add_argument(
         "--api-key",
@@ -173,13 +205,42 @@ if __name__ == "__main__":
         action="store_true",
         help="Executa apenas a coleta do BACEN-SGS (rápido, para teste)",
     )
+    parser.add_argument(
+        "--etl",
+        action="store_true",
+        help="Executa apenas a etapa de ETL (raw -> processed).",
+    )
+    parser.add_argument(
+        "--preparar-modelo",
+        action="store_true",
+        help="Executa apenas a preparação do modelo (deflacionamento + painel final).",
+    )
+    parser.add_argument(
+        "--auditar",
+        action="store_true",
+        help="Executa apenas a auditoria de qualidade.",
+    )
+    parser.add_argument(
+        "--full",
+        action="store_true",
+        help="Executa coleta + ETL + preparação do modelo + auditoria.",
+    )
 
     args = parser.parse_args()
 
-    if args.apenas_bacen:
-        modulos = ["bacen"]
+    if args.full:
+        modulos = ["bacen"] if args.apenas_bacen else args.modulos
+        executar_fluxo_completo(api_key=args.api_key, modulos=modulos)
+    elif args.etl:
+        executar_etl()
+    elif args.preparar_modelo:
+        executar_preparacao()
+    elif args.auditar:
+        executar_auditoria_qualidade()
     else:
-        modulos = args.modulos
-
-    pipeline = PipelineColeta(api_key_portal=args.api_key)
-    pipeline.executar(modulos=modulos)
+        if args.apenas_bacen:
+            modulos = ["bacen"]
+        else:
+            modulos = args.modulos
+        pipeline = PipelineColeta(api_key_portal=args.api_key)
+        pipeline.executar(modulos=modulos)

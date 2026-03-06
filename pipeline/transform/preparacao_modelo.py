@@ -1,94 +1,164 @@
 """
-Preparação de dados para o modelo wavelet.
+Preparação de dados para o modelo econométrico da tese.
 
-Duas etapas:
+Etapas principais:
   1. Deflacionamento de séries monetárias pelo IPCA
-  2. Harmonização temporal para periodicidade bimestral
+  2. Harmonização temporal para bimestre
+  3. Regras explícitas por variável
+  4. Construção do painel final model-ready
 
 Uso:
-  python -m pipeline.transform.preparacao_modelo
+  python3 -m pipeline.transform.preparacao_modelo
 """
 
-import pandas as pd
+from pathlib import Path
+
 import numpy as np
+import pandas as pd
 
-from pipeline.config import RAW_DIR, PROCESSED_DIR
+from pipeline.config import ESTADOS_NE, RAW_DIR, PROCESSED_DIR
+from pipeline.extract.transferencias import TransferenciasConstitucionais
 
 
-# =============================================================================
-# 1. DEFLACIONAMENTO PELO IPCA
-# =============================================================================
+MODEL_READY_DIR = PROCESSED_DIR / "model_ready"
+MES_PARA_BIMESTRE = {
+    1: 1,
+    2: 1,
+    3: 2,
+    4: 2,
+    5: 3,
+    6: 3,
+    7: 4,
+    8: 4,
+    9: 5,
+    10: 5,
+    11: 6,
+    12: 6,
+}
+QUADRIMESTRE_PARA_BIMESTRES = {1: [1, 2], 2: [3, 4], 3: [5, 6]}
+UF_NOMES = {uf: info["nome"] for uf, info in ESTADOS_NE.items()}
+
+MODEL_RULES = [
+    {
+        "variavel": "saldo",
+        "fonte": "caged_bimestral",
+        "tipo_temporal": "fluxo",
+        "regra_bimestral": "soma",
+        "deflacionamento": "nao_aplica",
+        "unidade_final": "postos_de_trabalho",
+    },
+    {
+        "variavel": "credito_PF_nordeste_real",
+        "fonte": "bacen_bimestral",
+        "tipo_temporal": "estoque",
+        "regra_bimestral": "ultimo_valor",
+        "deflacionamento": "ipca",
+        "unidade_final": "r$_dez_2025_milhoes",
+    },
+    {
+        "variavel": "credito_PJ_nordeste_real",
+        "fonte": "bacen_bimestral",
+        "tipo_temporal": "estoque",
+        "regra_bimestral": "ultimo_valor",
+        "deflacionamento": "ipca",
+        "unidade_final": "r$_dez_2025_milhoes",
+    },
+    {
+        "variavel": "resultado_primario_real",
+        "fonte": "rreo_resultado_primario",
+        "tipo_temporal": "acumulado_no_periodo",
+        "regra_bimestral": "valor_reportado",
+        "deflacionamento": "ipca",
+        "unidade_final": "r$_dez_2025",
+    },
+    {
+        "variavel": "dcl_real",
+        "fonte": "rgf_divida",
+        "tipo_temporal": "estoque",
+        "regra_bimestral": "repete_quadrimestre",
+        "deflacionamento": "ipca",
+        "unidade_final": "r$_dez_2025",
+    },
+    {
+        "variavel": "investimento_publico_real",
+        "fonte": "dca_investimento",
+        "tipo_temporal": "anual",
+        "regra_bimestral": "repete_ano",
+        "deflacionamento": "ipca",
+        "unidade_final": "r$_dez_2025",
+    },
+    {
+        "variavel": "transferencias_federais_real",
+        "fonte": "transferencias",
+        "tipo_temporal": "acumulado_no_ano",
+        "regra_bimestral": "diferenca_do_acumulado",
+        "deflacionamento": "ipca",
+        "unidade_final": "r$_dez_2025",
+    },
+    {
+        "variavel": "rais_vinculos_ativos",
+        "fonte": "rais_vinculos",
+        "tipo_temporal": "estoque_anual",
+        "regra_bimestral": "repete_ano",
+        "deflacionamento": "nao_aplica",
+        "unidade_final": "vinculos_formais",
+    },
+]
+
+
+def _load_first_existing_csv(candidates: list[Path]) -> pd.DataFrame:
+    for path in candidates:
+        if path.exists():
+            return pd.read_csv(path, low_memory=False)
+    raise FileNotFoundError(f"Nenhum arquivo encontrado entre: {[str(p) for p in candidates]}")
+
+
+def _load_many_csvs(paths: list[Path]) -> pd.DataFrame:
+    frames = [pd.read_csv(path, low_memory=False) for path in paths if path.exists()]
+    if not frames:
+        raise FileNotFoundError("Nenhum arquivo encontrado para a etapa solicitada.")
+    return pd.concat(frames, ignore_index=True)
+
+
+def _save_model_ready_csv(df: pd.DataFrame, filename: str) -> Path:
+    MODEL_READY_DIR.mkdir(parents=True, exist_ok=True)
+    target = MODEL_READY_DIR / f"{filename}.csv"
+    df.to_csv(target, index=False, encoding="utf-8-sig")
+    return target
 
 
 def _carregar_ipca() -> pd.Series:
-    """
-    Carrega IPCA mensal (variação %) e retorna índice acumulado com
-    base fixa em dez/2025 = 100.
-    """
     candidates = [
         RAW_DIR / "bacen" / "nacional" / "bacen_sgs_wide.csv",
         PROCESSED_DIR / "bacen" / "nacional" / "bacen.csv",
     ]
-    df = None
-    for path in candidates:
-        if path.exists():
-            df = pd.read_csv(path)
-            break
-    if df is None:
-        raise FileNotFoundError("Arquivo BACEN wide não encontrado. Execute a coleta primeiro.")
-
+    df = _load_first_existing_csv(candidates)
     df["data"] = pd.to_datetime(df["data"])
     df.sort_values("data", inplace=True)
 
-    ipca_col = None
-    for col in df.columns:
-        if "ipca" in col.lower():
-            ipca_col = col
-            break
-
+    ipca_col = next((col for col in df.columns if "ipca" in col.lower()), None)
     if ipca_col is None:
         raise ValueError("Coluna IPCA não encontrada no arquivo BACEN wide.")
 
-    ipca = df.set_index("data")[ipca_col].dropna()
-    ipca = ipca / 100 + 1
+    ipca = df.set_index("data")[ipca_col].dropna() / 100 + 1
     indice = ipca.cumprod()
-
-    # Base fixa: último mês disponível = 100
-    indice = (indice / indice.iloc[-1]) * 100
-
-    return indice
+    return (indice / indice.iloc[-1]) * 100
 
 
 def deflacionar_serie(
     df: pd.DataFrame,
     col_data: str,
     col_valor: str,
-    ipca_index: pd.Series = None,
-    col_saida: str = None,
+    ipca_index: pd.Series | None = None,
+    col_saida: str | None = None,
 ) -> pd.DataFrame:
-    """
-    Deflaciona uma coluna monetária pelo IPCA.
-
-    Para séries de estoque (saldo de crédito, dívida): usa o índice do mês.
-    Para séries de fluxo (transferências, receita): idem, pois são acumulados no período.
-
-    Parâmetros:
-        df: DataFrame com a série
-        col_data: nome da coluna de data
-        col_valor: nome da coluna com valor nominal
-        ipca_index: pd.Series com índice IPCA (se None, carrega automaticamente)
-        col_saida: nome da coluna deflacionada (default: col_valor + "_real")
-    """
     if ipca_index is None:
         ipca_index = _carregar_ipca()
-
     if col_saida is None:
         col_saida = f"{col_valor}_real"
 
     out = df.copy()
     out[col_data] = pd.to_datetime(out[col_data])
-
-    # Alinhar por mês (início do mês para merge)
     out["_mes_ref"] = out[col_data].dt.to_period("M").dt.to_timestamp()
 
     ipca_df = ipca_index.reset_index()
@@ -96,97 +166,105 @@ def deflacionar_serie(
     ipca_df["_mes_ref"] = ipca_df["_mes_ref"].dt.to_period("M").dt.to_timestamp()
 
     out = out.merge(ipca_df, on="_mes_ref", how="left")
-
-    base_value = 100.0
-    out[col_saida] = out[col_valor] * (base_value / out["_ipca_idx"])
-
+    out[col_saida] = out[col_valor] * (100.0 / out["_ipca_idx"])
     out.drop(columns=["_mes_ref", "_ipca_idx"], inplace=True)
     return out
 
 
+def _data_referencia_bimestre(ano: pd.Series, bimestre: pd.Series) -> pd.Series:
+    meses = pd.to_numeric(bimestre, errors="coerce").astype("Int64") * 2
+    return pd.to_datetime(
+        {"year": pd.to_numeric(ano, errors="coerce"), "month": meses, "day": 1},
+        errors="coerce",
+    )
+
+
+def _data_referencia_ano(ano: pd.Series) -> pd.Series:
+    return pd.to_datetime(
+        {"year": pd.to_numeric(ano, errors="coerce"), "month": 12, "day": 1},
+        errors="coerce",
+    )
+
+
+def deflacionar_bimestral(
+    df: pd.DataFrame,
+    col_valor: str,
+    col_saida: str | None = None,
+    col_ano: str = "ano_bim",
+    col_bimestre: str = "bimestre",
+) -> pd.DataFrame:
+    out = df.copy()
+    out["_data_ref"] = _data_referencia_bimestre(out[col_ano], out[col_bimestre])
+    out = deflacionar_serie(out, "_data_ref", col_valor, col_saida=col_saida)
+    return out.drop(columns="_data_ref")
+
+
+def deflacionar_anual(
+    df: pd.DataFrame,
+    col_valor: str,
+    col_saida: str | None = None,
+    col_ano: str = "ano",
+) -> pd.DataFrame:
+    out = df.copy()
+    out["_data_ref"] = _data_referencia_ano(out[col_ano])
+    out = deflacionar_serie(out, "_data_ref", col_valor, col_saida=col_saida)
+    return out.drop(columns="_data_ref")
+
+
 def deflacionar_bacen_wide() -> pd.DataFrame:
-    """Deflaciona todas as séries monetárias do BACEN wide."""
     candidates = [
         PROCESSED_DIR / "bacen" / "nacional" / "bacen.csv",
         RAW_DIR / "bacen" / "nacional" / "bacen_sgs_wide.csv",
     ]
-    df = None
-    for path in candidates:
-        if path.exists():
-            df = pd.read_csv(path)
-            break
-    if df is None:
-        raise FileNotFoundError("Arquivo BACEN não encontrado.")
-
+    df = _load_first_existing_csv(candidates)
     df["data"] = pd.to_datetime(df["data"])
-    ipca_index = _carregar_ipca()
 
-    # Séries monetárias (crédito em R$ milhões)
-    colunas_monetarias = [
-        c for c in df.columns
-        if any(k in c.lower() for k in ["credito", "crédito"])
-    ]
-
+    colunas_monetarias = [c for c in df.columns if "credito" in c.lower()]
     for col in colunas_monetarias:
-        df = deflacionar_serie(df, "data", col, ipca_index)
+        df = deflacionar_serie(df, "data", col)
 
     target_dir = PROCESSED_DIR / "bacen" / "nacional"
     target_dir.mkdir(parents=True, exist_ok=True)
     df.to_csv(target_dir / "bacen_deflacionado.csv", index=False, encoding="utf-8-sig")
-    print(f"    BACEN deflacionado: {len(df)} registros, {len(colunas_monetarias)} séries deflacionadas.")
+    print(f"    BACEN deflacionado: {len(df)} registros, {len(colunas_monetarias)} séries monetárias.")
     return df
 
 
-# =============================================================================
-# 2. HARMONIZAÇÃO TEMPORAL → BIMESTRAL
-# =============================================================================
-
-# Mapeamento mês → bimestre (1-6)
-MES_PARA_BIMESTRE = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3,
-                     7: 4, 8: 4, 9: 5, 10: 5, 11: 6, 12: 6}
-
-
-def _atribuir_bimestre(df: pd.DataFrame, col_data: str = None,
-                       col_ano: str = None, col_mes: str = None) -> pd.DataFrame:
-    """Adiciona colunas 'ano_bim' e 'bimestre' ao DataFrame."""
+def _atribuir_bimestre(
+    df: pd.DataFrame,
+    col_data: str | None = None,
+    col_ano: str | None = None,
+    col_mes: str | None = None,
+) -> pd.DataFrame:
     out = df.copy()
     if col_data and col_data in out.columns:
         out[col_data] = pd.to_datetime(out[col_data])
         out["ano_bim"] = out[col_data].dt.year
         out["bimestre"] = out[col_data].dt.month.map(MES_PARA_BIMESTRE)
     elif col_ano and col_mes:
-        out["ano_bim"] = out[col_ano]
-        out["bimestre"] = out[col_mes].map(MES_PARA_BIMESTRE)
+        out["ano_bim"] = pd.to_numeric(out[col_ano], errors="coerce").astype("Int64")
+        out["bimestre"] = pd.to_numeric(out[col_mes], errors="coerce").map(MES_PARA_BIMESTRE)
     return out
 
 
 def agregar_mensal_para_bimestral(
     df: pd.DataFrame,
-    col_data: str = None,
-    col_ano: str = None,
-    col_mes: str = None,
-    colunas_soma: list[str] = None,
-    colunas_media: list[str] = None,
-    colunas_ultimo: list[str] = None,
-    colunas_grupo: list[str] = None,
+    col_data: str | None = None,
+    col_ano: str | None = None,
+    col_mes: str | None = None,
+    colunas_soma: list[str] | None = None,
+    colunas_media: list[str] | None = None,
+    colunas_ultimo: list[str] | None = None,
+    colunas_grupo: list[str] | None = None,
 ) -> pd.DataFrame:
-    """
-    Agrega série mensal para bimestral.
-
-    Regras de agregação:
-      - colunas_soma: somadas no bimestre (fluxos: admissões, desligamentos, saldo)
-      - colunas_media: média no bimestre (taxas: SELIC, IPCA, inadimplência)
-      - colunas_ultimo: último valor do bimestre (estoques: saldo de crédito, IBC-Br)
-      - colunas_grupo: colunas de agrupamento adicionais (UF, setor, etc.)
-    """
     colunas_soma = colunas_soma or []
     colunas_media = colunas_media or []
     colunas_ultimo = colunas_ultimo or []
     colunas_grupo = colunas_grupo or []
 
     out = _atribuir_bimestre(df, col_data, col_ano, col_mes)
-
     grupo = ["ano_bim", "bimestre"] + colunas_grupo
+
     agg_dict = {}
     for col in colunas_soma:
         if col in out.columns:
@@ -208,31 +286,23 @@ def agregar_mensal_para_bimestral(
 
 
 def harmonizar_bacen_bimestral() -> pd.DataFrame:
-    """Converte séries BACEN mensais para bimestrais."""
     candidates = [
         PROCESSED_DIR / "bacen" / "nacional" / "bacen_deflacionado.csv",
         PROCESSED_DIR / "bacen" / "nacional" / "bacen.csv",
     ]
-    df = None
-    for path in candidates:
-        if path.exists():
-            df = pd.read_csv(path)
-            break
-    if df is None:
-        raise FileNotFoundError("BACEN processado não encontrado.")
-
+    df = _load_first_existing_csv(candidates)
     df["data"] = pd.to_datetime(df["data"])
 
-    # Classificar colunas por tipo de agregação
-    colunas_taxa = [c for c in df.columns if any(k in c.lower() for k in [
-        "selic", "ipca", "inadimplencia", "inadimplência"
-    ])]
-    colunas_estoque = [c for c in df.columns if any(k in c.lower() for k in [
-        "credito", "crédito", "ibcr", "ibc_br", "pib"
-    ])]
-    # Incluir versões deflacionadas
+    colunas_taxa = [
+        c for c in df.columns if any(k in c.lower() for k in ["selic", "ipca", "inadimplencia"])
+    ]
+    colunas_estoque = [
+        c
+        for c in df.columns
+        if any(k in c.lower() for k in ["credito", "ibcr", "ibc_br", "pib"])
+    ]
     colunas_estoque += [c for c in df.columns if c.endswith("_real")]
-    colunas_estoque = list(set(colunas_estoque))
+    colunas_estoque = sorted(set(colunas_estoque))
 
     result = agregar_mensal_para_bimestral(
         df,
@@ -240,7 +310,6 @@ def harmonizar_bacen_bimestral() -> pd.DataFrame:
         colunas_media=colunas_taxa,
         colunas_ultimo=colunas_estoque,
     )
-
     target_dir = PROCESSED_DIR / "bacen" / "nacional"
     target_dir.mkdir(parents=True, exist_ok=True)
     result.to_csv(target_dir / "bacen_bimestral.csv", index=False, encoding="utf-8-sig")
@@ -248,24 +317,20 @@ def harmonizar_bacen_bimestral() -> pd.DataFrame:
     return result
 
 
-def harmonizar_caged_bimestral() -> pd.DataFrame | None:
-    """Converte saldo mensal CAGED para bimestral."""
-    # Tenta carregar CAGED antigo + novo combinados, ou só o novo
+def harmonizar_caged_bimestral() -> pd.DataFrame:
     frames = []
     for arq in ["caged_antigo_saldo_mensal.csv", "caged_saldo_mensal.csv"]:
         path = PROCESSED_DIR / "caged" / "nordeste" / arq
         if not path.exists():
             path = RAW_DIR / "caged" / "nordeste" / arq
         if path.exists():
-            frames.append(pd.read_csv(path))
+            frames.append(pd.read_csv(path, low_memory=False))
 
     if not frames:
-        print("    CAGED: nenhum arquivo encontrado, pulando.")
-        return None
+        raise FileNotFoundError("CAGED: nenhum arquivo encontrado.")
 
     df = pd.concat(frames, ignore_index=True)
     df.drop_duplicates(subset=["ano", "mes", "sigla_uf"], keep="last", inplace=True)
-
     result = agregar_mensal_para_bimestral(
         df,
         col_ano="ano",
@@ -274,7 +339,6 @@ def harmonizar_caged_bimestral() -> pd.DataFrame | None:
         colunas_media=["salario_medio"],
         colunas_grupo=["sigla_uf"],
     )
-
     target_dir = PROCESSED_DIR / "caged" / "nordeste"
     target_dir.mkdir(parents=True, exist_ok=True)
     result.to_csv(target_dir / "caged_bimestral.csv", index=False, encoding="utf-8-sig")
@@ -282,99 +346,247 @@ def harmonizar_caged_bimestral() -> pd.DataFrame | None:
     return result
 
 
-def interpolar_anual_para_bimestral(
+def expandir_anual_para_bimestral(
     df: pd.DataFrame,
     col_ano: str,
-    col_valor: str,
-    colunas_grupo: list[str] = None,
-    metodo: str = "spline",
+    colunas_valor: list[str],
+    colunas_grupo: list[str],
 ) -> pd.DataFrame:
-    """
-    Interpola série anual para bimestral usando spline cúbica (padrão)
-    ou linear. Distribui o valor anual em 6 bimestres proporcionalmente.
+    out = df.copy()
+    linhas = []
+    for _, row in out.iterrows():
+        for bimestre in range(1, 7):
+            novo = {col: row[col] for col in colunas_grupo + [col_ano] + colunas_valor if col in row.index}
+            novo["ano_bim"] = int(row[col_ano])
+            novo["bimestre"] = bimestre
+            linhas.append(novo)
+    return pd.DataFrame(linhas)
 
-    Para variáveis de estoque (DCL, investimento): repete o valor anual
-    em todos os bimestres (ou interpola se houver variação entre anos).
-    """
-    colunas_grupo = colunas_grupo or []
-    resultados = []
 
-    groups = df.groupby(colunas_grupo) if colunas_grupo else [(None, df)]
+def salvar_matriz_regras_modelo() -> pd.DataFrame:
+    df = pd.DataFrame(MODEL_RULES)
+    _save_model_ready_csv(df, "matriz_regras_modelo")
+    return df
 
-    for key, chunk in groups:
-        chunk = chunk.sort_values(col_ano).copy()
-        anos = chunk[col_ano].values
-        valores = pd.to_numeric(chunk[col_valor], errors="coerce").values
 
-        # Expandir para bimestres (6 por ano)
-        bimestres_idx = []
-        for ano in range(int(anos.min()), int(anos.max()) + 1):
-            for bim in range(1, 7):
-                bimestres_idx.append((ano, bim))
+def harmonizar_rreo_resultado_primario_bimestral() -> pd.DataFrame:
+    paths = sorted((PROCESSED_DIR / "siconfi_rreo").glob("*/rreo_resultado_primario.csv"))
+    df = _load_many_csvs(paths)
+    df["valor"] = pd.to_numeric(df["valor"], errors="coerce")
+    out = df[
+        (df["cod_conta"] == "ResultadoPrimarioComRPPSAcimaDaLinha")
+        & (df["coluna"] == "VALOR")
+    ][["exercicio", "periodo", "uf", "valor"]].copy()
+    out = out.groupby(["exercicio", "periodo", "uf"], as_index=False)["valor"].sum()
+    out.rename(
+        columns={
+            "exercicio": "ano_bim",
+            "periodo": "bimestre",
+            "valor": "resultado_primario_nominal",
+        },
+        inplace=True,
+    )
+    out = deflacionar_bimestral(out, "resultado_primario_nominal", "resultado_primario_real")
+    out.sort_values(["ano_bim", "bimestre", "uf"], inplace=True)
+    _save_model_ready_csv(out, "resultado_primario_bimestral")
+    return out
 
-        bim_df = pd.DataFrame(bimestres_idx, columns=["ano_bim", "bimestre"])
 
-        # Interpolar: ponto de referência = bimestre 6 de cada ano (fim do exercício)
-        pontos_ref = pd.DataFrame({
-            "ano_bim": anos.astype(int),
-            "bimestre": 6,
-            col_valor: valores,
-        })
-        pontos_ref["pos"] = pontos_ref["ano_bim"] + pontos_ref["bimestre"] / 7
+def harmonizar_rgf_divida_bimestral() -> pd.DataFrame:
+    paths = sorted((PROCESSED_DIR / "siconfi_rgf").glob("*/rgf_divida.csv"))
+    df = _load_many_csvs(paths)
+    df["valor"] = pd.to_numeric(df["valor"], errors="coerce")
+    df = df[df["cod_conta"] == "DividaConsolidadaLiquida"].copy()
+    quadrimestre_label = {
+        1: "1º Quadrimestre",
+        2: "2º Quadrimestre",
+        3: "3º Quadrimestre",
+    }
+    df["coluna_match"] = df.apply(
+        lambda row: quadrimestre_label.get(int(row["periodo"]), "") in str(row["coluna"]),
+        axis=1,
+    )
+    df = df[df["coluna_match"]][["exercicio", "periodo", "uf", "valor"]].copy()
+    df = df.groupby(["exercicio", "periodo", "uf"], as_index=False)["valor"].last()
 
-        bim_df["pos"] = bim_df["ano_bim"] + bim_df["bimestre"] / 7
-
-        if metodo == "spline" and len(pontos_ref) >= 3:
-            from scipy.interpolate import CubicSpline
-            cs = CubicSpline(pontos_ref["pos"], pontos_ref[col_valor], extrapolate=True)
-            bim_df[col_valor] = cs(bim_df["pos"])
-        else:
-            bim_df[col_valor] = np.interp(
-                bim_df["pos"], pontos_ref["pos"], pontos_ref[col_valor]
+    linhas = []
+    for _, row in df.iterrows():
+        for bimestre in QUADRIMESTRE_PARA_BIMESTRES.get(int(row["periodo"]), []):
+            linhas.append(
+                {
+                    "ano_bim": int(row["exercicio"]),
+                    "bimestre": bimestre,
+                    "uf": row["uf"],
+                    "dcl_nominal": row["valor"],
+                }
             )
-
-        bim_df.drop(columns=["pos"], inplace=True)
-
-        if colunas_grupo and key is not None:
-            if isinstance(key, tuple):
-                for i, g in enumerate(colunas_grupo):
-                    bim_df[g] = key[i]
-            else:
-                bim_df[colunas_grupo[0]] = key
-
-        resultados.append(bim_df)
-
-    return pd.concat(resultados, ignore_index=True)
+    out = pd.DataFrame(linhas)
+    out = deflacionar_bimestral(out, "dcl_nominal", "dcl_real")
+    out.sort_values(["ano_bim", "bimestre", "uf"], inplace=True)
+    _save_model_ready_csv(out, "dcl_bimestral")
+    return out
 
 
-# =============================================================================
-# ORQUESTRADOR
-# =============================================================================
+def harmonizar_dca_investimento_bimestral() -> pd.DataFrame:
+    paths = sorted((PROCESSED_DIR / "siconfi_dca").glob("*/dca_investimento.csv"))
+    df = _load_many_csvs(paths)
+    df["valor"] = pd.to_numeric(df["valor"], errors="coerce")
+    out = df[df["cod_conta"] == "DO4.4.00.00.00.00"][["exercicio", "uf", "valor"]].copy()
+    out = out.groupby(["exercicio", "uf"], as_index=False)["valor"].sum()
+    out.rename(columns={"exercicio": "ano", "valor": "investimento_publico_nominal"}, inplace=True)
+    out = deflacionar_anual(out, "investimento_publico_nominal", "investimento_publico_real", col_ano="ano")
+    out = expandir_anual_para_bimestral(
+        out,
+        col_ano="ano",
+        colunas_valor=["investimento_publico_nominal", "investimento_publico_real"],
+        colunas_grupo=["uf"],
+    )
+    out.sort_values(["ano_bim", "bimestre", "uf"], inplace=True)
+    _save_model_ready_csv(out, "investimento_publico_bimestral")
+    return out
 
 
-def executar_preparacao():
-    """Executa deflacionamento e harmonização temporal completa."""
+def harmonizar_transferencias_bimestral() -> pd.DataFrame:
+    paths = sorted((PROCESSED_DIR / "transferencias").glob("*/transferencias.csv"))
+    df = _load_many_csvs(paths)
+    df["valor"] = pd.to_numeric(df["valor"], errors="coerce")
+    df = df[
+        df["cod_conta"].isin(TransferenciasConstitucionais.CONTAS_PERMITIDAS)
+        & df["coluna"].str.contains("Até o Bimestre", na=False)
+    ][["exercicio", "periodo", "uf", "cod_conta", "valor"]].copy()
+
+    df = df.groupby(["exercicio", "periodo", "uf", "cod_conta"], as_index=False)["valor"].sum()
+    df.sort_values(["uf", "cod_conta", "exercicio", "periodo"], inplace=True)
+    df["transferencia_bimestral_nominal"] = (
+        df.groupby(["uf", "cod_conta", "exercicio"])["valor"].diff().fillna(df["valor"])
+    )
+
+    out = df.groupby(["exercicio", "periodo", "uf"], as_index=False)[
+        "transferencia_bimestral_nominal"
+    ].sum()
+    out.rename(
+        columns={
+            "exercicio": "ano_bim",
+            "periodo": "bimestre",
+            "transferencia_bimestral_nominal": "transferencias_federais_nominal",
+        },
+        inplace=True,
+    )
+    out = deflacionar_bimestral(out, "transferencias_federais_nominal", "transferencias_federais_real")
+    out.sort_values(["ano_bim", "bimestre", "uf"], inplace=True)
+    _save_model_ready_csv(out, "transferencias_bimestrais")
+    return out
+
+
+def harmonizar_rais_bimestral() -> pd.DataFrame:
+    candidates = [PROCESSED_DIR / "rais" / "nordeste" / "rais_vinculos.csv", RAW_DIR / "rais" / "nordeste" / "rais_vinculos.csv"]
+    df = _load_first_existing_csv(candidates)
+    out = df[["ano", "sigla_uf", "vinculos_ativos", "remuneracao_media"]].copy()
+    out.rename(columns={"sigla_uf": "uf", "vinculos_ativos": "rais_vinculos_ativos"}, inplace=True)
+    out["remuneracao_media"] = pd.to_numeric(out["remuneracao_media"], errors="coerce")
+    out = deflacionar_anual(out, "remuneracao_media", "rais_remuneracao_media_real", col_ano="ano")
+    out = expandir_anual_para_bimestral(
+        out,
+        col_ano="ano",
+        colunas_valor=["rais_vinculos_ativos", "remuneracao_media", "rais_remuneracao_media_real"],
+        colunas_grupo=["uf"],
+    )
+    out.sort_values(["ano_bim", "bimestre", "uf"], inplace=True)
+    _save_model_ready_csv(out, "rais_bimestral")
+    return out
+
+
+def construir_painel_tese_bimestral() -> pd.DataFrame:
+    caged = _load_first_existing_csv([PROCESSED_DIR / "caged" / "nordeste" / "caged_bimestral.csv"])
+    bacen = _load_first_existing_csv([PROCESSED_DIR / "bacen" / "nacional" / "bacen_bimestral.csv"])
+    resultado_primario = _load_first_existing_csv([MODEL_READY_DIR / "resultado_primario_bimestral.csv"])
+    dcl = _load_first_existing_csv([MODEL_READY_DIR / "dcl_bimestral.csv"])
+    investimento = _load_first_existing_csv([MODEL_READY_DIR / "investimento_publico_bimestral.csv"])
+    transferencias = _load_first_existing_csv([MODEL_READY_DIR / "transferencias_bimestrais.csv"])
+
+    painel = caged.rename(columns={"sigla_uf": "uf"}).copy()
+    painel["uf_nome"] = painel["uf"].map(UF_NOMES)
+    painel = painel.merge(bacen, on=["ano_bim", "bimestre"], how="left")
+    painel = painel.merge(resultado_primario, on=["ano_bim", "bimestre", "uf"], how="left")
+    painel = painel.merge(dcl, on=["ano_bim", "bimestre", "uf"], how="left")
+    painel = painel.merge(investimento, on=["ano_bim", "bimestre", "uf"], how="left")
+    painel = painel.merge(transferencias, on=["ano_bim", "bimestre", "uf"], how="left")
+
+    rais_path = MODEL_READY_DIR / "rais_bimestral.csv"
+    if rais_path.exists():
+        rais = pd.read_csv(rais_path, low_memory=False)
+        painel = painel.merge(
+            rais[["ano_bim", "bimestre", "uf", "rais_vinculos_ativos", "rais_remuneracao_media_real"]],
+            on=["ano_bim", "bimestre", "uf"],
+            how="left",
+        )
+
+    ordered_cols = [
+        "uf",
+        "uf_nome",
+        "ano_bim",
+        "bimestre",
+        "admissoes",
+        "desligamentos",
+        "saldo",
+        "total_movimentacoes",
+        "salario_medio",
+        "rais_vinculos_ativos",
+        "credito_PF_nordeste_real",
+        "credito_PJ_nordeste_real",
+        "credito_total_nordeste_real",
+        "IBCR_NE_ajuste_sazonal",
+        "ibc_br",
+        "selic_mensal",
+        "ipca_mensal",
+        "inadimplencia_PF",
+        "inadimplencia_PJ",
+        "resultado_primario_real",
+        "dcl_real",
+        "investimento_publico_real",
+        "transferencias_federais_real",
+        "rais_remuneracao_media_real",
+    ]
+    ordered_cols = [col for col in ordered_cols if col in painel.columns]
+    remaining = [col for col in painel.columns if col not in ordered_cols]
+    painel = painel[ordered_cols + remaining]
+    painel.sort_values(["uf", "ano_bim", "bimestre"], inplace=True)
+    painel.reset_index(drop=True, inplace=True)
+    _save_model_ready_csv(painel, "painel_tese_bimestral")
+    return painel
+
+
+def executar_preparacao() -> pd.DataFrame:
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
-    print("=" * 50)
-    print("PREPARAÇÃO DE DADOS PARA MODELO WAVELET")
-    print("=" * 50)
+    MODEL_READY_DIR.mkdir(parents=True, exist_ok=True)
+    print("=" * 60)
+    print("PREPARAÇÃO DE DADOS PARA O MODELO DA TESE")
+    print("=" * 60)
 
-    print("\n--- Etapa 1: Deflacionamento ---")
-    try:
-        deflacionar_bacen_wide()
-    except (FileNotFoundError, ValueError) as e:
-        print(f"    BACEN deflacionamento: {e}")
+    print("\n--- Etapa 1: Deflacionamento BACEN ---")
+    deflacionar_bacen_wide()
 
-    print("\n--- Etapa 2: Harmonização temporal → bimestral ---")
-    try:
-        harmonizar_bacen_bimestral()
-    except FileNotFoundError as e:
-        print(f"    BACEN bimestral: {e}")
-
+    print("\n--- Etapa 2: Harmonização BACEN e CAGED ---")
+    harmonizar_bacen_bimestral()
     harmonizar_caged_bimestral()
 
-    print("=" * 50)
+    print("\n--- Etapa 3: Regras e séries analíticas ---")
+    salvar_matriz_regras_modelo()
+    harmonizar_rreo_resultado_primario_bimestral()
+    harmonizar_rgf_divida_bimestral()
+    harmonizar_dca_investimento_bimestral()
+    harmonizar_transferencias_bimestral()
+    try:
+        harmonizar_rais_bimestral()
+    except FileNotFoundError:
+        print("    RAIS bimestral: arquivo não encontrado, seguindo sem estoque anual.")
+
+    print("\n--- Etapa 4: Painel final ---")
+    painel = construir_painel_tese_bimestral()
+    print(f"    Painel final: {len(painel)} linhas.")
+    print("=" * 60)
     print("Preparação concluída.")
+    return painel
 
 
 if __name__ == "__main__":

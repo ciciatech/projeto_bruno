@@ -6,7 +6,11 @@ import time
 import logging
 
 import pandas as pd
-from tqdm import tqdm
+try:
+    from tqdm import tqdm
+except ImportError:  # pragma: no cover - fallback para ambientes mínimos
+    def tqdm(iterable, **kwargs):
+        return iterable
 
 from pipeline.config import ESTADOS_NE, PERIODO_INICIO, PERIODO_FIM
 from pipeline.utils import safe_request, save_dataframe
@@ -25,22 +29,34 @@ class TransferenciasConstitucionais:
 
     BASE_URL = "https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo"
 
-    ANEXOS_TRANSFERENCIAS = [
-        "RREO-Anexo 01",
-        "RREO-Anexo 06",
-    ]
+    ANEXOS_TRANSFERENCIAS = ["RREO-Anexo 01", "RREO-Anexo 06"]
 
-    TERMOS_TRANSFERENCIA = [
-        "transfer",
-        "fpe",
-        "fpm",
-        "fundeb",
-        "fundef",
-        "cota-parte",
-        "cide",
-        "royalties",
-        "compensações financeiras",
-    ]
+    # Lista auditável de rubricas contábeis relevantes para a tese.
+    # Prioriza transferências intergovernamentais, legais e fundos,
+    # evitando depender apenas de busca textual ampla.
+    CONTAS_PERMITIDAS = {
+        "CompensacoesFinanceiras": "compensacoes_financeiras",
+        "TransferenciasCorrentes": "transferencias_correntes",
+        "TransferenciasCorrentesIntergovernamentais": "transferencias_correntes_intergovernamentais",
+        "TransferenciasCorrentesDaUniaoEDeSuasEntidades": "transferencias_correntes_uniao",
+        "TransferenciasCorrentesDosEstadosEDoDistritoFederalEDeSuasEntidades": "transferencias_correntes_estados",
+        "TransferenciasCorrentesDosMunicipiosEDeSuasEntidades": "transferencias_correntes_municipios",
+        "TransferenciasDeCapital": "transferencias_capital",
+        "TransferenciasDeCapitalIntergovernamentais": "transferencias_capital_intergovernamentais",
+        "TransferenciasDeCapitalDaUniaoEDeSuasEntidades": "transferencias_capital_uniao",
+        "TransferenciasDeCapitalDosEstadosEDoDistritoFederalEDeSuasEntidades": "transferencias_capital_estados",
+        "TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades": "transferencias_capital_municipios",
+        "TransferenciasDoFUNDEB": "fundeb",
+        "TransferenciasDaLC871996": "lc_87_1996",
+        "TransferenciasDaLCn611989": "lc_61_1989",
+        "TransferenciasConstitucionaisELegaisLC156": "transferencias_constitucionais_legais",
+        "RREO6CotaParteDoFPE": "fpe",
+        "RREO6TransferenciasConstitucionaisELegais": "transferencias_constitucionais_legais",
+        "RREO6TransferenciasCorrentes": "transferencias_correntes",
+        "RREO6TransferenciasDeCapital": "transferencias_capital",
+        "RREO6OutrasTransferenciasCorrentes": "outras_transferencias_correntes",
+        "RREO6OutrasTransferenciasDeCapital": "outras_transferencias_capital",
+    }
 
     @classmethod
     def coletar_transferencias_rreo(
@@ -69,11 +85,14 @@ class TransferenciasConstitucionais:
                     continue
 
                 df = pd.DataFrame(items)
-                termos = "|".join(cls.TERMOS_TRANSFERENCIA)
-                mask = df["conta"].str.lower().str.contains(termos, na=False)
+                mask = df["cod_conta"].isin(cls.CONTAS_PERMITIDAS)
                 df_transf = df[mask].copy()
                 if not df_transf.empty:
                     df_transf["uf"] = uf
+                    df_transf["categoria_transferencia"] = df_transf["cod_conta"].map(
+                        cls.CONTAS_PERMITIDAS
+                    )
+                    df_transf["criterio_coleta"] = "whitelist_cod_conta"
                     frames.append(df_transf)
                 time.sleep(1)
 
