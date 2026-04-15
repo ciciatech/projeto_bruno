@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,6601894162.82,2219574,Ativo Total,Sergipe
+2015,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1320482918.06,2219574,Ativo Circulante,Sergipe
+2015,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5281411244.76,2219574,Ativo Não Circulante,Sergipe
+2015,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,6601894162.82,2219574,Passivo Total,Sergipe
+2015,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,885629750.07,2219574,Passivo Circulante,Sergipe
+2015,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,3956472389.33,2219574,Passivo Não Circulante,Sergipe
+2015,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,1759792023.42,2219574,Patrimônio Líquido,Sergipe
+2016,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,7120154006.2,2242937,Ativo Total,Sergipe
+2016,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1310905172.13,2242937,Ativo Circulante,Sergipe
+2016,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5809248834.07,2242937,Ativo Não Circulante,Sergipe
+2016,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,7120154006.2,2242937,Passivo Total,Sergipe
+2016,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,791019064.83,2242937,Passivo Circulante,Sergipe
+2016,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,3874552955.21,2242937,Passivo Não Circulante,Sergipe
+2016,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,2454581986.16,2242937,Patrimônio Líquido,Sergipe
+2017,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,6962071191.29,2265779,Ativo Total,Sergipe
+2017,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1500183527.68,2265779,Ativo Circulante,Sergipe
+2017,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5461887663.61,2265779,Ativo Não Circulante,Sergipe
+2017,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,6962071191.29,2265779,Passivo Total,Sergipe
+2017,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1628237502.47,2265779,Passivo Circulante,Sergipe
+2017,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,3713750153.45,2265779,Passivo Não Circulante,Sergipe
+2017,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,1620083535.37,2265779,Patrimônio Líquido,Sergipe
+2018,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,7186809422.0,2265779,Ativo Total,Sergipe
+2018,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1515427928.31,2265779,Ativo Circulante,Sergipe
+2018,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5671381493.69,2265779,Ativo Não Circulante,Sergipe
+2018,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,7186809422.0,2265779,Passivo Total,Sergipe
+2018,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1202103715.19,2265779,Passivo Circulante,Sergipe
+2018,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4487089800.05,2265779,Passivo Não Circulante,Sergipe
+2018,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,1497615906.76,2265779,Patrimônio Líquido,Sergipe
+2019,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,7041385208.35,2278308,Ativo Total,Sergipe
+2019,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1712526006.4,2278308,Ativo Circulante,Sergipe
+2019,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5328859201.95,2278308,Ativo Não Circulante,Sergipe
+2019,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,7041385208.35,2278308,Passivo Total,Sergipe
+2019,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1367983558.49,2278308,Passivo Circulante,Sergipe
+2019,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4708822429.85,2278308,Passivo Não Circulante,Sergipe
+2019,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,964579220.01,2278308,Patrimônio Líquido,Sergipe
+2020,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,8022338402.57,2298696,Ativo Total,Sergipe
+2020,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2262538494.6,2298696,Ativo Circulante,Sergipe
+2020,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5759799907.97,2298696,Ativo Não Circulante,Sergipe
+2020,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,8022338402.57,2298696,Passivo Total,Sergipe
+2020,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1219153271.06,2298696,Passivo Circulante,Sergipe
+2020,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,5282696880.07,2298696,Passivo Não Circulante,Sergipe
+2020,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,1520488251.44,2298696,Patrimônio Líquido,Sergipe
+2021,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,9593353418.54,2318822,Ativo Total,Sergipe
+2021,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3146035817.85,2318822,Ativo Circulante,Sergipe
+2021,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,6447317600.69,2318822,Ativo Não Circulante,Sergipe
+2021,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,9593353418.54,2318822,Passivo Total,Sergipe
+2021,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1429030069.33,2318822,Passivo Circulante,Sergipe
+2021,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4913335612.83,2318822,Passivo Não Circulante,Sergipe
+2021,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,3250987736.38,2318822,Patrimônio Líquido,Sergipe
+2022,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,10372252232.3,2338474,Ativo Total,Sergipe
+2022,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3017314009.97,2338474,Ativo Circulante,Sergipe
+2022,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,7354938222.33,2338474,Ativo Não Circulante,Sergipe
+2022,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,10372252232.3,2338474,Passivo Total,Sergipe
+2022,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1113617428.2,2338474,Passivo Circulante,Sergipe
+2022,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,5125467743.65,2338474,Passivo Não Circulante,Sergipe
+2022,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,4133167060.45,2338474,Patrimônio Líquido,Sergipe
+2023,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,12419150869.12,2338474,Ativo Total,Sergipe
+2023,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4017845997.77,2338474,Ativo Circulante,Sergipe
+2023,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,8401304871.35,2338474,Ativo Não Circulante,Sergipe
+2023,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,12419150869.12,2338474,Passivo Total,Sergipe
+2023,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1118360015.77,2338474,Passivo Circulante,Sergipe
+2023,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,5247036663.11,2338474,Passivo Não Circulante,Sergipe
+2023,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,6053754190.24,2338474,Patrimônio Líquido,Sergipe
+2024,SE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,15764188137.87,2211868,Ativo Total,Sergipe
+2024,SE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,6170721401.84,2211868,Ativo Circulante,Sergipe
+2024,SE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,9593466736.03,2211868,Ativo Não Circulante,Sergipe
+2024,SE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,15764188137.87,2211868,Passivo Total,Sergipe
+2024,SE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1882628528.93,2211868,Passivo Circulante,Sergipe
+2024,SE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,5098532720.24,2211868,Passivo Não Circulante,Sergipe
+2024,SE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,8783026888.7,2211868,Patrimônio Líquido,Sergipe

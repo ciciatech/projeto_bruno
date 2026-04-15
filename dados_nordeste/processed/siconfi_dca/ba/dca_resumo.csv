@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,29519210925.5,15126371,Ativo Total,Bahia
+2015,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,9163391103.31,15126371,Ativo Circulante,Bahia
+2015,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,20355819822.19,15126371,Ativo Não Circulante,Bahia
+2015,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,29519210925.5,15126371,Passivo Total,Bahia
+2015,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6392675843.25,15126371,Passivo Circulante,Bahia
+2015,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,186808567975.3,15126371,Passivo Não Circulante,Bahia
+2015,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-163682032893.05,15126371,Patrimônio Líquido,Bahia
+2016,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,31004946918.47,15203934,Ativo Total,Bahia
+2016,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7866506046.47,15203934,Ativo Circulante,Bahia
+2016,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,23138440872.0,15203934,Ativo Não Circulante,Bahia
+2016,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,31004946918.47,15203934,Passivo Total,Bahia
+2016,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6242627330.52,15203934,Passivo Circulante,Bahia
+2016,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,201121134659.61,15203934,Passivo Não Circulante,Bahia
+2016,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-176358815071.66,15203934,Patrimônio Líquido,Bahia
+2017,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,36369906929.97,15276566,Ativo Total,Bahia
+2017,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,8682847955.31,15276566,Ativo Circulante,Bahia
+2017,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,27687058974.66,15276566,Ativo Não Circulante,Bahia
+2017,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,36369906929.97,15276566,Passivo Total,Bahia
+2017,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,8253628185.51,15276566,Passivo Circulante,Bahia
+2017,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,206918708295.0,15276566,Passivo Não Circulante,Bahia
+2017,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-178802429550.54,15276566,Patrimônio Líquido,Bahia
+2018,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,38719106179.38,15276566,Ativo Total,Bahia
+2018,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7333987968.16,15276566,Ativo Circulante,Bahia
+2018,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,31385118211.22,15276566,Ativo Não Circulante,Bahia
+2018,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,38719106179.38,15276566,Passivo Total,Bahia
+2018,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,8676693492.82,15276566,Passivo Circulante,Bahia
+2018,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,208993549764.52,15276566,Passivo Não Circulante,Bahia
+2018,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-178951137077.96,15276566,Patrimônio Líquido,Bahia
+2019,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,45648363521.19,14812617,Ativo Total,Bahia
+2019,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7755014667.18,14812617,Ativo Circulante,Bahia
+2019,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,37893348854.01,14812617,Ativo Não Circulante,Bahia
+2019,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,45648363521.19,14812617,Passivo Total,Bahia
+2019,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,8960110775.92,14812617,Passivo Circulante,Bahia
+2019,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,367465868613.13,14812617,Passivo Não Circulante,Bahia
+2019,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-330777615867.86,14812617,Patrimônio Líquido,Bahia
+2020,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,54524468577.21,14873064,Ativo Total,Bahia
+2020,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,11560793836.51,14873064,Ativo Circulante,Bahia
+2020,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,42963674740.7,14873064,Ativo Não Circulante,Bahia
+2020,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,54524468577.21,14873064,Passivo Total,Bahia
+2020,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,10877498920.07,14873064,Passivo Circulante,Bahia
+2020,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,180965351102.53,14873064,Passivo Não Circulante,Bahia
+2020,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-137318381445.39,14873064,Patrimônio Líquido,Bahia
+2021,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,88191399377.04,14930634,Ativo Total,Bahia
+2021,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,22926673120.68,14930634,Ativo Circulante,Bahia
+2021,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,65264726256.36,14930634,Ativo Não Circulante,Bahia
+2021,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,88191399377.04,14930634,Passivo Total,Bahia
+2021,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,18224532393.64,14930634,Passivo Circulante,Bahia
+2021,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,189209539170.76,14930634,Passivo Não Circulante,Bahia
+2021,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-119242672187.36,14930634,Patrimônio Líquido,Bahia
+2022,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,85390672238.6,14985284,Ativo Total,Bahia
+2022,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,20878945659.8,14985284,Ativo Circulante,Bahia
+2022,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,64511726578.8,14985284,Ativo Não Circulante,Bahia
+2022,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,85390672238.6,14985284,Passivo Total,Bahia
+2022,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,11848202777.0,14985284,Passivo Circulante,Bahia
+2022,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,196082367785.06,14985284,Passivo Não Circulante,Bahia
+2022,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-122539898323.46,14985284,Patrimônio Líquido,Bahia
+2023,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,96393122607.78,14985284,Ativo Total,Bahia
+2023,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,20383857466.35,14985284,Ativo Circulante,Bahia
+2023,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,76009265141.43,14985284,Ativo Não Circulante,Bahia
+2023,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,96393122607.78,14985284,Passivo Total,Bahia
+2023,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,13189906694.08,14985284,Passivo Circulante,Bahia
+2023,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,227883524919.0,14985284,Passivo Não Circulante,Bahia
+2023,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-144680309005.3,14985284,Patrimônio Líquido,Bahia
+2024,BA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,103625680034.07,14659023,Ativo Total,Bahia
+2024,BA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,22539534026.24,14659023,Ativo Circulante,Bahia
+2024,BA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,81086146007.83,14659023,Ativo Não Circulante,Bahia
+2024,BA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,103625680034.07,14659023,Passivo Total,Bahia
+2024,BA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,17190437577.11,14659023,Passivo Circulante,Bahia
+2024,BA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,233909599978.35,14659023,Passivo Não Circulante,Bahia
+2024,BA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-147474357521.39,14659023,Patrimônio Líquido,Bahia

@@ -1,0 +1,9 @@
+﻿variavel,fonte,tipo_temporal,regra_bimestral,deflacionamento,unidade_final
+saldo,caged_bimestral,fluxo,soma,nao_aplica,postos_de_trabalho
+credito_PF_nordeste_real,bacen_bimestral,estoque,ultimo_valor,ipca,r$_dez_2025_milhoes
+credito_PJ_nordeste_real,bacen_bimestral,estoque,ultimo_valor,ipca,r$_dez_2025_milhoes
+resultado_primario_real,rreo_resultado_primario,acumulado_no_periodo,valor_reportado,ipca,r$_dez_2025
+dcl_real,rgf_divida,estoque,repete_quadrimestre,ipca,r$_dez_2025
+investimento_publico_real,dca_investimento,anual,repete_ano,ipca,r$_dez_2025
+transferencias_federais_real,transferencias,acumulado_no_ano,diferenca_do_acumulado,ipca,r$_dez_2025
+rais_vinculos_ativos,rais_vinculos,estoque_anual,repete_ano,nao_aplica,vinculos_formais

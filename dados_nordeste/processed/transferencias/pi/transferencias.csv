@@ -1,0 +1,620 @@
+﻿exercicio,demonstrativo,periodo,periodicidade,instituicao,cod_ibge,uf,populacao,anexo,esfera,rotulo,coluna,cod_conta,conta,valor,uf_nome
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,733676803.47,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,713310456.81,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,20366346.66,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,2122882.29,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,2122882.29,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,733676803.47,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasCorrentes,Transferências Correntes,766939012.99,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,542865729.86,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6CotaParteDoFPE,Cota-Parte do FPE,546103719.53,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,170444726.95,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,179980813.52,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,2122882.29,Piauí
+2015,RREO,1,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasDeCapital,Transferências de Capital,4638599.69,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1370606024.7,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,1328563977.99,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,2588637.07,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,39453409.64,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,6783697.38,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,6783697.38,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,1369456094.92,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasCorrentes,Transferências Correntes,1290977087.54,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,958166652.53,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6CotaParteDoFPE,Cota-Parte do FPE,904322664.22,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,371836032.75,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,309598751.14,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,6783697.38,Piauí
+2015,RREO,2,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasDeCapital,Transferências de Capital,7224643.6,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2031786333.64,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,1976942160.85,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,2922451.56,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,51921721.23,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,14872124.8,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,14872124.8,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,2026717034.08,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasCorrentes,Transferências Correntes,1961610698.75,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,520889870.82,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6CotaParteDoFPE,Cota-Parte do FPE,512265063.96,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,51921721.23,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,99771060.93,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,14872124.8,Piauí
+2015,RREO,3,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasDeCapital,Transferências de Capital,50533268.81,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2550351545.95,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,2484805071.63,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,3253007.21,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,62293467.11,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,15583978.95,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,15583978.95,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,2543606945.38,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasCorrentes,Transferências Correntes,2474318548.66,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,1824447863.22,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6CotaParteDoFPE,Cota-Parte do FPE,1712549985.52,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,656865615.05,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,646997828.68,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,15583978.95,Piauí
+2015,RREO,4,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasDeCapital,Transferências de Capital,68685086.89,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3059171336.24,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,2983574853.6,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,3573091.51,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,72023391.13,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,16943761.28,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,16943761.28,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,3047112047.06,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasCorrentes,Transferências Correntes,2964208835.74,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,2180525648.44,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6CotaParteDoFPE,Cota-Parte do FPE,2052009699.69,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,794563007.49,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,788364741.28,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,16943761.28,Piauí
+2015,RREO,5,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasDeCapital,Transferências de Capital,80906628.28,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3699604561.66,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,3596541366.39,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,3834026.07,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDoExterior,Transferências do Exterior,1678114.24,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,97551054.96,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,27956459.37,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,27956459.37,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,3692169153.41,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasCorrentes,Transferências Correntes,3576999427.76,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,2640621626.72,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6CotaParteDoFPE,Cota-Parte do FPE,2510135227.95,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,953996471.73,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,940193002.98,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,27956459.37,Piauí
+2015,RREO,6,B,Governo do Estado do Piauí,22,PI,3194718,RREO-Anexo 06,E,,Até o Bimestre / 2014,RREO6TransferenciasDeCapital,Transferências de Capital,90303422.39,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,739946492.37,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,729479054.4,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,224912.26,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,10242525.71,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,1643530.0,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,1643530.0,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,739426468.13,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,733676803.47,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,528002974.94,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,542865729.86,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,201180967.48,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,170444726.95,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,1643530.0,Piauí
+2016,RREO,1,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,2122882.29,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1318962903.45,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,1290185261.49,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,540131.38,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,28237510.58,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,10761628.42,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,10761628.42,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,1310264485.5,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,1369356094.92,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,918264732.5,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,958166652.53,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,381757227.29,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,371736032.75,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,10761628.42,Piauí
+2016,RREO,2,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,6783697.38,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2080606718.18,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,2010021128.53,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,863792.84,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDoExterior,Transferências do Exterior,91095.38,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,69630701.43,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,12522879.81,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,12522879.81,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,2071163910.32,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,2026717034.08,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,1432980443.02,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,1453905442.03,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,568552765.87,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,520889870.82,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,12522879.81,Piauí
+2016,RREO,3,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,14872124.8,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2658459442.28,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,2565185984.37,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1206516.6,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDoExterior,Transferências do Exterior,91095.38,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,91975845.93,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,27324076.16,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,27324076.16,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,2648515233.59,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,2543606945.38,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,1811174070.75,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,1824447863.22,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,745365316.91,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,656865615.05,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,27324076.16,Piauí
+2016,RREO,4,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,15583978.95,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3205877416.2,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,3102485013.2,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1521779.19,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDoExterior,Transferências do Exterior,1274862.97,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,100595760.84,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,27541465.62,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,27541465.62,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,3197825493.97,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,3047112047.06,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,2187988709.8,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,2180525648.44,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,909241023.33,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,794563007.49,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,27541465.62,Piauí
+2016,RREO,5,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,16943761.28,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,4407159332.14,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,4260077733.8,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1791248.56,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDoExterior,Transferências do Exterior,3557840.13,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,141732509.65,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,31929115.91,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,31929115.91,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,4399271501.89,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasCorrentes,Transferências Correntes,3692169153.41,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,3018195041.46,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6CotaParteDoFPE,Cota-Parte do FPE,2640621626.72,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,1239343950.78,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,953996471.73,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,31929115.91,Piauí
+2016,RREO,6,B,Governo do Estado do Piauí,22,PI,3204028,RREO-Anexo 06,E,,Até o Bimestre / 2015,RREO6TransferenciasDeCapital,Transferências de Capital,27956459.37,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,808922782.19,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,808070084.86,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,223820.33,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,628877.0,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,185103.8,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,185103.8,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasCorrentes,Transferências Correntes,808922782.19,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,739482948.14,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6CotaParteDoFPE,Cota-Parte do FPE,573994410.45,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,528002974.94,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,234299494.74,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,201237447.49,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasDeCapital,Transferências de Capital,185103.8,Piauí
+2017,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,1643530.0,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1515973206.41,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,1506122735.92,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,487299.14,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,9363171.35,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,4926772.35,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,4926772.35,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasCorrentes,Transferências Correntes,1515973206.41,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,1310094626.95,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6CotaParteDoFPE,Cota-Parte do FPE,1019305162.52,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,918264732.5,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,487304872.54,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,363592383.87,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasDeCapital,Transferências de Capital,4926772.35,Piauí
+2017,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,10761628.42,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2304651025.09,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,2286741466.63,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,760282.72,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,17149275.74,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,8503237.63,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,8503237.63,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasCorrentes,Transferências Correntes,2304651025.09,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,2071163910.32,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6CotaParteDoFPE,Cota-Parte do FPE,1549933476.39,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,1432980443.02,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,737568272.96,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,568552765.87,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasDeCapital,Transferências de Capital,8503237.63,Piauí
+2017,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,12522879.81,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2931706648.0,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,2907618930.29,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1019672.19,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,23068045.52,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,33924466.89,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,33924466.89,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasCorrentes,Transferências Correntes,2931706648.0,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,2648514833.35,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6CotaParteDoFPE,Cota-Parte do FPE,1968880749.98,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,1811174070.75,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,939757852.5,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,745364916.67,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasDeCapital,Transferências de Capital,33924466.89,Piauí
+2017,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,27324076.16,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3558851219.76,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,3528683197.76,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1292940.48,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,28875081.52,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,36616644.62,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,36616644.62,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasCorrentes,Transferências Correntes,3558851219.76,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,3197825093.73,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6CotaParteDoFPE,Cota-Parte do FPE,2367361019.2,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,2187988709.8,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,1162615119.04,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,909240623.09,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2017,RREO6TransferenciasDeCapital,Transferências de Capital,36616644.62,Piauí
+2017,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,27541465.62,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,4326340802.57,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesIntergovernamentais,Transferências Intergovernamentais,4288880502.12,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1511293.92,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeConvenios,Transferências de Convênios,35949006.53,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,44804831.56,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeConvenios,Transferências de Convênios,44804831.56,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2017,RREO6TransferenciasCorrentes,Transferências Correntes,4326340802.57,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2016,RREO6TransferenciasCorrentes,Transferências Correntes,4399271101.65,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2017,RREO6CotaParteDoFPE,Cota-Parte do FPE,2876821211.34,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2016,RREO6CotaParteDoFPE,Cota-Parte do FPE,3018195041.46,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2017,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,1413570584.7,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2016,RREO6OutrasTransferenciasCorrentes,Outras Transferências Correntes,1239343550.54,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2017,RREO6TransferenciasDeCapital,Transferências de Capital,44804831.56,Piauí
+2017,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 06,E,Padrão,Até o Bimestre / 2016,RREO6TransferenciasDeCapital,Transferências de Capital,31929115.91,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,910484791.42,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,904574061.49,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,145097.97,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,5765631.96,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,14160159.97,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,14086333.56,Piauí
+2018,RREO,1,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,73826.41,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1627926277.39,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1298336320.11,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,462477.81,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,329127479.47,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,15588919.12,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,15274454.39,Piauí
+2018,RREO,2,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,314464.73,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2473097134.03,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1954139396.57,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,709836.88,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,518247900.58,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,39657906.82,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,38861870.81,Piauí
+2018,RREO,3,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,796036.01,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3135651719.39,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2477598996.0,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,950761.67,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,657101961.72,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,41925690.67,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,40718056.05,Piauí
+2018,RREO,4,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,1207634.62,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3746894652.11,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2948288179.23,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1200059.27,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,797406413.61,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,49052494.84,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,47439385.56,Piauí
+2018,RREO,5,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,1613109.28,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,4616501832.52,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,3648302234.38,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1393417.55,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,966806180.59,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,70393705.64,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,67740980.01,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDosEstadosEDoDistritoFederalEDeSuasEntidades,Transferências dos Estados e do Distrito Federal e de suas Entidades,400000.0,Piauí
+2018,RREO,6,B,Governo do Estado do Piauí,22,PI,3212180,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,2252725.63,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,957370708.86,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,814241821.84,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,10000.0,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,167084.22,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,142951802.8,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,1503402.89,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1242746.69,Piauí
+2019,RREO,1,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,260656.2,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1742888420.53,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1465856038.95,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,59320.0,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,308741.38,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,276664320.2,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,7836169.71,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,7039191.71,Piauí
+2019,RREO,2,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,796978.0,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2567733484.06,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2166098914.92,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,94480.0,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,450726.86,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,401089362.28,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,10348867.31,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,8873506.71,Piauí
+2019,RREO,3,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,1475360.6,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3305871935.18,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2787454444.64,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,140960.0,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,801060.41,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,517475470.13,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,13026877.11,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,10915836.71,Piauí
+2019,RREO,4,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,2111040.4,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3985134114.1,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,3351961012.07,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,160120.0,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,993566.76,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,632019415.27,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,16631164.41,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,13814259.41,Piauí
+2019,RREO,5,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,2816905.0,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5152670688.22,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,4387874803.69,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,214760.0,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1175651.47,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,763405473.06,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,40475734.39,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,36595275.99,Piauí
+2019,RREO,6,B,Governo do Estado do Piauí,22,PI,3264531,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,3880458.4,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1014872413.6,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,871782967.71,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,377405.6,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,181382.83,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,142530657.46,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,9190168.05,Piauí
+2020,RREO,1,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,9190168.05,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1776640413.05,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1534567340.79,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,740383.15,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,325809.89,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,241006879.22,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,10194155.05,Piauí
+2020,RREO,2,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,10194155.05,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2714925813.73,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2383402947.92,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,1513151.6,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,384840.16,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,329624874.05,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,11969750.05,Piauí
+2020,RREO,3,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,11969750.05,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5459203410.91,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5026002734.01,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,2581037.58,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,502360.96,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,430117278.36,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,31422034.05,Piauí
+2020,RREO,4,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,31422034.05,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,6385489371.4,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5847425308.87,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,3788877.11,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,659286.82,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,533615898.6,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,32545171.05,Piauí
+2020,RREO,5,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,32545171.05,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,7427522597.19,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,6748186864.9,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,5188397.25,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,817110.82,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,673330224.22,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,76849977.79,Piauí
+2020,RREO,6,B,Governo do Estado do Piauí,22,PI,3273227,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,76849977.79,Piauí
+2021,RREO,1,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1146600087.49,Piauí
+2021,RREO,1,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,990459938.9,Piauí
+2021,RREO,1,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,159466.27,Piauí
+2021,RREO,1,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,155980682.32,Piauí
+2021,RREO,1,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,32476465.0,Piauí
+2021,RREO,1,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,32476465.0,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2084843171.5,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1795093149.56,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,73890.0,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,288214.19,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,289387917.75,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,33965825.57,Piauí
+2021,RREO,2,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,33965825.57,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3112791723.4,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2669468614.71,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,117710.0,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,448383.63,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,442757015.06,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,34067825.36,Piauí
+2021,RREO,3,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,34067825.36,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,4122580555.98,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,3531515171.16,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,153370.0,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,601719.71,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,590310295.11,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,46825728.4,Piauí
+2021,RREO,4,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,46825728.4,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5060778029.17,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,4323760199.8,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,282249.81,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,747103.43,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,735988476.13,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,73423474.57,Piauí
+2021,RREO,5,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,73423474.57,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,6282126369.36,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5372435264.24,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,347979.81,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,815632.61,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,908527492.7,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,89799436.7,Piauí
+2021,RREO,6,B,Governo do Estado do Piauí,22,PI,3281480,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,89799436.7,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1434103315.37,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1244311841.78,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,122738.68,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,189668734.91,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,188531.0,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,166621.0,Piauí
+2022,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,21910.0,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2652065939.47,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2297930633.6,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,262052.2,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,353873253.67,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,8590237.06,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,8516347.06,Piauí
+2022,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,73890.0,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,4093557400.33,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,3561440096.67,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,411989.46,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,531705314.2,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,12308886.9,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,12171950.16,Piauí
+2022,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,136936.74,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5230434876.92,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,4536334786.0,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,557279.86,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,693542811.06,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,21855804.39,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,21695325.65,Piauí
+2022,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,160478.74,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,6314459348.53,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5471510733.39,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,722701.18,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,842225913.96,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,23046063.04,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,22824750.3,Piauí
+2022,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,221312.74,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,7705815857.91,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,6681970408.25,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,877055.42,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,1022968394.24,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,27249441.06,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,26957502.32,Piauí
+2022,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,291938.74,Piauí
+2023,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1714953817.37,Piauí
+2023,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1485772833.0,Piauí
+2023,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,165471.1,Piauí
+2023,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,229015513.27,Piauí
+2023,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,38572833.5,Piauí
+2023,RREO,1,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,38572833.5,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,2978296983.79,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2568909624.03,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,346769.93,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,409040589.83,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,59664997.94,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,59623747.94,Piauí
+2023,RREO,2,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,41250.0,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,4505401614.58,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,3884267868.86,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,530830.59,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,620602915.13,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,166293178.0,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,166107628.19,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,118377.37,Piauí
+2023,RREO,3,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,67172.44,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5883172763.18,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5080248286.42,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,719963.29,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,802204513.47,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,183586844.38,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,183307538.19,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,145877.37,Piauí
+2023,RREO,4,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,133428.82,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,7010694848.13,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,6021102635.0,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,922991.99,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,988669221.14,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,202891850.1,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,202334605.81,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,173377.37,Piauí
+2023,RREO,5,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,383866.92,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,8629679343.38,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,7404200438.18,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1026330.19,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,1224452575.01,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,243598057.07,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,242826004.76,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,200877.37,Piauí
+2023,RREO,6,B,Governo do Estado do Piauí,22,PI,3289290,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,571174.94,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1805712090.45,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1539345349.2,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,266366741.25,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,8588314.46,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,8240161.0,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,27500.0,Piauí
+2024,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,320653.46,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3404145222.81,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2941115701.01,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,463029521.8,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,26399440.11,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,25378739.84,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,55000.0,Piauí
+2024,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,965700.27,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5109346710.11,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,4406840851.58,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,802920.06,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,701702938.47,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,27767094.24,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,26630650.44,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,82500.0,Piauí
+2024,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1053943.8,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,6556659613.85,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5647342565.77,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,265208.16,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1046389.63,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,908005450.29,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,59485174.65,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,58112396.86,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,110000.0,Piauí
+2024,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1262777.79,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,7953388210.67,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,6845231486.28,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,265208.16,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1292584.7,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,1106473142.56,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),OutrasTransferenciasCorrentes,Demais Transferências Correntes,125788.97,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,65632088.71,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,64007640.37,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,137500.0,Piauí
+2024,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1486948.34,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,9665757208.83,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,8307647436.32,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,265208.16,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1563309.27,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,1355567366.11,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),OutrasTransferenciasCorrentes,Demais Transferências Correntes,713888.97,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,86433048.4,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,84385811.34,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,178750.0,Piauí
+2024,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1868487.06,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,1946658751.67,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,1663743737.22,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,266306.63,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,282648707.82,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,13046987.04,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,12900678.13,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,13750.0,Piauí
+2025,RREO,1,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,132558.91,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,3488263287.93,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,2980774140.74,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,721327.83,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,506767819.36,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,26415132.82,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,25198536.53,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,41250.0,Piauí
+2025,RREO,2,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1175346.29,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,5339303615.29,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,4565149503.44,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1055730.38,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,773098381.47,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,82058761.6,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,80232323.97,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,68750.0,Piauí
+2025,RREO,3,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1757687.63,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,6783524877.93,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,5783311778.01,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1405774.28,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,998541619.57,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),OutrasTransferenciasCorrentes,Demais Transferências Correntes,265706.07,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,235655119.07,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,233669661.27,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,96250.0,Piauí
+2025,RREO,4,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,1889207.8,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,8286183483.69,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,7067458502.61,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,1732950.48,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,1216717761.85,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),OutrasTransferenciasCorrentes,Demais Transferências Correntes,274268.75,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,338400264.2,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,335955732.79,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,123750.0,Piauí
+2025,RREO,5,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,2320781.41,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentes,TRANSFERÊNCIAS CORRENTES,10267370041.76,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,8780905348.7,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeInstituicoesPrivadas,Transferências de Instituições Privadas,2168756.33,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasCorrentesDeOutrasInstituicoesPublicas,Transferências de Outras Instituições Públicas,1483887294.47,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),OutrasTransferenciasCorrentes,Demais Transferências Correntes,408642.26,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapital,TRANSFERÊNCIAS DE CAPITAL,437583410.28,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDaUniaoEDeSuasEntidades,Transferências da União e de suas Entidades,434609819.73,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasdeCapitalDosMunicipiosEDeSuasEntidades,Transferências dos Municípios e de suas Entidades,151250.0,Piauí
+2025,RREO,6,B,Governo do Estado do Piauí,22,PI,3270174,RREO-Anexo 01,E,Padrão,Até o Bimestre (c),TransferenciasDeCapitalDeInstituicoesPrivadas,Transferências de Instituições Privadas,2822340.55,Piauí

@@ -8,12 +8,12 @@ st.set_page_config(page_title="Bolsa Família", layout="wide")
 st.title("Novo Bolsa Família — Capitais do Nordeste")
 
 PROC = PROCESSED_DIR
-path = PROC / "bolsa_familia.parquet"
-if not path.exists():
+path_pq = PROC / "bolsa_familia.parquet"
+if path_pq.exists():
+    df = pd.read_parquet(path_pq)
+else:
     st.warning("Dados do Bolsa Família não encontrados. Execute o ETL.")
     st.stop()
-
-df = pd.read_parquet(path)
 
 capitais = sorted(df["municipio"].unique())
 sel = st.multiselect("Capitais", capitais, default=capitais)

@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,13094069710.5,3943885,Ativo Total,Paraíba
+2015,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2033482688.71,3943885,Ativo Circulante,Paraíba
+2015,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11060587021.79,3943885,Ativo Não Circulante,Paraíba
+2015,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,13094069710.5,3943885,Passivo Total,Paraíba
+2015,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,629013802.55,3943885,Passivo Circulante,Paraíba
+2015,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4622606391.45,3943885,Passivo Não Circulante,Paraíba
+2015,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,7842449516.5,3943885,Patrimônio Líquido,Paraíba
+2016,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,15457504073.33,3972202,Ativo Total,Paraíba
+2016,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3094250998.56,3972202,Ativo Circulante,Paraíba
+2016,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,12363253074.77,3972202,Ativo Não Circulante,Paraíba
+2016,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,15457504073.33,3972202,Passivo Total,Paraíba
+2016,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,692962259.4,3972202,Passivo Circulante,Paraíba
+2016,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4615535276.47,3972202,Passivo Não Circulante,Paraíba
+2016,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,10149006537.46,3972202,Patrimônio Líquido,Paraíba
+2017,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,17782144962.75,3999415,Ativo Total,Paraíba
+2017,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3334841434.61,3999415,Ativo Circulante,Paraíba
+2017,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,14447303528.14,3999415,Ativo Não Circulante,Paraíba
+2017,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,17782144962.75,3999415,Passivo Total,Paraíba
+2017,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,642025698.21,3999415,Passivo Circulante,Paraíba
+2017,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4514081221.36,3999415,Passivo Não Circulante,Paraíba
+2017,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,12626038043.18,3999415,Patrimônio Líquido,Paraíba
+2018,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,20742560544.66,3999415,Ativo Total,Paraíba
+2018,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4941886711.72,3999415,Ativo Circulante,Paraíba
+2018,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,15800673832.94,3999415,Ativo Não Circulante,Paraíba
+2018,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,20742560544.66,3999415,Passivo Total,Paraíba
+2018,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,637453210.28,3999415,Passivo Circulante,Paraíba
+2018,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4836592091.87,3999415,Passivo Não Circulante,Paraíba
+2018,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,15268515242.51,3999415,Patrimônio Líquido,Paraíba
+2019,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,21530363917.38,3996496,Ativo Total,Paraíba
+2019,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4163717390.55,3996496,Ativo Circulante,Paraíba
+2019,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,17366646526.83,3996496,Ativo Não Circulante,Paraíba
+2019,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,21530363917.38,3996496,Passivo Total,Paraíba
+2019,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,522155149.24,3996496,Passivo Circulante,Paraíba
+2019,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,5198456546.41,3996496,Passivo Não Circulante,Paraíba
+2019,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,15809752221.73,3996496,Patrimônio Líquido,Paraíba
+2020,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,24183357855.16,4018127,Ativo Total,Paraíba
+2020,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,6141624594.89,4018127,Ativo Circulante,Paraíba
+2020,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,18041733260.27,4018127,Ativo Não Circulante,Paraíba
+2020,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,24183357855.16,4018127,Passivo Total,Paraíba
+2020,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,507102731.26,4018127,Passivo Circulante,Paraíba
+2020,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,5602375557.5,4018127,Passivo Não Circulante,Paraíba
+2020,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,18073879566.4,4018127,Patrimônio Líquido,Paraíba
+2021,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,27637542637.76,4039277,Ativo Total,Paraíba
+2021,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,8272831225.58,4039277,Ativo Circulante,Paraíba
+2021,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,19364711412.18,4039277,Ativo Não Circulante,Paraíba
+2021,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,27637542637.76,4039277,Passivo Total,Paraíba
+2021,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,500609493.52,4039277,Passivo Circulante,Paraíba
+2021,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,6260367073.3,4039277,Passivo Não Circulante,Paraíba
+2021,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,20876566070.94,4039277,Patrimônio Líquido,Paraíba
+2022,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,31204203996.58,4059905,Ativo Total,Paraíba
+2022,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,9065766698.8,4059905,Ativo Circulante,Paraíba
+2022,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,22138437297.78,4059905,Ativo Não Circulante,Paraíba
+2022,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,31204203996.58,4059905,Passivo Total,Paraíba
+2022,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,621624523.04,4059905,Passivo Circulante,Paraíba
+2022,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,6680828991.15,4059905,Passivo Não Circulante,Paraíba
+2022,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,23901750482.39,4059905,Patrimônio Líquido,Paraíba
+2023,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,33766918116.59,4059905,Ativo Total,Paraíba
+2023,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,10302692428.45,4059905,Ativo Circulante,Paraíba
+2023,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,23464225688.14,4059905,Ativo Não Circulante,Paraíba
+2023,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,33766918116.59,4059905,Passivo Total,Paraíba
+2023,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,646302275.46,4059905,Passivo Circulante,Paraíba
+2023,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,8181592607.68,4059905,Passivo Não Circulante,Paraíba
+2023,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,24939023233.45,4059905,Patrimônio Líquido,Paraíba
+2024,PB,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,40766162551.74,4030961,Ativo Total,Paraíba
+2024,PB,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,10916361580.46,4030961,Ativo Circulante,Paraíba
+2024,PB,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,29849800971.28,4030961,Ativo Não Circulante,Paraíba
+2024,PB,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,40766162551.74,4030961,Passivo Total,Paraíba
+2024,PB,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,691110697.72,4030961,Passivo Circulante,Paraíba
+2024,PB,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,8806432834.53,4030961,Passivo Não Circulante,Paraíba
+2024,PB,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,31268619019.49,4030961,Patrimônio Líquido,Paraíba

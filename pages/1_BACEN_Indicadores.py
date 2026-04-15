@@ -9,7 +9,15 @@ st.set_page_config(page_title="BACEN Indicadores", layout="wide")
 st.title("BACEN — Indicadores Econômicos")
 
 PROC = PROCESSED_DIR
-df = pd.read_parquet(PROC / "bacen.parquet")
+try:
+    df = pd.read_parquet(PROC / "bacen.parquet")
+except Exception:
+    csv_path = PROC / "bacen" / "nacional" / "bacen.csv"
+    if csv_path.exists():
+        df = pd.read_csv(csv_path, parse_dates=["data"])
+    else:
+        st.warning("Dados BACEN não encontrados. Execute o ETL.")
+        st.stop()
 
 min_date, max_date = df["data"].min().date(), df["data"].max().date()
 d_inicio, d_fim = st.slider(

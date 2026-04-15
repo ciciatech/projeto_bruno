@@ -4,10 +4,12 @@ __pycache__/
 *.pyo
 .DS_Store
 
-# Dados brutos e processados (grandes demais para git)
+# Dados brutos (grandes demais para git)
 dados_nordeste/raw/**/*.csv
 dados_nordeste/raw/**/*.parquet
-dados_nordeste/processed/**/*.csv
+dados_nordeste/raw/**/*.7z
+dados_nordeste/logs/
+
+# Processados: parquet/pkl ignorados, CSVs commitados para deploy Docker
 dados_nordeste/processed/**/*.parquet
 dados_nordeste/processed/**/*.pkl
-dados_nordeste/logs/

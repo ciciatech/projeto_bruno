@@ -13,10 +13,15 @@ st.markdown("Dados diretos da **API do Portal da Transparência do PI**. Fonte: 
 
 @st.cache_data(ttl=3600)
 def load_data():
-    path = PROCESSED_DIR / "transparencia_pi.parquet"
-    if not path.exists():
-        return None
-    df = pd.read_parquet(path)
+    path_pq = PROCESSED_DIR / "transparencia_pi.parquet"
+    csv_path = PROCESSED_DIR / "execucao_orcamentaria" / "pi" / "transparencia_pi.csv"
+    try:
+        df = pd.read_parquet(path_pq)
+    except Exception:
+        if csv_path.exists():
+            df = pd.read_csv(csv_path)
+        else:
+            return None
     # Preencher NAs
     df["empenhado"] = pd.to_numeric(df["empenhado"], errors="coerce").fillna(0)
     df["liquidado"] = pd.to_numeric(df["liquidado"], errors="coerce").fillna(0)

@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,28767952649.16,9277727,Ativo Total,Pernambuco
+2015,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,6238932901.6,9277727,Ativo Circulante,Pernambuco
+2015,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,22529019747.56,9277727,Ativo Não Circulante,Pernambuco
+2015,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,28767952649.16,9277727,Passivo Total,Pernambuco
+2015,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,4799321911.36,9277727,Passivo Circulante,Pernambuco
+2015,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,24864119498.38,9277727,Passivo Não Circulante,Pernambuco
+2015,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-895488760.58,9277727,Patrimônio Líquido,Pernambuco
+2016,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,31944167876.76,9345173,Ativo Total,Pernambuco
+2016,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,8188743603.75,9345173,Ativo Circulante,Pernambuco
+2016,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,23755424273.01,9345173,Ativo Não Circulante,Pernambuco
+2016,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,31944167876.76,9345173,Passivo Total,Pernambuco
+2016,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6242599267.5,9345173,Passivo Circulante,Pernambuco
+2016,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,23605330146.11,9345173,Passivo Não Circulante,Pernambuco
+2016,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,2096238463.15,9345173,Patrimônio Líquido,Pernambuco
+2017,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,35381516836.76,9410336,Ativo Total,Pernambuco
+2017,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7180219762.31,9410336,Ativo Circulante,Pernambuco
+2017,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,28201297074.45,9410336,Ativo Não Circulante,Pernambuco
+2017,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,35381516836.76,9410336,Passivo Total,Pernambuco
+2017,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,7158737037.19,9410336,Passivo Circulante,Pernambuco
+2017,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,22906670115.43,9410336,Passivo Não Circulante,Pernambuco
+2017,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,5316109684.14,9410336,Patrimônio Líquido,Pernambuco
+2018,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,38095200954.85,9410336,Ativo Total,Pernambuco
+2018,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,6711536290.82,9410336,Ativo Circulante,Pernambuco
+2018,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,31383664664.03,9410336,Ativo Não Circulante,Pernambuco
+2018,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,38095200954.85,9410336,Passivo Total,Pernambuco
+2018,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,7236362370.95,9410336,Passivo Circulante,Pernambuco
+2018,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,81934018526.36,9410336,Passivo Não Circulante,Pernambuco
+2018,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-51075179942.46,9410336,Patrimônio Líquido,Pernambuco
+2019,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,41744251385.25,9496294,Ativo Total,Pernambuco
+2019,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7438503922.25,9496294,Ativo Circulante,Pernambuco
+2019,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,34305747463.0,9496294,Ativo Não Circulante,Pernambuco
+2019,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,41744251385.25,9496294,Passivo Total,Pernambuco
+2019,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,7028871650.5,9496294,Passivo Circulante,Pernambuco
+2019,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,83616552222.04,9496294,Passivo Não Circulante,Pernambuco
+2019,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-48901172487.29,9496294,Patrimônio Líquido,Pernambuco
+2020,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,45673393056.58,9557071,Ativo Total,Pernambuco
+2020,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,9379404600.35,9557071,Ativo Circulante,Pernambuco
+2020,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,36293988456.23,9557071,Ativo Não Circulante,Pernambuco
+2020,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,45673393056.58,9557071,Passivo Total,Pernambuco
+2020,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6558352934.18,9557071,Passivo Circulante,Pernambuco
+2020,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,109451719297.49,9557071,Passivo Não Circulante,Pernambuco
+2020,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-70336679175.09,9557071,Patrimônio Líquido,Pernambuco
+2021,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,68407553196.22,9616621,Ativo Total,Pernambuco
+2021,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,11472134365.36,9616621,Ativo Circulante,Pernambuco
+2021,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,56935418830.86,9616621,Ativo Não Circulante,Pernambuco
+2021,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,68407553196.22,9616621,Passivo Total,Pernambuco
+2021,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6238906673.04,9616621,Passivo Circulante,Pernambuco
+2021,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,119854285439.0,9616621,Passivo Não Circulante,Pernambuco
+2021,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-57685638915.82,9616621,Patrimônio Líquido,Pernambuco
+2022,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,75858839875.41,9674793,Ativo Total,Pernambuco
+2022,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,11808834493.18,9674793,Ativo Circulante,Pernambuco
+2022,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,64050005382.23,9674793,Ativo Não Circulante,Pernambuco
+2022,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,75858839875.41,9674793,Passivo Total,Pernambuco
+2022,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6668629709.47,9674793,Passivo Circulante,Pernambuco
+2022,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,120304963707.72,9674793,Passivo Não Circulante,Pernambuco
+2022,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-51114753541.78,9674793,Patrimônio Líquido,Pernambuco
+2023,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,80480676637.63,9674793,Ativo Total,Pernambuco
+2023,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,13702563392.82,9674793,Ativo Circulante,Pernambuco
+2023,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,66778113244.81,9674793,Ativo Não Circulante,Pernambuco
+2023,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,80480676637.63,9674793,Passivo Total,Pernambuco
+2023,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,7729453818.18,9674793,Passivo Circulante,Pernambuco
+2023,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,155809413608.35,9674793,Passivo Não Circulante,Pernambuco
+2023,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-83058190788.9,9674793,Patrimônio Líquido,Pernambuco
+2024,PE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,72761351138.33,9051113,Ativo Total,Pernambuco
+2024,PE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,14292872411.25,9051113,Ativo Circulante,Pernambuco
+2024,PE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,58468478727.08,9051113,Ativo Não Circulante,Pernambuco
+2024,PE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,72761351138.33,9051113,Passivo Total,Pernambuco
+2024,PE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,7714060955.53,9051113,Passivo Circulante,Pernambuco
+2024,PE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,159902606353.44,9051113,Passivo Não Circulante,Pernambuco
+2024,PE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-94855316170.64,9051113,Patrimônio Líquido,Pernambuco

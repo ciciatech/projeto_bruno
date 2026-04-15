@@ -1,0 +1,298 @@
+﻿exercicio,periodo,uf,cod_conta,conta,coluna,valor,populacao,uf_nome
+2015,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,16911138138.28,15126371,Bahia
+2015,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,17856897002.27,15126371,Bahia
+2015,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,14631735880.32,15126371,Bahia
+2015,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,15597538396.38,15126371,Bahia
+2015,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,11371115313.39,15126371,Bahia
+2015,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,10536948573.97,15126371,Bahia
+2015,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,16911250628.54,15126371,Bahia
+2015,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,17856897002.27,15126371,Bahia
+2015,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,19729379930.1,15126371,Bahia
+2015,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,14631848370.58,15126371,Bahia
+2015,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,15597538396.38,15126371,Bahia
+2015,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,17476471431.69,15126371,Bahia
+2015,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,11371227803.65,15126371,Bahia
+2015,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,10536799940.67,15126371,Bahia
+2015,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,13387754681.93,15126371,Bahia
+2015,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,16911138138.28,15126371,Bahia
+2015,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,17856897002.27,15126371,Bahia
+2015,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,19729379930.1,15126371,Bahia
+2015,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,21381306825.23,15126371,Bahia
+2015,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,14631735880.32,15126371,Bahia
+2015,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,15597538396.38,15126371,Bahia
+2015,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,17476471431.69,15126371,Bahia
+2015,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,18891511151.06,15126371,Bahia
+2015,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,11371115313.39,15126371,Bahia
+2015,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,10536799940.67,15126371,Bahia
+2015,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,13387754681.93,15126371,Bahia
+2015,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,16136539853.17,15126371,Bahia
+2016,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,21381306825.23,15203934,Bahia
+2016,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,19965358652.02,15203934,Bahia
+2016,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,18891511151.06,15203934,Bahia
+2016,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,17580575086.6,15203934,Bahia
+2016,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16136539853.17,15203934,Bahia
+2016,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14853964594.4,15203934,Bahia
+2016,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,21381306825.23,15203934,Bahia
+2016,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,19965358652.02,15203934,Bahia
+2016,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,19237408467.68,15203934,Bahia
+2016,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,18891511151.06,15203934,Bahia
+2016,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,17580575086.6,15203934,Bahia
+2016,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,16985518940.19,15203934,Bahia
+2016,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16137908908.98,15203934,Bahia
+2016,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14866295539.22,15203934,Bahia
+2016,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,14443901287.96,15203934,Bahia
+2016,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,20907734712.16,15203934,Bahia
+2016,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,19583408669.13,15203934,Bahia
+2016,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,19028595088.92,15203934,Bahia
+2016,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,20172661726.35,15203934,Bahia
+2016,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,18891511151.06,15203934,Bahia
+2016,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,17580575086.6,15203934,Bahia
+2016,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,16985518940.19,15203934,Bahia
+2016,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,17284505967.58,15203934,Bahia
+2016,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,15664336795.91,15203934,Bahia
+2016,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14484345556.33,15203934,Bahia
+2016,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,14235087909.2,15203934,Bahia
+2016,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,16015640903.8,15203934,Bahia
+2017,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,20172661726.35,15276566,Bahia
+2017,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,20117655570.27,15276566,Bahia
+2017,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,17284505967.58,15276566,Bahia
+2017,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,17314235351.68,15276566,Bahia
+2017,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16015640903.8,15276566,Bahia
+2017,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14936982059.25,15276566,Bahia
+2017,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,20172661726.35,15276566,Bahia
+2017,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,20117655570.27,15276566,Bahia
+2017,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,20804322497.94,15276566,Bahia
+2017,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,17284505967.58,15276566,Bahia
+2017,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,17314235351.68,15276566,Bahia
+2017,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,17709934596.49,15276566,Bahia
+2017,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16015640903.8,15276566,Bahia
+2017,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14936982059.25,15276566,Bahia
+2017,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,14640734480.83,15276566,Bahia
+2017,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,20172661726.35,15276566,Bahia
+2017,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,20117655570.27,15276566,Bahia
+2017,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,20804322497.94,15276566,Bahia
+2017,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,22677717517.09,15276566,Bahia
+2017,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,17284505967.58,15276566,Bahia
+2017,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,17314235351.68,15276566,Bahia
+2017,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,17709934596.49,15276566,Bahia
+2017,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,18534594879.22,15276566,Bahia
+2017,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16015640903.8,15276566,Bahia
+2017,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14936982059.25,15276566,Bahia
+2017,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,14640734480.83,15276566,Bahia
+2017,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,17229303588.79,15276566,Bahia
+2018,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,22677725517.09,15276566,Bahia
+2018,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,23064484398.4,15276566,Bahia
+2018,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,18534594879.22,15276566,Bahia
+2018,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,18907379587.26,15276566,Bahia
+2018,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,17243785528.49,15276566,Bahia
+2018,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,16991423879.68,15276566,Bahia
+2018,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,22677725517.09,15276566,Bahia
+2018,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,23064484398.4,15276566,Bahia
+2018,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,25425207483.38,15276566,Bahia
+2018,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,18534594879.22,15276566,Bahia
+2018,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,18907379587.26,15276566,Bahia
+2018,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,20818688493.82,15276566,Bahia
+2018,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,17205845818.09,15276566,Bahia
+2018,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,16889254527.97,15276566,Bahia
+2018,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,20004291324.1,15276566,Bahia
+2018,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,22677725517.09,15276566,Bahia
+2018,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,23064484398.4,15276566,Bahia
+2018,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,25425207483.38,15276566,Bahia
+2018,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,24957360551.41,15276566,Bahia
+2018,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,18534594879.22,15276566,Bahia
+2018,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,18907379587.26,15276566,Bahia
+2018,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,20818688493.82,15276566,Bahia
+2018,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,20167439125.41,15276566,Bahia
+2018,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,17205845818.09,15276566,Bahia
+2018,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,16889254527.97,15276566,Bahia
+2018,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,20004291324.1,15276566,Bahia
+2018,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,20493581886.07,15276566,Bahia
+2019,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,24957360551.41,14812617,Bahia
+2019,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,24927495711.25,14812617,Bahia
+2019,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,20167439125.41,14812617,Bahia
+2019,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,20272035226.89,14812617,Bahia
+2019,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,20493581886.07,14812617,Bahia
+2019,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,18977832876.42,14812617,Bahia
+2019,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,24957360551.41,14812617,Bahia
+2019,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,24927495711.25,14812617,Bahia
+2019,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,26312317626.25,14812617,Bahia
+2019,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,20167439125.41,14812617,Bahia
+2019,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,20272035226.89,14812617,Bahia
+2019,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,20725958161.13,14812617,Bahia
+2019,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,20493581886.07,14812617,Bahia
+2019,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,18977832876.42,14812617,Bahia
+2019,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,20621773556.02,14812617,Bahia
+2019,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,24957360551.41,14812617,Bahia
+2019,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,24927495711.25,14812617,Bahia
+2019,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,26312317626.25,14812617,Bahia
+2019,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,25835368379.44,14812617,Bahia
+2019,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,20167439125.41,14812617,Bahia
+2019,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,20272035226.89,14812617,Bahia
+2019,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,20725958161.13,14812617,Bahia
+2019,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,20556632344.09,14812617,Bahia
+2019,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,20493581886.07,14812617,Bahia
+2019,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,18977832876.42,14812617,Bahia
+2019,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,20621773556.02,14812617,Bahia
+2019,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,21526711938.65,14812617,Bahia
+2020,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,25835368379.44,14873064,Bahia
+2020,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,29738977899.02,14873064,Bahia
+2020,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,20556632344.09,14873064,Bahia
+2020,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,24507643005.09,14873064,Bahia
+2020,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,21526711938.65,14873064,Bahia
+2020,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,24459757140.39,14873064,Bahia
+2020,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,25835368379.44,14873064,Bahia
+2020,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,29738977899.02,14873064,Bahia
+2020,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,30733711559.21,14873064,Bahia
+2020,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,20556632344.09,14873064,Bahia
+2020,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,24507643005.09,14873064,Bahia
+2020,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,24994698540.82,14873064,Bahia
+2020,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,21526711938.65,14873064,Bahia
+2020,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,24459757140.39,14873064,Bahia
+2020,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,23352873783.42,14873064,Bahia
+2020,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,25835368379.44,14873064,Bahia
+2020,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,29738977899.02,14873064,Bahia
+2020,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,30733711559.21,14873064,Bahia
+2020,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,28616023649.63,14873064,Bahia
+2020,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,20556632344.09,14873064,Bahia
+2020,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,24507643005.09,14873064,Bahia
+2020,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,24994698540.82,14873064,Bahia
+2020,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,23650666941.09,14873064,Bahia
+2020,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,21526711938.65,14873064,Bahia
+2020,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,24459757140.39,14873064,Bahia
+2020,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,23352873783.42,14873064,Bahia
+2020,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,21511870767.47,14873064,Bahia
+2021,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,28616023649.63,14930634,Bahia
+2021,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,29516450663.95,14930634,Bahia
+2021,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,23650666941.09,14930634,Bahia
+2021,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,24133253370.57,14930634,Bahia
+2021,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,21511870767.47,14930634,Bahia
+2021,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,19978749864.06,14930634,Bahia
+2021,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,28616023649.63,14930634,Bahia
+2021,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,29516450663.95,14930634,Bahia
+2021,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,28750415582.51,14930634,Bahia
+2021,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,23650666941.09,14930634,Bahia
+2021,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,24133253370.57,14930634,Bahia
+2021,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,23469558762.76,14930634,Bahia
+2021,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,21511870767.47,14930634,Bahia
+2021,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,19978749864.06,14930634,Bahia
+2021,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,15821114988.55,14930634,Bahia
+2021,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,28616023649.63,14930634,Bahia
+2021,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,29516450663.95,14930634,Bahia
+2021,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,28750415582.51,14930634,Bahia
+2021,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,29326652702.37,14930634,Bahia
+2021,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,23650666941.09,14930634,Bahia
+2021,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,24133253370.57,14930634,Bahia
+2021,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,23469558762.76,14930634,Bahia
+2021,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,24397457287.06,14930634,Bahia
+2021,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,21511870767.47,14930634,Bahia
+2021,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,19978749864.06,14930634,Bahia
+2021,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,15821114988.55,14930634,Bahia
+2021,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,17279788545.69,14930634,Bahia
+2022,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,29326652702.37,14985284,Bahia
+2022,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,27253528723.15,14985284,Bahia
+2022,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,24397457287.06,14985284,Bahia
+2022,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,22508662577.81,14985284,Bahia
+2022,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,17279788545.69,14985284,Bahia
+2022,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,12721590439.33,14985284,Bahia
+2022,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,29326652702.37,14985284,Bahia
+2022,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,27253528723.15,14985284,Bahia
+2022,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,27905155284.78,14985284,Bahia
+2022,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,24397457287.06,14985284,Bahia
+2022,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,22508662577.81,14985284,Bahia
+2022,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,23451513088.17,14985284,Bahia
+2022,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,17279788545.69,14985284,Bahia
+2022,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,12721590439.33,14985284,Bahia
+2022,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,13571968416.25,14985284,Bahia
+2022,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,29326652702.37,14985284,Bahia
+2022,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,27253528723.15,14985284,Bahia
+2022,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,27905155284.78,14985284,Bahia
+2022,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,28529828408.0,14985284,Bahia
+2022,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,24397457287.06,14985284,Bahia
+2022,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,22508662577.81,14985284,Bahia
+2022,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,23451513088.17,14985284,Bahia
+2022,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,23537903036.03,14985284,Bahia
+2022,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,17279788545.69,14985284,Bahia
+2022,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,12721590439.33,14985284,Bahia
+2022,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,13571968416.25,14985284,Bahia
+2022,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,16654259235.6,14985284,Bahia
+2023,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,28529828408.0,14985284,Bahia
+2023,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,27415588045.58,14985284,Bahia
+2023,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,23537903036.03,14985284,Bahia
+2023,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,22680843622.48,14985284,Bahia
+2023,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16654259235.6,14985284,Bahia
+2023,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14738118819.46,14985284,Bahia
+2023,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,28529828408.0,14985284,Bahia
+2023,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,27747645711.19,14985284,Bahia
+2023,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,28103830144.15,14985284,Bahia
+2023,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,23537903036.03,14985284,Bahia
+2023,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,22680843622.48,14985284,Bahia
+2023,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,23091443447.0,14985284,Bahia
+2023,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16654259235.6,14985284,Bahia
+2023,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14738118819.46,14985284,Bahia
+2023,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,12441447616.81,14985284,Bahia
+2023,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,28529828408.0,14985284,Bahia
+2023,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,27747645711.19,14985284,Bahia
+2023,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,28103830144.15,14985284,Bahia
+2023,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,30765769434.58,14985284,Bahia
+2023,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,23537903036.03,14985284,Bahia
+2023,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,22680843622.48,14985284,Bahia
+2023,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,23091443447.0,14985284,Bahia
+2023,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,22310423306.67,14985284,Bahia
+2023,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,16654259235.6,14985284,Bahia
+2023,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,14930229822.47,14985284,Bahia
+2023,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,13180293522.7,14985284,Bahia
+2023,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,20841097280.44,14985284,Bahia
+2024,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,30765769434.58,14659023,Bahia
+2024,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,31757237009.8,14659023,Bahia
+2024,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,22310423306.67,14659023,Bahia
+2024,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,23296804733.51,14659023,Bahia
+2024,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,20841097280.44,14659023,Bahia
+2024,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,16150280069.75,14659023,Bahia
+2024,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,30765769434.58,14659023,Bahia
+2024,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,31757237009.8,14659023,Bahia
+2024,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,38453907603.29,14659023,Bahia
+2024,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,22310423306.67,14659023,Bahia
+2024,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,23296804733.51,14659023,Bahia
+2024,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,26109182843.67,14659023,Bahia
+2024,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,20841097280.44,14659023,Bahia
+2024,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,16150280069.75,14659023,Bahia
+2024,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,22346355037.73,14659023,Bahia
+2024,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,30765769434.58,14659023,Bahia
+2024,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,31757237009.8,14659023,Bahia
+2024,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,38453907603.29,14659023,Bahia
+2024,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,35265978257.27,14659023,Bahia
+2024,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,22310423306.67,14659023,Bahia
+2024,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,23296804733.51,14659023,Bahia
+2024,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,26109182843.67,14659023,Bahia
+2024,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,26582288167.03,14659023,Bahia
+2024,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,20841097280.44,14659023,Bahia
+2024,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,16150280069.75,14659023,Bahia
+2024,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,22346355037.73,14659023,Bahia
+2024,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,24083252428.23,14659023,Bahia
+2025,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,35265978257.27,14659023,Bahia
+2025,1,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,33928077385.28,14659023,Bahia
+2025,1,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,26582288167.03,14659023,Bahia
+2025,1,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,25964630511.39,14659023,Bahia
+2025,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,24083252428.23,14659023,Bahia
+2025,1,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,20707325875.93,14659023,Bahia
+2025,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,35265978257.27,14659023,Bahia
+2025,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,33928077385.28,14659023,Bahia
+2025,2,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,34371461396.19,14659023,Bahia
+2025,2,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,26582288167.03,14659023,Bahia
+2025,2,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,25964630511.39,14659023,Bahia
+2025,2,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,26669120310.05,14659023,Bahia
+2025,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,24083252428.23,14659023,Bahia
+2025,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,20707325875.93,14659023,Bahia
+2025,2,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,21584909096.97,14659023,Bahia
+2025,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),SALDO DO EXERCÍCIO ANTERIOR,35265978257.27,14659023,Bahia
+2025,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 1º Quadrimestre,33928077385.28,14659023,Bahia
+2025,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 2º Quadrimestre,34371461396.19,14659023,Bahia
+2025,3,BA,DividaConsolidada,DÍVIDA CONSOLIDADA - DC (I),Até o 3º Quadrimestre,34741201081.59,14659023,Bahia
+2025,3,BA,DividaContratual,Dívida Contratual,SALDO DO EXERCÍCIO ANTERIOR,26582288167.03,14659023,Bahia
+2025,3,BA,DividaContratual,Dívida Contratual,Até o 1º Quadrimestre,25964630511.39,14659023,Bahia
+2025,3,BA,DividaContratual,Dívida Contratual,Até o 2º Quadrimestre,26669120310.05,14659023,Bahia
+2025,3,BA,DividaContratual,Dívida Contratual,Até o 3º Quadrimestre,28017978452.06,14659023,Bahia
+2025,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),SALDO DO EXERCÍCIO ANTERIOR,24083252428.23,14659023,Bahia
+2025,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 1º Quadrimestre,20707325875.93,14659023,Bahia
+2025,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 2º Quadrimestre,21584909096.97,14659023,Bahia
+2025,3,BA,DividaConsolidadaLiquida,DÍVIDA CONSOLIDADA LÍQUIDA (DCL) (III) = (I - II),Até o 3º Quadrimestre,24569330296.45,14659023,Bahia

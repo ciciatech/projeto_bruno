@@ -8,7 +8,26 @@ st.set_page_config(page_title="Transferências", layout="wide")
 st.title("Transferências Constitucionais")
 
 PROC = PROCESSED_DIR
-df = pd.read_parquet(PROC / "transferencias.parquet")
+
+
+def _load_all_ufs(subdir, filename):
+    frames = []
+    for uf_dir in sorted((PROC / subdir).glob("*")):
+        csv_path = uf_dir / filename
+        if csv_path.exists():
+            frames.append(pd.read_csv(csv_path))
+    if frames:
+        return pd.concat(frames, ignore_index=True)
+    return pd.DataFrame()
+
+
+try:
+    df = pd.read_parquet(PROC / "transferencias.parquet")
+except Exception:
+    df = _load_all_ufs("transferencias", "transferencias.csv")
+    if df.empty:
+        st.warning("Dados de transferências não encontrados. Execute o ETL.")
+        st.stop()
 
 # --- Filtros ---
 col1, col2, col3 = st.columns(3)

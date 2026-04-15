@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,5145427108.27,3321730,Ativo Total,Alagoas
+2015,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2061201324.2,3321730,Ativo Circulante,Alagoas
+2015,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,3084225784.07,3321730,Ativo Não Circulante,Alagoas
+2015,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,5145427108.27,3321730,Passivo Total,Alagoas
+2015,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1592967870.12,3321730,Passivo Circulante,Alagoas
+2015,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,10874664504.35,3321730,Passivo Não Circulante,Alagoas
+2015,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-7322205266.2,3321730,Patrimônio Líquido,Alagoas
+2016,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,6416015422.51,3340932,Ativo Total,Alagoas
+2016,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2828179720.52,3340932,Ativo Circulante,Alagoas
+2016,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,3587835701.99,3340932,Ativo Não Circulante,Alagoas
+2016,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,6416015422.51,3340932,Passivo Total,Alagoas
+2016,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1739925579.49,3340932,Passivo Circulante,Alagoas
+2016,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,8507526459.22,3340932,Passivo Não Circulante,Alagoas
+2016,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-3831436616.2,3340932,Patrimônio Líquido,Alagoas
+2017,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,7473517194.09,3358963,Ativo Total,Alagoas
+2017,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2822508521.49,3358963,Ativo Circulante,Alagoas
+2017,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,4651008672.6,3358963,Ativo Não Circulante,Alagoas
+2017,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,7473517194.09,3358963,Passivo Total,Alagoas
+2017,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1252990607.82,3358963,Passivo Circulante,Alagoas
+2017,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,8696246723.85,3358963,Passivo Não Circulante,Alagoas
+2017,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-2475720137.58,3358963,Patrimônio Líquido,Alagoas
+2018,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,8625969282.3,3358963,Ativo Total,Alagoas
+2018,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3141782527.91,3358963,Ativo Circulante,Alagoas
+2018,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5484186754.39,3358963,Ativo Não Circulante,Alagoas
+2018,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,8625969282.3,3358963,Passivo Total,Alagoas
+2018,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1375434040.95,3358963,Passivo Circulante,Alagoas
+2018,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,9801240826.16,3358963,Passivo Não Circulante,Alagoas
+2018,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-2550705584.81,3358963,Patrimônio Líquido,Alagoas
+2019,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,9730336039.52,3322820,Ativo Total,Alagoas
+2019,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3611503854.93,3322820,Ativo Circulante,Alagoas
+2019,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,6118832184.59,3322820,Ativo Não Circulante,Alagoas
+2019,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,9730336039.52,3322820,Passivo Total,Alagoas
+2019,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1433649314.64,3322820,Passivo Circulante,Alagoas
+2019,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,10110859369.78,3322820,Passivo Não Circulante,Alagoas
+2019,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-1814172644.9,3322820,Patrimônio Líquido,Alagoas
+2020,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,11781087092.4,3337357,Ativo Total,Alagoas
+2020,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4778088026.09,3337357,Ativo Circulante,Alagoas
+2020,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,7002999066.31,3337357,Ativo Não Circulante,Alagoas
+2020,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,11781087092.4,3337357,Passivo Total,Alagoas
+2020,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1043728892.51,3337357,Passivo Circulante,Alagoas
+2020,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,11342805212.81,3337357,Passivo Não Circulante,Alagoas
+2020,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-605447012.92,3337357,Patrimônio Líquido,Alagoas
+2021,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,14838115940.19,3351543,Ativo Total,Alagoas
+2021,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,5991936907.64,3351543,Ativo Circulante,Alagoas
+2021,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,8846179032.55,3351543,Ativo Não Circulante,Alagoas
+2021,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,14838115940.19,3351543,Passivo Total,Alagoas
+2021,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1263442694.11,3351543,Passivo Circulante,Alagoas
+2021,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,11381483093.68,3351543,Passivo Não Circulante,Alagoas
+2021,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,2193190152.4,3351543,Patrimônio Líquido,Alagoas
+2022,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,16141379659.56,3365351,Ativo Total,Alagoas
+2022,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4670017111.48,3365351,Ativo Circulante,Alagoas
+2022,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11471362548.08,3365351,Ativo Não Circulante,Alagoas
+2022,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,16141379659.56,3365351,Passivo Total,Alagoas
+2022,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1299245566.24,3365351,Passivo Circulante,Alagoas
+2022,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,12644812945.8,3365351,Passivo Não Circulante,Alagoas
+2022,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,2197321147.52,3365351,Patrimônio Líquido,Alagoas
+2023,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,24617190727.78,3365351,Ativo Total,Alagoas
+2023,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4912930961.63,3365351,Ativo Circulante,Alagoas
+2023,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,19704259766.15,3365351,Ativo Não Circulante,Alagoas
+2023,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,24617190727.78,3365351,Passivo Total,Alagoas
+2023,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1787196921.99,3365351,Passivo Circulante,Alagoas
+2023,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,13795588785.84,3365351,Passivo Não Circulante,Alagoas
+2023,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,9034405019.95,3365351,Patrimônio Líquido,Alagoas
+2024,AL,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,27590613740.97,3125254,Ativo Total,Alagoas
+2024,AL,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,5225571069.06,3125254,Ativo Circulante,Alagoas
+2024,AL,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,22365042671.91,3125254,Ativo Não Circulante,Alagoas
+2024,AL,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,27590613740.97,3125254,Passivo Total,Alagoas
+2024,AL,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2451580647.62,3125254,Passivo Circulante,Alagoas
+2024,AL,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,33489622002.77,3125254,Passivo Não Circulante,Alagoas
+2024,AL,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-8350588909.42,3125254,Patrimônio Líquido,Alagoas

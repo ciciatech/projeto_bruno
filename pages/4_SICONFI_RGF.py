@@ -8,7 +8,26 @@ st.set_page_config(page_title="SICONFI RGF", layout="wide")
 st.title("SICONFI — Gestão Fiscal (RGF)")
 
 PROC = PROCESSED_DIR
-df = pd.read_parquet(PROC / "rgf_resumo.parquet")
+
+
+def _load_all_ufs(subdir, filename):
+    frames = []
+    for uf_dir in sorted((PROC / subdir).glob("*")):
+        csv_path = uf_dir / filename
+        if csv_path.exists():
+            frames.append(pd.read_csv(csv_path))
+    if frames:
+        return pd.concat(frames, ignore_index=True)
+    return pd.DataFrame()
+
+
+try:
+    df = pd.read_parquet(PROC / "rgf_resumo.parquet")
+except Exception:
+    df = _load_all_ufs("siconfi_rgf", "rgf_resumo.csv")
+    if df.empty:
+        st.warning("Dados RGF não encontrados. Execute o ETL.")
+        st.stop()
 
 # --- Filtros ---
 col1, col2 = st.columns(2)

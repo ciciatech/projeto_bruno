@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,6482072518.85,3194718,Ativo Total,Piauí
+2015,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1150177544.71,3194718,Ativo Circulante,Piauí
+2015,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,5331894974.14,3194718,Ativo Não Circulante,Piauí
+2015,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,6482072518.85,3194718,Passivo Total,Piauí
+2015,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,323854486.66,3194718,Passivo Circulante,Piauí
+2015,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4713148662.8,3194718,Passivo Não Circulante,Piauí
+2015,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,1445069369.39,3194718,Patrimônio Líquido,Piauí
+2016,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,8054513954.68,3204028,Ativo Total,Piauí
+2016,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1647263604.19,3204028,Ativo Circulante,Piauí
+2016,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,6407250350.49,3204028,Ativo Não Circulante,Piauí
+2016,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,8054513954.68,3204028,Passivo Total,Piauí
+2016,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,441983721.29,3204028,Passivo Circulante,Piauí
+2016,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,4675569146.65,3204028,Passivo Não Circulante,Piauí
+2016,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,2936961086.74,3204028,Patrimônio Líquido,Piauí
+2017,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,9173684670.23,3212180,Ativo Total,Piauí
+2017,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1766250713.73,3212180,Ativo Circulante,Piauí
+2017,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,7407433956.5,3212180,Ativo Não Circulante,Piauí
+2017,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,9173684670.23,3212180,Passivo Total,Piauí
+2017,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,809842887.14,3212180,Passivo Circulante,Piauí
+2017,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,5145303910.08,3212180,Passivo Não Circulante,Piauí
+2017,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,3218537873.01,3212180,Patrimônio Líquido,Piauí
+2018,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,11057764829.4,3212180,Ativo Total,Piauí
+2018,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2554820887.6,3212180,Ativo Circulante,Piauí
+2018,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,8502943941.8,3212180,Ativo Não Circulante,Piauí
+2018,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,11057764829.4,3212180,Passivo Total,Piauí
+2018,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2337586001.05,3212180,Passivo Circulante,Piauí
+2018,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,6310305760.88,3212180,Passivo Não Circulante,Piauí
+2018,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,2409873067.47,3212180,Patrimônio Líquido,Piauí
+2019,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,11715240648.63,3264531,Ativo Total,Piauí
+2019,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2199896356.62,3264531,Ativo Circulante,Piauí
+2019,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,9515344292.01,3264531,Ativo Não Circulante,Piauí
+2019,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,11715240648.63,3264531,Passivo Total,Piauí
+2019,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1718243200.24,3264531,Passivo Circulante,Piauí
+2019,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,33635409181.51,3264531,Passivo Não Circulante,Piauí
+2019,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-23638411733.12,3264531,Patrimônio Líquido,Piauí
+2020,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,15282397137.07,3273227,Ativo Total,Piauí
+2020,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3701433038.53,3273227,Ativo Circulante,Piauí
+2020,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11580964098.54,3273227,Ativo Não Circulante,Piauí
+2020,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,15282397137.07,3273227,Passivo Total,Piauí
+2020,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2528580106.84,3273227,Passivo Circulante,Piauí
+2020,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,31884737814.91,3273227,Passivo Não Circulante,Piauí
+2020,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-19130920784.68,3273227,Patrimônio Líquido,Piauí
+2021,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,18078269631.46,3281480,Ativo Total,Piauí
+2021,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4835772179.29,3281480,Ativo Circulante,Piauí
+2021,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,13242497452.17,3281480,Ativo Não Circulante,Piauí
+2021,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,18078269631.46,3281480,Passivo Total,Piauí
+2021,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1333146121.11,3281480,Passivo Circulante,Piauí
+2021,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,31431622580.06,3281480,Passivo Não Circulante,Piauí
+2021,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-14686499069.71,3281480,Patrimônio Líquido,Piauí
+2022,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,19673276763.44,3289290,Ativo Total,Piauí
+2022,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3561917395.95,3289290,Ativo Circulante,Piauí
+2022,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,16111359367.49,3289290,Ativo Não Circulante,Piauí
+2022,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,19673276763.44,3289290,Passivo Total,Piauí
+2022,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1314318521.34,3289290,Passivo Circulante,Piauí
+2022,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,33745910742.57,3289290,Passivo Não Circulante,Piauí
+2022,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-15386952500.47,3289290,Patrimônio Líquido,Piauí
+2023,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,23518266546.59,3289290,Ativo Total,Piauí
+2023,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4718830514.5,3289290,Ativo Circulante,Piauí
+2023,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,18799436032.09,3289290,Ativo Não Circulante,Piauí
+2023,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,23518266546.59,3289290,Passivo Total,Piauí
+2023,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1529575144.51,3289290,Passivo Circulante,Piauí
+2023,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,40469443358.12,3289290,Passivo Não Circulante,Piauí
+2023,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-18480751956.04,3289290,Patrimônio Líquido,Piauí
+2024,PI,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,25404013772.41,3270174,Ativo Total,Piauí
+2024,PI,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4070791021.16,3270174,Ativo Circulante,Piauí
+2024,PI,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,21333222751.25,3270174,Ativo Não Circulante,Piauí
+2024,PI,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,25404013772.41,3270174,Passivo Total,Piauí
+2024,PI,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2318436862.53,3270174,Passivo Circulante,Piauí
+2024,PI,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,35173429754.99,3270174,Passivo Não Circulante,Piauí
+2024,PI,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-12087852845.11,3270174,Patrimônio Líquido,Piauí

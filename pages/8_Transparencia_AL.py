@@ -9,12 +9,16 @@ st.set_page_config(page_title="Transparencia AL", layout="wide")
 st.title("Transparencia AL — Execucao Orcamentaria de Alagoas")
 
 PROC = PROCESSED_DIR
-path = PROC / "transparencia_al.parquet"
-if not path.exists():
-    st.warning("Dados de AL nao encontrados. Execute o ETL.")
-    st.stop()
-
-df = pd.read_parquet(path)
+path_pq = PROC / "transparencia_al.parquet"
+csv_path = PROC / "execucao_orcamentaria" / "al" / "transparencia_al.csv"
+try:
+    df = pd.read_parquet(path_pq)
+except Exception:
+    if csv_path.exists():
+        df = pd.read_csv(csv_path)
+    else:
+        st.warning("Dados de AL nao encontrados. Execute o ETL.")
+        st.stop()
 df = df.dropna(subset=["unidade_gestora"])
 
 # --- Filtros ---

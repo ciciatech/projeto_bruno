@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,30518627587.89,8842791,Ativo Total,Ceará
+2015,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3883784596.91,8842791,Ativo Circulante,Ceará
+2015,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,26634842990.98,8842791,Ativo Não Circulante,Ceará
+2015,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,30518627587.89,8842791,Passivo Total,Ceará
+2015,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,950427404.91,8842791,Passivo Circulante,Ceará
+2015,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,11112187828.96,8842791,Passivo Não Circulante,Ceará
+2015,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,18456012354.02,8842791,Patrimônio Líquido,Ceará
+2016,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,35211904738.49,8904459,Ativo Total,Ceará
+2016,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,5279324033.57,8904459,Ativo Circulante,Ceará
+2016,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,29932580704.92,8904459,Ativo Não Circulante,Ceará
+2016,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,35211904738.49,8904459,Passivo Total,Ceará
+2016,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,882339757.77,8904459,Passivo Circulante,Ceará
+2016,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,10546392188.97,8904459,Passivo Não Circulante,Ceará
+2016,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,23783172791.75,8904459,Patrimônio Líquido,Ceará
+2017,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,41077011900.89,8963663,Ativo Total,Ceará
+2017,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7350529336.13,8963663,Ativo Circulante,Ceará
+2017,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,33726482564.76,8963663,Ativo Não Circulante,Ceará
+2017,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,41077011900.89,8963663,Passivo Total,Ceará
+2017,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1599486460.56,8963663,Passivo Circulante,Ceará
+2017,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,12443678534.44,8963663,Passivo Não Circulante,Ceará
+2017,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,27033846905.89,8963663,Patrimônio Líquido,Ceará
+2018,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,46486409799.33,8963663,Ativo Total,Ceará
+2018,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7289535621.65,8963663,Ativo Circulante,Ceará
+2018,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,39196874177.68,8963663,Ativo Não Circulante,Ceará
+2018,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,46486409799.33,8963663,Passivo Total,Ceará
+2018,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2655384806.97,8963663,Passivo Circulante,Ceará
+2018,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,13962635208.9,8963663,Passivo Não Circulante,Ceará
+2018,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,29868389783.46,8963663,Patrimônio Líquido,Ceará
+2019,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,58528149006.97,9075649,Ativo Total,Ceará
+2019,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,16494603673.7,9075649,Ativo Circulante,Ceará
+2019,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,42033545333.27,9075649,Ativo Não Circulante,Ceará
+2019,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,58528149006.97,9075649,Passivo Total,Ceará
+2019,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2914600576.71,9075649,Passivo Circulante,Ceará
+2019,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,15257508226.94,9075649,Passivo Não Circulante,Ceará
+2019,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,40356040203.32,9075649,Patrimônio Líquido,Ceará
+2020,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,63678848289.82,9132078,Ativo Total,Ceará
+2020,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,23407821933.19,9132078,Ativo Circulante,Ceará
+2020,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,40271026356.63,9132078,Ativo Não Circulante,Ceará
+2020,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,63678848289.82,9132078,Passivo Total,Ceará
+2020,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3212590165.74,9132078,Passivo Circulante,Ceará
+2020,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,18016475997.96,9132078,Passivo Não Circulante,Ceará
+2020,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,42449782126.12,9132078,Patrimônio Líquido,Ceará
+2021,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,67466531997.76,9187103,Ativo Total,Ceará
+2021,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,24667504191.41,9187103,Ativo Circulante,Ceará
+2021,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,42799027806.35,9187103,Ativo Não Circulante,Ceará
+2021,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,67466531997.76,9187103,Passivo Total,Ceará
+2021,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3476944270.73,9187103,Passivo Circulante,Ceará
+2021,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,19230128736.21,9187103,Passivo Não Circulante,Ceará
+2021,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,44759458990.82,9187103,Patrimônio Líquido,Ceará
+2022,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,66655431808.88,9240580,Ativo Total,Ceará
+2022,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,19634084897.4,9240580,Ativo Circulante,Ceará
+2022,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,47021346911.48,9240580,Ativo Não Circulante,Ceará
+2022,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,66655431808.88,9240580,Passivo Total,Ceará
+2022,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3681530526.42,9240580,Passivo Circulante,Ceará
+2022,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,18307984885.67,9240580,Passivo Não Circulante,Ceará
+2022,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,44665916396.79,9240580,Patrimônio Líquido,Ceará
+2023,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,71210855451.15,9240580,Ativo Total,Ceará
+2023,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,20259292016.22,9240580,Ativo Circulante,Ceará
+2023,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,50951563434.93,9240580,Ativo Não Circulante,Ceará
+2023,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,71210855451.15,9240580,Passivo Total,Ceará
+2023,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,4529137936.32,9240580,Passivo Circulante,Ceará
+2023,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,17751105198.05,9240580,Passivo Não Circulante,Ceará
+2023,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,48930612316.78,9240580,Patrimônio Líquido,Ceará
+2024,CE,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,73584911690.43,8936431,Ativo Total,Ceará
+2024,CE,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,20687444696.89,8936431,Ativo Circulante,Ceará
+2024,CE,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,52897466993.54,8936431,Ativo Não Circulante,Ceará
+2024,CE,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,73584911690.43,8936431,Passivo Total,Ceará
+2024,CE,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,10527678788.96,8936431,Passivo Circulante,Ceará
+2024,CE,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,106977451489.65,8936431,Passivo Não Circulante,Ceará
+2024,CE,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-43920218588.18,8936431,Patrimônio Líquido,Ceará

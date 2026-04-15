@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,10864940608.79,3408510,Ativo Total,Rio Grande do Norte
+2015,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,1664545494.56,3408510,Ativo Circulante,Rio Grande do Norte
+2015,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,9200395114.23,3408510,Ativo Não Circulante,Rio Grande do Norte
+2015,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,10864940608.79,3408510,Passivo Total,Rio Grande do Norte
+2015,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,494737111.13,3408510,Passivo Circulante,Rio Grande do Norte
+2015,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,1992161570.91,3408510,Passivo Não Circulante,Rio Grande do Norte
+2015,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,8378041926.75,3408510,Patrimônio Líquido,Rio Grande do Norte
+2016,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,12318447207.86,3442175,Ativo Total,Rio Grande do Norte
+2016,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2246520803.51,3442175,Ativo Circulante,Rio Grande do Norte
+2016,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,10071926404.35,3442175,Ativo Não Circulante,Rio Grande do Norte
+2016,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,12318447207.86,3442175,Passivo Total,Rio Grande do Norte
+2016,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1150203654.11,3442175,Passivo Circulante,Rio Grande do Norte
+2016,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,2311680952.11,3442175,Passivo Não Circulante,Rio Grande do Norte
+2016,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,8856562601.64,3442175,Patrimônio Líquido,Rio Grande do Norte
+2017,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,13806399520.27,3474998,Ativo Total,Rio Grande do Norte
+2017,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2321735896.95,3474998,Ativo Circulante,Rio Grande do Norte
+2017,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11484663623.32,3474998,Ativo Não Circulante,Rio Grande do Norte
+2017,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,13806399520.27,3474998,Passivo Total,Rio Grande do Norte
+2017,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1825607280.79,3474998,Passivo Circulante,Rio Grande do Norte
+2017,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,2401874743.89,3474998,Passivo Não Circulante,Rio Grande do Norte
+2017,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,9578917495.59,3474998,Patrimônio Líquido,Rio Grande do Norte
+2018,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,15202767632.9,3474998,Ativo Total,Rio Grande do Norte
+2018,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2625915871.57,3474998,Ativo Circulante,Rio Grande do Norte
+2018,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,12576851761.33,3474998,Ativo Não Circulante,Rio Grande do Norte
+2018,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,15202767632.9,3474998,Passivo Total,Rio Grande do Norte
+2018,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3739372410.5,3474998,Passivo Circulante,Rio Grande do Norte
+2018,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,2810448183.57,3474998,Passivo Não Circulante,Rio Grande do Norte
+2018,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,8652947038.83,3474998,Patrimônio Líquido,Rio Grande do Norte
+2019,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,10055082782.66,3479010,Ativo Total,Rio Grande do Norte
+2019,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3428976640.31,3479010,Ativo Circulante,Rio Grande do Norte
+2019,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,6626106142.35,3479010,Ativo Não Circulante,Rio Grande do Norte
+2019,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,10055082782.66,3479010,Passivo Total,Rio Grande do Norte
+2019,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3744316056.66,3479010,Passivo Circulante,Rio Grande do Norte
+2019,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,65308625226.34,3479010,Passivo Não Circulante,Rio Grande do Norte
+2019,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-58997858500.34,3479010,Patrimônio Líquido,Rio Grande do Norte
+2020,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,12919007839.68,3506853,Ativo Total,Rio Grande do Norte
+2020,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,4225716293.4,3506853,Ativo Circulante,Rio Grande do Norte
+2020,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,8693291546.28,3506853,Ativo Não Circulante,Rio Grande do Norte
+2020,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,12919007839.68,3506853,Passivo Total,Rio Grande do Norte
+2020,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,4381321958.4,3506853,Passivo Circulante,Rio Grande do Norte
+2020,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,62763163115.29,3506853,Passivo Não Circulante,Rio Grande do Norte
+2020,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-54225477234.01,3506853,Patrimônio Líquido,Rio Grande do Norte
+2021,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,15936589490.84,3534165,Ativo Total,Rio Grande do Norte
+2021,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,5088647955.58,3534165,Ativo Circulante,Rio Grande do Norte
+2021,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,10847941535.26,3534165,Ativo Não Circulante,Rio Grande do Norte
+2021,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,15936589490.84,3534165,Passivo Total,Rio Grande do Norte
+2021,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,4101234933.64,3534165,Passivo Circulante,Rio Grande do Norte
+2021,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,63621233992.55,3534165,Passivo Não Circulante,Rio Grande do Norte
+2021,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-51785879435.35,3534165,Patrimônio Líquido,Rio Grande do Norte
+2022,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,17274717487.64,3560903,Ativo Total,Rio Grande do Norte
+2022,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,5813952904.99,3560903,Ativo Circulante,Rio Grande do Norte
+2022,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11460764582.65,3560903,Ativo Não Circulante,Rio Grande do Norte
+2022,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,17274717487.64,3560903,Passivo Total,Rio Grande do Norte
+2022,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3753309502.14,3560903,Passivo Circulante,Rio Grande do Norte
+2022,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,58861515421.78,3560903,Passivo Não Circulante,Rio Grande do Norte
+2022,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-45340107436.28,3560903,Patrimônio Líquido,Rio Grande do Norte
+2023,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,18536356544.19,3560903,Ativo Total,Rio Grande do Norte
+2023,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,6379243961.51,3560903,Ativo Circulante,Rio Grande do Norte
+2023,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,12157112582.68,3560903,Ativo Não Circulante,Rio Grande do Norte
+2023,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,18536356544.19,3560903,Passivo Total,Rio Grande do Norte
+2023,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3598652401.12,3560903,Passivo Circulante,Rio Grande do Norte
+2023,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,83001403091.66,3560903,Passivo Não Circulante,Rio Grande do Norte
+2023,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-68063698948.59,3560903,Patrimônio Líquido,Rio Grande do Norte
+2024,RN,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,22363916544.67,3303953,Ativo Total,Rio Grande do Norte
+2024,RN,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,7442533743.66,3303953,Ativo Circulante,Rio Grande do Norte
+2024,RN,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,14921382801.01,3303953,Ativo Não Circulante,Rio Grande do Norte
+2024,RN,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,22363916544.67,3303953,Passivo Total,Rio Grande do Norte
+2024,RN,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,4205319080.25,3303953,Passivo Circulante,Rio Grande do Norte
+2024,RN,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,86140025375.37,3303953,Passivo Não Circulante,Rio Grande do Norte
+2024,RN,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-67981427910.95,3303953,Patrimônio Líquido,Rio Grande do Norte

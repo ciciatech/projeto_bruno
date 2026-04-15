@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 from pipeline.config import PROCESSED_DIR
 
@@ -11,30 +12,63 @@ st.set_page_config(
 
 PROC = PROCESSED_DIR
 
+
+def _contar_registros(caminhos: list[str]) -> int | None:
+    """Tenta ler o primeiro CSV encontrado e retorna o número de registros."""
+    for rel in caminhos:
+        path = PROC / rel
+        if path.exists():
+            return len(pd.read_csv(path))
+    return None
+
+
 st.title("Dados Públicos — Nordeste (2015–2025)")
 st.markdown("**Tese DESP/UFC** — Impactos do Crédito no Crescimento Econômico do Nordeste")
 
 st.divider()
 
 datasets = {
-    "BACEN Indicadores": ("bacen.parquet", "Séries econômicas: IBCR, SELIC, IPCA, crédito, inadimplência"),
-    "Bolsa Família": ("bolsa_familia.parquet", "Novo Bolsa Família: capitais do NE (2024–2026)"),
-    "SICONFI RREO": ("rreo_resumo.parquet", "Receitas e despesas orçamentárias dos 9 estados"),
-    "SICONFI RGF": ("rgf_resumo.parquet", "Gestão fiscal: pessoal, dívida consolidada"),
-    "SICONFI DCA": ("dca_resumo.parquet", "Balanço patrimonial: ativo, passivo, patrimônio líquido"),
-    "Transferências": ("transferencias.parquet", "Transferências constitucionais: FPE, FUNDEB e outras"),
-    "SIOF-CE": ("siof_ce.parquet", "Execução orçamentária do Ceará: dotação, empenho e pagamento (2015–2026)"),
-    "Transparência AL": ("transparencia_al.parquet", "Execução orçamentária de Alagoas: dotação, empenho e pagamento (2015–2025)"),
+    "BACEN Indicadores": {
+        "caminhos": ["bacen/nacional/bacen.csv", "bacen.parquet"],
+        "desc": "Séries econômicas: IBCR, SELIC, IPCA, crédito, inadimplência",
+    },
+    "SICONFI RREO": {
+        "caminhos": ["siconfi_rreo/ce/rreo_resumo.csv", "rreo_resumo.parquet"],
+        "desc": "Receitas e despesas orçamentárias dos 9 estados",
+    },
+    "SICONFI RGF": {
+        "caminhos": ["siconfi_rgf/ce/rgf_resumo.csv", "rgf_resumo.parquet"],
+        "desc": "Gestão fiscal: pessoal, dívida consolidada",
+    },
+    "SICONFI DCA": {
+        "caminhos": ["siconfi_dca/ce/dca_resumo.csv", "dca_resumo.parquet"],
+        "desc": "Balanço patrimonial: ativo, passivo, patrimônio líquido",
+    },
+    "Transferências": {
+        "caminhos": ["transferencias/ce/transferencias.csv", "transferencias.parquet"],
+        "desc": "Transferências constitucionais: FPE, FUNDEB e outras",
+    },
+    "SIOF-CE Obras": {
+        "caminhos": ["execucao_orcamentaria/ce/siof_obras_secretaria.csv", "siof_ce.parquet"],
+        "desc": "Obras e Instalações do Ceará (elem. 51) por secretaria (2015–2026)",
+    },
+    "CAGED": {
+        "caminhos": ["caged/nordeste/caged_saldo_mensal.csv"],
+        "desc": "Saldo mensal de empregos formais — Nordeste",
+    },
+    "RAIS": {
+        "caminhos": ["rais/nordeste/rais_vinculos.csv"],
+        "desc": "Vínculos formais ativos — Nordeste",
+    },
 }
 
 cols = st.columns(3)
-for i, (nome, (arquivo, desc)) in enumerate(datasets.items()):
-    path = PROC / arquivo
+for i, (nome, info) in enumerate(datasets.items()):
     with cols[i % 3]:
-        if path.exists():
-            df = pd.read_parquet(path)
-            st.metric(label=nome, value=f"{len(df):,} registros")
-            st.caption(desc)
+        n = _contar_registros(info["caminhos"])
+        if n is not None:
+            st.metric(label=nome, value=f"{n:,} registros")
+            st.caption(info["desc"])
         else:
             st.metric(label=nome, value="—")
             st.caption("Execute o ETL primeiro.")

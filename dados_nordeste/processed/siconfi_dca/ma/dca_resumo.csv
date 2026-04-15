@@ -1,0 +1,71 @@
+﻿exercicio,uf,cod_conta,conta,valor,populacao,conta_resumo,uf_nome
+2015,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,14858432707.78,6850884,Ativo Total,Maranhão
+2015,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2871897082.69,6850884,Ativo Circulante,Maranhão
+2015,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11986535625.09,6850884,Ativo Não Circulante,Maranhão
+2015,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,14858432707.78,6850884,Passivo Total,Maranhão
+2015,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1779779725.85,6850884,Passivo Circulante,Maranhão
+2015,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,23877922334.9,6850884,Passivo Não Circulante,Maranhão
+2015,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-10799269352.97,6850884,Patrimônio Líquido,Maranhão
+2016,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,17482502065.23,6904241,Ativo Total,Maranhão
+2016,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3454283873.95,6904241,Ativo Circulante,Maranhão
+2016,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,14028218191.28,6904241,Ativo Não Circulante,Maranhão
+2016,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,17482502065.23,6904241,Passivo Total,Maranhão
+2016,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,1920970724.86,6904241,Passivo Circulante,Maranhão
+2016,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,29272545123.08,6904241,Passivo Não Circulante,Maranhão
+2016,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-13711013782.71,6904241,Patrimônio Líquido,Maranhão
+2017,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,14529205237.76,6954036,Ativo Total,Maranhão
+2017,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2809879772.35,6954036,Ativo Circulante,Maranhão
+2017,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,11719325465.41,6954036,Ativo Não Circulante,Maranhão
+2017,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,14529205237.76,6954036,Passivo Total,Maranhão
+2017,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,2270165988.64,6954036,Passivo Circulante,Maranhão
+2017,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,38191209027.32,6954036,Passivo Não Circulante,Maranhão
+2017,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-25932169778.2,6954036,Patrimônio Líquido,Maranhão
+2018,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,16213573029.13,6954036,Ativo Total,Maranhão
+2018,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2622293487.85,6954036,Ativo Circulante,Maranhão
+2018,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,13591279541.28,6954036,Ativo Não Circulante,Maranhão
+2018,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,16213573029.13,6954036,Passivo Total,Maranhão
+2018,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3362333547.61,6954036,Passivo Circulante,Maranhão
+2018,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,39397555804.47,6954036,Passivo Não Circulante,Maranhão
+2018,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-26546316322.95,6954036,Patrimônio Líquido,Maranhão
+2019,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,16893826588.31,7035055,Ativo Total,Maranhão
+2019,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2482354214.66,7035055,Ativo Circulante,Maranhão
+2019,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,14411472373.65,7035055,Ativo Não Circulante,Maranhão
+2019,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,16893826588.31,7035055,Passivo Total,Maranhão
+2019,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,9296154300.85,7035055,Passivo Circulante,Maranhão
+2019,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,42610210415.48,7035055,Passivo Não Circulante,Maranhão
+2019,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-35012538128.02,7035055,Patrimônio Líquido,Maranhão
+2020,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,18289724758.58,7075181,Ativo Total,Maranhão
+2020,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,3094496223.31,7075181,Ativo Circulante,Maranhão
+2020,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,15195228535.27,7075181,Ativo Não Circulante,Maranhão
+2020,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,18289724758.58,7075181,Passivo Total,Maranhão
+2020,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,9587165096.87,7075181,Passivo Circulante,Maranhão
+2020,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,104395241691.43,7075181,Passivo Não Circulante,Maranhão
+2020,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-95692682029.72,7075181,Patrimônio Líquido,Maranhão
+2021,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,21309830017.2,7114598,Ativo Total,Maranhão
+2021,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,2993491262.7,7114598,Ativo Circulante,Maranhão
+2021,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,18316338754.5,7114598,Ativo Não Circulante,Maranhão
+2021,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,21309830017.2,7114598,Passivo Total,Maranhão
+2021,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,9570216750.84,7114598,Passivo Circulante,Maranhão
+2021,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo não-Circulante,88785909729.52,7114598,Passivo Não Circulante,Maranhão
+2021,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-77046296463.16,7114598,Patrimônio Líquido,Maranhão
+2022,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,27689199218.59,7153262,Ativo Total,Maranhão
+2022,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,6407326565.69,7153262,Ativo Circulante,Maranhão
+2022,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,21281872652.9,7153262,Ativo Não Circulante,Maranhão
+2022,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,27689199218.59,7153262,Passivo Total,Maranhão
+2022,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,6803323982.77,7153262,Passivo Circulante,Maranhão
+2022,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,88873821522.45,7153262,Passivo Não Circulante,Maranhão
+2022,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-67987946286.63,7153262,Patrimônio Líquido,Maranhão
+2023,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,32222167134.09,7153262,Ativo Total,Maranhão
+2023,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,8458272212.14,7153262,Ativo Circulante,Maranhão
+2023,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,23763894921.95,7153262,Ativo Não Circulante,Maranhão
+2023,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,32222167134.09,7153262,Passivo Total,Maranhão
+2023,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,4918538240.46,7153262,Passivo Circulante,Maranhão
+2023,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,63672582606.06,7153262,Passivo Não Circulante,Maranhão
+2023,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-36368953712.43,7153262,Patrimônio Líquido,Maranhão
+2024,MA,P1.0.0.0.0.00.00,1.0.0.0.0.00.00 - Ativo,34860268661.8,6800605,Ativo Total,Maranhão
+2024,MA,P1.1.0.0.0.00.00,1.1.0.0.0.00.00 - Ativo Circulante,8822623917.22,6800605,Ativo Circulante,Maranhão
+2024,MA,P1.2.0.0.0.00.00,1.2.0.0.0.00.00 - Ativo não Circulante,26037644744.58,6800605,Ativo Não Circulante,Maranhão
+2024,MA,P2.0.0.0.0.00.00,2.0.0.0.0.00.00 - Passivo e Patrimônio Liquido,34860268661.8,6800605,Passivo Total,Maranhão
+2024,MA,P2.1.0.0.0.00.00,2.1.0.0.0.00.00 - Passivo Circulante,3879480966.94,6800605,Passivo Circulante,Maranhão
+2024,MA,P2.2.0.0.0.00.00,2.2.0.0.0.00.00 - Passivo Não-Circulante,62416182021.63,6800605,Passivo Não Circulante,Maranhão
+2024,MA,P2.3.0.0.0.00.00,2.3.0.0.0.00.00 - Patrimônio Liquido,-31435394326.77,6800605,Patrimônio Líquido,Maranhão
