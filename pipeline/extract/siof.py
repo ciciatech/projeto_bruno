@@ -23,6 +23,42 @@ warnings.filterwarnings("ignore", category=requests.packages.urllib3.exceptions.
 logger = logging.getLogger(__name__)
 
 
+# ==============================================================================
+# Mapeamentos de dropdowns do formulário SIOF
+# ==============================================================================
+
+REGIOES_CE = {
+    "01": "Cariri",
+    "02": "Centro Sul",
+    "03": "Grande Fortaleza",
+    "04": "Litoral Leste",
+    "05": "Litoral Norte",
+    "06": "Litoral Oeste / Vale do Curu",
+    "07": "Maciço do Baturité",
+    "08": "Serra da Ibiapaba",
+    "09": "Sertão Central",
+    "10": "Sertão de Canindé",
+    "11": "Sertão de Sobral",
+    "12": "Sertão dos Crateús",
+    "13": "Sertão dos Inhamuns",
+    "14": "Vale do Jaguaribe",
+}
+
+ELEMENTOS_DESPESA = {
+    "201290": "51 - Obras e Instalações",
+    "137": "52 - Equipamentos e Material Permanente",
+}
+
+# Relatórios disponíveis
+RELATORIOS = {
+    "101": "Secretaria",
+    "102": "Secretaria e Fonte",
+    "120": "Secretaria e Região",
+    "105": "Secretaria, Órgão e Classificação",
+    "110": "Secretaria, Órgão, Programa, PA e Região",
+}
+
+
 class SiofCE:
     """
     Coleta de dados de execução orçamentária do SIOF-CE (SEPLAG/CE).
@@ -33,29 +69,45 @@ class SiofCE:
     BASE_URL = "https://planejamento.seplag.ce.gov.br/siofconsulta/Paginas/frm_consulta_execucao.aspx"
     EXPORTS_URL = "https://planejamento.seplag.ce.gov.br/siofconsulta/Exports/"
 
-    # Relatórios disponíveis (subset relevante para a tese)
-    RELATORIOS = {
-        "101": "secretaria",
-        "102": "secretaria_fonte",
-        "105": "secretaria_orgao_classificacao",
-    }
-
     @staticmethod
-    def coletar_relatorio(ano: int, mes: int, relatorio: str = "101") -> pd.DataFrame:
-        """Coleta um relatório específico do SIOF-CE para ano/mês."""
-        cache_paths = [
-            RAW_DIR / "execucao_orcamentaria" / "ce" / f"siof_{ano}_{mes}_{relatorio}.csv",
-            RAW_DIR / "siof" / "ce" / f"siof_{ano}_{mes}_{relatorio}.csv",
-        ]
-        if cache_paths[0].exists() or cache_paths[1].exists():
-            logger.info(f"SIOF-CE: cache encontrado, pulando download.")
-            for cache_path in cache_paths:
-                if cache_path.exists():
-                    logger.info(f"SIOF-CE: usando cache {cache_path.name}.")
-                    return pd.read_csv(cache_path)
+    def coletar_relatorio(
+        ano: int,
+        mes: int,
+        relatorio: str = "101",
+        regiao: str = "",
+        elemento: str = "",
+        grupo_despesa: str = "",
+    ) -> pd.DataFrame:
+        """Coleta um relatório específico do SIOF-CE para ano/mês com filtros opcionais."""
+        # Construir sufixo do cache baseado nos filtros
+        filtro_sufixo = ""
+        if regiao:
+            filtro_sufixo += f"_reg{regiao}"
+        if elemento:
+            filtro_sufixo += f"_elem{elemento}"
+        if grupo_despesa:
+            filtro_sufixo += f"_grp{grupo_despesa}"
 
-        nome_rel = SiofCE.RELATORIOS.get(relatorio, relatorio)
-        logger.info(f"SIOF-CE: Coletando relatório {relatorio} ({nome_rel}) — {ano}/{mes:02d}...")
+        cache_paths = [
+            RAW_DIR / "execucao_orcamentaria" / "ce" / f"siof_{ano}_{mes}_{relatorio}{filtro_sufixo}.csv",
+            RAW_DIR / "siof" / "ce" / f"siof_{ano}_{mes}_{relatorio}{filtro_sufixo}.csv",
+        ]
+        for cache_path in cache_paths:
+            if cache_path.exists():
+                logger.info(f"SIOF-CE: cache encontrado — {cache_path.name}")
+                return pd.read_csv(cache_path)
+
+        nome_rel = RELATORIOS.get(relatorio, relatorio)
+        filtros_desc = []
+        if regiao:
+            filtros_desc.append(f"região={REGIOES_CE.get(regiao, regiao)}")
+        if elemento:
+            filtros_desc.append(f"elemento={ELEMENTOS_DESPESA.get(elemento, elemento)}")
+        if grupo_despesa:
+            filtros_desc.append(f"grupo={grupo_despesa}")
+        filtros_str = f" [{', '.join(filtros_desc)}]" if filtros_desc else ""
+
+        logger.info(f"SIOF-CE: Coletando relatório {relatorio} ({nome_rel}){filtros_str} — {ano}/{mes:02d}...")
 
         for attempt in range(1, MAX_RETRIES + 1):
             try:
@@ -93,16 +145,16 @@ class SiofCE:
                     "ctl00$cphCorpo$ddlSubFuncao": "",
                     "ctl00$cphCorpo$ddlPrograma": "",
                     "ctl00$cphCorpo$ddlProjetoAtividade": "",
-                    "ctl00$cphCorpo$ddlRegiao": "",
+                    "ctl00$cphCorpo$ddlRegiao": regiao,
                     "ctl00$cphCorpo$ddlLancContabil": "",
                     "ctl00$cphCorpo$ddlFonte": "",
                     "ctl00$cphCorpo$ddlSubfonte": "",
                     "ctl00$cphCorpo$ddlGrupofonterecurso": "",
                     "ctl00$cphCorpo$ddlClassificacao": "",
                     "ctl00$cphCorpo$ddlDespCategoria": "",
-                    "ctl00$cphCorpo$ddlDespGrupo": "",
+                    "ctl00$cphCorpo$ddlDespGrupo": grupo_despesa,
                     "ctl00$cphCorpo$ddlDespModalidade": "",
-                    "ctl00$cphCorpo$ddlDespElemento": "",
+                    "ctl00$cphCorpo$ddlDespElemento": elemento,
                     "ctl00$cphCorpo$ddlGrupoFonte": "",
                     "ctl00$cphCorpo$ddlGrupoPrograma": "",
                     "ctl00$cphCorpo$ddlEixo": "",
@@ -146,12 +198,12 @@ class SiofCE:
                 # 5. Parse do XLS
                 df = SiofCE._parse_xls(resp_file.content, ano, mes)
                 if df.empty:
-                    logger.warning(f"SIOF-CE: Relatório {relatorio} {ano}/{mes:02d} retornou vazio.")
+                    logger.warning(f"SIOF-CE: Relatório {relatorio} {ano}/{mes:02d}{filtros_str} retornou vazio.")
                     return df
 
                 save_dataframe(
                     df,
-                    f"siof_{relatorio}_{ano}_{mes}",
+                    f"siof_{relatorio}_{ano}_{mes}{filtro_sufixo}",
                     path_parts=["execucao_orcamentaria", "ce"],
                 )
                 return df
@@ -164,7 +216,7 @@ class SiofCE:
 
         logger.error(
             f"SIOF-CE: Falha definitiva após {MAX_RETRIES} tentativas — "
-            f"relatório {relatorio} {ano}/{mes:02d}"
+            f"relatório {relatorio} {ano}/{mes:02d}{filtros_str}"
         )
         return pd.DataFrame()
 
@@ -213,7 +265,7 @@ class SiofCE:
         if col_codigo is not None:
             cols_texto.add(col_codigo)
         for c in df.columns:
-            if "descri" in c.lower():
+            if "descri" in c.lower() or "regi" in c.lower():
                 cols_texto.add(c)
 
         for col in df.columns:
@@ -232,11 +284,12 @@ class SiofCE:
 
     @classmethod
     def coletar_todas(cls) -> pd.DataFrame:
-        """Coleta acumulado dezembro (2015-2025) e mês mais recente para 2026."""
+        """Coleta acumulado dezembro (2015-2025) e mês mais recente para 2026.
+        Relatório 101 — por Secretaria (compatibilidade com dashboard existente).
+        """
         frames = []
 
         for ano in range(PERIODO_INICIO, PERIODO_FIM + 1):
-            # Acumulado anual = dezembro
             df = cls.coletar_relatorio(ano, mes=12, relatorio="101")
             if not df.empty:
                 frames.append(df)
@@ -256,4 +309,46 @@ class SiofCE:
 
         df_all = pd.concat(frames, ignore_index=True)
         save_dataframe(df_all, "siof_consolidado", path_parts=["execucao_orcamentaria", "ce"])
+        return df_all
+
+    @classmethod
+    def coletar_obras(cls) -> pd.DataFrame:
+        """Coleta relatório 110 filtrando por grupo 44 (Investimentos) + elemento 51 (Obras).
+        Ambos os filtros são necessários para o SIOF aplicar corretamente.
+        Retorna dados de obras e instalações por secretaria para cada ano.
+        """
+        frames = []
+        elemento_obras = "201290"  # 51 - Obras e Instalações
+        grupo_investimentos = "44"  # Investimentos
+
+        for ano in range(PERIODO_INICIO, PERIODO_FIM + 1):
+            df = cls.coletar_relatorio(
+                ano, mes=12, relatorio="110",
+                elemento=elemento_obras, grupo_despesa=grupo_investimentos,
+            )
+            if not df.empty:
+                frames.append(df)
+            time.sleep(2)
+
+        # 2026
+        for mes in range(12, 0, -1):
+            df = cls.coletar_relatorio(
+                2026, mes=mes, relatorio="110",
+                elemento=elemento_obras, grupo_despesa=grupo_investimentos,
+            )
+            if not df.empty:
+                frames.append(df)
+                logger.info(f"SIOF-CE Obras: 2026 — dados até mês {mes}.")
+                break
+            time.sleep(2)
+
+        if not frames:
+            logger.warning("SIOF-CE Obras: nenhum dado coletado.")
+            return pd.DataFrame()
+
+        df_all = pd.concat(frames, ignore_index=True)
+        save_dataframe(
+            df_all, "siof_obras_consolidado",
+            path_parts=["execucao_orcamentaria", "ce"],
+        )
         return df_all

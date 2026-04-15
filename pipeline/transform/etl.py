@@ -354,6 +354,78 @@ def processar_siof():
     print(f"    {len(df)} registros -> processed/execucao_orcamentaria/ce/siof_ce.csv")
 
 
+def processar_siof_obras():
+    """Processa dados de Obras e Instalações (elemento 51) do SIOF-CE.
+
+    Gera dois CSVs:
+    - siof_obras_secretaria.csv: obras por secretaria/ano (2015-2026)
+    - siof_obras_regiao.csv: obras por região (anos com dados detalhados)
+    """
+    print(">>> SIOF-CE Obras (Elemento 51)...")
+    try:
+        df = _read_csv_candidates(
+            ["execucao_orcamentaria/ce/siof_obras_consolidado.csv"]
+        )
+    except FileNotFoundError:
+        print("    Arquivo não encontrado, pulando.")
+        return
+
+    COLS_VALOR = ["Lei", "Lei + Cred.", "Empenhado", "Pago", "% Emp.", "% Pago"]
+    for col in COLS_VALOR:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    df["Código"] = df["Código"].astype(str).str.strip()
+
+    # --- Identificar nível hierárquico ---
+    # Secretarias: código 8 dígitos (ex: "01000000")
+    # Regiões: código 2 dígitos ("01"-"15")
+    REGIOES_CE = {
+        "01": "Cariri", "02": "Centro Sul", "03": "Grande Fortaleza",
+        "04": "Litoral Leste", "05": "Litoral Norte",
+        "06": "Litoral Oeste / Vale do Curu", "07": "Maciço do Baturité",
+        "08": "Serra da Ibiapaba", "09": "Sertão Central",
+        "10": "Sertão de Canindé", "11": "Sertão de Sobral",
+        "12": "Sertão dos Crateús", "13": "Sertão dos Inhamuns",
+        "14": "Vale do Jaguaribe", "15": "Estado do Ceará",
+    }
+
+    # --- 1. Obras por Secretaria (nível agregado por ano) ---
+    mask_sec = df["Código"].str.match(r"^\d{8}$")
+    df_sec = df[mask_sec].copy()
+    # Nos anos detalhados (ex: 2026), a secretaria aparece 2x (header hierárquico).
+    # Pegar a primeira ocorrência por secretaria/ano (a que tem os totais).
+    df_sec = df_sec.drop_duplicates(subset=["Código", "ano"], keep="first")
+    df_sec.sort_values(["ano", "Descrição"], inplace=True)
+    df_sec.reset_index(drop=True, inplace=True)
+    _save_processed_csv(df_sec, "execucao_orcamentaria", "ce", "siof_obras_secretaria")
+    print(f"    Obras por secretaria: {len(df_sec)} registros")
+
+    # --- 2. Obras por Região (extraídas da hierarquia detalhada) ---
+    cod_padded = df["Código"].str.zfill(2)
+    mask_reg = cod_padded.isin(REGIOES_CE.keys())
+    df_reg = df[mask_reg].copy()
+
+    if df_reg.empty:
+        print("    Sem dados de região disponíveis.")
+        return
+
+    df_reg["regiao"] = cod_padded[mask_reg].map(REGIOES_CE)
+
+    # Agrupar por região/ano
+    agg = df_reg.groupby(["ano", "regiao"], as_index=False).agg(
+        empenhado=("Empenhado", "sum"),
+        pago=("Pago", "sum"),
+        dotacao=("Lei + Cred.", "sum"),
+        n_acoes=("Empenhado", "count"),
+    )
+    agg.sort_values(["ano", "regiao"], inplace=True)
+    agg.reset_index(drop=True, inplace=True)
+    _save_processed_csv(agg, "execucao_orcamentaria", "ce", "siof_obras_regiao")
+    anos_reg = sorted(agg["ano"].unique())
+    print(f"    Obras por região: {len(agg)} registros — anos {anos_reg}")
+
+
 def processar_transparencia_pi():
     print(">>> Transparencia PI...")
     try:
@@ -539,6 +611,7 @@ def executar_etl():
     processar_transparencia_al()
     processar_transparencia_pi()
     processar_siof()
+    processar_siof_obras()
     processar_caged_antigo()
     processar_caged()
     processar_rais()
