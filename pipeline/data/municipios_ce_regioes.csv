@@ -1,0 +1,185 @@
+regiao_codigo,regiao_nome,municipio_nome
+01,Cariri,Abaiara
+01,Cariri,Altaneira
+01,Cariri,Antonina do Norte
+01,Cariri,Araripe
+01,Cariri,Assaré
+01,Cariri,Aurora
+01,Cariri,Barbalha
+01,Cariri,Barro
+01,Cariri,Brejo Santo
+01,Cariri,Campos Sales
+01,Cariri,Caririaçu
+01,Cariri,Crato
+01,Cariri,Farias Brito
+01,Cariri,Granjeiro
+01,Cariri,Jardim
+01,Cariri,Jati
+01,Cariri,Juazeiro do Norte
+01,Cariri,Lavras da Mangabeira
+01,Cariri,Mauriti
+01,Cariri,Milagres
+01,Cariri,Missão Velha
+01,Cariri,Nova Olinda
+01,Cariri,Penaforte
+01,Cariri,Porteiras
+01,Cariri,Potengi
+01,Cariri,Salitre
+01,Cariri,Santana do Cariri
+01,Cariri,Tarrafas
+01,Cariri,Várzea Alegre
+02,Centro Sul,Acopiara
+02,Centro Sul,Baixio
+02,Centro Sul,Cariús
+02,Centro Sul,Catarina
+02,Centro Sul,Cedro
+02,Centro Sul,Icó
+02,Centro Sul,Iguatu
+02,Centro Sul,Ipaumirim
+02,Centro Sul,Jucás
+02,Centro Sul,Orós
+02,Centro Sul,Quixelô
+02,Centro Sul,Saboeiro
+02,Centro Sul,Umari
+03,Grande Fortaleza,Aquiraz
+03,Grande Fortaleza,Caucaia
+03,Grande Fortaleza,Cascavel
+03,Grande Fortaleza,Chorozinho
+03,Grande Fortaleza,Eusébio
+03,Grande Fortaleza,Fortaleza
+03,Grande Fortaleza,Guaiúba
+03,Grande Fortaleza,Horizonte
+03,Grande Fortaleza,Itaitinga
+03,Grande Fortaleza,Maracanaú
+03,Grande Fortaleza,Maranguape
+03,Grande Fortaleza,Pacajus
+03,Grande Fortaleza,Pacatuba
+03,Grande Fortaleza,Paracuru
+03,Grande Fortaleza,Paraipaba
+03,Grande Fortaleza,Pindoretama
+03,Grande Fortaleza,São Luís do Curu
+03,Grande Fortaleza,São Gonçalo do Amarante
+03,Grande Fortaleza,Trairi
+04,Litoral Leste,Aracati
+04,Litoral Leste,Beberibe
+04,Litoral Leste,Fortim
+04,Litoral Leste,Icapuí
+04,Litoral Leste,Itaiçaba
+04,Litoral Leste,Jaguaruana
+05,Litoral Norte,Acaraú
+05,Litoral Norte,Barroquinha
+05,Litoral Norte,Bela Cruz
+05,Litoral Norte,Camocim
+05,Litoral Norte,Chaval
+05,Litoral Norte,Cruz
+05,Litoral Norte,Granja
+05,Litoral Norte,Itarema
+05,Litoral Norte,Jijoca de Jericoacoara
+05,Litoral Norte,Marco
+05,Litoral Norte,Martinópole
+05,Litoral Norte,Morrinhos
+05,Litoral Norte,Uruoca
+06,Litoral Oeste / Vale do Curu,Amontada
+06,Litoral Oeste / Vale do Curu,Apuiarés
+06,Litoral Oeste / Vale do Curu,General Sampaio
+06,Litoral Oeste / Vale do Curu,Irauçuba
+06,Litoral Oeste / Vale do Curu,Itapajé
+06,Litoral Oeste / Vale do Curu,Itapipoca
+06,Litoral Oeste / Vale do Curu,Miraíma
+06,Litoral Oeste / Vale do Curu,Pentecoste
+06,Litoral Oeste / Vale do Curu,Tejuçuoca
+06,Litoral Oeste / Vale do Curu,Tururu
+06,Litoral Oeste / Vale do Curu,Umirim
+06,Litoral Oeste / Vale do Curu,Uruburetama
+07,Maciço do Baturité,Acarape
+07,Maciço do Baturité,Aracoiaba
+07,Maciço do Baturité,Aratuba
+07,Maciço do Baturité,Barreira
+07,Maciço do Baturité,Baturité
+07,Maciço do Baturité,Capistrano
+07,Maciço do Baturité,Guaramiranga
+07,Maciço do Baturité,Itapiúna
+07,Maciço do Baturité,Mulungu
+07,Maciço do Baturité,Ocara
+07,Maciço do Baturité,Pacoti
+07,Maciço do Baturité,Palmácia
+07,Maciço do Baturité,Redenção
+08,Serra da Ibiapaba,Carnaubal
+08,Serra da Ibiapaba,Croatá
+08,Serra da Ibiapaba,Guaraciaba do Norte
+08,Serra da Ibiapaba,Ibiapina
+08,Serra da Ibiapaba,Ipu
+08,Serra da Ibiapaba,São Benedito
+08,Serra da Ibiapaba,Tianguá
+08,Serra da Ibiapaba,Ubajara
+08,Serra da Ibiapaba,Viçosa do Ceará
+09,Sertão Central,Banabuiú
+09,Sertão Central,Choró
+09,Sertão Central,Deputado Irapuan Pinheiro
+09,Sertão Central,Ibaretama
+09,Sertão Central,Ibicuitinga
+09,Sertão Central,Milhã
+09,Sertão Central,Mombaça
+09,Sertão Central,Pedra Branca
+09,Sertão Central,Piquet Carneiro
+09,Sertão Central,Quixadá
+09,Sertão Central,Quixeramobim
+09,Sertão Central,Senador Pompeu
+09,Sertão Central,Solonópole
+10,Sertão de Canindé,Boa Viagem
+10,Sertão de Canindé,Canindé
+10,Sertão de Canindé,Caridade
+10,Sertão de Canindé,Itatira
+10,Sertão de Canindé,Madalena
+10,Sertão de Canindé,Paramoti
+11,Sertão de Sobral,Alcântaras
+11,Sertão de Sobral,Cariré
+11,Sertão de Sobral,Coreaú
+11,Sertão de Sobral,Forquilha
+11,Sertão de Sobral,Frecheirinha
+11,Sertão de Sobral,Graça
+11,Sertão de Sobral,Groaíras
+11,Sertão de Sobral,Massapê
+11,Sertão de Sobral,Meruoca
+11,Sertão de Sobral,Moraújo
+11,Sertão de Sobral,Mucambo
+11,Sertão de Sobral,Pacujá
+11,Sertão de Sobral,Pires Ferreira
+11,Sertão de Sobral,Reriutaba
+11,Sertão de Sobral,Santana do Acaraú
+11,Sertão de Sobral,Senador Sá
+11,Sertão de Sobral,Sobral
+11,Sertão de Sobral,Varjota
+12,Sertão dos Crateús,Ararendá
+12,Sertão dos Crateús,Catunda
+12,Sertão dos Crateús,Crateús
+12,Sertão dos Crateús,Hidrolândia
+12,Sertão dos Crateús,Independência
+12,Sertão dos Crateús,Ipaporanga
+12,Sertão dos Crateús,Ipueiras
+12,Sertão dos Crateús,Monsenhor Tabosa
+12,Sertão dos Crateús,Nova Russas
+12,Sertão dos Crateús,Novo Oriente
+12,Sertão dos Crateús,Poranga
+12,Sertão dos Crateús,Santa Quitéria
+12,Sertão dos Crateús,Tamboril
+13,Sertão dos Inhamuns,Aiuaba
+13,Sertão dos Inhamuns,Arneiroz
+13,Sertão dos Inhamuns,Parambu
+13,Sertão dos Inhamuns,Quiterianópolis
+13,Sertão dos Inhamuns,Tauá
+14,Vale do Jaguaribe,Alto Santo
+14,Vale do Jaguaribe,Ererê
+14,Vale do Jaguaribe,Iracema
+14,Vale do Jaguaribe,Jaguaretama
+14,Vale do Jaguaribe,Jaguaribara
+14,Vale do Jaguaribe,Jaguaribe
+14,Vale do Jaguaribe,Limoeiro do Norte
+14,Vale do Jaguaribe,Morada Nova
+14,Vale do Jaguaribe,Palhano
+14,Vale do Jaguaribe,Pereiro
+14,Vale do Jaguaribe,Potiretama
+14,Vale do Jaguaribe,Quixeré
+14,Vale do Jaguaribe,Russas
+14,Vale do Jaguaribe,São João do Jaguaribe
+14,Vale do Jaguaribe,Tabuleiro do Norte

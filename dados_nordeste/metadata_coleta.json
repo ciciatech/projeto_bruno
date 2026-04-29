@@ -1,6 +1,7 @@
 {
-  "data_execucao": "2026-03-04T18:07:56.838374",
-  "duracao_segundos": 3489.757742,
+  "data_execucao": "2026-04-29T17:06:00.565353",
+  "duracao_segundos": 29.909311,
+  "escopo": "NE",
   "periodo": "2015-2025",
   "estados": [
     "AL",
@@ -14,9 +15,9 @@
     "SE"
   ],
   "modulos_executados": [
-    "caged_rais"
+    "bacen"
   ],
   "resumo": {
-    "caged_rais": 1118
+    "bacen": 1628
   }
 }

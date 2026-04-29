@@ -21,6 +21,9 @@ class BacenSGS:
     SERIES = {
         # IBCR Nordeste (com ajuste sazonal)
         25389: "IBCR_NE_ajuste_sazonal",
+        # IBCR-CE (Índice de Atividade Econômica Regional - Ceará) com ajuste sazonal —
+        # único controle estadual no painel regional CE conforme indicação do Prof. Paulo
+        25380: "IBCR_CE_ajuste_sazonal",
         # Saldo de crédito PF - Nordeste
         14084: "credito_PF_nordeste",
         # Saldo de crédito PJ - Nordeste

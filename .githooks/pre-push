@@ -1,0 +1,39 @@
+#!/bin/bash
+# Validação leve antes de cada push: garante que os módulos Python do pipeline
+# importam sem erro de sintaxe. Não roda testes pesados nem coletas.
+
+set -e
+
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$REPO_ROOT"
+
+# Localizar interpretador: prefere venv local, cai pra system python3
+if [[ -x "$REPO_ROOT/venv/bin/python" ]]; then
+    PY="$REPO_ROOT/venv/bin/python"
+else
+    PY="python3"
+fi
+
+echo "Pre-push: compilando módulos do pipeline..."
+"$PY" -m compileall -q pipeline/ 2>&1 || {
+    echo "Push BLOQUEADO: erro de sintaxe em pipeline/"
+    exit 1
+}
+
+echo "Pre-push: validando imports principais..."
+"$PY" -c "
+from pipeline import regioes_ce, pib_shares
+from pipeline.extract import (
+    estban, bpc, bolsa_familia, transferencias_municipais,
+    sefaz_ce, invest_municipal_planilha, invest_federal,
+    caged_municipal, ipea_fbcf,
+)
+from pipeline.transform import preparacao_modelo_regional
+from pipeline import run
+" 2>&1 || {
+    echo "Push BLOQUEADO: erro de import em pipeline/"
+    exit 1
+}
+
+echo "Pre-push OK."
+exit 0

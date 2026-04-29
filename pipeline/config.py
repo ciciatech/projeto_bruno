@@ -43,9 +43,30 @@ PERIODO_INICIO = 2015
 PERIODO_FIM = 2025
 
 # ==============================================================================
+# ESCOPO DA PIPELINE REGIONAL CE
+# ==============================================================================
+# A partir da reformulação do exercício empírico (Prof. Paulo, abr/2026), o
+# foco passa a ser o Ceará em granularidade município → 14 regiões de
+# planejamento da SEPLAG-CE. Coletores NE legados continuam funcionais; novos
+# coletores devem respeitar ESCOPO_CE.
+
+ESCOPO_CE = True
+UF_FOCO = "CE"
+COD_IBGE_CE = "23"  # 2 dígitos
+PERIODO_INICIO_MENSAL = 2015
+PERIODO_FIM_MENSAL = 2025
+
+# ==============================================================================
 # PARÂMETROS DE REQUEST
 # ==============================================================================
 
 REQUEST_TIMEOUT = 60
 MAX_RETRIES = 3
 RETRY_DELAY = 5  # segundos
+
+# ==============================================================================
+# CHAVES DE API EXTERNAS (lidas de env var quando necessário)
+# ==============================================================================
+# - PORTAL_TRANSPARENCIA_API_KEY: cadastro gratuito em
+#   https://portaldatransparencia.gov.br/api-de-dados/cadastrar-email
+#   Requerida pelos coletores Bolsa Família, BPC e investimento federal.

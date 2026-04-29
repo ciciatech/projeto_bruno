@@ -1,113 +1,122 @@
 """
-Extração de dados do Bolsa Família / Auxílio Brasil / Novo Bolsa Família.
+Coletor de Bolsa Família / Auxílio Brasil / Novo Bolsa Família por município CE.
 
-Fontes:
-- https://dados.gov.br/ (datasets de transferência de renda)
-- https://aplicacoes.mds.gov.br/sagi/vis/data3/ (Vis Data)
+Cobre a transição entre os três programas:
+- 2015-01 a 2021-10: Bolsa Família (clássico)
+- 2021-11 a 2023-02: Auxílio Brasil
+- 2023-03 em diante: Novo Bolsa Família
+
+Consome os CSVs bulk públicos do Portal da Transparência (sem necessidade de
+API key). Cada mês é um ZIP com ~100 MB / CSV ~2 GB descomprimido — o módulo
+``_portal_transp_csv`` cuida de filtrar UF=CE em chunks para não estourar memória.
+
+Saída: ``dados_nordeste/processed/bolsa_familia/bf_municipio_ce_mensal.csv``
+com colunas (cod_ibge, regiao_codigo, regiao_nome, ano, mes, valor_total, beneficiarios).
 """
+
+from __future__ import annotations
 
 import logging
 
 import pandas as pd
 
-from pipeline.config import PERIODO_INICIO, PERIODO_FIM
-from pipeline.extract.portal_transparencia import PortalTransparencia
-from pipeline.utils import safe_request, save_dataframe
+from pipeline.config import PERIODO_INICIO_MENSAL, PERIODO_FIM_MENSAL
+from pipeline.extract._portal_transp_csv import coletar_programa_mensal
+from pipeline.utils import save_dataframe
 
 logger = logging.getLogger(__name__)
 
 
-class BolsaFamilia:
-    """
-    Coleta dados do Bolsa Família / Auxílio Brasil / Novo Bolsa Família
-    via Portal de Dados Abertos e Vis Data MDS.
-    """
+# Marcos da transição entre programas. Ano-mês inclusive.
+BOLSA_FAMILIA_FIM = (2021, 10)
+AUXILIO_BRASIL_INICIO = (2021, 11)
+AUXILIO_BRASIL_FIM = (2023, 2)
+NOVO_BF_INICIO = (2023, 3)
 
-    # API do SAGI/MDS para dados do Bolsa Família por município
-    SAGI_URL = "https://aplicacoes.mds.gov.br/sagi/servicos/misocial"
+URL_PATH_POR_PROGRAMA = {
+    "bolsa_familia_classico": "bolsa-familia-pagamentos",
+    "auxilio_brasil": "auxilio-brasil",
+    "novo_bolsa_familia": "novo-bolsa-familia",
+}
 
-    @staticmethod
-    def coletar_via_api_sagi(ano: int, mes: int, cod_ibge_uf: str) -> pd.DataFrame:
-        """
-        Tenta coletar dados do MDS/SAGI.
-        NOTA: Esta API pode ter restrições ou estar indisponível.
-        Alternativa: download manual dos CSVs em dados.gov.br
-        """
-        url = f"{BolsaFamilia.SAGI_URL}"
-        params = {
-            "ano": ano,
-            "mes": mes,
-            "codigo_ibge": cod_ibge_uf,
-            "tipo": "1",  # Bolsa Família
-        }
-        resp = safe_request(url, params=params, timeout=30)
-        if resp is None:
-            return pd.DataFrame()
 
-        try:
-            data = resp.json()
-            return pd.DataFrame(data) if data else pd.DataFrame()
-        except Exception:
-            return pd.DataFrame()
-
-    @staticmethod
-    def gerar_urls_download_dados_abertos() -> list[dict]:
-        """
-        Gera URLs para download dos datasets do Bolsa Família no dados.gov.br.
-
-        NOTA: As URLs mudam conforme o programa vigente:
-        - 2015-2021: Bolsa Família
-        - 2021-2023: Auxílio Brasil
-        - 2023+: Novo Bolsa Família
-        """
-        urls = []
-        base_msg = (
-            "Datasets disponíveis em dados.gov.br:\n"
-            "  - Bolsa Família (2015-2021): https://dados.gov.br/dados/conjuntos-dados/bolsa-familia-pagamentos\n"
-            "  - Auxílio Brasil (2021-2023): https://dados.gov.br/dados/conjuntos-dados/auxilio-brasil\n"
-            "  - Novo Bolsa Família (2023+): https://dados.gov.br/dados/conjuntos-dados/bolsa-familia-pagamentos\n"
+def _periodo_para_programa(programa: str, ano_ini: int, ano_fim: int) -> tuple[int, int, int, int]:
+    """Calcula intervalo (ano_ini, mes_ini, ano_fim, mes_fim) válido para o programa."""
+    if programa == "bolsa_familia_classico":
+        ini_a, ini_m = ano_ini, 1
+        fim_a, fim_m = min(ano_fim, BOLSA_FAMILIA_FIM[0]), (
+            BOLSA_FAMILIA_FIM[1] if ano_fim >= BOLSA_FAMILIA_FIM[0] else 12
         )
-        logger.info(base_msg)
-
-        for ano in range(PERIODO_INICIO, PERIODO_FIM + 1):
-            for mes in range(1, 13):
-                urls.append(
-                    {
-                        "ano": ano,
-                        "mes": mes,
-                        "url": f"https://portaldatransparencia.gov.br/download-de-dados/bolsa-familia-pagamentos/{ano:04d}{mes:02d}",
-                        "descricao": f"Bolsa Família {ano:04d}/{mes:02d}",
-                    }
-                )
-        return urls
-
-    @staticmethod
-    def coletar_nordeste(portal: PortalTransparencia | None = None) -> dict:
-        """
-        Tenta coletar Bolsa Família por UF via Portal da Transparência.
-        Se não houver API key ou não houver retorno, salva fallback de URLs.
-        """
-        resumo = {
-            "fonte_utilizada": "urls_download",
-            "registros_raw": 0,
-            "registros_uf_mensal": 0,
-            "urls_download": 0,
-        }
-
-        if portal is not None and portal.api_key:
-            raw_df, agg_df = portal.coletar_bolsa_familia_nordeste()
-            if not raw_df.empty:
-                resumo["fonte_utilizada"] = "portal_transparencia"
-                resumo["registros_raw"] = int(len(raw_df))
-                resumo["registros_uf_mensal"] = int(len(agg_df))
-                return resumo
-
-        urls = BolsaFamilia.gerar_urls_download_dados_abertos()
-        urls_df = pd.DataFrame(urls)
-        save_dataframe(
-            urls_df,
-            "bolsa_familia_urls_download",
-            path_parts=["bolsa_familia", "nacional"],
+    elif programa == "auxilio_brasil":
+        ini_a, ini_m = AUXILIO_BRASIL_INICIO
+        if ano_ini > ini_a:
+            ini_a, ini_m = ano_ini, 1
+        fim_a, fim_m = min(ano_fim, AUXILIO_BRASIL_FIM[0]), (
+            AUXILIO_BRASIL_FIM[1] if ano_fim >= AUXILIO_BRASIL_FIM[0] else 12
         )
-        resumo["urls_download"] = len(urls)
-        return resumo
+    elif programa == "novo_bolsa_familia":
+        ini_a, ini_m = NOVO_BF_INICIO
+        if ano_ini > ini_a:
+            ini_a, ini_m = ano_ini, 1
+        fim_a, fim_m = ano_fim, 12
+    else:
+        raise ValueError(f"Programa desconhecido: {programa}")
+    return ini_a, ini_m, fim_a, fim_m
+
+
+def coletar_ce(
+    ano_inicio: int = PERIODO_INICIO_MENSAL,
+    ano_fim: int = PERIODO_FIM_MENSAL,
+    manter_zip: bool = False,
+    pular_meses_existentes: bool = True,
+) -> pd.DataFrame:
+    """
+    Coleta Bolsa Família/Auxílio Brasil/Novo BF mensal por município CE
+    para todo o período. Faz a junção dos três programas em um único painel.
+    """
+    frames = []
+    for programa, url_path in URL_PATH_POR_PROGRAMA.items():
+        ini_a, ini_m, fim_a, fim_m = _periodo_para_programa(programa, ano_inicio, ano_fim)
+        if (ini_a, ini_m) > (fim_a, fim_m):
+            continue
+        logger.info(f"=== {programa}: {ini_a:04d}/{ini_m:02d} a {fim_a:04d}/{fim_m:02d} ===")
+        df = coletar_programa_mensal(
+            nome_programa=f"bolsa_familia/{programa}",
+            url_path=url_path,
+            ano_inicio=ini_a,
+            ano_fim=fim_a,
+            mes_inicio=ini_m,
+            mes_fim_ano_corrente=fim_m,
+            manter_zip=manter_zip,
+            pular_meses_existentes=pular_meses_existentes,
+        )
+        if not df.empty:
+            df["programa"] = programa
+            frames.append(df)
+
+    if not frames:
+        logger.warning("Bolsa Família: nenhum dado coletado.")
+        return pd.DataFrame()
+
+    consolidado = pd.concat(frames, ignore_index=True).sort_values(
+        ["ano", "mes", "cod_ibge"]
+    ).reset_index(drop=True)
+
+    save_dataframe(
+        consolidado,
+        "bf_municipio_ce_mensal",
+        subdir="processed",
+        path_parts=["bolsa_familia"],
+    )
+    logger.info(
+        f"Bolsa Família consolidado: {len(consolidado)} linhas, "
+        f"{consolidado['cod_ibge'].nunique()} municípios, "
+        f"{consolidado.groupby(['ano','mes']).ngroups} meses."
+    )
+    return consolidado
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+    # Por default, coletar 2015-2025. Pode sobrescrever via importar e chamar.
+    coletar_ce()
