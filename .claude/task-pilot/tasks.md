@@ -6,7 +6,7 @@
 ## Backlog
 
 - [!] T01: Disparar coletor SICONFI invest_municipal no Mac Mini (~2h, 12k requests via SSH; manual)
-- [ ] T02: Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json
+- [x] T02: Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json
 - [!] T03: Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)
 - [!] T04: Tela 3 Setores bloqueada — PIB municipal IBGE e RAIS por CNAE não estão coletados, aguarda decisão de escopo
 - [!] T05: Tela 4 Causal modelo OLS investimento → emprego bloqueada, aguarda especificação econométrica do Prof. Paulo
