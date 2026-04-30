@@ -31,13 +31,40 @@ DST = Path(__file__).resolve().parents[1] / "public" / "data" / "painel.json"
 
 
 COL_RENAME = {
+    # chaves
     "regiao_codigo": "r",
     "ano": "y",
     "mes": "m",
+    # CAGED municipal
+    "admissoes": "adm",
+    "desligamentos": "des",
+    "saldo": "sal",
+    "total_movimentacoes": "mov",
+    "salario_medio": "sal_med",
+    # Bolsa Família
+    "bf_valor_total": "bf_v",
+    "bf_beneficiarios": "bf_b",
+    # BPC
+    "bpc_valor_total": "bpc_v",
+    "bpc_beneficiarios": "bpc_b",
+    # transferências constitucionais STN (federais)
+    "transf_fed_fpm_dest": "tf_fpm",
+    "transf_fed_fundeb_dest": "tf_fundeb",
+    "transf_fed_itr_dest": "tf_itr",
+    "transf_fed_outros_dest": "tf_outros",
+    "transf_fed_royalties_dest": "tf_royalties",
+    "transf_fed_total": "tf_total",
+    # SIOF (estadual)
     "siof_anual_empenhado": "siof_emp",
     "siof_anual_pago": "siof_pago",
     "siof_anual_dotacao": "siof_dot",
     "siof_anual_n_acoes": "siof_n",
+    # invest. federal (Portal Transp / RREO)
+    "invest_fed_direto_ce": "if_direto",
+    "invest_fed_ne_rateado": "if_ne",
+    "invest_fed_nacional_rateado": "if_nac",
+    "invest_fed_total": "if_total",
+    # macro estadual
     "ibcr_ce": "ibcr",
     "invest_total_ce_r_2010_mi": "inv_tot",
     "share_pib_ce_br": "share",

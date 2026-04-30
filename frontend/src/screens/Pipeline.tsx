@@ -11,17 +11,17 @@ type Fonte = {
 };
 
 const FONTES_BASE: Fonte[] = [
-  { fonte: "BACEN SGS · IBCR-CE",                 cobertura: 100, cadencia: "Mensal",     status: "ok",   delta: "estável" },
-  { fonte: "STN · Transferências constitucionais", cobertura: 100, cadencia: "Mensal",     status: "ok",   delta: "estável" },
-  { fonte: "SIOF-CE · Obras e instalações",       cobertura: 100, cadencia: "Anual",      status: "ok",   delta: "PDF parsed" },
-  { fonte: "IpeaData FBCF · proxy invest. total", cobertura: 100, cadencia: "Mensal",     status: "ok",   delta: "estável" },
-  { fonte: "Bolsa Família · Portal Transp.",      cobertura:  80, cadencia: "Mensal",     status: "warn", delta: "Onda 2 rodando" },
-  { fonte: "BPC · Portal Transp.",                cobertura:  80, cadencia: "Mensal",     status: "warn", delta: "Onda 2 rodando" },
-  { fonte: "Invest. federal · RREO",              cobertura:  60, cadencia: "Bimestral",  status: "warn", delta: "Onda 2 rodando" },
-  { fonte: "Invest. municipal · SICONFI RREO",    cobertura:   0, cadencia: "Bimestral",  status: "info", delta: "deploy 8fc1568 · pendente" },
-  { fonte: "CAGED · MTE (mensal municipal)",      cobertura:   0, cadencia: "Mensal",     status: "info", delta: "Onda 3 (~24h FTP)" },
-  { fonte: "ESTBAN BNB",                          cobertura:   0, cadencia: "Mensal",     status: "bad",  delta: "BCB removeu URL pública" },
-  { fonte: "SEFAZ-CE · cota-parte estadual",      cobertura:   0, cadencia: "Mensal",     status: "bad",  delta: "site bloqueia bots" },
+  { fonte: "BACEN SGS · IBCR-CE",                  cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "série SGS 25380" },
+  { fonte: "STN · Transferências constitucionais", cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "FPM/FUNDEB/ITR/royalties" },
+  { fonte: "SIOF-CE · Obras e instalações",        cobertura: 100, cadencia: "Anual",     status: "ok",   delta: "14 regiões × ano" },
+  { fonte: "IpeaData FBCF · proxy invest. total",  cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "× share PIB CE/BR" },
+  { fonte: "Bolsa Família · Portal Transp.",       cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "Onda 2 ✓ (4min33s)" },
+  { fonte: "BPC · Portal Transp.",                 cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "Onda 2 ✓" },
+  { fonte: "Invest. federal · RREO",               cobertura: 100, cadencia: "Bimestral", status: "ok",   delta: "Onda 2 ✓ · 132 obs" },
+  { fonte: "CAGED · MTE (mensal municipal)",       cobertura:  10, cadencia: "Mensal",    status: "warn", delta: "18/184 munic. cobertos" },
+  { fonte: "Invest. municipal · SICONFI RREO",     cobertura:   0, cadencia: "Bimestral", status: "info", delta: "código pronto · executar manual" },
+  { fonte: "ESTBAN BNB",                           cobertura:   0, cadencia: "Mensal",    status: "bad",  delta: "BCB removeu URL pública" },
+  { fonte: "SEFAZ-CE · cota-parte estadual",       cobertura:   0, cadencia: "Mensal",    status: "bad",  delta: "site bloqueia bots" },
 ];
 
 const TONE: Record<Fonte["status"], { bg: string; fg: string; label: string }> = {

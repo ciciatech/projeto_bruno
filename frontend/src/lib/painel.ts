@@ -4,14 +4,39 @@ export type PainelRow = {
   r: string;       // regiao_codigo
   y: number;       // ano
   m: number;       // mes
+  // CAGED municipal (regional)
+  adm?: number | null;       // admissões
+  des?: number | null;       // desligamentos
+  sal?: number | null;       // saldo (adm − des)
+  mov?: number | null;       // total movimentações
+  sal_med?: number | null;   // salário médio
+  // Bolsa Família
+  bf_v?: number | null;
+  bf_b?: number | null;
+  // BPC
+  bpc_v?: number | null;
+  bpc_b?: number | null;
+  // transferências constitucionais STN federais
+  tf_fpm?: number | null;
+  tf_fundeb?: number | null;
+  tf_itr?: number | null;
+  tf_outros?: number | null;
+  tf_royalties?: number | null;
+  tf_total?: number | null;
+  // SIOF (estadual, anual replicado em meses)
   siof_emp?: number | null;
   siof_pago?: number | null;
   siof_dot?: number | null;
   siof_n?: number | null;
+  // invest. federal (Portal Transparência / RREO)
+  if_direto?: number | null;
+  if_ne?: number | null;
+  if_nac?: number | null;
+  if_total?: number | null;
+  // macro estadual
   ibcr?: number | null;
   inv_tot?: number | null;
   share?: number | null;
-  // futuras colunas (BF, BPC, transf, CAGED, invest_municipal_siconfi, invest_federal):
   [k: string]: number | string | null | undefined;
 };
 

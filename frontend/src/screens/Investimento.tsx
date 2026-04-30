@@ -505,12 +505,29 @@ function computar(painel: Painel) {
       };
     });
 
-  // Composição
+  // Composição real — agora com invest. federal disponível
+  let totalIfFed = 0;
+  for (const r of rows) {
+    if (typeof r.if_total === "number") totalIfFed += r.if_total;
+  }
+  // siof e if_total estão em escalas diferentes (R$ mi). Fazemos comparação relativa
+  // apenas entre fontes com dados; municipal e privado ficam pendentes.
+  const totalDisponivel = totalSiof + totalIfFed / 1e6; // if_total em R$, normalizar
   const composicao = [
-    { label: "Estadual (SIOF)",         color: "var(--seq-3)", share: 0.35, disponivel: true },
-    { label: "Federal (RREO)",          color: "var(--cat-2)", share: 0.0,  disponivel: false },
-    { label: "Municipal (SICONFI)",     color: "var(--cat-1)", share: 0.0,  disponivel: false },
-    { label: "Privado residual",        color: "var(--cat-5)", share: 0.0,  disponivel: false },
+    {
+      label: "Estadual (SIOF)",
+      color: "var(--seq-3)",
+      share: totalDisponivel > 0 ? totalSiof / totalDisponivel : 0,
+      disponivel: true,
+    },
+    {
+      label: "Federal (RREO)",
+      color: "var(--cat-2)",
+      share: totalDisponivel > 0 ? (totalIfFed / 1e6) / totalDisponivel : 0,
+      disponivel: totalIfFed > 0,
+    },
+    { label: "Municipal (SICONFI)", color: "var(--cat-1)", share: 0, disponivel: false },
+    { label: "Privado residual",    color: "var(--cat-5)", share: 0, disponivel: false },
   ];
 
   // periodo
