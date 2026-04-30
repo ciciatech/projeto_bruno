@@ -119,7 +119,7 @@ export default function Pipeline() {
         </Panel>
       </div>
 
-      <Panel padding={0} eyebrow="Coletas" title="12 fontes do painel regional CE">
+      <Panel padding={0} eyebrow="Coletas" title={`${FONTES_BASE.length} fontes do painel regional CE`}>
         <div className="overflow-auto">
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
             <thead>

@@ -104,8 +104,18 @@ def main() -> None:
         if c in ("y", "m"):
             payload[c] = payload[c].astype(int)
 
-    payload = payload.where(pd.notna(payload), None)
-    rows = payload.to_dict(orient="records")
+    # Pandas .where(notna, None) preserva dtype float e Python json.dumps emite
+    # `NaN` literal (JSON inválido). Convertemos pra object e mapeamos NaN→None
+    # antes de json.dumps; alternativa equivalente: passar allow_nan=False ao
+    # json.dumps e capturar erro — preferimos sanitizar.
+    import math
+    rows = [
+        {
+            k: (None if isinstance(v, float) and math.isnan(v) else v)
+            for k, v in row.items()
+        }
+        for row in payload.to_dict(orient="records")
+    ]
 
     out = {
         "meta": {
@@ -122,7 +132,11 @@ def main() -> None:
     }
 
     DST.parent.mkdir(parents=True, exist_ok=True)
-    DST.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    # allow_nan=False: garante JSON spec-compliant (sem NaN/Infinity).
+    DST.write_text(
+        json.dumps(out, ensure_ascii=False, separators=(",", ":"), allow_nan=False),
+        encoding="utf-8",
+    )
     print(
         f"OK · {DST.relative_to(ROOT)} · {DST.stat().st_size / 1024:.1f} KB · "
         f"{len(rows)} rows · {len(regioes)} regiões"

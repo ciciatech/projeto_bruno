@@ -378,18 +378,88 @@ function Loading() {
 function ErrorBox({ msg }: { msg: string }) {
   return (
     <div
-      style={{
-        gridArea: "main",
-        padding: 24,
-        margin: 24,
-        border: "1px solid var(--signal-bad)",
-        background: "rgba(140,42,28,0.06)",
-        color: "var(--signal-bad)",
-        fontFamily: "var(--font-mono)",
-        fontSize: 13,
-      }}
+      className="flex items-center justify-center"
+      style={{ gridArea: "main", padding: 48 }}
     >
-      Erro ao carregar painel: {msg}
+      <div
+        style={{
+          maxWidth: 520,
+          padding: 32,
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-soft)",
+          borderLeft: "3px solid var(--signal-bad)",
+        }}
+      >
+        <div
+          className="mono"
+          style={{
+            fontSize: 10.5,
+            color: "var(--signal-bad)",
+            textTransform: "uppercase",
+            letterSpacing: 0.8,
+            fontWeight: 600,
+            marginBottom: 8,
+          }}
+        >
+          Falha ao carregar painel
+        </div>
+        <h2
+          className="serif"
+          style={{
+            margin: 0,
+            fontSize: 20,
+            fontWeight: 600,
+            color: "var(--ink-1)",
+            letterSpacing: -0.3,
+          }}
+        >
+          Não conseguimos abrir o painel regional CE.
+        </h2>
+        <p
+          style={{
+            marginTop: 8,
+            fontSize: 13,
+            lineHeight: 1.6,
+            color: "var(--ink-2)",
+          }}
+        >
+          O arquivo de dados pode estar sendo regenerado neste momento — tente
+          recarregar em alguns segundos. Se o problema persistir, abra o console
+          do navegador para ver detalhes técnicos.
+        </p>
+        <pre
+          className="mono"
+          style={{
+            marginTop: 12,
+            padding: 10,
+            background: "var(--bg-sunken)",
+            color: "var(--ink-3)",
+            fontSize: 11,
+            lineHeight: 1.5,
+            whiteSpace: "pre-wrap",
+            overflow: "auto",
+            maxHeight: 120,
+          }}
+        >
+          {msg}
+        </pre>
+        <button
+          onClick={() => window.location.reload()}
+          style={{
+            marginTop: 16,
+            padding: "8px 16px",
+            background: "var(--ink-1)",
+            color: "var(--bg-surface)",
+            border: "1px solid var(--ink-1)",
+            borderRadius: "var(--radius-sm)",
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: "pointer",
+          }}
+        >
+          Recarregar
+        </button>
+      </div>
     </div>
   );
 }

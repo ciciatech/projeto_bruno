@@ -99,16 +99,20 @@ export function AppHeader({ theme, setTheme }: Props) {
         <span style={{ borderLeft: "1px solid var(--border-soft)", height: 16 }} />
         <button
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="px-2.5 py-1 text-xs"
+          aria-label={theme === "light" ? "Mudar para tema escuro" : "Mudar para tema claro"}
+          className="text-xs"
           style={{
             color: "var(--ink-2)",
             background: "var(--bg-surface)",
             border: "1px solid var(--border-strong)",
             borderRadius: "var(--radius-sm)",
+            padding: "6px 14px",
+            minHeight: 30,
             cursor: "pointer",
+            fontWeight: 500,
           }}
         >
-          {theme === "light" ? "◐ escuro" : "◑ claro"}
+          {theme === "light" ? "◐ escuro" : "☀ claro"}
         </button>
       </div>
     </header>

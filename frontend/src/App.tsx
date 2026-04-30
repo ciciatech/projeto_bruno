@@ -7,8 +7,22 @@ import Setores from "./screens/Setores";
 import Causal from "./screens/Causal";
 import Pipeline from "./screens/Pipeline";
 
+const THEME_KEY = "prisma-theme";
+
 function App() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof localStorage === "undefined") return "light";
+    const saved = localStorage.getItem(THEME_KEY);
+    return saved === "dark" || saved === "light" ? saved : "light";
+  });
+  const setTheme = (t: Theme) => {
+    setThemeState(t);
+    try {
+      localStorage.setItem(THEME_KEY, t);
+    } catch {
+      // SSR/sandbox sem localStorage — ignorar
+    }
+  };
 
   return (
     <BrowserRouter>
