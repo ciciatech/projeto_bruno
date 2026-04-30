@@ -3,6 +3,7 @@ import { Panel, EditorialNote } from "../components/Panel";
 import { KPI } from "../components/KPI";
 import { Choropleth14CE } from "../components/Choropleth14CE";
 import { Sparkline } from "../components/Sparkline";
+import { aplicarPeriodo, useFiltros } from "../components/FilterBar";
 import { fmtNum, fmtPct, fmtMes, fmtBRL } from "../lib/format";
 import { carregarPainel, type Painel } from "../lib/painel";
 import { REGIOES_BY_CODIGO, REGIOES_CE } from "../lib/regioes";
@@ -11,12 +12,22 @@ export default function Emprego() {
   const [painel, setPainel] = useState<Painel | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string>("03");
+  const [filtros] = useFiltros();
 
   useEffect(() => {
     carregarPainel().then(setPainel).catch((e) => setErro(String(e)));
   }, []);
 
-  const dados = useMemo(() => (painel ? computar(painel) : null), [painel]);
+  const dados = useMemo(() => {
+    if (!painel) return null;
+    const todosAnos = Array.from(new Set(painel.rows.map((r) => r.y))).sort();
+    const { inicio, fim } = aplicarPeriodo(todosAnos, filtros.periodo);
+    const filtrados: Painel = {
+      meta: painel.meta,
+      rows: painel.rows.filter((r) => r.y >= inicio && r.y <= fim),
+    };
+    return computar(filtrados);
+  }, [painel, filtros.periodo]);
 
   if (erro) return <ErrorBox msg={erro} />;
   if (!painel || !dados) return <Loading />;

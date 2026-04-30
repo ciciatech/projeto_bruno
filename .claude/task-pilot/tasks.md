@@ -10,7 +10,7 @@
 - [!] T03: Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)
 - [!] T04: Tela 3 Setores bloqueada — PIB municipal IBGE e RAIS por CNAE não estão coletados, aguarda decisão de escopo
 - [!] T05: Tela 4 Causal modelo OLS investimento → emprego bloqueada, aguarda especificação econométrica do Prof. Paulo
-- [ ] T06: FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02
+- [x] T06: FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02
 - [!] T07: Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini
 - [!] T08: Decisão sobre invest_privado residual bloqueada por Paulo (fonte do total privado)
 - [x] T09: Documentar plano de descontinuação bruno-dashboard Streamlit em docs/plano-descontinuacao-streamlit.md
