@@ -1,19 +1,23 @@
 @import "tailwindcss";
+@import "./lib/tokens.css";
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #14110b;
-  color: #f7f2e6;
-  font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+  background: var(--bg-page);
+  color: var(--ink-1);
+  font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
 }
 
 #root {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
 }
+
+* { box-sizing: border-box; }
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }

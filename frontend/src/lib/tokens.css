@@ -1,0 +1,116 @@
+/* Prisma Regional · design tokens (port do dashboard/prisma-regional/tokens.css)
+   Adapted for the live React app. */
+
+:root {
+  --bg-page:        #f7f4ee;
+  --bg-surface:     #ffffff;
+  --bg-sunken:      #f0ece4;
+  --bg-overlay:     rgba(28, 22, 14, 0.04);
+  --border-soft:    #e6e0d3;
+  --border-strong:  #c9c0ad;
+  --rule:           #1c160e;
+
+  --ink-1:          #1c160e;
+  --ink-2:          #3d362a;
+  --ink-3:          #6b6354;
+  --ink-4:          #8f8775;
+  --ink-mute:       #b6ad99;
+
+  --seq-1: #fef3c7;
+  --seq-2: #fcd34d;
+  --seq-3: #d97706;
+  --seq-4: #92400e;
+  --seq-5: #451a03;
+
+  --div-neg-3: #134e4a;
+  --div-neg-2: #5c9c97;
+  --div-neg-1: #b8d6d3;
+  --div-zero:  #f5f1e6;
+  --div-pos-1: #fcd9a8;
+  --div-pos-2: #d97706;
+  --div-pos-3: #92400e;
+
+  --cat-1: #92400e;
+  --cat-2: #1f6f6a;
+  --cat-3: #c5811f;
+  --cat-4: #4a5d3a;
+  --cat-5: #6b3a5c;
+  --cat-6: #2a4060;
+
+  --signal-good: #1f6f6a;
+  --signal-warn: #b46414;
+  --signal-bad:  #8c2a1c;
+  --signal-info: #2a4060;
+
+  --font-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+  --font-sans:  'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+  --font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  --t-display: 40px;
+  --t-h1: 28px;
+  --t-h2: 20px;
+  --t-h3: 15px;
+  --t-body: 13px;
+  --t-small: 12px;
+  --t-micro: 10.5px;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-body: 1.55;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-card: 0 1px 0 rgba(28,22,14,0.04), 0 1px 3px rgba(28,22,14,0.06);
+  --shadow-pop: 0 8px 28px rgba(28,22,14,0.18), 0 2px 6px rgba(28,22,14,0.08);
+}
+
+[data-theme="dark"] {
+  --bg-page: #14110b;
+  --bg-surface: #1c1810;
+  --bg-sunken: #0d0b07;
+  --bg-overlay: rgba(255, 248, 232, 0.04);
+  --border-soft: #2c2618;
+  --border-strong: #4a4130;
+  --rule: #f0ece4;
+
+  --ink-1: #f7f2e6;
+  --ink-2: #d8cfb8;
+  --ink-3: #9c9277;
+  --ink-4: #6e6650;
+  --ink-mute: #4a4332;
+
+  --seq-1: #3d2f10;
+  --seq-2: #92400e;
+  --seq-3: #d97706;
+  --seq-4: #fcd34d;
+  --seq-5: #fef3c7;
+
+  --div-neg-3: #5cc6c0;
+  --div-neg-2: #2a8a85;
+  --div-neg-1: #15403e;
+  --div-zero:  #2a241a;
+  --div-pos-1: #5e3a16;
+  --div-pos-2: #d97706;
+  --div-pos-3: #fcd34d;
+
+  --signal-good: #5cc6c0;
+  --signal-warn: #f2a050;
+  --signal-bad:  #e07565;
+  --signal-info: #7c9cc8;
+
+  --shadow-card: 0 1px 0 rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-pop: 0 8px 28px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.num, td.num, th.num, .mono { font-variant-numeric: tabular-nums; }
+.mono   { font-family: var(--font-mono); }
+.serif  { font-family: var(--font-serif); }
