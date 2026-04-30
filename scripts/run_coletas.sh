@@ -2,11 +2,12 @@
 # Disparador de coletas no Mac Mini. Use via SSH ou diretamente.
 #
 # Uso:
-#   bash scripts/run_coletas.sh onda1   # leves: BACEN + STN (~5 min)
-#   bash scripts/run_coletas.sh onda2   # pesadas: BF + BPC + invest_federal (~6-10h)
-#   bash scripts/run_coletas.sh onda3   # CAGED municipal (~12-24h, FTP MTE)
-#   bash scripts/run_coletas.sh painel  # apenas reconstrói o painel
-#   bash scripts/run_coletas.sh full    # tudo + painel
+#   bash scripts/run_coletas.sh onda1             # leves: BACEN + STN (~5 min)
+#   bash scripts/run_coletas.sh onda2             # pesadas: BF + BPC + invest_federal + invest_mun (~8-12h)
+#   bash scripts/run_coletas.sh onda3             # CAGED municipal (~12-24h, FTP MTE)
+#   bash scripts/run_coletas.sh invest_municipal  # apenas SICONFI invest_mun + painel (~2h)
+#   bash scripts/run_coletas.sh painel            # apenas reconstrói o painel
+#   bash scripts/run_coletas.sh full              # tudo + painel
 #
 # Logs em ~/.local/log/bruno-pipeline-coletas.log
 
@@ -38,9 +39,14 @@ case "$ONDA" in
         run "$PY" -m pipeline.run --modulos-ce bolsa_familia_ce
         run "$PY" -m pipeline.run --modulos-ce bpc
         run "$PY" -m pipeline.run --modulos-ce invest_federal
+        run "$PY" -m pipeline.run --modulos-ce invest_municipal
         ;;
     onda3)
         run "$PY" -m pipeline.run --modulos-ce caged_municipal
+        ;;
+    invest_municipal)
+        run "$PY" -m pipeline.run --modulos-ce invest_municipal
+        run "$PY" -m pipeline.run --painel-ce
         ;;
     painel)
         run "$PY" -m pipeline.run --painel-ce
@@ -52,12 +58,13 @@ case "$ONDA" in
         run "$PY" -m pipeline.run --modulos-ce bolsa_familia_ce
         run "$PY" -m pipeline.run --modulos-ce bpc
         run "$PY" -m pipeline.run --modulos-ce invest_federal
+        run "$PY" -m pipeline.run --modulos-ce invest_municipal
         run "$PY" -m pipeline.run --modulos-ce caged_municipal
         run "$PY" -m pipeline.run --painel-ce
         ;;
     *)
         echo "Onda desconhecida: $ONDA"
-        echo "Use: onda1 | onda2 | onda3 | painel | full"
+        echo "Use: onda1 | onda2 | onda3 | invest_municipal | painel | full"
         exit 1
         ;;
 esac

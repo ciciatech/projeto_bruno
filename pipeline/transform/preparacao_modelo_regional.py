@@ -170,9 +170,21 @@ def _carregar_invest_federal() -> pd.DataFrame:
 
 
 def _carregar_invest_municipal() -> pd.DataFrame:
-    df = _ler_csv_se_existir(
-        PROCESSED_DIR / "invest_municipal" / "invest_municipal_ce.csv"
-    )
+    """
+    Investimento municipal — prefere SICONFI (automático) sobre a planilha
+    manual do Bruno. A planilha permanece como fallback caso o SICONFI
+    ainda não tenha rodado.
+    """
+    candidatos = [
+        PROCESSED_DIR / "invest_municipal" / "invest_municipal_siconfi_ce.csv",
+        PROCESSED_DIR / "invest_municipal" / "invest_municipal_ce.csv",
+    ]
+    path = next((p for p in candidatos if p.exists()), None)
+    if path is None:
+        logger.warning(f"  ausente: {candidatos[0]} (e fallback)")
+        return pd.DataFrame()
+    logger.info(f"  invest_municipal: usando {path.name}")
+    df = pd.read_csv(path, dtype={"cod_ibge": str, "regiao_codigo": str})
     return _agregar_se_municipal(df, ["valor"], "invest_mun")
 
 
@@ -317,7 +329,7 @@ def construir_painel(
         "BPC": _carregar_bpc,
         "Transf. constitucionais STN": _carregar_transf_stn,
         "Transf. estaduais SEFAZ-CE": _carregar_transf_estadual,
-        "Invest. municipal (planilha)": _carregar_invest_municipal,
+        "Invest. municipal (SICONFI/planilha)": _carregar_invest_municipal,
         "ESTBAN BNB": _carregar_estban_bnb,
     }
 

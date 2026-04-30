@@ -21,7 +21,7 @@ Os módulos CE específicos disponíveis:
   - bpc                : BPC municipal via Portal Transp
   - transferencias_municipais : FPM/FUNDEB/ITR via CKAN STN
   - sefaz_ce           : ICMS/IPVA cota-parte (precisa arquivos manuais)
-  - invest_municipal   : adapta planilha do Bruno
+  - invest_municipal   : SICONFI RREO bimestral (fallback: planilha do Bruno)
   - invest_federal     : transferências voluntárias federais via Portal Transp
   - caged_municipal    : CAGED por município (pesado, requer FTP MTE)
   - bacen              : recoleta BACEN incluindo IBCR-CE
@@ -60,6 +60,7 @@ from pipeline.extract import (
     transferencias_municipais as transf_mun_mod,
     sefaz_ce as sefaz_ce_mod,
     invest_municipal_planilha as invest_mun_mod,
+    invest_municipal_siconfi as invest_mun_siconfi_mod,
     invest_federal as invest_fed_mod,
     caged_municipal as caged_mun_mod,
 )
@@ -201,8 +202,11 @@ class PipelineColeta:
             self.resumo["sefaz_ce"] = len(df)
 
         if "invest_municipal" in modulos:
-            logger.info("\n>>> CE: Investimento municipal (planilha Bruno) <<<")
-            df = invest_mun_mod.coletar_de_diretorio()
+            logger.info("\n>>> CE: Investimento municipal (SICONFI RREO bimestral) <<<")
+            df = invest_mun_siconfi_mod.coletar_ce()
+            if df.empty:
+                logger.warning("SICONFI vazio — fallback para planilha do Bruno")
+                df = invest_mun_mod.coletar_de_diretorio()
             self.resumo["invest_municipal"] = len(df)
 
         if "invest_federal" in modulos:
