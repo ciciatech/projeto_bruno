@@ -1,0 +1,198 @@
+{
+  "version": "1",
+  "project": null,
+  "source": "md",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Disparar coletor SICONFI invest_municipal no Mac Mini (~2h, 12k requests via SSH; manual)",
+      "description": "Disparar coletor SICONFI invest_municipal no Mac Mini (~2h, 12k requests via SSH; manual)",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T02",
+      "title": "Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json",
+      "description": "Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T03",
+      "title": "Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)",
+      "description": "Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T04",
+      "title": "Tela 3 Setores bloqueada — PIB municipal IBGE e RAIS por CNAE não estão coletados, aguarda decisão de escopo",
+      "description": "Tela 3 Setores bloqueada — PIB municipal IBGE e RAIS por CNAE não estão coletados, aguarda decisão de escopo",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T05",
+      "title": "Tela 4 Causal modelo OLS investimento → emprego bloqueada, aguarda especificação econométrica do Prof. Paulo",
+      "description": "Tela 4 Causal modelo OLS investimento → emprego bloqueada, aguarda especificação econométrica do Prof. Paulo",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T07",
+      "title": "Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini",
+      "description": "Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T08",
+      "title": "Decisão sobre invest_privado residual bloqueada por Paulo (fonte do total privado)",
+      "description": "Decisão sobre invest_privado residual bloqueada por Paulo (fonte do total privado)",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T09",
+      "title": "Documentar plano de descontinuação bruno-dashboard Streamlit em docs/plano-descontinuacao-streamlit.md",
+      "description": "Documentar plano de descontinuação bruno-dashboard Streamlit em docs/plano-descontinuacao-streamlit.md",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T10",
+      "title": "Mover dashboard/prisma-regional/ para archive/ (assets do design já portados em frontend/src/)",
+      "description": "Mover dashboard/prisma-regional/ para archive/ (assets do design já portados em frontend/src/)",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T11",
+      "title": "Adotar shadcn/ui no frontend (button table tooltip dialog) e refatorar onde fizer sentido",
+      "description": "Adotar shadcn/ui no frontend (button table tooltip dialog) e refatorar onde fizer sentido",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T12",
+      "title": "Cache HTTP do painel.json — versionar como painel.hash.json com cache longo e invalidação no build",
+      "description": "Cache HTTP do painel.json — versionar como painel.hash.json com cache longo e invalidação no build",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T13",
+      "title": "Cleanup do repositório (~30 arquivos untracked) — exige decisões manuais sobre cada arquivo",
+      "description": "Cleanup do repositório (~30 arquivos untracked) — exige decisões manuais sobre cada arquivo",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T14",
+      "title": "Criar CLAUDE.md inicial documentando stack, comandos e convenções do projeto",
+      "description": "Criar CLAUDE.md inicial documentando stack, comandos e convenções do projeto",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T15",
+      "title": "Testes mínimos pytest pipeline/tests/ (smoke SICONFI, schema painel) e Vitest no frontend (snapshot rotas)",
+      "description": "Testes mínimos pytest pipeline/tests/ (smoke SICONFI, schema painel) e Vitest no frontend (snapshot rotas)",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    },
+    {
+      "id": "T16",
+      "title": "ESTBAN BNB adapter manual bloqueado, BCB removeu URL pública estável",
+      "description": "ESTBAN BNB adapter manual bloqueado, BCB removeu URL pública estável",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T17",
+      "title": "SEFAZ-CE cota-parte estadual adapter manual bloqueado, site bloqueia bots",
+      "description": "SEFAZ-CE cota-parte estadual adapter manual bloqueado, site bloqueia bots",
+      "deps": [],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "blocked"
+    },
+    {
+      "id": "T06",
+      "title": "FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02",
+      "description": "FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02",
+      "deps": [
+        "T02"
+      ],
+      "scope": [],
+      "acceptance": [],
+      "max_attempts": 3,
+      "status": "pending"
+    }
+  ],
+  "execution_order": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T07",
+    "T08",
+    "T09",
+    "T10",
+    "T11",
+    "T12",
+    "T13",
+    "T14",
+    "T15",
+    "T16",
+    "T17",
+    "T06"
+  ]
+}
