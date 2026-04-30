@@ -19,7 +19,7 @@
 - [x] T12: Cache HTTP do painel.json — versionar como painel.hash.json com cache longo e invalidação no build
 - [!] T13: Cleanup do repositório (~30 arquivos untracked) — exige decisões manuais sobre cada arquivo
 - [x] T14: Criar CLAUDE.md inicial documentando stack, comandos e convenções do projeto
-- [ ] T15: Testes mínimos pytest pipeline/tests/ (smoke SICONFI, schema painel) e Vitest no frontend (snapshot rotas)
+- [x] T15: Testes mínimos pytest pipeline/tests/ (smoke SICONFI, schema painel) e Vitest no frontend (snapshot rotas)
 - [!] T16: ESTBAN BNB adapter manual bloqueado, BCB removeu URL pública estável
 - [!] T17: SEFAZ-CE cota-parte estadual adapter manual bloqueado, site bloqueia bots
 
