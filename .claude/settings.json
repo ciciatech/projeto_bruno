@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git branch*)",
+      "Bash(git pull)",
+      "Bash(git fetch*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(ls*)",
+      "Bash(find*)",
+      "Bash(cat*)",
+      "Bash(head*)",
+      "Bash(tail*)",
+      "Bash(grep*)",
+      "Bash(rg*)",
+      "Bash(python3 *)",
+      "Bash(pip install*)",
+      "Bash(pytest*)",
+      "Bash(streamlit run*)",
+      "Bash(npm run*)",
+      "Bash(npm install*)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(docker compose*)",
+      "Bash(docker ps*)",
+      "Bash(docker logs*)",
+      "Bash(curl -sS*)",
+      "Bash(curl -s*)",
+      "Bash(ssh*)",
+      "mcp__hostinger-mcp*"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /Users/*)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)"
+    ]
+  }
+}

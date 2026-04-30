@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Prisma Regional · IPEA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  html, body { height: 100%; }
+  /* App frame inside an artboard */
+  .app {
+    display: grid;
+    grid-template-rows: 56px auto 1fr;
+    grid-template-areas: 'header' 'filters' 'main';
+    background: var(--bg-page);
+    color: var(--ink-1);
+    height: 100%;
+    font-family: var(--font-sans);
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="charts.jsx"></script>
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="chrome.jsx"></script>
+<script type="text/babel" src="screen01.jsx"></script>
+<script type="text/babel" src="screen02.jsx"></script>
+<script type="text/babel" src="screen03.jsx"></script>
+<script type="text/babel" src="screen04.jsx"></script>
+<script type="text/babel" src="screen05.jsx"></script>
+<script type="text/babel" src="spec.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "light"
+}/*EDITMODE-END*/;
+
+function ScreenFrame({ n, children }) {
+  const filters = { periodo: '5A', geo: 'UF', ind: 'Anunciado', setor: 'Todos', rec: 'Bruto' };
+  const tweaks = window.__tweaks || TWEAK_DEFAULTS;
+  return (
+    <div className="app" data-theme={tweaks.theme} data-screen-label={`0${n} · Tela ${n}`}>
+      <AppHeader screen={n} theme={tweaks.theme} setTheme={(t) => window.__setTheme && window.__setTheme(t)} />
+      <FilterBar values={filters} setValues={() => {}} />
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const theme = tweaks.theme;
+  // expose for screens
+  window.__tweaks = tweaks;
+  window.__setTheme = (t) => setTweak('theme', t);
+
+  // Document-level theme so spec panels also respond
+  React.useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  // Artboard size — 1440 × 900 keeps full app dense yet readable
+  const W = 1440, H = 900;
+
+  return (
+    <>
+      <DesignCanvas>
+        <DCSection id="intro" title="Prisma Regional · IPEA"
+          subtitle="Plataforma de análise regional de investimento e emprego — pt-BR · 5 telas + sistema de design">
+          <DCArtboard id="cover" label="00 · Capa" width={900} height={H}>
+            <Cover />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="system" title="Sistema de design" subtitle="Tokens, tipografia, padrões e racional">
+          <DCArtboard id="paleta" label="00.1 · Paleta" width={780} height={H}><SpecPaleta /></DCArtboard>
+          <DCArtboard id="tipografia" label="00.2 · Tipografia" width={780} height={H}><SpecTipografia /></DCArtboard>
+          <DCArtboard id="wireframes" label="00.3 · Wireframes" width={780} height={H}><SpecWireframes /></DCArtboard>
+          <DCArtboard id="componentes" label="00.4 · Componentes" width={780} height={H}><SpecComponentes /></DCArtboard>
+          <DCArtboard id="racional" label="00.5 · Racional" width={780} height={H}><SpecJustificativa /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="screens" title="Telas hi-fi" subtitle="Mockups em escala real (1440 × 900) · use o expand de cada artboard para ver em foco">
+          <DCArtboard id="s1" label="01 · Investimento" width={W} height={H}>
+            <ScreenFrame n={1}><Screen01_Investimento /></ScreenFrame>
+          </DCArtboard>
+          <DCArtboard id="s2" label="02 · Emprego" width={W} height={H}>
+            <ScreenFrame n={2}><Screen02_Emprego /></ScreenFrame>
+          </DCArtboard>
+          <DCArtboard id="s3" label="03 · Setores" width={W} height={H}>
+            <ScreenFrame n={3}><Screen03_Setores /></ScreenFrame>
+          </DCArtboard>
+          <DCArtboard id="s4" label="04 · Causal" width={W} height={H}>
+            <ScreenFrame n={4}><Screen04_Causal /></ScreenFrame>
+          </DCArtboard>
+          <DCArtboard id="s5" label="05 · Pipeline" width={W} height={H}>
+            <ScreenFrame n={5}><Screen05_Pipeline /></ScreenFrame>
+          </DCArtboard>
+        </DCSection>
+
+        <DCPostIt top={20} left={930} rotate={2} width={210}>
+          Comece pela capa → sistema → telas. Use o ícone de expandir no canto de cada artboard para foco (←/→/Esc).
+        </DCPostIt>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Tema">
+          <TweakRadio
+            value={tweaks.theme}
+            onChange={(v) => setTweak('theme', v)}
+            options={[{ value: 'light', label: 'Claro' }, { value: 'dark', label: 'Escuro' }]}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+function Cover() {
+  return (
+    <div style={{ padding: 56, background: 'var(--bg-page)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxSizing: 'border-box' }}>
+      <div>
+        <div className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: 1.4, fontWeight: 600 }}>
+          IPEA · Plataforma de análise regional · v0.4 · abr 2026
+        </div>
+      </div>
+
+      <div>
+        <div className="serif" style={{ fontSize: 88, fontWeight: 700, lineHeight: 1, letterSpacing: -2, color: 'var(--ink-1)' }}>
+          Prisma<span style={{ color: 'var(--seq-3)' }}>·</span>Regional
+        </div>
+        <div className="serif" style={{ fontSize: 22, fontWeight: 400, marginTop: 16, color: 'var(--ink-2)', lineHeight: 1.3, maxWidth: 620, fontStyle: 'italic' }}>
+          Investimento, emprego e estrutura produtiva das 27 unidades federativas brasileiras — em alta densidade, com rigor acadêmico.
+        </div>
+      </div>
+
+      <div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, marginBottom: 32, fontSize: 13, color: 'var(--ink-2)', lineHeight: 1.55, maxWidth: 720 }}>
+          <div>
+            <div className="mono" style={{ fontSize: 10, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: 0.8, fontWeight: 600, marginBottom: 4 }}>Telas</div>
+            <ol style={{ margin: 0, paddingLeft: 20 }}>
+              <li>Investimento por UF</li>
+              <li>Dinâmica do emprego formal</li>
+              <li>Composição setorial regional</li>
+              <li>Relação causal investimento → emprego</li>
+              <li>Pipeline e qualidade de dados</li>
+            </ol>
+          </div>
+          <div>
+            <div className="mono" style={{ fontSize: 10, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: 0.8, fontWeight: 600, marginBottom: 4 }}>Princípios</div>
+            <ul style={{ margin: 0, paddingLeft: 20 }}>
+              <li>Mapas como protagonistas</li>
+              <li>Densidade alta com hierarquia</li>
+              <li>Numerais em mono · acentuação BR</li>
+              <li>Dark mode primeiro-cidadão</li>
+              <li>Tom editorial, não corporativo</li>
+            </ul>
+          </div>
+        </div>
+        <div style={{ borderTop: '1px solid var(--rule)', paddingTop: 16, fontSize: 11, color: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between' }}>
+          <span className="mono">Inspiração: FT · Our World in Data · Observable Plot · The Economist</span>
+          <span className="mono">5 telas · 12 componentes · 2 modos</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
