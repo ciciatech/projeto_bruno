@@ -1,0 +1,28 @@
+[tool.pytest.ini_options]
+testpaths = ["pipeline/tests"]
+addopts = [
+    "--cov=pipeline",
+    "--cov-report=term-missing",
+    "--cov-fail-under=10",
+]
+
+[tool.coverage.run]
+source = ["pipeline"]
+omit = [
+    "pipeline/tests/*",
+    # Coletores que dependem de I/O externo (FTP MTE, Portal Transp. com API key)
+    # ficam fora do alvo de cobertura unitária — testados via smoke/integration
+    # quando rodados de fato no Mac Mini.
+    "pipeline/extract/caged_rais.py",
+    "pipeline/extract/caged_municipal.py",
+    "pipeline/extract/bolsa_familia_ce.py",
+    "pipeline/extract/bpc.py",
+    "pipeline/extract/invest_federal.py",
+    "pipeline/extract/transferencias_municipais.py",
+    "pipeline/extract/transferencias.py",
+    "pipeline/extract/sefaz_ce.py",
+    "pipeline/extract/estban.py",
+    "pipeline/extract/ipea_fbcf.py",
+    "pipeline/extract/siof.py",
+    "pipeline/extract/_portal_transp_csv.py",
+]

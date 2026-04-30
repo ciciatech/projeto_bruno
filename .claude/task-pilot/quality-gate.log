@@ -1,0 +1,78 @@
+[09:44:27] Quality gate · projeto Bruno
+---
+[09:44:27] Frontend · npm run lint
+
+> frontend@0.0.0 lint
+> eslint .
+
+[09:44:28] Frontend · npm run build (TS check + Vite)
+
+> frontend@0.0.0 build
+> tsc -b && vite build
+
+vite v8.0.10 building client environment for production...
+[2Ktransforming...✓ 38 modules transformed.
+[lightningcss minify] Unknown at rule: @theme
+2  |  
+3  |  @layer theme {
+4  |    @theme default {
+   |          ^
+5  |      --font-sans:
+6  |        ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+[lightningcss minify] Unknown at rule: @theme
+522 |  
+523 |    /* Deprecated */
+524 |    @theme default inline reference {
+    |          ^
+525 |      --blur: 8px;
+526 |      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+[lightningcss minify] Unknown at rule: @tailwind
+941 |  
+942 |  @layer utilities {
+943 |    @tailwind utilities;
+    |             ^
+944 |  }
+945 |  
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.51 kB │ gzip:  0.32 kB
+dist/assets/index-D3lpclFW.css   23.71 kB │ gzip:  6.81 kB
+dist/assets/index-Yq9-jW-n.js   273.40 kB │ gzip: 84.65 kB
+
+✓ built in 103ms
+[09:44:29] Frontend OK
+[09:44:29] Pipeline · pytest com cobertura sobre pipeline/ (>=10% overall, modulos com I/O omitidos)
+.....                                                                    [100%]
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.13.3-final-0 _______________
+
+Name                                               Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------
+pipeline/__init__.py                                   0      0   100%
+pipeline/config.py                                    18      0   100%
+pipeline/extract/__init__.py                           0      0   100%
+pipeline/extract/bacen.py                             47     35    26%   59-85, 90-109
+pipeline/extract/bolsa_familia.py                     49     34    31%   45-64, 77-116, 120-122
+pipeline/extract/invest_municipal_planilha.py        106     89    16%   57-61, 65-82, 86-98, 102-137, 142-199, 203-204
+pipeline/extract/invest_municipal_siconfi.py         118     95    19%   77-87, 94-99, 111-129, 136-148, 167-260, 264-281
+pipeline/extract/portal_transparencia.py             103     88    15%   30-36, 49-78, 83-107, 115-144, 153-181
+pipeline/extract/siconfi.py                          106     84    21%   39-59, 68-89, 96-113, 118-135, 140-157, 162-178
+pipeline/extract/transparencia_al.py                  82     82     0%   9-163
+pipeline/extract/transparencia_pi.py                  79     79     0%   8-154
+pipeline/pib_shares.py                                35     21    40%   35-40, 44-52, 56-63, 68
+pipeline/quality.py                                  213    161    24%   231-253, 258-338, 342-344, 354-357, 361-367, 371-394, 398-406, 410-455, 459-512, 520-526, 530-534, 554-555, 564-607, 612, 616
+pipeline/regioes_ce.py                                77     24    69%   60, 69-74, 81-85, 104-105, 111, 113, 124-125, 130, 147, 168-171
+pipeline/run.py                                      187    160    14%   99-100, 104-160, 164-223, 227-249, 254-265, 270-276, 280-338
+pipeline/transform/__init__.py                         0      0   100%
+pipeline/transform/etl.py                            351    331     6%   15-19, 24-26, 34-59, 63-70, 74-98, 102-161, 165-221, 225-279, 283-301, 305-329, 333-354, 364-426, 430-454, 458-507, 511-560, 564-596, 601-619, 623
+pipeline/transform/preparacao_modelo.py              278    244    12%   110-113, 117-120, 124-127, 131-145, 155-171, 175-176, 183, 196-199, 208-211, 215-230, 239-247, 260-285, 289-317, 321-346, 355-363, 367-369, 373-392, 396-427, 431-446, 450-478, 482-496, 500-556, 560-589, 593
+pipeline/transform/preparacao_modelo_regional.py     189    164    13%   41-46, 53-73, 77-105, 109-112, 116-117, 121-133, 137-147, 156-169, 178-188, 192-206, 211-240, 253-263, 270-294, 301-311, 319-401, 405-406
+pipeline/utils.py                                     40     29    28%   29-30, 50-71, 81-89
+--------------------------------------------------------------------------------
+TOTAL                                               2078   1720    17%
+Required test coverage of 10% reached. Total coverage: 17.23%
+5 passed in 0.68s
+[09:44:31] Pipeline OK
+[09:44:31] Verificacao de secrets staged
+[09:44:31] Secrets OK
+[09:44:31] TUDO PASSOU

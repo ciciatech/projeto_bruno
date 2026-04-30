@@ -1,0 +1,7 @@
+# Logs de execução do task-pilot — gerados a cada run
+runs/
+state.json
+
+# Mas tasks.md / tasks.json SÃO versionados (são o "código" do plano)
+!tasks.md
+!tasks.json
