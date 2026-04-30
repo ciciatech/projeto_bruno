@@ -150,6 +150,12 @@ def agregar_para_regiao(
     info = get_regiao_info()[["cod_ibge", "regiao_codigo", "regiao_nome"]]
 
     work = df.copy()
+    # Coletores recentes (CAGED, BF, BPC) já trazem regiao_codigo/regiao_nome
+    # do mapeamento municipal — dropamos para evitar sufixos _x/_y no merge,
+    # que quebrariam o groupby subsequente.
+    work = work.drop(
+        columns=[c for c in ("regiao_codigo", "regiao_nome") if c in work.columns]
+    )
     work[col_cod_ibge] = work[col_cod_ibge].astype(str).str.zfill(7)
     work = work.merge(info, left_on=col_cod_ibge, right_on="cod_ibge", how="inner")
 
