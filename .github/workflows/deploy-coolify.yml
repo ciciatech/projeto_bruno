@@ -1,0 +1,25 @@
+name: Deploy Coolify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Coolify deploy
+        env:
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          UUID: p4c0o8wkcgos8s0sscws8g8k
+        run: |
+          set -e
+          echo "Disparando deploy da app bruno-dashboard ($UUID)..."
+          response=$(curl -fsSL -X POST \
+            -H "Authorization: Bearer $COOLIFY_TOKEN" \
+            "https://painel.ciciacademy.com.br/api/v1/deploy?uuid=$UUID&force=true")
+          echo "$response"
+          deployment_uuid=$(echo "$response" | python3 -c "import json,sys; print(json.load(sys.stdin)['deployments'][0]['deployment_uuid'])")
+          echo "deployment_uuid=$deployment_uuid"
+          echo "Deploy queued. Acompanhe em https://painel.ciciacademy.com.br"
