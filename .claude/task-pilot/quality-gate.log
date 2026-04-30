@@ -1,47 +1,37 @@
-[09:44:27] Quality gate · projeto Bruno
+[10:06:56] Quality gate · projeto Bruno
 ---
-[09:44:27] Frontend · npm run lint
+[10:06:56] Frontend · npm run lint
 
 > frontend@0.0.0 lint
 > eslint .
 
-[09:44:28] Frontend · npm run build (TS check + Vite)
+
+/Users/cassiopinheiro/dev/academico/bruno/frontend/src/components/FilterBar.tsx
+  25:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  30:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  54:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/Users/cassiopinheiro/dev/academico/bruno/frontend/vite.config.ts
+  1:1  error  Do not use a triple slash reference for vitest/config, use `import` style instead  @typescript-eslint/triple-slash-reference
+
+✖ 4 problems (4 errors, 0 warnings)
+
+[10:06:57] Frontend · npm run build (TS check + Vite)
 
 > frontend@0.0.0 build
 > tsc -b && vite build
 
 vite v8.0.10 building client environment for production...
-[2Ktransforming...✓ 38 modules transformed.
-[lightningcss minify] Unknown at rule: @theme
-2  |  
-3  |  @layer theme {
-4  |    @theme default {
-   |          ^
-5  |      --font-sans:
-6  |        ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-[lightningcss minify] Unknown at rule: @theme
-522 |  
-523 |    /* Deprecated */
-524 |    @theme default inline reference {
-    |          ^
-525 |      --blur: 8px;
-526 |      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-[lightningcss minify] Unknown at rule: @tailwind
-941 |  
-942 |  @layer utilities {
-943 |    @tailwind utilities;
-    |             ^
-944 |  }
-945 |  
+[2Ktransforming...✓ 39 modules transformed.
 rendering chunks...
 computing gzip size...
 dist/index.html                   0.51 kB │ gzip:  0.32 kB
-dist/assets/index-D3lpclFW.css   23.71 kB │ gzip:  6.81 kB
-dist/assets/index-Yq9-jW-n.js   273.40 kB │ gzip: 84.65 kB
+dist/assets/index-CaMS8Bu_.css   11.83 kB │ gzip:  3.63 kB
+dist/assets/index-IX_A7daa.js   277.41 kB │ gzip: 85.84 kB
 
-✓ built in 103ms
-[09:44:29] Frontend OK
-[09:44:29] Pipeline · pytest com cobertura sobre pipeline/ (>=10% overall, modulos com I/O omitidos)
+✓ built in 106ms
+[10:06:58] Frontend OK
+[10:06:58] Pipeline · pytest com cobertura sobre pipeline/ (>=10% overall, modulos com I/O omitidos)
 .....                                                                    [100%]
 ================================ tests coverage ================================
 _______________ coverage: platform darwin, python 3.13.3-final-0 _______________
@@ -71,8 +61,8 @@ pipeline/utils.py                                     40     29    28%   29-30, 
 --------------------------------------------------------------------------------
 TOTAL                                               2078   1720    17%
 Required test coverage of 10% reached. Total coverage: 17.23%
-5 passed in 0.68s
-[09:44:31] Pipeline OK
-[09:44:31] Verificacao de secrets staged
-[09:44:31] Secrets OK
-[09:44:31] TUDO PASSOU
+5 passed in 0.66s
+[10:06:59] Pipeline OK
+[10:06:59] Verificacao de secrets staged
+[10:06:59] Secrets OK
+[10:06:59] TUDO PASSOU

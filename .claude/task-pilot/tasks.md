@@ -15,7 +15,7 @@
 - [!] T08: Decisão sobre invest_privado residual bloqueada por Paulo (fonte do total privado)
 - [x] T09: Documentar plano de descontinuação bruno-dashboard Streamlit em docs/plano-descontinuacao-streamlit.md
 - [x] T10: Mover dashboard/prisma-regional/ para archive/ (assets do design já portados em frontend/src/)
-- [ ] T11: Adotar shadcn/ui no frontend (button table tooltip dialog) e refatorar onde fizer sentido
+- [!] T11: Adotar shadcn/ui no frontend — em WAITING (sem caso de uso justificando o refator de tokens; ver runs/2026-04-30T12-32/T11.md)
 - [x] T12: Cache HTTP do painel.json — versionar como painel.hash.json com cache longo e invalidação no build
 - [!] T13: Cleanup do repositório (~30 arquivos untracked) — exige decisões manuais sobre cada arquivo
 - [x] T14: Criar CLAUDE.md inicial documentando stack, comandos e convenções do projeto
