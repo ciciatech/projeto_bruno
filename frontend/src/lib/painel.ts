@@ -53,12 +53,45 @@ export type Painel = { meta: PainelMeta; rows: PainelRow[] };
 
 let cache: Promise<Painel> | null = null;
 
+type PainelIndex = {
+  version: string;
+  filename: string;
+  atualizado_em: string | null;
+  linhas: number;
+};
+
+/**
+ * Carrega o painel em duas etapas:
+ *   1. fetch /data/painel-index.json (pequeno, sem cache) para descobrir o
+ *      filename hash-versionado do payload atual;
+ *   2. fetch /data/painel.<hash>.json (cache imutável de 1 ano).
+ *
+ * Quando o painel é regenerado, o hash muda → o browser baixa o arquivo novo;
+ * quando não muda, a segunda request bate em 304/cache local.
+ *
+ * Fallback: se o index falhar (build antigo / nginx sem regra), tenta
+ * /data/painel.json direto.
+ */
 export function carregarPainel(): Promise<Painel> {
   if (!cache) {
-    cache = fetch("/data/painel.json", { cache: "no-cache" }).then((r) => {
+    cache = (async () => {
+      try {
+        const idxResp = await fetch("/data/painel-index.json", { cache: "no-cache" });
+        if (idxResp.ok) {
+          const idx: PainelIndex = await idxResp.json();
+          const dataResp = await fetch(`/data/${idx.filename}`);
+          if (!dataResp.ok) {
+            throw new Error(`Falha ao carregar ${idx.filename}: HTTP ${dataResp.status}`);
+          }
+          return await dataResp.json();
+        }
+      } catch (e) {
+        console.warn("[painel] index.json indisponível, fallback para painel.json", e);
+      }
+      const r = await fetch("/data/painel.json", { cache: "no-cache" });
       if (!r.ok) throw new Error(`Falha ao carregar painel: HTTP ${r.status}`);
-      return r.json();
-    });
+      return await r.json();
+    })();
   }
   return cache;
 }

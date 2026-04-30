@@ -27,7 +27,9 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "dados_nordeste" / "processed" / "model_ready" / "painel_regional_ce_mensal.csv"
-DST = Path(__file__).resolve().parents[1] / "public" / "data" / "painel.json"
+DATA_DIR = Path(__file__).resolve().parents[1] / "public" / "data"
+DST = DATA_DIR / "painel.json"
+INDEX = DATA_DIR / "painel-index.json"
 
 
 COL_RENAME = {
@@ -131,15 +133,38 @@ def main() -> None:
         "rows": rows,
     }
 
-    DST.parent.mkdir(parents=True, exist_ok=True)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     # allow_nan=False: garante JSON spec-compliant (sem NaN/Infinity).
-    DST.write_text(
-        json.dumps(out, ensure_ascii=False, separators=(",", ":"), allow_nan=False),
+    payload_str = json.dumps(out, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
+
+    import hashlib
+    digest = hashlib.sha256(payload_str.encode("utf-8")).hexdigest()[:8]
+    hashed_name = f"painel.{digest}.json"
+    HASHED = DATA_DIR / hashed_name
+
+    HASHED.write_text(payload_str, encoding="utf-8")
+    INDEX.write_text(
+        json.dumps(
+            {
+                "version": digest,
+                "filename": hashed_name,
+                "atualizado_em": out["meta"]["atualizado_em"],
+                "linhas": out["meta"]["linhas"],
+            },
+            ensure_ascii=False,
+        ),
         encoding="utf-8",
     )
+    DST.write_text(payload_str, encoding="utf-8")
+
+    # cleanup: hashes antigos
+    for old in DATA_DIR.glob("painel.*.json"):
+        if old.name != hashed_name:
+            old.unlink()
+
     print(
-        f"OK · {DST.relative_to(ROOT)} · {DST.stat().st_size / 1024:.1f} KB · "
-        f"{len(rows)} rows · {len(regioes)} regiões"
+        f"OK · public/data/{hashed_name} · {HASHED.stat().st_size / 1024:.1f} KB · "
+        f"{len(rows)} rows · {len(regioes)} regiões · index → {digest}"
     )
 
 
