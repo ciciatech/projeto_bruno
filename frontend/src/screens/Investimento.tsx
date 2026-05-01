@@ -39,13 +39,12 @@ export default function Investimento() {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "320px 1fr 320px",
+        gridTemplateColumns: "minmax(260px, 320px) minmax(0, 1fr) minmax(260px, 320px)",
         gridTemplateRows: "auto 1fr",
         gap: 12,
         padding: 12,
         gridArea: "main",
         minHeight: 0,
-        overflow: "hidden",
       }}
     >
       {/* HEADER */}
@@ -174,14 +173,14 @@ export default function Investimento() {
               values={dados.mapaSiof}
               selected={selecionado}
               onSelect={setSelecionado}
-              width={560}
-              height={520}
+              width={520}
+              height={420}
               tile={92}
               gap={6}
             />
           </div>
 
-          <aside className="flex flex-col gap-4 pt-2" style={{ width: 200 }}>
+          <aside className="flex flex-col gap-4 pt-2" style={{ width: 180, flexShrink: 0 }}>
             <div>
               <div
                 style={{

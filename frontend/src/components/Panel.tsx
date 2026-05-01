@@ -90,7 +90,9 @@ export function Panel({
           flex: 1,
           minWidth: 0,
           minHeight: 0,
-          overflow: "hidden",
+          // overflow auto permite que conteúdo grande role internamente
+          // (em vez de ser cortado silenciosamente como `hidden` fazia).
+          overflow: "auto",
         }}
       >
         {children}

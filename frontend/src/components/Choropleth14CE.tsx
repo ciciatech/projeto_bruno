@@ -7,6 +7,7 @@ type Props = {
   values: Record<string, number | null | undefined>;
   scale?: "seq" | "div";
   width?: number;
+  /** @deprecated mantida para compatibilidade — agora altura é derivada do aspectRatio */
   height?: number;
   tile?: number;
   gap?: number;
@@ -37,13 +38,14 @@ export function Choropleth14CE({
   values,
   scale = "seq",
   width = 520,
-  height = 480,
+  height: _height = 480,
   tile = 90,
   gap = 6,
   selected,
   onSelect,
   onHover,
 }: Props) {
+  void _height;
   const { min, max } = useMemo(() => {
     const nums = Object.values(values).filter((v): v is number => typeof v === "number");
     if (nums.length === 0) return { min: 0, max: 1 };
@@ -65,13 +67,22 @@ export function Choropleth14CE({
 
   const W = GRID_COLS * (tile + gap);
   const H = GRID_ROWS * (tile + gap);
+  // Mantém aspect ratio do viewBox (5×4 tiles + gaps) para não criar bandas
+  // brancas. Se o caller passar width/height sem essa proporção, o SVG
+  // recalcula a altura proporcional via CSS.
+  const aspect = W / H;
 
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
-      width={width}
-      height={height}
-      style={{ display: "block" }}
+      preserveAspectRatio="xMidYMid meet"
+      style={{
+        display: "block",
+        width: "100%",
+        maxWidth: width,
+        height: "auto",
+        aspectRatio: `${aspect}`,
+      }}
     >
       {REGIOES_CE.map((r) => {
         const x = r.col * (tile + gap);
