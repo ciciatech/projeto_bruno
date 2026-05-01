@@ -70,6 +70,8 @@ COL_RENAME = {
     "ibcr_ce": "ibcr",
     "invest_total_ce_r_2010_mi": "inv_tot",
     "share_pib_ce_br": "share",
+    # populacao
+    "pop": "pop",
 }
 
 

@@ -26,8 +26,8 @@ export default function Investimento() {
       meta: painel.meta,
       rows: painel.rows.filter((r) => r.y >= inicio && r.y <= fim),
     };
-    return computar(filtrados);
-  }, [painel, filtros.periodo]);
+    return computar(filtrados, filtros.recorte);
+  }, [painel, filtros.periodo, filtros.recorte]);
 
   if (erro) return <ErrorBox msg={erro} />;
   if (!painel || !dados) return <Loading />;
@@ -472,8 +472,27 @@ function ErrorBox({ msg }: { msg: string }) {
   );
 }
 
-function computar(painel: Painel) {
+function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "Bruto") {
   const rows = painel.rows;
+  // Pop CE total: pega último ano disponível e soma todas as regiões
+  const popPorRegiaoAno = new Map<string, number>();
+  for (const r of rows) {
+    if (typeof r.pop === "number") {
+      const k = `${r.r}-${r.y}`;
+      if (!popPorRegiaoAno.has(k)) popPorRegiaoAno.set(k, r.pop);
+    }
+  }
+  // pop por região (último ano disponível)
+  const popPorRegiao = new Map<string, number>();
+  popPorRegiaoAno.forEach((v, k) => {
+    const cod = k.split("-")[0];
+    const cur = popPorRegiao.get(cod) ?? 0;
+    if (v > cur) popPorRegiao.set(cod, v);
+  });
+  const popTotalCE = Array.from(popPorRegiao.values()).reduce((a, b) => a + b, 0);
+  const isPerCap = recorte === "Per capita";
+  const fator = isPerCap && popTotalCE > 0 ? 1000 / popTotalCE : 1; // R$/hab × mil = milhar per capita
+  void fator;
   const snapshot = snapshotPorRegiao(rows);
 
   // Soma SIOF por região: o painel replica o anual; pegamos por (regiao, ano) agg.
@@ -583,29 +602,56 @@ function computar(painel: Painel) {
       };
     });
 
-  // Composição real — agora com invest. federal disponível
+  // Composição das 4 esferas + privado residual
+  // Metodologia documentada em docs/metodologia-composicao-investimento.md
+  // (transcrição dos áudios do Prof. Paulo, abr/2026):
+  //   inv_total_ce ≈ FBCF Brasil × 2.2% (share PIB CE/BR)
+  //   inv_privado  = inv_total_ce - inv_estadual - inv_federal - inv_municipal
+  //
+  // ATENÇÃO: bases monetárias ainda mistas (SIOF e municipal em R$ correntes,
+  // FBCF em R$ 2010, federal em R$ correntes). Cálculo abaixo é didático;
+  // refinamento monetário (deflator IPCA → R$ dez/2024) entra na próxima
+  // iteração após decisão final do Paulo.
   let totalIfFed = 0;
+  let totalInvMun = 0;
   for (const r of rows) {
     if (typeof r.if_total === "number") totalIfFed += r.if_total;
+    if (typeof r.invest_mun_valor === "number") totalInvMun += r.invest_mun_valor;
   }
-  // siof e if_total estão em escalas diferentes (R$ mi). Fazemos comparação relativa
-  // apenas entre fontes com dados; municipal e privado ficam pendentes.
-  const totalDisponivel = totalSiof + totalIfFed / 1e6; // if_total em R$, normalizar
+  const totalEstadual = totalSiof;
+  const totalFederal = totalIfFed / 1e6;
+  const totalMunicipal = totalInvMun;
+  const totalPrivadoEstimado = Math.max(
+    0,
+    totalInvTotal - totalEstadual - totalFederal - totalMunicipal,
+  );
+  const totalComposicao =
+    totalEstadual + totalFederal + totalMunicipal + totalPrivadoEstimado || 1;
   const composicao = [
     {
       label: "Estadual (SIOF)",
       color: "var(--seq-3)",
-      share: totalDisponivel > 0 ? totalSiof / totalDisponivel : 0,
-      disponivel: true,
+      share: totalEstadual / totalComposicao,
+      disponivel: totalEstadual > 0,
     },
     {
       label: "Federal (RREO)",
       color: "var(--cat-2)",
-      share: totalDisponivel > 0 ? (totalIfFed / 1e6) / totalDisponivel : 0,
-      disponivel: totalIfFed > 0,
+      share: totalFederal / totalComposicao,
+      disponivel: totalFederal > 0,
     },
-    { label: "Municipal (SICONFI)", color: "var(--cat-1)", share: 0, disponivel: false },
-    { label: "Privado residual",    color: "var(--cat-5)", share: 0, disponivel: false },
+    {
+      label: "Municipal (SICONFI)",
+      color: "var(--cat-1)",
+      share: totalMunicipal / totalComposicao,
+      disponivel: totalMunicipal > 0,
+    },
+    {
+      label: "Privado (residual)",
+      color: "var(--cat-5)",
+      share: totalPrivadoEstimado / totalComposicao,
+      disponivel: totalInvTotal > 0,
+    },
   ];
 
   // periodo

@@ -1,0 +1,224 @@
+# Metodologia · Composição do investimento total no Ceará
+
+> Consolidação das decisões metodológicas do Prof. Paulo Araújo (orientador)
+> a partir de 3 transcrições de áudios enviados em abr/2026.
+
+## Visão geral
+
+A tese trabalha com o **investimento agregado no Ceará** decomposto em
+**4 esferas + residual privado**:
+
+```
+Investimento total CE = Estadual + Municipal + Federal + Privado (residual)
+```
+
+Cada esfera tem fonte e método próprios. O privado é uma "conta de
+chegada" — calculado por exclusão.
+
+---
+
+## 1. Investimento Estadual (SIOF-CE)
+
+**Fonte**: SIOF (Sistema Integrado de Orçamento e Finanças do CE) —
+documentos PDF anuais publicados pela SEPLAG-CE.
+
+**Granularidade nativa**: região × ano (14 regiões SEPLAG/IPECE).
+
+**Variável**: empenhado em obras e equipamentos (categoria 4 do SIOF).
+
+**Tratamento no painel**: replicado em todos os meses do ano (anual → mensal
+por replicação, não por divisão).
+
+**Status no projeto**: ✅ pronto. Output em
+`dados_nordeste/processed/execucao_orcamentaria/ce/siof_obras_regiao.csv`.
+
+---
+
+## 2. Investimento Municipal (SICONFI)
+
+**Fonte**: SICONFI / Tesouro Nacional, RREO Anexo 01.
+
+**Endpoint**: `apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo` — API pública,
+JSON.
+
+**Granularidade nativa**: município × bimestre (acumulado-no-ano).
+
+**Filtro adotado**:
+- `anexo == "RREO-Anexo 01"` (Balanço Orçamentário)
+- `cod_conta == "Investimentos"` (categoria econômica direta)
+- `coluna == "DESPESAS EMPENHADAS ATÉ O BIMESTRE (f)"`
+
+**Tratamento anti-erro** (citação direta do áudio do Prof. Paulo):
+
+> "Tem umas manhas. Às vezes as prefeituras divulgam os dados de maneira
+> equivocada. Em vez de colocar o dado acumulado, às vezes ela coloca o dado
+> corrente. A gente tem que criar uns truquezinhos, uns filtrozinhos para
+> perceber quando eles erram."
+
+**Implementação**: o coletor compara o valor acumulado do bimestre N+1 com
+o do bimestre N. Se `valor_b{n+1} < valor_b{n} × 0.95` (mesmo ano, mesma
+prefeitura), marca como `suspeito_relato_corrente` e registra em
+`dados_nordeste/quality/invest_municipal_siconfi_audit.csv`. O dado **não é
+descartado** — apenas sinalizado para revisão.
+
+**Conversão bimestre → mensal**:
+```
+fluxo_bimestre_n = valor_acum_b{n} - valor_acum_b{n-1}
+mes_2n-1 = mes_2n = fluxo_bimestre_n / 2
+```
+
+**Status**: ✅ coletor implementado em `pipeline/extract/invest_municipal_siconfi.py`.
+Em execução no Mac Mini (PID 82781, ~12k requests, ~1h40, ETA 22:34 BRT).
+
+---
+
+## 3. Investimento Federal (RREO União)
+
+**Fonte**: Portal da Transparência (CSV bulk de despesas-execução) +
+RREO da União.
+
+**Metodologia (3 componentes)**:
+
+### 3.1 Aplicações Diretas no CE
+> "Aí o que ocorre: a gente vai no RREO da União, aplicações diretas,
+> vê tudo o que foi gasto no Ceará."
+
+Filtros:
+- Código Grupo de Despesa = **4** (Investimentos)
+- Código Modalidade da Despesa = **90** (Aplicações Diretas)
+- Localização = CE (UF 23)
+
+### 3.2 Rateio NE → CE
+> "No RREO da União, quando uma obra transpassa um estado, abrange dois
+> estados ou mais, ela não identifica o estado, mas identifica a região.
+> O Estado do Ceará tem 14,5% do PIB da região. Aí a gente assume que todo
+> investimento que o Lula faz na região Nordeste, mas não identifica qual é
+> o estado, 14,5% desse investimento foi para o Ceará."
+
+```
+ne_rateado_ce = invest_NE_indefinido × 0.145
+```
+
+### 3.3 Rateio Nacional → CE
+> "Às vezes corta estados de mais de uma região, aí o governo federal não
+> identifica é nada. Aí a gente pega esse investimento da União que não vai
+> para canto nenhum e assume que 2,2% dele veio para o Ceará, porque é o
+> PIB do Ceará na União."
+
+```
+nacional_rateado_ce = invest_nacional_indefinido × 0.022
+```
+
+### 3.4 Total federal
+```
+invest_fed_total = direto_ce + ne_rateado_ce + nacional_rateado_ce
+```
+
+**Atenção (citação)**:
+> "Não são contabilizados repasses ao governo estadual para evitar a
+> contagem duplicada, já que esses valores já constam no RREO estadual."
+
+**Status**: ✅ implementado em `pipeline/extract/invest_federal.py`.
+Output: `invest_federal_ce_mensal.csv` com colunas `direto_ce`,
+`ne_rateado`, `nacional_rateado`, `total`.
+
+---
+
+## 4. Investimento Privado (residual)
+
+**Fonte**: cálculo por exclusão.
+
+```
+inv_privado = inv_total_CE − inv_estadual − inv_municipal − inv_federal
+```
+
+### 4.1 Estimação do total CE
+
+> "O Ipea divulga no IpeaData o investimento total brasileiro, tanto fluxo
+> como estoque, mensal até 2024 [...] Aí o que ocorre: a gente tem que
+> assumir que o share desse investimento total no Brasil no Ceará segue o
+> mesmo percentual que o share do PIB do Ceará no Brasil. O Ceará
+> historicamente tem um PIB ali que, na média, é 2,2% do PIB nacional."
+
+```
+inv_total_CE = FBCF_Brasil_mensal × 0.022
+```
+
+**Fonte FBCF Brasil**: IpeaData série `BM12_FBKFM12` (FBCF mensal, indicador)
++ `SCN10_FBKFP10` (FBCF anual real, R$ 2010 mi).
+
+**Hipótese explícita**: o share do PIB CE/BR (~2,2%) é estável no tempo e
+aplica também ao investimento. É uma aproximação — não há base oficial
+para FBCF estadual.
+
+**Coletor**: `pipeline/extract/ipea_fbcf.py` ✅ implementado. Output:
+`fbcf_brasil_mensal.csv`.
+
+### 4.2 Base monetária
+
+O áudio do Paulo descreve o IpeaData como já entregando os valores em
+**R$ presente de dezembro/2024**. Verificação no nosso coletor: o IpeaData
+disponibiliza tanto **R$ correntes** quanto **R$ 2010**.
+
+**Pendência**: alinhar todas as 4 esferas em **R$ dezembro/2024** (decisão
+aprovada pelo Prof. Paulo) usando IPCA cheio. Trabalho de ~2h:
+1. Coletar série IPCA mensal (BACEN SGS 433).
+2. Aplicar deflator a SIOF, SICONFI, RREO e FBCF.
+3. Adicionar `_real_2024` aos nomes das colunas.
+
+Até essa harmonização, a composição do frontend usa **valores nominais** com
+**aviso visual** ("⚠ bases mistas — refinamento monetário pendente").
+
+### 4.3 Para 2025
+
+> "Tem até que fazer uma previsão — é o que a gente tem feito para 2025; a
+> última vez que eu olhei eles não tinham calculado ainda para 2025."
+
+**Pendência**: implementar previsão univariada (ex: ARIMA simples ou
+extrapolação por share) para o investimento total CE em 2025. Quando o
+IpeaData publicar o dado oficial, substituir.
+
+---
+
+## 5. Por que essa "engenharia"?
+
+Citação final do áudio:
+
+> "Engenharia danada, mas cara, é o que a gente tem usado para a SEFAZ,
+> porque de outra forma você não tem o dado."
+
+Não existe dado oficial de FBCF estadual nem decomposição completa por
+esfera. A metodologia aqui é a **convenção de trabalho aprovada pelo
+orientador** — deve ser citada explicitamente em qualquer publicação:
+
+```
+Investimento total estimado para o Ceará via aplicação do share histórico
+do PIB CE/Brasil (2,2%) sobre a série mensal de FBCF Brasil do IpeaData
+(SCN10_FBKFP10). Investimento federal calculado via 3 componentes do RREO
+União (aplicações diretas + rateio NE × 14,5% + rateio nacional × 2,2%).
+Investimento privado computado por exclusão.
+```
+
+---
+
+## 6. Status de implementação
+
+| Esfera | Coletor | Painel | Status |
+|--------|---------|--------|--------|
+| Estadual (SIOF) | siof.py | `siof_emp` (anual replicado) | ✅ |
+| Federal (RREO) | invest_federal.py | `if_total`, `if_direto`, `if_ne`, `if_nac` | ✅ |
+| Municipal (SICONFI) | invest_municipal_siconfi.py | `invest_mun_valor` (mapeado) | ⏳ rodando no Mac Mini |
+| Privado residual | (cálculo no frontend) | derivado | ⏳ aguarda Municipal + harmonização |
+| Total CE estimado | ipea_fbcf.py | `inv_tot` | ✅ (R$ 2010, falta deflator) |
+| Share PIB CE/BR | pib_shares.py | `share` | ✅ |
+
+---
+
+## Referências internas
+
+- `pipeline/extract/ipea_fbcf.py` — coletor FBCF
+- `pipeline/extract/invest_federal.py` — coletor RREO + Portal Transp.
+- `pipeline/extract/invest_municipal_siconfi.py` — coletor SICONFI
+- `pipeline/extract/siof.py` — parser SIOF-CE
+- `pipeline/pib_shares.py` — share CE/BR e CE/NE
+- `frontend/src/screens/Investimento.tsx` — visualização da composição

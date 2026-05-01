@@ -13,7 +13,7 @@ const PERIODOS: { key: Periodo; label: string }[] = [
 
 const RECORTES: { key: Recorte; label: string; disabled?: boolean }[] = [
   { key: "Bruto", label: "Bruto" },
-  { key: "Per capita", label: "Per capita", disabled: true },
+  { key: "Per capita", label: "Per capita" },
   { key: "% PIB", label: "% PIB", disabled: true },
 ];
 

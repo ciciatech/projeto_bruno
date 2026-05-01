@@ -12,7 +12,7 @@
 - [!] T05: Tela 4 Causal modelo OLS investimento → emprego bloqueada, aguarda especificação econométrica do Prof. Paulo
 - [x] T06: FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02
 - [!] T07: Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini
-- [!] T08: Decisão sobre invest_privado residual bloqueada por Paulo (fonte do total privado)
+- [x] T08: Decisão sobre invest_privado residual — RESOLVIDA pelos áudios do Paulo (abr/2026): FBCF mensal Brasil × 2,2% (share PIB CE/BR), em R$ presente de dez/2024. Documentado em docs/metodologia-composicao-investimento.md
 - [x] T09: Documentar plano de descontinuação bruno-dashboard Streamlit em docs/plano-descontinuacao-streamlit.md
 - [x] T10: Mover dashboard/prisma-regional/ para archive/ (assets do design já portados em frontend/src/)
 - [!] T11: Adotar shadcn/ui no frontend — em WAITING (sem caso de uso justificando o refator de tokens; ver runs/2026-04-30T12-32/T11.md)

@@ -37,6 +37,8 @@ export type PainelRow = {
   ibcr?: number | null;
   inv_tot?: number | null;
   share?: number | null;
+  // população (anual replicado em meses)
+  pop?: number | null;
   [k: string]: number | string | null | undefined;
 };
 
