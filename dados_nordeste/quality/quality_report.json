@@ -1,0 +1,1211 @@
+{
+  "generated_at": "2026-03-06T12:20:21.839907",
+  "project_base_dir": "/Users/cassiopinheiro/dev/academico/bruno/dados_nordeste",
+  "summary": {
+    "total_sources": 16,
+    "ok": 8,
+    "alerta": 8,
+    "erro": 0
+  },
+  "sources": [
+    {
+      "nome": "bacen_raw_wide",
+      "descricao": "Séries mensais do BACEN em formato wide.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/bacen/nacional/bacen_sgs_wide.csv",
+      "frequencia_esperada": "mensal",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 132,
+        "column_count": 13,
+        "columns": [
+          "data",
+          "IBCR_NE_ajuste_sazonal",
+          "credito_PF_brasil",
+          "credito_PF_nordeste",
+          "credito_PJ_brasil",
+          "credito_PJ_nordeste",
+          "credito_total_nordeste",
+          "ibc_br",
+          "inadimplencia_PF",
+          "inadimplencia_PJ",
+          "ipca_mensal",
+          "pib_trimestral_indice",
+          "selic_mensal"
+        ],
+        "missing_cells_total": 88,
+        "missing_percent_total": 5.13,
+        "key_columns_present": [
+          "data"
+        ],
+        "critical_columns_present": [
+          "data",
+          "credito_PF_nordeste",
+          "credito_PJ_nordeste",
+          "IBCR_NE_ajuste_sazonal",
+          "ipca_mensal"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "data": 0.0,
+          "credito_PF_nordeste": 0.0,
+          "credito_PJ_nordeste": 0.0,
+          "IBCR_NE_ajuste_sazonal": 0.0,
+          "ipca_mensal": 0.0
+        },
+        "year_coverage": {
+          "source_column": "data",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": null,
+          "ufs": [],
+          "count_ufs": 0
+        },
+        "periodicity_coverage": {
+          "source": [
+            "data"
+          ],
+          "distinct_periods": 132,
+          "min_period": "2015-01-01",
+          "max_period": "2025-12-01"
+        },
+        "continuity_coverage": {
+          "available": false,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "caged_antigo_raw",
+      "descricao": "Saldo mensal do CAGED antigo por UF.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/caged/nordeste/caged_antigo_saldo_mensal.csv",
+      "frequencia_esperada": "mensal",
+      "file_exists": true,
+      "status": "alerta",
+      "warnings": [
+        "Lacunas de continuidade: 117 combinações período-UF ausentes."
+      ],
+      "metrics": {
+        "row_count": 423,
+        "column_count": 8,
+        "columns": [
+          "ano",
+          "mes",
+          "sigla_uf",
+          "admissoes",
+          "desligamentos",
+          "saldo",
+          "salario_medio",
+          "total_movimentacoes"
+        ],
+        "missing_cells_total": 0,
+        "missing_percent_total": 0.0,
+        "key_columns_present": [
+          "ano",
+          "mes",
+          "sigla_uf"
+        ],
+        "critical_columns_present": [
+          "ano",
+          "mes",
+          "sigla_uf",
+          "saldo"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "ano": 0.0,
+          "mes": 0.0,
+          "sigla_uf": 0.0,
+          "saldo": 0.0
+        },
+        "year_coverage": {
+          "source_column": "ano",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019
+          ],
+          "min_year": 2015,
+          "max_year": 2019,
+          "count_years": 5
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "sigla_uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "ano",
+            "mes"
+          ],
+          "distinct_periods": 47,
+          "min_period": "2015-01",
+          "max_period": "2019-12"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 117,
+          "sample_missing": [
+            "(2015, 1, 'AL')",
+            "(2015, 1, 'BA')",
+            "(2015, 1, 'CE')",
+            "(2015, 1, 'MA')",
+            "(2015, 1, 'PB')",
+            "(2015, 1, 'PE')",
+            "(2015, 1, 'PI')",
+            "(2015, 1, 'RN')",
+            "(2015, 1, 'SE')",
+            "(2015, 3, 'AL')",
+            "(2015, 3, 'BA')",
+            "(2015, 3, 'CE')",
+            "(2015, 3, 'MA')",
+            "(2015, 3, 'PB')",
+            "(2015, 3, 'PE')",
+            "(2015, 3, 'PI')",
+            "(2015, 3, 'RN')",
+            "(2015, 3, 'SE')",
+            "(2015, 7, 'AL')",
+            "(2015, 7, 'BA')"
+          ]
+        }
+      }
+    },
+    {
+      "nome": "caged_novo_raw",
+      "descricao": "Saldo mensal do Novo CAGED por UF.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/caged/nordeste/caged_saldo_mensal.csv",
+      "frequencia_esperada": "mensal",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 648,
+        "column_count": 8,
+        "columns": [
+          "ano",
+          "mes",
+          "sigla_uf",
+          "admissoes",
+          "desligamentos",
+          "saldo",
+          "salario_medio",
+          "total_movimentacoes"
+        ],
+        "missing_cells_total": 0,
+        "missing_percent_total": 0.0,
+        "key_columns_present": [
+          "ano",
+          "mes",
+          "sigla_uf"
+        ],
+        "critical_columns_present": [
+          "ano",
+          "mes",
+          "sigla_uf",
+          "saldo"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "ano": 0.0,
+          "mes": 0.0,
+          "sigla_uf": 0.0,
+          "saldo": 0.0
+        },
+        "year_coverage": {
+          "source_column": "ano",
+          "years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2020,
+          "max_year": 2025,
+          "count_years": 6
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "sigla_uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "ano",
+            "mes"
+          ],
+          "distinct_periods": 72,
+          "min_period": "2020-01",
+          "max_period": "2025-12"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "rais_vinculos_raw",
+      "descricao": "Estoque anual de vínculos formais por UF.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/rais/nordeste/rais_vinculos.csv",
+      "frequencia_esperada": "anual",
+      "file_exists": true,
+      "status": "alerta",
+      "warnings": [
+        "Nulos relevantes em colunas críticas: remuneracao_media",
+        "Anos esperados ausentes: 2019, 2020",
+        "Lacunas de continuidade: 25 combinações período-UF ausentes."
+      ],
+      "metrics": {
+        "row_count": 47,
+        "column_count": 4,
+        "columns": [
+          "ano",
+          "sigla_uf",
+          "vinculos_ativos",
+          "remuneracao_media"
+        ],
+        "missing_cells_total": 47,
+        "missing_percent_total": 25.0,
+        "key_columns_present": [
+          "ano",
+          "sigla_uf"
+        ],
+        "critical_columns_present": [
+          "ano",
+          "sigla_uf",
+          "vinculos_ativos",
+          "remuneracao_media"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "ano": 0.0,
+          "sigla_uf": 0.0,
+          "vinculos_ativos": 0.0,
+          "remuneracao_media": 100.0
+        },
+        "year_coverage": {
+          "source_column": "ano",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022
+          ],
+          "min_year": 2015,
+          "max_year": 2022,
+          "count_years": 6
+        },
+        "missing_years_expected": [
+          2019,
+          2020
+        ],
+        "uf_coverage": {
+          "source_column": "sigla_uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [],
+          "distinct_periods": 0,
+          "min_period": null,
+          "max_period": null
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 25,
+          "sample_missing": [
+            "(2015, 'BA')",
+            "(2015, 'CE')",
+            "(2015, 'PB')",
+            "(2015, 'PE')",
+            "(2015, 'PI')",
+            "(2016, 'PE')",
+            "(2017, 'BA')",
+            "(2019, 'AL')",
+            "(2019, 'BA')",
+            "(2019, 'CE')",
+            "(2019, 'MA')",
+            "(2019, 'PB')",
+            "(2019, 'PE')",
+            "(2019, 'PI')",
+            "(2019, 'RN')",
+            "(2019, 'SE')",
+            "(2020, 'AL')",
+            "(2020, 'BA')",
+            "(2020, 'CE')",
+            "(2020, 'MA')"
+          ]
+        }
+      }
+    },
+    {
+      "nome": "siconfi_rreo_raw",
+      "descricao": "Extrato bruto do RREO para os 9 estados.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/siconfi/nordeste/siconfi_rreo_nordeste.csv",
+      "frequencia_esperada": "bimestral",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 1987525,
+        "column_count": 15,
+        "columns": [
+          "exercicio",
+          "demonstrativo",
+          "periodo",
+          "periodicidade",
+          "instituicao",
+          "cod_ibge",
+          "uf",
+          "populacao",
+          "anexo",
+          "esfera",
+          "rotulo",
+          "coluna",
+          "cod_conta",
+          "conta",
+          "valor"
+        ],
+        "missing_cells_total": 466656,
+        "missing_percent_total": 1.57,
+        "key_columns_present": [],
+        "critical_columns_present": [
+          "exercicio",
+          "periodo",
+          "uf",
+          "cod_conta",
+          "valor"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": null,
+        "critical_missing_by_column": {
+          "exercicio": 0.0,
+          "periodo": 0.0,
+          "uf": 0.0,
+          "cod_conta": 0.0,
+          "valor": 0.0
+        },
+        "year_coverage": {
+          "source_column": "exercicio",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "exercicio",
+            "periodo"
+          ],
+          "distinct_periods": 66,
+          "min_period": "2015-P1",
+          "max_period": "2025-P6"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "siconfi_rgf_raw",
+      "descricao": "Extrato bruto do RGF para os 9 estados.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/siconfi/nordeste/siconfi_rgf_nordeste.csv",
+      "frequencia_esperada": "quadrimestral",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 95253,
+        "column_count": 15,
+        "columns": [
+          "exercicio",
+          "periodo",
+          "periodicidade",
+          "instituicao",
+          "cod_ibge",
+          "uf",
+          "co_poder",
+          "populacao",
+          "anexo",
+          "esfera",
+          "rotulo",
+          "coluna",
+          "cod_conta",
+          "conta",
+          "valor"
+        ],
+        "missing_cells_total": 13092,
+        "missing_percent_total": 0.92,
+        "key_columns_present": [],
+        "critical_columns_present": [
+          "exercicio",
+          "periodo",
+          "uf",
+          "cod_conta",
+          "valor"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": null,
+        "critical_missing_by_column": {
+          "exercicio": 0.0,
+          "periodo": 0.0,
+          "uf": 0.0,
+          "cod_conta": 0.0,
+          "valor": 0.0
+        },
+        "year_coverage": {
+          "source_column": "exercicio",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "exercicio",
+            "periodo"
+          ],
+          "distinct_periods": 33,
+          "min_period": "2015-P1",
+          "max_period": "2025-P3"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "siconfi_dca_raw",
+      "descricao": "Extrato bruto da DCA para os 9 estados.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/siconfi/nordeste/siconfi_dca_nordeste.csv",
+      "frequencia_esperada": "anual",
+      "file_exists": true,
+      "status": "alerta",
+      "warnings": [
+        "Anos esperados ausentes: 2025"
+      ],
+      "metrics": {
+        "row_count": 232661,
+        "column_count": 11,
+        "columns": [
+          "exercicio",
+          "instituicao",
+          "cod_ibge",
+          "uf",
+          "anexo",
+          "rotulo",
+          "coluna",
+          "cod_conta",
+          "conta",
+          "valor",
+          "populacao"
+        ],
+        "missing_cells_total": 34031,
+        "missing_percent_total": 1.33,
+        "key_columns_present": [],
+        "critical_columns_present": [
+          "exercicio",
+          "uf",
+          "cod_conta",
+          "valor"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": null,
+        "critical_missing_by_column": {
+          "exercicio": 0.0,
+          "uf": 0.0,
+          "cod_conta": 0.0,
+          "valor": 0.0
+        },
+        "year_coverage": {
+          "source_column": "exercicio",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "min_year": 2015,
+          "max_year": 2024,
+          "count_years": 10
+        },
+        "missing_years_expected": [
+          2025
+        ],
+        "uf_coverage": {
+          "source_column": "uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [],
+          "distinct_periods": 0,
+          "min_period": null,
+          "max_period": null
+        },
+        "continuity_coverage": {
+          "available": false,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "transferencias_raw",
+      "descricao": "Transferências constitucionais filtradas do RREO.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/transferencias/nordeste/transferencias_constitucionais_nordeste.csv",
+      "frequencia_esperada": "bimestral",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 42205,
+        "column_count": 15,
+        "columns": [
+          "exercicio",
+          "demonstrativo",
+          "periodo",
+          "periodicidade",
+          "instituicao",
+          "cod_ibge",
+          "uf",
+          "populacao",
+          "anexo",
+          "esfera",
+          "rotulo",
+          "coluna",
+          "cod_conta",
+          "conta",
+          "valor"
+        ],
+        "missing_cells_total": 10733,
+        "missing_percent_total": 1.7,
+        "key_columns_present": [],
+        "critical_columns_present": [
+          "exercicio",
+          "periodo",
+          "uf",
+          "valor"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": null,
+        "critical_missing_by_column": {
+          "exercicio": 0.0,
+          "periodo": 0.0,
+          "uf": 0.0,
+          "valor": 0.0
+        },
+        "year_coverage": {
+          "source_column": "exercicio",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "exercicio",
+            "periodo"
+          ],
+          "distinct_periods": 66,
+          "min_period": "2015-P1",
+          "max_period": "2025-P6"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "bolsa_familia_uf_raw",
+      "descricao": "Bolsa Família agregado por UF x mês via Portal da Transparência.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/bolsa_familia/nordeste/bolsa_familia_uf_mensal.csv",
+      "frequencia_esperada": "mensal",
+      "file_exists": false,
+      "status": "alerta",
+      "warnings": [
+        "Arquivo opcional não encontrado."
+      ],
+      "metrics": {
+        "row_count": 0,
+        "column_count": 0,
+        "missing_percent_total": null,
+        "duplicate_key_count": null
+      }
+    },
+    {
+      "nome": "bolsa_familia_portal_raw",
+      "descricao": "Registros municipais do Bolsa Família coletados no Portal da Transparência.",
+      "camada": "raw",
+      "path": "dados_nordeste/raw/bolsa_familia/nordeste/bolsa_familia_portal_transparencia.csv",
+      "frequencia_esperada": "mensal",
+      "file_exists": false,
+      "status": "alerta",
+      "warnings": [
+        "Arquivo opcional não encontrado."
+      ],
+      "metrics": {
+        "row_count": 0,
+        "column_count": 0,
+        "missing_percent_total": null,
+        "duplicate_key_count": null
+      }
+    },
+    {
+      "nome": "bacen_bimestral_processed",
+      "descricao": "Séries BACEN harmonizadas para bimestre.",
+      "camada": "processed",
+      "path": "dados_nordeste/processed/bacen/nacional/bacen_bimestral.csv",
+      "frequencia_esperada": "bimestral",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 66,
+        "column_count": 19,
+        "columns": [
+          "ano_bim",
+          "bimestre",
+          "inadimplencia_PF",
+          "inadimplencia_PJ",
+          "ipca_mensal",
+          "selic_mensal",
+          "IBCR_NE_ajuste_sazonal",
+          "credito_PF_brasil",
+          "credito_PF_brasil_real",
+          "credito_PF_nordeste",
+          "credito_PF_nordeste_real",
+          "credito_PJ_brasil",
+          "credito_PJ_brasil_real",
+          "credito_PJ_nordeste",
+          "credito_PJ_nordeste_real",
+          "credito_total_nordeste",
+          "credito_total_nordeste_real",
+          "ibc_br",
+          "pib_trimestral_indice"
+        ],
+        "missing_cells_total": 22,
+        "missing_percent_total": 1.75,
+        "key_columns_present": [
+          "ano_bim",
+          "bimestre"
+        ],
+        "critical_columns_present": [
+          "ano_bim",
+          "bimestre",
+          "credito_PF_nordeste",
+          "credito_PJ_nordeste"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "ano_bim": 0.0,
+          "bimestre": 0.0,
+          "credito_PF_nordeste": 0.0,
+          "credito_PJ_nordeste": 0.0
+        },
+        "year_coverage": {
+          "source_column": "ano_bim",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": null,
+          "ufs": [],
+          "count_ufs": 0
+        },
+        "periodicity_coverage": {
+          "source": [
+            "ano_bim",
+            "bimestre"
+          ],
+          "distinct_periods": 66,
+          "min_period": "2015-B1",
+          "max_period": "2025-B6"
+        },
+        "continuity_coverage": {
+          "available": false,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "caged_bimestral_processed",
+      "descricao": "Saldo do CAGED harmonizado para bimestre por UF.",
+      "camada": "processed",
+      "path": "dados_nordeste/processed/caged/nordeste/caged_bimestral.csv",
+      "frequencia_esperada": "bimestral",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 594,
+        "column_count": 8,
+        "columns": [
+          "ano_bim",
+          "bimestre",
+          "sigla_uf",
+          "admissoes",
+          "desligamentos",
+          "saldo",
+          "total_movimentacoes",
+          "salario_medio"
+        ],
+        "missing_cells_total": 0,
+        "missing_percent_total": 0.0,
+        "key_columns_present": [
+          "ano_bim",
+          "bimestre",
+          "sigla_uf"
+        ],
+        "critical_columns_present": [
+          "ano_bim",
+          "bimestre",
+          "sigla_uf",
+          "saldo"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "ano_bim": 0.0,
+          "bimestre": 0.0,
+          "sigla_uf": 0.0,
+          "saldo": 0.0
+        },
+        "year_coverage": {
+          "source_column": "ano_bim",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "sigla_uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "ano_bim",
+            "bimestre"
+          ],
+          "distinct_periods": 66,
+          "min_period": "2015-B1",
+          "max_period": "2025-B6"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    },
+    {
+      "nome": "execucao_orcamentaria_al_processed",
+      "descricao": "Execução orçamentária processada de Alagoas.",
+      "camada": "processed",
+      "path": "dados_nordeste/processed/execucao_orcamentaria/al/transparencia_al.csv",
+      "frequencia_esperada": "anual",
+      "file_exists": false,
+      "status": "alerta",
+      "warnings": [
+        "Arquivo opcional não encontrado."
+      ],
+      "metrics": {
+        "row_count": 0,
+        "column_count": 0,
+        "missing_percent_total": null,
+        "duplicate_key_count": null
+      }
+    },
+    {
+      "nome": "execucao_orcamentaria_ce_processed",
+      "descricao": "Execução orçamentária processada do Ceará.",
+      "camada": "processed",
+      "path": "dados_nordeste/processed/execucao_orcamentaria/ce/siof_ce.csv",
+      "frequencia_esperada": "mensal",
+      "file_exists": false,
+      "status": "alerta",
+      "warnings": [
+        "Arquivo opcional não encontrado."
+      ],
+      "metrics": {
+        "row_count": 0,
+        "column_count": 0,
+        "missing_percent_total": null,
+        "duplicate_key_count": null
+      }
+    },
+    {
+      "nome": "execucao_orcamentaria_pi_processed",
+      "descricao": "Execução orçamentária processada do Piauí.",
+      "camada": "processed",
+      "path": "dados_nordeste/processed/execucao_orcamentaria/pi/transparencia_pi.csv",
+      "frequencia_esperada": "anual",
+      "file_exists": false,
+      "status": "alerta",
+      "warnings": [
+        "Arquivo opcional não encontrado."
+      ],
+      "metrics": {
+        "row_count": 0,
+        "column_count": 0,
+        "missing_percent_total": null,
+        "duplicate_key_count": null
+      }
+    },
+    {
+      "nome": "painel_tese_bimestral",
+      "descricao": "Painel final model-ready da tese.",
+      "camada": "processed",
+      "path": "dados_nordeste/processed/model_ready/painel_tese_bimestral.csv",
+      "frequencia_esperada": "bimestral",
+      "file_exists": true,
+      "status": "ok",
+      "warnings": [],
+      "metrics": {
+        "row_count": 594,
+        "column_count": 37,
+        "columns": [
+          "uf",
+          "uf_nome",
+          "ano_bim",
+          "bimestre",
+          "admissoes",
+          "desligamentos",
+          "saldo",
+          "total_movimentacoes",
+          "salario_medio",
+          "rais_vinculos_ativos",
+          "credito_PF_nordeste_real",
+          "credito_PJ_nordeste_real",
+          "credito_total_nordeste_real",
+          "IBCR_NE_ajuste_sazonal",
+          "ibc_br",
+          "selic_mensal",
+          "ipca_mensal",
+          "inadimplencia_PF",
+          "inadimplencia_PJ",
+          "resultado_primario_real",
+          "dcl_real",
+          "investimento_publico_real",
+          "transferencias_federais_real",
+          "rais_remuneracao_media_real",
+          "credito_PF_brasil",
+          "credito_PF_brasil_real",
+          "credito_PF_nordeste",
+          "credito_PJ_brasil",
+          "credito_PJ_brasil_real",
+          "credito_PJ_nordeste",
+          "credito_total_nordeste",
+          "pib_trimestral_indice",
+          "resultado_primario_nominal",
+          "dcl_nominal",
+          "ano",
+          "investimento_publico_nominal",
+          "transferencias_federais_nominal"
+        ],
+        "missing_cells_total": 2130,
+        "missing_percent_total": 9.69,
+        "key_columns_present": [
+          "ano_bim",
+          "bimestre",
+          "uf"
+        ],
+        "critical_columns_present": [
+          "ano_bim",
+          "bimestre",
+          "uf",
+          "saldo",
+          "credito_PF_nordeste_real",
+          "credito_PJ_nordeste_real"
+        ],
+        "critical_columns_missing": [],
+        "duplicate_key_count": 0,
+        "critical_missing_by_column": {
+          "ano_bim": 0.0,
+          "bimestre": 0.0,
+          "uf": 0.0,
+          "saldo": 0.0,
+          "credito_PF_nordeste_real": 0.0,
+          "credito_PJ_nordeste_real": 0.0
+        },
+        "year_coverage": {
+          "source_column": "ano_bim",
+          "years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "min_year": 2015,
+          "max_year": 2025,
+          "count_years": 11
+        },
+        "missing_years_expected": [],
+        "uf_coverage": {
+          "source_column": "uf",
+          "ufs": [
+            "AL",
+            "BA",
+            "CE",
+            "MA",
+            "PB",
+            "PE",
+            "PI",
+            "RN",
+            "SE"
+          ],
+          "count_ufs": 9
+        },
+        "missing_ufs_expected": [],
+        "periodicity_coverage": {
+          "source": [
+            "ano_bim",
+            "bimestre"
+          ],
+          "distinct_periods": 66,
+          "min_period": "2015-B1",
+          "max_period": "2025-B6"
+        },
+        "continuity_coverage": {
+          "available": true,
+          "missing_combinations_total": 0,
+          "sample_missing": []
+        }
+      }
+    }
+  ]
+}

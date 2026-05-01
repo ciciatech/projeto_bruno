@@ -1,23 +1,15 @@
 {
-  "data_execucao": "2026-04-29T17:06:00.565353",
-  "duracao_segundos": 29.909311,
-  "escopo": "NE",
+  "data_execucao": "2026-05-01T03:57:29.838164",
+  "duracao_segundos": 23107.557542,
+  "escopo": "CE",
   "periodo": "2015-2025",
   "estados": [
-    "AL",
-    "BA",
-    "CE",
-    "MA",
-    "PB",
-    "PE",
-    "PI",
-    "RN",
-    "SE"
+    "CE"
   ],
   "modulos_executados": [
-    "bacen"
+    "invest_municipal"
   ],
   "resumo": {
-    "bacen": 1628
+    "invest_municipal": 19896
   }
 }

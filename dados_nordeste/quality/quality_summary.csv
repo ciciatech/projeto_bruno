@@ -1,0 +1,17 @@
+﻿nome,camada,status,path,row_count,column_count,missing_percent_total,duplicate_key_count,count_years,min_year,max_year,count_ufs,missing_combinations_total,warnings_count,warnings
+bacen_raw_wide,raw,ok,dados_nordeste/raw/bacen/nacional/bacen_sgs_wide.csv,132,13,5.13,0.0,11.0,2015.0,2025.0,0.0,0.0,0,
+caged_antigo_raw,raw,alerta,dados_nordeste/raw/caged/nordeste/caged_antigo_saldo_mensal.csv,423,8,0.0,0.0,5.0,2015.0,2019.0,9.0,117.0,1,Lacunas de continuidade: 117 combinações período-UF ausentes.
+caged_novo_raw,raw,ok,dados_nordeste/raw/caged/nordeste/caged_saldo_mensal.csv,648,8,0.0,0.0,6.0,2020.0,2025.0,9.0,0.0,0,
+rais_vinculos_raw,raw,alerta,dados_nordeste/raw/rais/nordeste/rais_vinculos.csv,47,4,25.0,0.0,6.0,2015.0,2022.0,9.0,25.0,3,"Nulos relevantes em colunas críticas: remuneracao_media | Anos esperados ausentes: 2019, 2020 | Lacunas de continuidade: 25 combinações período-UF ausentes."
+siconfi_rreo_raw,raw,ok,dados_nordeste/raw/siconfi/nordeste/siconfi_rreo_nordeste.csv,1987525,15,1.57,,11.0,2015.0,2025.0,9.0,0.0,0,
+siconfi_rgf_raw,raw,ok,dados_nordeste/raw/siconfi/nordeste/siconfi_rgf_nordeste.csv,95253,15,0.92,,11.0,2015.0,2025.0,9.0,0.0,0,
+siconfi_dca_raw,raw,alerta,dados_nordeste/raw/siconfi/nordeste/siconfi_dca_nordeste.csv,232661,11,1.33,,10.0,2015.0,2024.0,9.0,0.0,1,Anos esperados ausentes: 2025
+transferencias_raw,raw,ok,dados_nordeste/raw/transferencias/nordeste/transferencias_constitucionais_nordeste.csv,42205,15,1.7,,11.0,2015.0,2025.0,9.0,0.0,0,
+bolsa_familia_uf_raw,raw,alerta,dados_nordeste/raw/bolsa_familia/nordeste/bolsa_familia_uf_mensal.csv,0,0,,,,,,,,1,Arquivo opcional não encontrado.
+bolsa_familia_portal_raw,raw,alerta,dados_nordeste/raw/bolsa_familia/nordeste/bolsa_familia_portal_transparencia.csv,0,0,,,,,,,,1,Arquivo opcional não encontrado.
+bacen_bimestral_processed,processed,ok,dados_nordeste/processed/bacen/nacional/bacen_bimestral.csv,66,19,1.75,0.0,11.0,2015.0,2025.0,0.0,0.0,0,
+caged_bimestral_processed,processed,ok,dados_nordeste/processed/caged/nordeste/caged_bimestral.csv,594,8,0.0,0.0,11.0,2015.0,2025.0,9.0,0.0,0,
+execucao_orcamentaria_al_processed,processed,alerta,dados_nordeste/processed/execucao_orcamentaria/al/transparencia_al.csv,0,0,,,,,,,,1,Arquivo opcional não encontrado.
+execucao_orcamentaria_ce_processed,processed,alerta,dados_nordeste/processed/execucao_orcamentaria/ce/siof_ce.csv,0,0,,,,,,,,1,Arquivo opcional não encontrado.
+execucao_orcamentaria_pi_processed,processed,alerta,dados_nordeste/processed/execucao_orcamentaria/pi/transparencia_pi.csv,0,0,,,,,,,,1,Arquivo opcional não encontrado.
+painel_tese_bimestral,processed,ok,dados_nordeste/processed/model_ready/painel_tese_bimestral.csv,594,37,9.69,0.0,11.0,2015.0,2025.0,9.0,0.0,0,
