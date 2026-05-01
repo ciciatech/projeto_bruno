@@ -9,7 +9,7 @@
 - [x] T02: Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json
 - [!] T03: Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)
 - [!] T04: Tela 3 Setores bloqueada — PIB municipal IBGE e RAIS por CNAE não estão coletados, aguarda decisão de escopo
-- [!] T05: Tela 4 Causal modelo OLS investimento → emprego bloqueada, aguarda especificação econométrica do Prof. Paulo
+- [x] T05: Tela 4 Causal — OLS univariado (siof_emp → sal) implementado com simple-statistics, scatter + linha + IC 95% + tabela β/α/R²/σ. Especificação multivariada/IV/Granger ainda aguarda Paulo (sinalizado em EditorialNote)
 - [x] T06: FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02
 - [!] T07: Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini
 - [x] T08: Decisão sobre invest_privado residual — RESOLVIDA pelos áudios do Paulo (abr/2026): FBCF mensal Brasil × 2,2% (share PIB CE/BR), em R$ presente de dez/2024. Documentado em docs/metodologia-composicao-investimento.md
