@@ -113,33 +113,34 @@ export function Choropleth14CE({
             />
             <text
               x={x + tile / 2}
-              y={y + tile / 2 - 4}
+              y={y + tile / 2 - 6}
               textAnchor="middle"
               dominantBaseline="middle"
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: 12,
-                fontWeight: 600,
+                fontSize: 11,
+                fontWeight: 700,
                 fill: dark ? "var(--bg-page)" : "var(--ink-1)",
                 pointerEvents: "none",
+                letterSpacing: 0.4,
               }}
             >
               {r.codigo}
             </text>
             <text
               x={x + tile / 2}
-              y={y + tile / 2 + 9}
+              y={y + tile / 2 + 6}
               textAnchor="middle"
               dominantBaseline="middle"
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: 8.5,
+                fontSize: 7.5,
                 fill: dark ? "var(--bg-page)" : "var(--ink-2)",
                 pointerEvents: "none",
                 opacity: 0.85,
               }}
             >
-              {r.nome.split(" / ")[0].slice(0, 18)}
+              {r.nome.split(" / ")[0].slice(0, 14)}
             </text>
             {typeof v === "number" && (
               <text

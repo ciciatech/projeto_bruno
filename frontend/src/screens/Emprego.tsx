@@ -186,10 +186,10 @@ export default function Emprego() {
               scale="div"
               selected={selecionado}
               onSelect={setSelecionado}
-              width={520}
-              height={420}
-              tile={92}
-              gap={6}
+              width={460}
+              height={368}
+              tile={72}
+              gap={4}
             />
           </div>
 

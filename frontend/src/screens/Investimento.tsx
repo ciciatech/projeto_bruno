@@ -197,10 +197,10 @@ export default function Investimento() {
               selected={selecionado}
               onSelect={setSelecionado}
               onHover={setHover}
-              width={520}
-              height={420}
-              tile={92}
-              gap={6}
+              width={460}
+              height={368}
+              tile={72}
+              gap={4}
             />
           </div>
 
