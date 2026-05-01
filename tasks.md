@@ -4,6 +4,8 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 
 > ✅ done · ⏳ em curso · ⏸ aguardando · 🚧 bloqueado por terceiros
 
+> Histórico detalhado da sprint inicial em `docs/changelog.md`.
+
 ---
 
 ## Concluídas

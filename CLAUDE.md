@@ -185,10 +185,12 @@ Confirmado em 3 transcrições de áudio (consolidadas em
 
 ## Referências internas
 
-- `tasks.md` — roadmap consolidado (15 ✅ done · 1 ⏳ em curso · 4 ⏸ aguardando · 3 🟡 pendente · 2 🚧 bloqueado)
+- `tasks.md` — roadmap consolidado
+- `docs/changelog.md` — histórico das sprints (entradas + decisões + métricas)
 - `docs/plano-descontinuacao-streamlit.md` — passos para retirar a app legada
 - `docs/metodologia-composicao-investimento.md` — fórmulas das 4 esferas (citar em publicações)
 - `scripts/qa-prisma-ux.md` — prompt completo para QA visual em browser tool
+- `archive/prisma-regional-design/README.md` — mapa de port (design original → componentes atuais)
 - `.claude/rules/coolify-deploy.md` — UUIDs, endpoints, SSH, Traefik
 - `.claude/rules/dominio.md` — conceitos canônicos do exercício empírico
 - `.claude/rules/code-style.md` — convenções Python + TS
