@@ -8,7 +8,7 @@
 - [!] T01: Disparar coletor SICONFI invest_municipal no Mac Mini (~2h, 12k requests via SSH; manual)
 - [x] T02: Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json
 - [!] T03: Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)
-- [!] T04: Tela 3 Setores bloqueada — PIB municipal IBGE e RAIS por CNAE não estão coletados, aguarda decisão de escopo
+- [x] T04: Tela 3 — pivot para "Composição de Receitas Públicas Regionais" usando tf_fpm/fundeb/itr/royalties/outros + bf_v + bpc_v (dados já no painel). Stacked bars 14 regiões, tabela agregada, EditorialNote explicando o pivot
 - [x] T05: Tela 4 Causal — OLS univariado (siof_emp → sal) implementado com simple-statistics, scatter + linha + IC 95% + tabela β/α/R²/σ. Especificação multivariada/IV/Granger ainda aguarda Paulo (sinalizado em EditorialNote)
 - [x] T06: FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02
 - [!] T07: Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini
