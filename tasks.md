@@ -36,6 +36,8 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 - ✅ **T01 Coletor SICONFI invest_municipal** — terminou no Mac Mini em 2026-05-01 03:57 BRT (6h25min, 19.896 registros, 180 municípios CE, R$ 28,97 bi 2015-2025, 1,0% suspeitos auditados). Painel reconstruído (1.848 linhas). Substitui planilha manual do Bruno.
 - ✅ **Sincronização Mac Mini ↔ local + cleanup do repo (2026-05-01)** — auto-pull travado há 13h por estado sujo no Mac Mini destravado: rsync trouxe outputs de 6h25 de coleta, `git stash -u` preservativo no Mac Mini, pull. Local: removido `python3.13` (binário acidental), `status.md` stale, lock LibreOffice. Outputs organizados em 3 commits temáticos (`eba9dda` data · `de0ce21` docs · `f97233f` chore-quality-gate) pushados pra `dev`.
 - ✅ **`.gitignore`: anexo de 463MB** — `docs/parque_infra_ce/dados/Investimento Governo Federal 2014 - 2025.xlsx` excluído (excede limite 100MB do GitHub). Mantido localmente.
+- ✅ **Plugar `sefaz_ce_siconfi` no painel (2026-05-01)** — validação end-to-end: painel agora tem 35 colunas (era 31, +`transf_est_icms/ipva/total`) × 2016 linhas. Frontend regenerado (`painel.2de8b30f.json`, 947KB). Test smoke robustecido (calcula `n_meses` dinamicamente + asserção do schema sefaz). Outputs municipais (BPC/BF/CAGED/invest_federal) recuperados do stash do Mac Mini e commitados. Stash drop. Commits `ae8ad05` + `6a47f22`.
+- ✅ **Drop stash do Mac Mini** — `auto-stash 2026-05-01` removido após confirmar que todos outputs foram commitados em `ae8ad05`.
 
 ## Em curso (autônomo)
 
@@ -50,9 +52,8 @@ _(nenhuma coleta autônoma rodando no momento)_
 
 ## Pendente
 
-- 🟡 **Plugar `sefaz_ce_siconfi` no painel** — coletor novo gera `processed/sefaz_ce_siconfi/transf_estaduais_ce_mensal.csv`, mas o painel ainda procura no path antigo `processed/sefaz_ce/transf_estaduais_ce_mensal.csv` (warning no último build de 2026-05-01 03:57). Editar `pipeline/transform/preparacao_modelo_regional.py`. ~15min.
 - 🟡 **Resolver warning SIOF "Estado do Ceará"** — linha agregada do PDF SIOF SEPLAG sem código regional. Filtrar antes do `agregar_para_regiao` ou mapear como rateio nas 14 regiões. ~30min.
-- 🟡 **Drop stash do Mac Mini** — `stash@{0}: auto-stash 2026-05-01: outputs SICONFI invest_municipal já sincronizados via rsync`. Confirmar que `dev` está estável + `ssh ... "cd dev/academico/bruno && git stash drop stash@{0}"`. ~2min.
+- 🟡 **Lint frontend (4 erros pre-existentes)** — `FilterBar.tsx:25,30,54` (react-refresh/only-export-components) + `vite.config.ts:1` (triple-slash-reference). Não-bloqueante, mas suja `npm run lint`. Mover constantes/helpers de `FilterBar.tsx` pra arquivo separado e migrar `vite.config.ts` pra `import` style. ~30min.
 - 🟡 **Deflator IPCA → R$ dez/2024** — harmoniza bases monetárias de SIOF (correntes), invest_municipal (correntes), invest_federal (correntes) e FBCF (R$ 2010). Requer coleta de IPCA mensal (BACEN SGS 433) + aplicação como deflator. ~2h.
 - 🟡 **Tests E2E + Lighthouse CI** — automatizar QA visual no pipeline (Playwright + Lighthouse).
 
@@ -63,6 +64,6 @@ _(nenhuma coleta autônoma rodando no momento)_
 
 ---
 
-**Total**: 31 itens registrados (18 ✅ done · 0 ⏳ em curso · 4 ⏸ aguardando · 5 🟡 pendente · 2 🚧 bloqueado · 1 destravado parcialmente · **3 🔴 urgente segurança + 1 🟡 opcional segurança**).
+**Total**: 31 itens registrados (20 ✅ done · 0 ⏳ em curso · 4 ⏸ aguardando · 4 🟡 pendente · 2 🚧 bloqueado · 1 destravado parcialmente · **3 🔴 urgente segurança + 1 🟡 opcional segurança**).
 
-**Última atualização**: 2026-05-01 — sprint de sincronização Mac Mini ↔ local + descoberta de token Coolify vazado em repo público.
+**Última atualização**: 2026-05-01 (sessão 2) — sprint sefaz_ce_siconfi end-to-end + recuperação de outputs municipais + drop stash Mac Mini.
