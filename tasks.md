@@ -2,11 +2,18 @@
 
 Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 
-> ✅ done · ⏳ em curso · ⏸ aguardando · 🚧 bloqueado por terceiros
+> ✅ done · ⏳ em curso · ⏸ aguardando · 🚧 bloqueado por terceiros · 🔴 urgente
 
 > Histórico detalhado da sprint inicial em `docs/changelog.md`.
 
 ---
+
+## 🔴 URGENTE — segurança (descoberto 2026-05-01)
+
+- 🔴 **SEC-01** Rotacionar token Coolify `3|Oq2dlr3X...` — vazado em `.claude/rules/coolify-deploy.md:38` desde commit `f9d813d` em **repo público** `ciciatech/projeto_bruno`. Painel: `painel.ciciacademy.com.br` → API tokens → revogar antigo + gerar novo. Atualizar consumidores: `.mcp.json`, `~/.coolify-tokens`, secret `COOLIFY_TOKEN` no GitHub (usado por `.github/workflows/deploy-coolify.yml`).
+- 🔴 **SEC-02** Remover token hardcoded de `.claude/rules/coolify-deploy.md:38` — substituir por placeholder `${COOLIFY_TOKEN}` ou referência ao keychain. Bloqueado por SEC-01 (rotacionar antes pra não quebrar deploy ativo).
+- 🔴 **SEC-03** Decidir sobre token Hostinger `zaNo8Tk...` — não vazou no repo, mas estava em arquivo plano `notas.txt` (já gitignored). Opções: (a) mover pro keychain via `security add-generic-password -s "ciciatech-hostinger-api"` e deletar `notas.txt`, (b) rotacionar por garantia.
+- 🟡 **SEC-04** (opcional) `git filter-repo` pra remover token do histórico do repo público — só mitiga risco residual a quem clonou; SEC-01 já mata o risco operacional.
 
 ## Concluídas
 
@@ -26,10 +33,13 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 - ✅ **Layout responsivo** — `minmax(260px, 320px)` nas colunas, `Panel` com `overflow:auto`, Choropleth com aspect-ratio nativo. Removido clipping silencioso em viewports <1440px.
 - ✅ **Composição com 4 esferas** — Estadual (SIOF) + Federal (RREO) + Municipal (SICONFI) + Privado residual (`inv_total - estadual - federal - municipal`).
 - ✅ **PERIODO_FIM_MENSAL = 2026** — painel agora cobre 14 regiões × 144 meses (2016 linhas), incluindo o ano corrente do SIOF SEPLAG.
+- ✅ **T01 Coletor SICONFI invest_municipal** — terminou no Mac Mini em 2026-05-01 03:57 BRT (6h25min, 19.896 registros, 180 municípios CE, R$ 28,97 bi 2015-2025, 1,0% suspeitos auditados). Painel reconstruído (1.848 linhas). Substitui planilha manual do Bruno.
+- ✅ **Sincronização Mac Mini ↔ local + cleanup do repo (2026-05-01)** — auto-pull travado há 13h por estado sujo no Mac Mini destravado: rsync trouxe outputs de 6h25 de coleta, `git stash -u` preservativo no Mac Mini, pull. Local: removido `python3.13` (binário acidental), `status.md` stale, lock LibreOffice. Outputs organizados em 3 commits temáticos (`eba9dda` data · `de0ce21` docs · `f97233f` chore-quality-gate) pushados pra `dev`.
+- ✅ **`.gitignore`: anexo de 463MB** — `docs/parque_infra_ce/dados/Investimento Governo Federal 2014 - 2025.xlsx` excluído (excede limite 100MB do GitHub). Mantido localmente.
 
 ## Em curso (autônomo)
 
-- ⏳ **T01** Coletor SICONFI invest_municipal rodando no Mac Mini (PID 82781). 31% às 23:38 BRT (625/2024 mun-ano), ETA ~04:30 BRT. Quando terminar, `run_coletas.sh` encadeia `--painel-ce` e regenera o painel completo. ScheduleWakeup colhe e faz deploy automático.
+_(nenhuma coleta autônoma rodando no momento)_
 
 ## Aguardando terceiros / decisões
 
@@ -40,8 +50,10 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 
 ## Pendente
 
+- 🟡 **Plugar `sefaz_ce_siconfi` no painel** — coletor novo gera `processed/sefaz_ce_siconfi/transf_estaduais_ce_mensal.csv`, mas o painel ainda procura no path antigo `processed/sefaz_ce/transf_estaduais_ce_mensal.csv` (warning no último build de 2026-05-01 03:57). Editar `pipeline/transform/preparacao_modelo_regional.py`. ~15min.
+- 🟡 **Resolver warning SIOF "Estado do Ceará"** — linha agregada do PDF SIOF SEPLAG sem código regional. Filtrar antes do `agregar_para_regiao` ou mapear como rateio nas 14 regiões. ~30min.
+- 🟡 **Drop stash do Mac Mini** — `stash@{0}: auto-stash 2026-05-01: outputs SICONFI invest_municipal já sincronizados via rsync`. Confirmar que `dev` está estável + `ssh ... "cd dev/academico/bruno && git stash drop stash@{0}"`. ~2min.
 - 🟡 **Deflator IPCA → R$ dez/2024** — harmoniza bases monetárias de SIOF (correntes), invest_municipal (correntes), invest_federal (correntes) e FBCF (R$ 2010). Requer coleta de IPCA mensal (BACEN SGS 433) + aplicação como deflator. ~2h.
-- 🟡 **Cleanup do repositório** — ~30 arquivos untracked (`analysis/`, `notebook/`, `status.md`, `docs/pdf/`). Decisão manual por arquivo.
 - 🟡 **Tests E2E + Lighthouse CI** — automatizar QA visual no pipeline (Playwright + Lighthouse).
 
 ## Bloqueado por terceiros
@@ -51,4 +63,6 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 
 ---
 
-**Total**: 26 itens registrados (15 ✅ done · 1 ⏳ em curso · 4 ⏸ aguardando · 3 🟡 pendente · 2 🚧 bloqueado · 1 destravado parcialmente).
+**Total**: 31 itens registrados (18 ✅ done · 0 ⏳ em curso · 4 ⏸ aguardando · 5 🟡 pendente · 2 🚧 bloqueado · 1 destravado parcialmente · **3 🔴 urgente segurança + 1 🟡 opcional segurança**).
+
+**Última atualização**: 2026-05-01 — sprint de sincronização Mac Mini ↔ local + descoberta de token Coolify vazado em repo público.

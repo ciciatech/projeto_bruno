@@ -31,3 +31,15 @@ frontend/*.local
 
 # Anexos grandes (> GitHub 100MB) — manter localmente
 docs/parque_infra_ce/dados/Investimento Governo Federal 2014 - 2025.xlsx
+
+# Arquivos com tokens locais (NÃO COMMITAR)
+notas.txt
+*.notas.txt
+
+# Coverage (gerado por pytest --cov)
+.coverage
+.coverage.*
+htmlcov/
+
+# Cache intermediário do coletor CAGED (regenerável)
+dados_nordeste/processed/caged_municipal/_meses_consolidados/
