@@ -74,12 +74,19 @@ def test_agregar_para_regiao_robusto_quando_df_ja_tem_regiao_codigo():
     reason="painel ainda não gerado (rode python -m pipeline.run --painel-ce)",
 )
 def test_painel_regional_ce_schema():
-    """Painel modelo-pronto precisa ter 14 regiões × 132 meses = 1848 linhas."""
+    """Painel modelo-pronto: 14 regiões × meses do período configurado em config.py."""
+    from pipeline.config import PERIODO_INICIO_MENSAL, PERIODO_FIM_MENSAL
+
     df = pd.read_csv(
         "dados_nordeste/processed/model_ready/painel_regional_ce_mensal.csv",
         dtype={"regiao_codigo": str},
     )
+    n_meses = (PERIODO_FIM_MENSAL - PERIODO_INICIO_MENSAL + 1) * 12
     assert {"regiao_codigo", "regiao_nome", "ano", "mes"}.issubset(df.columns)
     assert df["regiao_codigo"].nunique() == 14
-    assert len(df) == 1848
-    assert df["ano"].min() == 2015
+    assert len(df) == 14 * n_meses
+    assert df["ano"].min() == PERIODO_INICIO_MENSAL
+    assert df["ano"].max() == PERIODO_FIM_MENSAL
+    assert {"transf_est_icms", "transf_est_ipva", "transf_est_total"}.issubset(df.columns), (
+        "SEFAZ-CE Anexo 03 (transf_estaduais) precisa estar plugado no painel"
+    )
