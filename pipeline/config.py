@@ -54,7 +54,10 @@ ESCOPO_CE = True
 UF_FOCO = "CE"
 COD_IBGE_CE = "23"  # 2 dígitos
 PERIODO_INICIO_MENSAL = 2015
-PERIODO_FIM_MENSAL = 2025
+# 2026 incluído porque o SIOF-CE da SEPLAG publica anualmente o orçamento
+# corrente; mantê-lo no painel permite ao frontend exibir o ano vigente
+# mesmo que outras coletas (BF/BPC/CAGED) ainda não cubram o ano todo.
+PERIODO_FIM_MENSAL = 2026
 
 # ==============================================================================
 # PARÂMETROS DE REQUEST

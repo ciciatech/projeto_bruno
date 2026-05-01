@@ -97,10 +97,14 @@ export default function Investimento() {
           <div className="flex flex-col gap-3">
             <KPI
               label="Investimento estadual SIOF"
-              value={fmtCompact(dados.totalSiof * 1e6)}
-              unit="(empenhado)"
-              sparkData={dados.serieSiof}
-              sub={`${dados.anosCobertos} anos · ${dados.regioesAtivas} regiões com dado`}
+              value={dados.totalSiof > 0 ? fmtCompact(dados.totalSiof * 1e6) : "—"}
+              unit={dados.totalSiof > 0 ? "(empenhado)" : "histórico pendente"}
+              sparkData={dados.totalSiof > 0 ? dados.serieSiof : undefined}
+              sub={
+                dados.totalSiof > 0
+                  ? `${dados.anosCobertos} anos · ${dados.regioesAtivas} regiões com dado`
+                  : "SEPLAG-CE publica apenas o ano corrente"
+              }
             />
             <KPI
               label="Investimento total CE estimado"
