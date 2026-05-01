@@ -656,15 +656,19 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   // FBCF em R$ 2010, federal em R$ correntes). Cálculo abaixo é didático;
   // refinamento monetário (deflator IPCA → R$ dez/2024) entra na próxima
   // iteração após decisão final do Paulo.
-  let totalIfFed = 0;
+  // Federal e InvTotal são estaduais (idênticos em todas as 14 regiões). Para
+  // não somar 14× o mesmo valor, pegamos uma região-âncora ('03' Grande
+  // Fortaleza) como representativa por mês. Municipal sim é regional —
+  // somamos normal.
+  let totalIfFedRep = 0; // R$ correntes, mensal, estadual
   let totalInvMun = 0;
   for (const r of rows) {
-    if (typeof r.if_total === "number") totalIfFed += r.if_total;
+    if (r.r === "03" && typeof r.if_total === "number") totalIfFedRep += r.if_total;
     if (typeof r.invest_mun_valor === "number") totalInvMun += r.invest_mun_valor;
   }
-  const totalEstadual = totalSiof;
-  const totalFederal = totalIfFed / 1e6;
-  const totalMunicipal = totalInvMun;
+  const totalEstadual = totalSiof;             // R$ mi (SIOF anual replicado)
+  const totalFederal = totalIfFedRep / 1e6;    // R$ correntes → R$ mi
+  const totalMunicipal = totalInvMun;          // R$ mi (SICONFI)
   const totalPrivadoEstimado = Math.max(
     0,
     totalInvTotal - totalEstadual - totalFederal - totalMunicipal,
