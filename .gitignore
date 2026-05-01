@@ -28,3 +28,6 @@ frontend/*.local
 # MCP config (contém tokens — usar .mcp.json.example)
 .mcp.json
 
+
+# Anexos grandes (> GitHub 100MB) — manter localmente
+docs/parque_infra_ce/dados/Investimento Governo Federal 2014 - 2025.xlsx
