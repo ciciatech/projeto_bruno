@@ -134,14 +134,20 @@ def _carregar_transf_stn() -> pd.DataFrame:
 
 
 def _carregar_transf_estadual() -> pd.DataFrame:
-    df = _ler_csv_se_existir(
-        PROCESSED_DIR / "sefaz_ce" / "transf_estaduais_ce_mensal.csv"
-    )
-    if df.empty:
-        return df
+    """Cota-parte ICMS/IPVA. Prefere SICONFI Anexo 03 (automático) sobre o
+    adapter manual (Ceará Transparente bloqueia bots)."""
+    candidatos = [
+        PROCESSED_DIR / "sefaz_ce_siconfi" / "transf_estaduais_ce_mensal.csv",
+        PROCESSED_DIR / "sefaz_ce" / "transf_estaduais_ce_mensal.csv",
+    ]
+    path = next((p for p in candidatos if p.exists()), None)
+    if path is None:
+        logger.warning(f"  ausente: {candidatos[0]} (e fallback)")
+        return pd.DataFrame()
+    logger.info(f"  transf_estadual: usando {path.name}")
+    df = pd.read_csv(path, dtype={"cod_ibge": str, "regiao_codigo": str})
     cols_valor = [
-        c
-        for c in df.columns
+        c for c in df.columns
         if c not in {"cod_ibge", "regiao_codigo", "regiao_nome", "ano", "mes"}
     ]
     return _agregar_se_municipal(df, cols_valor, "transf_est")

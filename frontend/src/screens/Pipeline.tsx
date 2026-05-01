@@ -21,7 +21,7 @@ const FONTES_BASE: Fonte[] = [
   { fonte: "CAGED · MTE (mensal municipal)",       cobertura:  10, cadencia: "Mensal",    status: "warn", delta: "18/184 munic. cobertos" },
   { fonte: "Invest. municipal · SICONFI RREO",     cobertura:   0, cadencia: "Bimestral", status: "info", delta: "código pronto · executar manual" },
   { fonte: "ESTBAN BNB",                           cobertura:   0, cadencia: "Mensal",    status: "bad",  delta: "BCB removeu URL pública" },
-  { fonte: "SEFAZ-CE · cota-parte estadual",       cobertura:   0, cadencia: "Mensal",    status: "bad",  delta: "site bloqueia bots" },
+  { fonte: "SEFAZ-CE · cota-parte ICMS/IPVA (via SICONFI Anexo 03)", cobertura: 0, cadencia: "Mensal", status: "info", delta: "código pronto · executar manual" },
 ];
 
 const TONE: Record<Fonte["status"], { bg: string; fg: string; label: string }> = {

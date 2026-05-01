@@ -63,6 +63,7 @@ from pipeline.extract import (
     invest_municipal_siconfi as invest_mun_siconfi_mod,
     invest_federal as invest_fed_mod,
     caged_municipal as caged_mun_mod,
+    sefaz_ce_siconfi as sefaz_siconfi_mod,
 )
 from pipeline.transform.preparacao_modelo_regional import construir_painel as construir_painel_ce
 
@@ -197,8 +198,11 @@ class PipelineColeta:
             self.resumo["transferencias_municipais"] = len(df)
 
         if "sefaz_ce" in modulos:
-            logger.info("\n>>> CE: Transferências estaduais SEFAZ-CE (adapter) <<<")
-            df = sefaz_ce_mod.coletar_de_diretorio()
+            logger.info("\n>>> CE: Cota-Parte ICMS/IPVA via SICONFI Anexo 03 <<<")
+            df = sefaz_siconfi_mod.coletar_ce()
+            if df.empty:
+                logger.warning("SICONFI cota-parte vazio — fallback para adapter manual")
+                df = sefaz_ce_mod.coletar_de_diretorio()
             self.resumo["sefaz_ce"] = len(df)
 
         if "invest_municipal" in modulos:
