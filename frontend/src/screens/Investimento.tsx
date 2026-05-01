@@ -3,15 +3,18 @@ import { Panel, EditorialNote } from "../components/Panel";
 import { KPI } from "../components/KPI";
 import { Choropleth14CE } from "../components/Choropleth14CE";
 import { Sparkline } from "../components/Sparkline";
+import { MapLegend } from "../components/MapLegend";
+import { MapTooltip, type HoverInfo } from "../components/MapTooltip";
 import { aplicarPeriodo, useFiltros } from "../components/FilterBar";
 import { fmtBRL, fmtCompact, fmtNum, fmtMes } from "../lib/format";
 import { carregarPainel, snapshotPorRegiao, type Painel } from "../lib/painel";
-import { REGIOES_BY_CODIGO } from "../lib/regioes";
+import { REGIOES_BY_CODIGO, REGIOES_CE } from "../lib/regioes";
 
 export default function Investimento() {
   const [painel, setPainel] = useState<Painel | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string>("03"); // Grande Fortaleza
+  const [hover, setHover] = useState<HoverInfo | null>(null);
   const [filtros] = useFiltros();
 
   useEffect(() => {
@@ -34,6 +37,22 @@ export default function Investimento() {
 
   const regSel = dados.snapshot.get(selecionado);
   const nomeSel = REGIOES_BY_CODIGO[selecionado]?.nome ?? selecionado;
+
+  const renderTooltip = (info: HoverInfo) => (
+    <>
+      <div
+        className="mono"
+        style={{ fontSize: 16, fontWeight: 600, color: "var(--ink-1)", marginTop: 2 }}
+      >
+        {info.value != null ? fmtBRL(info.value * 1e6) : "—"}
+      </div>
+      <div style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 6, lineHeight: 1.5 }}>
+        SIOF empenhado · {dados.periodoLabel}
+        <br />
+        clique para fixar como referência
+      </div>
+    </>
+  );
 
   return (
     <div
@@ -173,6 +192,7 @@ export default function Investimento() {
               values={dados.mapaSiof}
               selected={selecionado}
               onSelect={setSelecionado}
+              onHover={setHover}
               width={520}
               height={420}
               tile={92}
@@ -181,6 +201,14 @@ export default function Investimento() {
           </div>
 
           <aside className="flex flex-col gap-4 pt-2" style={{ width: 180, flexShrink: 0 }}>
+            <MapLegend
+              scale="seq"
+              min={dados.mapaMin}
+              max={dados.mapaMax}
+              label="R$ milhões · SIOF"
+              format={fmtCompact}
+            />
+
             <div>
               <div
                 style={{
@@ -204,22 +232,22 @@ export default function Investimento() {
                 className="mono"
                 style={{ fontSize: 22, fontWeight: 600, color: "var(--ink-1)", marginTop: 2 }}
               >
-                {regSel?.siof_emp != null
-                  ? fmtBRL(Number(regSel.siof_emp) * 1e6)
+                {dados.mapaSiof[selecionado] != null
+                  ? fmtBRL((dados.mapaSiof[selecionado] as number) * 1e6)
                   : "—"}
               </div>
               <div
                 className="mono"
                 style={{ fontSize: 11, color: "var(--ink-3)", fontWeight: 600 }}
               >
-                empenhado acumulado · último ano
+                SIOF acumulado · {dados.periodoLabel}
               </div>
               <div
                 style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 6, lineHeight: 1.5 }}
               >
                 {regSel?.siof_n
-                  ? `${Number(regSel.siof_n).toFixed(0)} ações registradas no SIOF`
-                  : "Sem ações SIOF registradas no período."}
+                  ? `${Number(regSel.siof_n).toFixed(0)} ações no SIOF · último ano`
+                  : "Sem ações SIOF no período."}
               </div>
             </div>
 
@@ -234,17 +262,28 @@ export default function Investimento() {
                   marginBottom: 6,
                 }}
               >
-                Estatuto da coleta
+                Por zona
               </div>
-              <ul
-                className="text-xs"
-                style={{ color: "var(--ink-2)", margin: 0, paddingLeft: 14, lineHeight: 1.6 }}
-              >
-                <li>SIOF anual: ✓ pronto</li>
-                <li>SICONFI invest. municipal: ⏳ rodando</li>
-                <li>RREO invest. federal: ⏳ rodando</li>
-                <li>FBCF nacional × share: ✓ proxy disponível</li>
-              </ul>
+              <div className="flex flex-col" style={{ gap: 4, fontSize: 11 }}>
+                {dados.porZona.map((z) => (
+                  <div
+                    key={z.zona}
+                    className="grid items-center"
+                    style={{ gridTemplateColumns: "8px 1fr auto", gap: 8 }}
+                  >
+                    <span style={{ width: 8, height: 8, background: z.cor }} />
+                    <span style={{ color: "var(--ink-2)", textTransform: "capitalize" }}>
+                      {z.zona}
+                    </span>
+                    <span
+                      className="mono"
+                      style={{ color: "var(--ink-1)", fontWeight: 600 }}
+                    >
+                      {fmtCompact(z.valor * 1e6)}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div style={{ borderTop: "1px solid var(--border-soft)", paddingTop: 10 }}>
@@ -252,7 +291,8 @@ export default function Investimento() {
                 className="mono"
                 style={{ fontSize: 10, color: "var(--ink-4)", lineHeight: 1.5 }}
               >
-                Painel atualizado em<br />
+                Painel atualizado em
+                <br />
                 <span style={{ color: "var(--ink-2)", fontSize: 11 }}>
                   {dados.atualizado}
                 </span>
@@ -367,6 +407,7 @@ export default function Investimento() {
           </div>
         </Panel>
       </div>
+      <MapTooltip hover={hover}>{renderTooltip}</MapTooltip>
     </div>
   );
 }
@@ -662,6 +703,29 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   // regiões com dado
   const regioesAtivas = Array.from(siofAcum.values()).filter((v) => v > 0).length;
 
+  // min/max do mapa para a legenda de cores
+  const mapaValores = Object.values(mapaSiof).filter((v): v is number => typeof v === "number");
+  const mapaMin = mapaValores.length ? Math.min(...mapaValores) : 0;
+  const mapaMax = mapaValores.length ? Math.max(...mapaValores) : 1;
+
+  // Soma SIOF agregada por ZONA (litoral/metropolitana/sertao/cariri) para o aside.
+  // Substitui o "Por região" do design original (Sudeste/Sul/...) com o nosso
+  // recorte intra-CE.
+  const zonaCor: Record<string, string> = {
+    metropolitana: "var(--cat-2)",
+    litoral: "var(--cat-3)",
+    sertao: "var(--cat-1)",
+    cariri: "var(--cat-5)",
+  };
+  const zonaTotal = new Map<string, number>();
+  for (const [cod, valor] of siofAcum.entries()) {
+    const zona = REGIOES_CE.find((r) => r.codigo === cod)?.zona ?? "sertao";
+    zonaTotal.set(zona, (zonaTotal.get(zona) ?? 0) + valor);
+  }
+  const porZona = Array.from(zonaTotal.entries())
+    .map(([zona, valor]) => ({ zona, valor, cor: zonaCor[zona] ?? "var(--cat-3)" }))
+    .sort((a, b) => b.valor - a.valor);
+
   // atualizado
   const atualizado = painel.meta.atualizado_em
     ? new Date(painel.meta.atualizado_em).toLocaleString("pt-BR", {
@@ -672,6 +736,9 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   return {
     snapshot,
     mapaSiof,
+    mapaMin,
+    mapaMax,
+    porZona,
     totalSiof,
     serieSiof,
     totalInvTotal,
