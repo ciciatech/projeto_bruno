@@ -169,6 +169,27 @@ def _carregar_invest_federal() -> pd.DataFrame:
     return out
 
 
+def _carregar_populacao_regional() -> pd.DataFrame:
+    """
+    População regional anual (IBGE Estimativas, SIDRA tabela 6579) replicada
+    para todos os meses do ano para juntar com o painel mensal.
+    """
+    df = _ler_csv_se_existir(PROCESSED_DIR / "populacao" / "populacao_ce_anual.csv")
+    if df.empty:
+        return df
+    pop_reg = (
+        df.groupby(["regiao_codigo", "regiao_nome", "ano"], as_index=False)["populacao"]
+        .sum()
+    )
+    # Expandir anual → mensal (replicando o valor anual)
+    expanded: list[pd.DataFrame] = []
+    for mes in range(1, 13):
+        tmp = pop_reg.copy()
+        tmp["mes"] = mes
+        expanded.append(tmp)
+    return pd.concat(expanded, ignore_index=True).rename(columns={"populacao": "pop"})
+
+
 def _carregar_invest_municipal() -> pd.DataFrame:
     """
     Investimento municipal — prefere SICONFI (automático) sobre a planilha
@@ -331,6 +352,7 @@ def construir_painel(
         "Transf. estaduais SEFAZ-CE": _carregar_transf_estadual,
         "Invest. municipal (SICONFI/planilha)": _carregar_invest_municipal,
         "ESTBAN BNB": _carregar_estban_bnb,
+        "População IBGE": _carregar_populacao_regional,
     }
 
     painel = grade.copy()
