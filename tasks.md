@@ -1,60 +1,52 @@
 # Tasks · Prisma Regional / Tese DESP-UFC
 
-Roadmap de tarefas em aberto. Atualizado em 2026-04-30.
+Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
+
+> ✅ done · ⏳ em curso · ⏸ aguardando · 🚧 bloqueado por terceiros
 
 ---
 
-1. **Disparar coletor SICONFI invest_municipal no Mac Mini**
-   `bash scripts/run_coletas.sh invest_municipal` — varre 184 municípios × 11 anos × 6 bimestres (~12k requests, ~2h). Saída: `dados_nordeste/processed/invest_municipal/invest_municipal_siconfi_ce.csv`. Quando concluir, regenerar `frontend/public/data/painel.json` e redeployar.
+## Concluídas
 
-2. **Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED**
-   Usar `adm/des/sal/mov/sal_med` já presentes no `painel.json`. Mapa divergente YoY do saldo, série mensal regional sobreposta, tabela densa por região. Sinalizar cobertura atual (18/184 municípios = 10%).
+- ✅ **T02** Tela 2 Emprego com CAGED real — mapa divergente, KPIs, tabela 14 regiões. Cobertura 9/14.
+- ✅ **T04** Tela 3 — pivot para "Composição de Receitas Públicas Regionais" (FPM/FUNDEB/royalties/ITR/outros + BF + BPC).
+- ✅ **T05** Tela 4 Causal — OLS univariado real com `simple-statistics`, scatter + linha + IC 95% + tabela β/α/R²/σ. **Especificação preliminar** (multivariada/IV/Granger aguarda Paulo).
+- ✅ **T06** FilterBar funcional (período + recorte com URL state via react-router).
+- ✅ **T08** Decisão sobre invest_privado residual — RESOLVIDA pelos áudios do Paulo (abr/2026): FBCF Brasil mensal × 2,2% (share PIB CE/BR), R$ presente de dez/2024. Documentado em `docs/metodologia-composicao-investimento.md`.
+- ✅ **T09** Plano de descontinuação `bruno-dashboard` Streamlit em `docs/plano-descontinuacao-streamlit.md` (4 etapas A-paridade · B-swap · C-pause · D-remoção).
+- ✅ **T10** `dashboard/prisma-regional/` → `archive/prisma-regional-design/` com README mapeando port.
+- ✅ **T12** Cache HTTP do painel — versionado como `painel.{hash}.json` (1y immutable) + `painel-index.json` (no-store). Reduz transferência de 850KB→<200B em recargas.
+- ✅ **T14** `CLAUDE.md` inicial — stack, comandos, convenções, decisões Paulo.
+- ✅ **T15** Testes mínimos — 5 pytest (smoke, integridade regiões, regressão `agregar_para_regiao`) + 19 Vitest (format, regioes, integridade tile-grid). Quality gate adaptado em `scripts/quality-gate.sh`.
+- ✅ **Coletor populacional IBGE** (SIDRA 6579) — habilita Per capita. Integrado ao painel.
+- ✅ **SEFAZ-CE Cota-Parte ICMS/IPVA via SICONFI Anexo 03** — substitui adapter manual bloqueado por bot. Pronto para rodar (~10 min, 2k requests).
+- ✅ **MapLegend + MapTooltip + "Por zona"** no aside da Tela 1 (fidelidade ao design original `screen01.jsx`).
+- ✅ **Layout responsivo** — `minmax(260px, 320px)` nas colunas, `Panel` com `overflow:auto`, Choropleth com aspect-ratio nativo. Removido clipping silencioso em viewports <1440px.
+- ✅ **Composição com 4 esferas** — Estadual (SIOF) + Federal (RREO) + Municipal (SICONFI) + Privado residual (`inv_total - estadual - federal - municipal`).
+- ✅ **PERIODO_FIM_MENSAL = 2026** — painel agora cobre 14 regiões × 144 meses (2016 linhas), incluindo o ano corrente do SIOF SEPLAG.
 
-3. **Forçar emissão TLS Let's Encrypt em `prisma.bruno.ciciatech.cloud`**
-   Acessar do celular/4G uma vez para o Traefik disparar o ACME challenge. Hoje serve `TRAEFIK DEFAULT CERT`.
+## Em curso (autônomo)
 
-4. **Tela 3 (Setores) — decidir destino**
-   Hoje placeholder cita PIB municipal IBGE + RAIS por CNAE setorial — nenhum dos dois está coletado. Investir em coleta nova ou substituir por outra análise (ex.: heatmap de composição transferências fed/est/mun por região).
+- ⏳ **T01** Coletor SICONFI invest_municipal rodando no Mac Mini (PID 82781). 31% às 23:38 BRT (625/2024 mun-ano), ETA ~04:30 BRT. Quando terminar, `run_coletas.sh` encadeia `--painel-ce` e regenera o painel completo. ScheduleWakeup colhe e faz deploy automático.
 
-5. **Tela 4 (Causal) — modelo OLS investimento → emprego**
-   Scatter 14 regiões × meses, regressão simples β/α/R²/p, IC 95%. X = `siof_emp`, Y = `sal` (saldo CAGED). Variáveis de controle e especificação econométrica precisam de validação do Prof. Paulo.
+## Aguardando terceiros / decisões
 
-6. **FilterBar funcional (período / indicador / recorte)**
-   Implementar a barra de filtros do design original, com estado em URL (react-router params) que afete todas as telas.
+- ⏸ **T03** TLS Let's Encrypt em `prisma.bruno.ciciatech.cloud` — emitido na primeira request via DNS público real (já confirmado em produção, mas worth-revalidar).
+- ⏸ **T05 (parte 2)** Especificação econométrica multivariada — Prof. Paulo precisa definir variáveis de controle, defasagens (lag), transformações (log/diff), tratamento de endogeneidade (IV / Arellano-Bond), teste de Granger.
+- ⏸ **T07** Auto-regenerar painel.json após coletas — exige hook local no Mac Mini que comita o painel + dispara `python3 frontend/scripts/build-data.py` + push em dev. Requer setup adicional ou cron local.
+- ⏸ **T11** shadcn/ui — em **WAITING**: sem trigger justificando o refator de tokens (zero forms/dialogs hoje). Re-abrir quando aparecer Dialog/Combobox/DataTable.
 
-7. **Auto-regenerar painel.json após coletas no Mac Mini**
-   Hoje é manual: `scp` painel + `python3 build-data.py` + commit. Adicionar hook que comita o painel após `painel-ce` bem-sucedido (com proteção contra dados inválidos).
+## Pendente
 
-8. **Decisão sobre invest_privado residual** (bloqueada por Paulo)
-   Definir fonte do "investimento total privado" (FBCF nacional × share PIB / JUCEC / PIA). Sem isso, a composição da Tela 1 não fecha.
+- 🟡 **Deflator IPCA → R$ dez/2024** — harmoniza bases monetárias de SIOF (correntes), invest_municipal (correntes), invest_federal (correntes) e FBCF (R$ 2010). Requer coleta de IPCA mensal (BACEN SGS 433) + aplicação como deflator. ~2h.
+- 🟡 **Cleanup do repositório** — ~30 arquivos untracked (`analysis/`, `notebook/`, `status.md`, `docs/pdf/`). Decisão manual por arquivo.
+- 🟡 **Tests E2E + Lighthouse CI** — automatizar QA visual no pipeline (Playwright + Lighthouse).
 
-9. **Plano de descontinuação `bruno-dashboard` (Streamlit)**
-   Quando Telas 1+2 estiverem completas, swap DNS `bruno.ciciatech.cloud` para o frontend, parar app Streamlit no Coolify, remover `app.py` / `pages/` / `Dockerfile` raiz / `docker-compose.yml`. Manter `pipeline/` (backend ETL roda no Mac Mini).
+## Bloqueado por terceiros
 
-10. **Mover `dashboard/prisma-regional/` para `archive/` ou deletar**
-    JSX originais do design já foram portados para `frontend/src/` — pasta original ficou redundante.
-
-11. **Adotar shadcn/ui no frontend**
-    Hoje componentes são custom. Skill `claude_vps` recomenda shadcn/ui. `npx shadcn@latest add button table tooltip dialog` e refatorar onde fizer sentido (modais, dropdowns, tabelas grandes).
-
-12. **Cache HTTP do `painel.json`**
-    Hoje `cache-control: no-store` (835 KB todo deploy). Trocar para `painel.{hash}.json` versionado + cache longo + invalidação no build.
-
-13. **Cleanup do repositório**
-    `git status` mostra ~30 arquivos untracked (`analysis/`, `notebook/`, `status.md`, `docs/pdf/`, etc). Decidir o que entra no repo, o que vai pro `.gitignore`, o que arquiva.
-
-14. **Criar `CLAUDE.md` inicial**
-    Skill `/init` gera. Documenta stack (Python pipeline + frontend React), comandos comuns, convenções, links pra `.claude/rules/`.
-
-15. **Testes mínimos**
-    Pipeline: smoke test do coletor SICONFI (1 município/1 ano), validação de schema do painel. Frontend: snapshot test das 5 rotas. `pytest pipeline/tests/` + Vitest.
-
-16. **ESTBAN BNB · adapter manual** (bloqueado)
-    BCB removeu URL pública estável. Sem auto-download. Documentar processo de coleta manual em `dados_nordeste/raw/estban/README.md`.
-
-17. **SEFAZ-CE cota-parte estadual · adapter manual** (bloqueado)
-    Site bloqueia bots. Sem auto-download. Documentar processo manual em `dados_nordeste/raw/sefaz_ce/README.md`.
+- 🚧 **T16 ESTBAN BNB** — BCB removeu URL pública estável. Caminhos: download manual (132 arquivos, ~2h cliques), Selenium scraper (risco), LAI institucional (Bruno tem vínculo UFC). Adapter local pronto em `dados_nordeste/raw/estban/`.
+- 🚧 **T17 SEFAZ-CE adapter manual** — **destravado parcialmente** via SICONFI Anexo 03 (cota-parte ICMS/IPVA). Adapter manual fica como fallback se SICONFI falhar.
 
 ---
 
-**Total**: 17 tasks (15 acionáveis + 2 bloqueadas por terceiros).
+**Total**: 26 itens registrados (15 ✅ done · 1 ⏳ em curso · 4 ⏸ aguardando · 3 🟡 pendente · 2 🚧 bloqueado · 1 destravado parcialmente).

@@ -16,22 +16,28 @@ projeto-bruno/
 │   └── tests/        # smoke tests pytest
 ├── frontend/         # React 19 + Vite + TS + Tailwind v4 + react-router-dom
 │   ├── src/
-│   │   ├── components/   # Chrome, Panel, KPI, Sparkline, Choropleth14CE
-│   │   ├── screens/      # Investimento (✓), Emprego (✓), Setores/Causal/Pipeline
+│   │   ├── components/   # Chrome, FilterBar, Panel, KPI, Sparkline,
+│   │   │                 # Choropleth14CE, MapLegend, MapTooltip
+│   │   ├── screens/      # Investimento (✓ real) · Emprego (✓ real) ·
+│   │   │                 # Setores (✓ Composição de Receitas) ·
+│   │   │                 # Causal (✓ OLS preliminar) · Pipeline (✓)
 │   │   ├── lib/          # tokens.css, regioes.ts, format.ts, painel.ts
-│   │   └── App.tsx       # router + theme toggle
-│   ├── public/data/painel.json  # gerado em build-time pelo build-data.py
-│   ├── scripts/build-data.py    # CSV → JSON estático
-│   ├── Dockerfile + nginx.conf  # multi-stage build → nginx:alpine
-│   └── package.json
+│   │   ├── test/         # setup Vitest
+│   │   └── App.tsx       # router + theme toggle persistente em localStorage
+│   ├── public/data/      # painel-index.json (no-cache) + painel.<hash>.json (1y)
+│   ├── scripts/build-data.py    # CSV → JSON estático com hash content-addressed
+│   ├── Dockerfile + nginx.conf  # multi-stage build (node → nginx:alpine + curl)
+│   └── package.json      # +simple-statistics (OLS) +vitest +@vitest/coverage-v8
 ├── pages/            # [legado] dashboard Streamlit, será descontinuado (ver docs/)
 ├── app.py            # [legado] entrypoint Streamlit
 ├── dados_nordeste/
 │   ├── raw/          # downloads brutos (gitignored)
 │   └── processed/
 │       ├── caged_municipal/, bolsa_familia/, bpc/, transferencias_municipais/
-│       ├── invest_federal/, invest_municipal/, sefaz_ce/, estban/, siof/
-│       └── model_ready/painel_regional_ce_mensal.csv  # output canônico (1848 linhas)
+│       ├── invest_federal/, invest_municipal/, sefaz_ce_siconfi/
+│       ├── populacao/, execucao_orcamentaria/ce/ (SIOF), estban/
+│       └── model_ready/painel_regional_ce_mensal.csv
+│              # output canônico (2016 linhas = 14 regiões × 144 meses 2015-2026)
 ├── scripts/          # auto-sync Mac Mini, run_coletas, qa, quality-gate
 ├── archive/          # design original do Prisma Regional (referência)
 ├── .claude/          # config, rules, agents, commands, task-pilot
@@ -67,10 +73,14 @@ python -m pipeline.run --painel-ce
 # Coletor específico
 python -m pipeline.run --modulos-ce caged_municipal
 python -m pipeline.run --modulos-ce invest_municipal     # SICONFI RREO bimestral
+python -m pipeline.run --modulos-ce sefaz_ce             # SICONFI Anexo 03 (cota-parte ICMS/IPVA)
 python -m pipeline.run --modulos-ce bolsa_familia_ce
 
+# Coletor populacional IBGE (anual estática) — habilita Per capita
+python -m pipeline.extract.populacao_ibge
+
 # Testes
-python -m pytest pipeline/tests/ -v
+python -m pytest pipeline/tests/ -v       # 5 smoke + cobertura ≥10% sobre pipeline/
 ```
 
 ### Frontend
@@ -81,10 +91,13 @@ npm install
 npm run dev             # http://localhost:5173
 npm run build           # gera dist/
 npm run lint            # ESLint
+npm run test            # 19 testes Vitest
+npm run test:cov        # com cobertura v8
 npm run preview         # serve dist/
 
 # Regenerar painel.json a partir do CSV mais recente
 python3 frontend/scripts/build-data.py
+# → gera painel.<hash>.json (1y immutable) + painel-index.json (no-cache)
 ```
 
 ### Quality gate
@@ -136,15 +149,28 @@ curl -sS -X POST \
 
 ## Decisões aprovadas pelo Prof. Paulo (abr/2026)
 
-- Ano-base do residual privado: **R$ 2024/2025** (não R$ 2010 da FBCF nativa).
-- CAGED municipal: **vale o custo** (~24h FTP MTE — rodou em 59min em 2026-04-30).
-- SEFAZ-CE manual: **prioridade**, mesmo sendo adapter (site bloqueia bots).
-- Investimento municipal: **SICONFI automático** (não a planilha manual do Bruno).
+Confirmado em 3 transcrições de áudio (consolidadas em
+`docs/metodologia-composicao-investimento.md`):
+
+- **Investimento total CE** = FBCF Brasil mensal × 2,2% (share PIB CE/BR), em
+  R$ presente de dez/2024.
+- **Ano-base do residual privado**: R$ 2024/2025 (não R$ 2010 da FBCF nativa).
+  Pendência: aplicar deflator IPCA cheio.
+- **CAGED municipal**: vale o custo (~24h FTP MTE — rodou em 59min em 2026-04-30).
+- **SEFAZ-CE**: agora destravado via SICONFI Anexo 03 (substitui adapter manual
+  bloqueado por bot). Adapter manual segue como fallback.
+- **Investimento municipal**: SICONFI Anexo 01 automático (não a planilha do Bruno).
+- **Investimento federal**: 3 componentes do RREO União (direto + NE×14,5% +
+  nacional×2,2%) — já implementado em `pipeline/extract/invest_federal.py`.
 
 ## Decisões pendentes (bloqueiam tasks)
 
-- Fonte do "investimento total privado" para residual.
-- Variáveis de controle definitivas do modelo causal (Tela 4) — especificação econométrica.
+- **Especificação econométrica completa** do modelo causal (Tela 4):
+  variáveis de controle, defasagens (lag), transformações (log/diff),
+  tratamento de endogeneidade (IV ou Arellano-Bond), teste de Granger.
+  Hoje a tela mostra OLS univariado preliminar com aviso editorial.
+- **Previsão de FBCF para 2025/2026**: o IpeaData não publicou ainda;
+  precisa modelo de extrapolação (ARIMA simples ou share fixo).
 
 ## Onde olhar quando algo quebrar
 
@@ -159,8 +185,10 @@ curl -sS -X POST \
 
 ## Referências internas
 
-- `tasks.md` — roadmap de tarefas (input do `ciciatech-task-pilot`)
+- `tasks.md` — roadmap consolidado (15 ✅ done · 1 ⏳ em curso · 4 ⏸ aguardando · 3 🟡 pendente · 2 🚧 bloqueado)
 - `docs/plano-descontinuacao-streamlit.md` — passos para retirar a app legada
+- `docs/metodologia-composicao-investimento.md` — fórmulas das 4 esferas (citar em publicações)
+- `scripts/qa-prisma-ux.md` — prompt completo para QA visual em browser tool
 - `.claude/rules/coolify-deploy.md` — UUIDs, endpoints, SSH, Traefik
 - `.claude/rules/dominio.md` — conceitos canônicos do exercício empírico
 - `.claude/rules/code-style.md` — convenções Python + TS

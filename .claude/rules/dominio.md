@@ -53,14 +53,19 @@ Todos seguem o padrão `(cod_ibge, regiao_codigo, regiao_nome, ano, mes, ...valo
 
 ## Fontes externas usadas
 
-| Fonte | Endpoint / arquivo | Cadência |
-|-------|--------------------|----------|
-| SICONFI / Tesouro | `apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo` | Bimestral |
-| Portal da Transparência | API CSV bulk (transf., BF, BPC) | Mensal |
-| BACEN SGS | `api.bcb.gov.br/dados/serie/bcdata.sgs` | Mensal |
-| IpeaData (FBCF) | `ipeadata.gov.br/api` | Mensal |
-| MTE / CAGED | FTP `ftp.mtps.gov.br/pdet/microdados` | Mensal |
-| IBGE | `servicodados.ibge.gov.br/api/v1/localidades` | Estática |
-| SIOF-CE | PDF parsing local | Anual |
+| Fonte | Endpoint / arquivo | Cadência | Coletor |
+|-------|--------------------|----------|---------|
+| SICONFI / Tesouro · RREO Anexo 01 (invest. mun.) | `apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo` | Bimestral | `pipeline/extract/invest_municipal_siconfi.py` |
+| SICONFI / Tesouro · RREO Anexo 03 (cota-parte ICMS/IPVA) | idem | Bimestral (12-mes window) | `pipeline/extract/sefaz_ce_siconfi.py` |
+| Portal da Transparência | API CSV bulk | Mensal | `bolsa_familia_ce.py` · `bpc.py` · `invest_federal.py` |
+| BACEN SGS | `api.bcb.gov.br/dados/serie/bcdata.sgs` | Mensal | `pipeline/extract/bacen.py` (IBCR-CE série 25380) |
+| IpeaData (FBCF) | `ipeadata.gov.br/api` | Mensal | `pipeline/extract/ipea_fbcf.py` |
+| MTE / CAGED | FTP `ftp.mtps.gov.br/pdet/microdados` | Mensal | `pipeline/extract/caged_municipal.py` |
+| IBGE / SIDRA tabela 6579 (estimativas pop.) | `servicodados.ibge.gov.br/api/v3/agregados/6579` | Anual | `pipeline/extract/populacao_ibge.py` |
+| IBGE / API localidades | `servicodados.ibge.gov.br/api/v1/localidades` | Estática | `pipeline/regioes_ce.py` |
+| SIOF-CE | PDF parsing local da SEPLAG | Anual (corrente) | `pipeline/extract/siof.py` |
+| STN · Transferências constitucionais | CKAN STN | Mensal | `pipeline/extract/transferencias_municipais.py` |
 
-ESTBAN BNB e SEFAZ-CE não têm fonte automatizada (BCB removeu URL pública estável; Ceará Transparente bloqueia bots) — são adapters manuais.
+**Bloqueados por terceiros:**
+- ESTBAN BNB — BCB removeu URL pública estável; adapter manual em `dados_nordeste/raw/estban/`
+- SEFAZ-CE direto — site bloqueia bots; **agora substituído pelo SICONFI Anexo 03** (cota-parte ICMS/IPVA), adapter manual fica como fallback
