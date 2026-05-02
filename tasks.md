@@ -42,6 +42,8 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 - ✅ **`.gitignore`: anexo de 463MB** — `docs/parque_infra_ce/dados/Investimento Governo Federal 2014 - 2025.xlsx` excluído (excede limite 100MB do GitHub). Mantido localmente.
 - ✅ **Plugar `sefaz_ce_siconfi` no painel (2026-05-01)** — validação end-to-end: painel agora tem 35 colunas (era 31, +`transf_est_icms/ipva/total`) × 2016 linhas. Frontend regenerado (`painel.2de8b30f.json`, 947KB). Test smoke robustecido (calcula `n_meses` dinamicamente + asserção do schema sefaz). Outputs municipais (BPC/BF/CAGED/invest_federal) recuperados do stash do Mac Mini e commitados. Stash drop. Commits `ae8ad05` + `6a47f22`.
 - ✅ **Drop stash do Mac Mini** — `auto-stash 2026-05-01` removido após confirmar que todos outputs foram commitados em `ae8ad05`.
+- ✅ **Overlay SIOF sem-dado-regional + descoberta SCI-01** — bug aparente no mapa coroplético virou descoberta de bloqueador científico (SEPLAG-CE só publica detalhamento regional a partir de 2026). Mitigação UX: overlay editorial + botão "Ver 2026" + nota explicativa. Bloqueador científico documentado em `docs/metodologia-composicao-investimento.md` e `tasks.md` SCI-01. Commit `e3c6951`, deployado em `prisma.bruno.ciciatech.cloud`.
+- ✅ **Remover job `bruno-dashboard` do workflow Coolify** — Streamlit em descontinuação (ver `docs/plano-descontinuacao-streamlit.md` + memory). Job removido de `.github/workflows/deploy-coolify.yml`; só `prisma-frontend` deploya. Streamlit congelado em `e3c6951`. Para redeploy emergencial: curl manual com UUID `p4c0o8wkcgos8s0sscws8g8k` (instrução nos comentários do YAML).
 
 ## Em curso (autônomo)
 
