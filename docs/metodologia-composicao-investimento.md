@@ -29,8 +29,43 @@ documentos PDF anuais publicados pela SEPLAG-CE.
 **Tratamento no painel**: replicado em todos os meses do ano (anual → mensal
 por replicação, não por divisão).
 
-**Status no projeto**: ✅ pronto. Output em
-`dados_nordeste/processed/execucao_orcamentaria/ce/siof_obras_regiao.csv`.
+**Status no projeto**: ⚠️ **parcial — apenas 2026 detalhado por região**.
+
+> ### ⚠️ Lacuna identificada (2026-05-01)
+>
+> A SEPLAG-CE só publica o detalhamento por região no SIOF a partir do
+> exercício **2026**. Os anos 2015–2025 estão disponíveis apenas no nível
+> "secretaria" (8 dígitos), sem desagregação pelas 14 macrorregiões.
+>
+> Verificação: `dados_nordeste/raw/execucao_orcamentaria/ce/siof_obras_consolidado.csv`
+> contém códigos de 2 dígitos (regiões) **somente** para `ano == 2026`.
+> Em 2015–2025 só aparecem códigos de 8 dígitos (secretarias).
+>
+> **Impacto na tese**: o exercício causal regional (emprego × investimento
+> estadual em obras nas 14 regiões CE) **fica inviabilizado para 2015–2025**
+> pela ausência de dado regional do SIOF. Pendente decisão do Prof. Paulo.
+>
+> **Caminhos não-destrutivos**:
+> 1. **Requisição LAI à SEPLAG-CE** pelos dados regionais 2015-2025 (mais
+>    correto cientificamente, depende de prazo institucional).
+> 2. **Contato direto IPECE/SEPLAG via vínculo UFC do Bruno**.
+> 3. **Pivotar variável de impacto** para `invest_municipal_siconfi`, que tem
+>    180/184 municípios CE cobertos em 2015–2025 (R$ 28,97 bi total) — mantém
+>    granularidade regional mas reformula a tese para "investimento *público
+>    municipal*" em vez de "estadual".
+> 4. **Restringir escopo** a 2026 (não recomendado — pouco dado para causalidade).
+>
+> **Caminhos a evitar**: ratear o total estadual SIOF entre as 14 regiões
+> usando chave (população, PIB, etc.) — vira invenção de dado e contamina
+> a inferência causal.
+>
+> **Mitigação UX no dashboard** (commit `feat(frontend): overlay SIOF
+> sem-dado-regional`): quando o filtro de período da Tela 1 cobre anos sem
+> dado regional, o mapa coroplético renderiza overlay editorial com botão
+> "Ver 2026" em vez de pintar todas as regiões com a cor zero (que dá
+> falsa sensação de homogeneidade).
+
+**Output**: `dados_nordeste/processed/execucao_orcamentaria/ce/siof_obras_regiao.csv`.
 
 ---
 

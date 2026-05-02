@@ -8,6 +8,10 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 
 ---
 
+## 🔴 BLOQUEADOR CIENTÍFICO (descoberto 2026-05-01)
+
+- 🔴 **SCI-01 SIOF regional ausente em 2015-2025** — SEPLAG-CE só publica detalhamento por região (14 macrorregiões) **a partir de 2026** no SIOF-Web. Anos 2015-2025 só têm nível "secretaria" (8 dígitos) sem desagregação regional. Isso **inviabiliza o exercício causal regional 2015-2025** da tese (regressão emprego × investimento estadual em obras nas 14 regiões). **Mitigação UX implementada** (commit pendente): overlay no mapa coroplético quando período sem dado, botão "Ver 2026", nota editorial. **Decisão pendente do Prof. Paulo + Bruno:** (a) restringir tese só a 2026 [pouco dado], (b) requisição LAI à SEPLAG-CE pelos dados regionais 2015-2025, (c) contato direto IPECE/SEPLAG via vínculo UFC do Bruno, (d) pivotar variável de impacto para outro proxy (ex.: invest. municipal SICONFI por região, que tem 180/184 munic. cobertos 2015-2025). Documentado em `docs/metodologia-composicao-investimento.md`.
+
 ## 🔴 URGENTE — segurança (descoberto 2026-05-01)
 
 - 🔴 **SEC-01** Rotacionar token Coolify `3|Oq2dlr3X...` — vazado em `.claude/rules/coolify-deploy.md:38` desde commit `f9d813d` em **repo público** `ciciatech/projeto_bruno`. Painel: `painel.ciciacademy.com.br` → API tokens → revogar antigo + gerar novo. Atualizar consumidores: `.mcp.json`, `~/.coolify-tokens`, secret `COOLIFY_TOKEN` no GitHub (usado por `.github/workflows/deploy-coolify.yml`).

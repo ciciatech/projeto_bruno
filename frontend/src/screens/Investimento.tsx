@@ -6,6 +6,7 @@ import { Sparkline } from "../components/Sparkline";
 import { MapLegend } from "../components/MapLegend";
 import { MapTooltip, type HoverInfo } from "../components/MapTooltip";
 import { aplicarPeriodo, useFiltros } from "../components/FilterBar";
+import { ANO_SIOF_REGIONAL_INICIO } from "../lib/sioCobertura";
 import { fmtBRL, fmtCompact, fmtNum, fmtMes } from "../lib/format";
 import { carregarPainel, snapshotPorRegiao, type Painel } from "../lib/painel";
 import { REGIOES_BY_CODIGO, REGIOES_CE } from "../lib/regioes";
@@ -15,7 +16,7 @@ export default function Investimento() {
   const [erro, setErro] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string>("03"); // Grande Fortaleza
   const [hover, setHover] = useState<HoverInfo | null>(null);
-  const [filtros] = useFiltros();
+  const [filtros, setFiltros] = useFiltros();
 
   useEffect(() => {
     carregarPainel().then(setPainel).catch((e) => setErro(String(e)));
@@ -169,9 +170,19 @@ export default function Investimento() {
           </div>
           <div className="mt-3">
             <EditorialNote>
-              {dados.topRegioes[0]?.nome} concentra {(((dados.topRegioes[0]?.valor ?? 0) / dados.totalSiof) * 100).toFixed(0)}%
-              do investimento estadual empenhado no período — padrão típico de
-              projetos de infraestrutura em região metropolitana.
+              {dados.totalSiof > 0 ? (
+                <>
+                  {dados.topRegioes[0]?.nome} concentra{" "}
+                  {(((dados.topRegioes[0]?.valor ?? 0) / dados.totalSiof) * 100).toFixed(0)}%
+                  do investimento estadual empenhado no período — padrão típico de
+                  projetos de infraestrutura em região metropolitana.
+                </>
+              ) : (
+                <>
+                  Sem dado regional do SIOF para este período. SEPLAG-CE só
+                  publica desagregação por região a partir de {ANO_SIOF_REGIONAL_INICIO}.
+                </>
+              )}
             </EditorialNote>
           </div>
         </Panel>
@@ -191,7 +202,7 @@ export default function Investimento() {
         }
       >
         <div className="flex gap-6 items-start h-full">
-          <div className="flex-1 flex justify-center items-center">
+          <div className="flex-1 flex justify-center items-center" style={{ position: "relative" }}>
             <Choropleth14CE
               values={dados.mapaSiof}
               selected={selecionado}
@@ -202,6 +213,72 @@ export default function Investimento() {
               tile={72}
               gap={4}
             />
+            {dados.totalSiof === 0 && (
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background: "color-mix(in oklab, var(--bg-surface) 92%, transparent)",
+                  padding: 24,
+                  textAlign: "center",
+                  gap: 12,
+                  pointerEvents: "auto",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: 11,
+                    color: "var(--ink-3)",
+                    textTransform: "uppercase",
+                    letterSpacing: 0.8,
+                    fontWeight: 600,
+                  }}
+                >
+                  Sem detalhamento regional
+                </div>
+                <div
+                  className="serif"
+                  style={{
+                    fontSize: 16,
+                    color: "var(--ink-1)",
+                    maxWidth: 360,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  SEPLAG-CE só publica SIOF por região a partir de{" "}
+                  <strong>{ANO_SIOF_REGIONAL_INICIO}</strong>. Para anos
+                  anteriores existe apenas o nível por secretaria, sem rateio
+                  pelas 14 regiões.
+                </div>
+                <button
+                  onClick={() => setFiltros({ periodo: "1A" })}
+                  style={{
+                    marginTop: 4,
+                    padding: "8px 16px",
+                    background: "var(--ink-1)",
+                    color: "var(--bg-surface)",
+                    border: "none",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    fontFamily: "var(--font-sans)",
+                    cursor: "pointer",
+                    letterSpacing: 0.4,
+                  }}
+                >
+                  Ver {ANO_SIOF_REGIONAL_INICIO} →
+                </button>
+                <div
+                  className="mono"
+                  style={{ fontSize: 10, color: "var(--ink-3)", marginTop: 4 }}
+                >
+                  fonte: SEPLAG-CE / SIOF-Web
+                </div>
+              </div>
+            )}
           </div>
 
           <aside className="flex flex-col gap-4 pt-2" style={{ width: 180, flexShrink: 0 }}>
