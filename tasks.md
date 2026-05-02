@@ -44,6 +44,7 @@ Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
 - ✅ **Drop stash do Mac Mini** — `auto-stash 2026-05-01` removido após confirmar que todos outputs foram commitados em `ae8ad05`.
 - ✅ **Overlay SIOF sem-dado-regional + descoberta SCI-01** — bug aparente no mapa coroplético virou descoberta de bloqueador científico (SEPLAG-CE só publica detalhamento regional a partir de 2026). Mitigação UX: overlay editorial + botão "Ver 2026" + nota explicativa. Bloqueador científico documentado em `docs/metodologia-composicao-investimento.md` e `tasks.md` SCI-01. Commit `e3c6951`, deployado em `prisma.bruno.ciciatech.cloud`.
 - ✅ **Remover job `bruno-dashboard` do workflow Coolify** — Streamlit em descontinuação (ver `docs/plano-descontinuacao-streamlit.md` + memory). Job removido de `.github/workflows/deploy-coolify.yml`; só `prisma-frontend` deploya. Streamlit congelado em `e3c6951`. Para redeploy emergencial: curl manual com UUID `p4c0o8wkcgos8s0sscws8g8k` (instrução nos comentários do YAML).
+- ✅ **Etapa B-swap da descontinuação Streamlit** (2026-05-02) — `bruno.ciciatech.cloud` agora servido pelo `prisma-frontend` (React/Vite). Operação via API Coolify: PATCH `bruno-dashboard.fqdn=null` + PATCH `prisma-frontend.fqdn="prisma...,bruno..."` + redeploy ambos. TLS válido em ambos URLs. Container Streamlit segue rodando sem domínio (acesso só via painel). `prisma.bruno.ciciatech.cloud` mantido como fallback durante transição. Restam etapas C-pause + D-remoção de `docs/plano-descontinuacao-streamlit.md`.
 
 ## Em curso (autônomo)
 

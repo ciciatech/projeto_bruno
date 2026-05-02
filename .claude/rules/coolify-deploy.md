@@ -10,27 +10,31 @@ description: Configuração e regras de deploy via Coolify para o projeto Bruno
 - **Project**: `Projeto Bruno - Tese DESP/UFC` (uuid `zkkg4s0soock4sswg0ossk0g`)
 - **Server**: localhost (Hostinger srv1068785, IP `72.60.152.227`)
 - **Proxy**: Traefik 3.1.7
-- **Token de API**: armazenado no `.mcp.json` e em `~/.coolify-tokens` (não comitar)
+- **Token de API**: armazenado em `~/.coolify-tokens` (NÃO comitar — SEC-01 do `tasks.md` registra que o token vazou no histórico do `.claude/rules/coolify-deploy.md` em commit `f9d813d`, repo público; precisa rotacionar).
 
 ## Aplicações registradas
 
-### bruno-dashboard (Streamlit, atual)
-- **uuid**: `p4c0o8wkcgos8s0sscws8g8k`
-- **fqdn**: https://bruno.ciciatech.cloud
-- **build_pack**: `dockerfile` (raiz do repo)
-- **base_directory**: `/`
-- **branch**: `main`
-- **repo**: `ciciatech/projeto_bruno.git`
-- **porta**: 8501 (Streamlit)
-- **deploy**: automático via GitHub Action `.github/workflows/deploy-coolify.yml` em push para `main`
-
-### prisma-frontend (React/Vite, novo — em criação)
-- **fqdn pretendido**: `https://prisma.bruno.ciciatech.cloud`
+### prisma-frontend (React/Vite — produção, oficial)
+- **uuid**: `eomewrww9ecurlqvhb6vusml`
+- **fqdn primário**: `https://bruno.ciciatech.cloud` (assumiu em 2026-05-02 via swap API Coolify)
+- **fqdn secundário**: `https://prisma.bruno.ciciatech.cloud` (mantido como fallback durante transição)
 - **build_pack**: `dockerfile` (Dockerfile dentro de `frontend/`)
 - **base_directory**: `/frontend`
 - **branch**: `main`
+- **repo**: `ciciatech/projeto_bruno.git`
 - **porta**: 80 (nginx)
-- **deploy**: automático via mesma GitHub Action ou webhook próprio
+- **deploy**: automático via GitHub Action `.github/workflows/deploy-coolify.yml` em push para `main`
+
+### bruno-dashboard (Streamlit — descontinuado, container congelado)
+- **uuid**: `p4c0o8wkcgos8s0sscws8g8k`
+- **fqdn**: `null` (domínio liberado em 2026-05-02; container segue rodando sem domínio público — só acessível via painel Coolify)
+- **status**: `running:healthy` (último deploy automático em 2026-04-30)
+- **deploy automático**: REMOVIDO do workflow em commit `fdcc736`. Para redeploy emergencial:
+  ```bash
+  curl -fsSL -X POST -H "Authorization: Bearer $COOLIFY_TOKEN" \
+    "https://painel.ciciacademy.com.br/api/v1/deploy?uuid=p4c0o8wkcgos8s0sscws8g8k&force=true"
+  ```
+- **plano de remoção**: ver `docs/plano-descontinuacao-streamlit.md` (etapa B-swap concluída · resta etapa C-pause + D-remoção)
 
 ## Endpoints úteis da API Coolify
 

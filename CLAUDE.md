@@ -49,13 +49,15 @@ projeto-bruno/
 
 ## Aplicações em produção
 
-| App | Stack | URL | Coolify UUID |
-|-----|-------|-----|--------------|
-| `prisma-frontend` | React/Vite/TS | https://prisma.bruno.ciciatech.cloud | `eomewrww9ecurlqvhb6vusml` |
-| `bruno-dashboard` (legado) | Streamlit | https://bruno.ciciatech.cloud | `p4c0o8wkcgos8s0sscws8g8k` |
+| App | Stack | URL primário | URL secundário | Coolify UUID |
+|-----|-------|--------------|----------------|--------------|
+| `prisma-frontend` (oficial) | React/Vite/TS | https://bruno.ciciatech.cloud | https://prisma.bruno.ciciatech.cloud | `eomewrww9ecurlqvhb6vusml` |
+| `bruno-dashboard` (descontinuado) | Streamlit | _sem domínio_ | — | `p4c0o8wkcgos8s0sscws8g8k` |
 
-Deploy automático em push para `main` via GitHub Action `.github/workflows/deploy-coolify.yml`.
-Plano de descontinuação do Streamlit em `docs/plano-descontinuacao-streamlit.md`.
+Swap de domínio realizado em 2026-05-02 via API Coolify. `bruno.ciciatech.cloud` agora aponta para `prisma-frontend`; `prisma.bruno.ciciatech.cloud` mantido como fallback durante transição.
+
+Deploy automático em push para `main` via GitHub Action `.github/workflows/deploy-coolify.yml` (somente `prisma-frontend`; job do `bruno-dashboard` removido em commit `fdcc736`).
+Plano de descontinuação do Streamlit em `docs/plano-descontinuacao-streamlit.md` (etapa B-swap concluída).
 
 ## Comandos comuns
 
