@@ -66,13 +66,26 @@ def _agregar_municipal_ce(df: pd.DataFrame, ano: int, mes: int) -> pd.DataFrame:
     if df.empty:
         return pd.DataFrame()
 
-    # Códigos podem vir com 6 ou 7 dígitos — normalizar para 7
+    # Códigos podem vir com 6 dígitos (padrão CAGED/PDET, sem o dígito
+    # verificador) ou 7 (código IBGE completo). O 7º dígito é VERIFICADOR e
+    # não pode ser inventado (ex.: Abaiara 230010 → 2300101, não 2300100).
+    # Mapeamos prefixo-6 → código oficial de 7 dígitos a partir dos 184
+    # municípios CE — os prefixos de 6 dígitos são únicos entre eles.
+    cods_validos = set(get_regiao_info()["cod_ibge"])
+    map_6to7 = {c[:6]: c for c in cods_validos}
     df["cod_ibge"] = df["municipio"].apply(
-        lambda x: x if len(x) == 7 else (x + "0" if len(x) == 6 else x)
+        lambda x: x if len(x) == 7 else map_6to7.get(x, x)
     )
 
-    cods_validos = set(get_regiao_info()["cod_ibge"])
-    df = df[df["cod_ibge"].isin(cods_validos)]
+    mask_validos = df["cod_ibge"].isin(cods_validos)
+    if not mask_validos.all():
+        descartados = df.loc[~mask_validos, "cod_ibge"]
+        logger.warning(
+            f"CAGED-mun {ano}/{mes:02d}: descartando {len(descartados)} linhas "
+            f"com código IBGE fora dos 184 municípios CE "
+            f"({descartados.nunique()} códigos: {sorted(descartados.unique())[:20]})"
+        )
+    df = df[mask_validos]
     if df.empty:
         return pd.DataFrame()
 

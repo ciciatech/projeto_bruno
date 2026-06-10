@@ -30,11 +30,22 @@ class Siconfi:
     BASE_URL = "https://apidatalake.tesouro.gov.br/ords/siconfi/tt"
 
     @staticmethod
-    def coletar_rreo(ano: int, periodo: int, cod_ibge: str, uf: str) -> pd.DataFrame:
+    def coletar_rreo(
+        ano: int,
+        periodo: int,
+        cod_ibge: str,
+        uf: str,
+        anexo: str | None = None,
+    ) -> pd.DataFrame:
         """
         Coleta RREO (Relatório Resumido de Execução Orçamentária).
 
         periodo: 1 a 6 (bimestral)
+        anexo: filtro opcional ``no_anexo`` da API (ex: "RREO-Anexo 03").
+            Quando informado, reduz drasticamente o payload (medido:
+            522KB/1398 itens → 126KB/350 itens) sem alterar as linhas do
+            anexo solicitado. Default None mantém o comportamento antigo
+            (todos os anexos).
         """
         url = f"{Siconfi.BASE_URL}/rreo"
         params = {
@@ -43,6 +54,8 @@ class Siconfi:
             "co_tipo_demonstrativo": "RREO",
             "id_ente": cod_ibge,
         }
+        if anexo is not None:
+            params["no_anexo"] = anexo
         logger.info(f"SICONFI RREO: {uf} {ano} período {periodo}...")
         resp = safe_request(url, params=params, timeout=90)
         if resp is None:
