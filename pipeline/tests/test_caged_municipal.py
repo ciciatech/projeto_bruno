@@ -99,3 +99,23 @@ def test_df_vazio_ou_sem_coluna_municipio_retorna_vazio():
     assert _agregar_municipal_ce(
         pd.DataFrame({"outra_coluna": [1]}), 2024, 1
     ).empty
+
+
+def test_mes_vazio_nao_e_cacheado(tmp_path, monkeypatch):
+    """Falha de download/extração devolve df vazio — o mês NÃO pode ir pro cache,
+    senão o resume o pula para sempre (regressão do incidente de 2026-06-10)."""
+    import pandas as pd
+
+    from pipeline.extract import caged_municipal
+
+    monkeypatch.setattr(caged_municipal, "PROCESSED_DIR", tmp_path)
+    monkeypatch.setattr(
+        caged_municipal.CagedRais,
+        "_processar_caged_antigo_mes",
+        staticmethod(lambda ano, mes: pd.DataFrame()),
+    )
+
+    caged_municipal.coletar_ce(ano_inicio=2015, ano_fim=2015)
+
+    cache_dir = tmp_path / "caged_municipal" / "_meses_consolidados"
+    assert list(cache_dir.glob("*.csv")) == []

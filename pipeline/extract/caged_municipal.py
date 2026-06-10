@@ -150,12 +150,10 @@ def coletar_ce(
 
             agg = _agregar_municipal_ce(df, ano, mes)
             if agg.empty:
-                logger.info(f"  CAGED-mun [{chave}] sem dados CE")
-                pd.DataFrame(columns=[
-                    "cod_ibge", "regiao_codigo", "regiao_nome", "ano", "mes",
-                    "admissoes", "desligamentos", "saldo",
-                    "total_movimentacoes", "salario_medio",
-                ]).to_csv(cache_csv, index=False)
+                # Mês vazio aqui significa falha upstream (download/extração
+                # engolida por _processar_caged_*), nunca ausência real de
+                # movimentações no CE — NÃO cachear, para o resume re-tentar.
+                logger.warning(f"  CAGED-mun [{chave}] sem dados CE — não cacheado")
                 continue
 
             agg.to_csv(cache_csv, index=False)
