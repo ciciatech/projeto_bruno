@@ -1,0 +1,32 @@
+variavel,fonte,tipo_temporal,regra_bimestral,deflacionamento,unidade_final,observacao
+admissoes,caged_municipal,fluxo,soma,nao_aplica,postos_de_trabalho,5 regioes sem mapeamento CAGED na fonte (Cariri; Litoral Leste; Litoral Oeste / Vale do Curu; Serra da Ibiapaba; Sertao dos Inhamuns); demais 9 regioes PARCIAIS — fonte cobre so 18 dos 184 municipios do CE (ver observacao de saldo)
+desligamentos,caged_municipal,fluxo,soma,nao_aplica,postos_de_trabalho,cobertura PARCIAL: 18 dos 184 municipios (ver observacao de saldo)
+saldo,caged_municipal,fluxo,soma,nao_aplica,postos_de_trabalho,cobertura PARCIAL: fonte tem so 18 dos 184 municipios (G.Fortaleza 5/19; Macico do Baturite 4/13; Centro Sul 2/13; Sertao Central 2/13; Litoral Norte 1/13; Caninde 1/6; Sobral 1/18; Crateus 1/13; Jaguaribe 1/15; 5 regioes com 0) — saldo regional fica na ordem de 6% da variacao de estoque do gabarito do Prof. Paulo (mediana) e NAO e comparavel ao bloco Estoque de empregos
+total_movimentacoes,caged_municipal,fluxo,soma,nao_aplica,movimentacoes,usada como peso da media ponderada de salario_medio; cobertura PARCIAL: 18 dos 184 municipios (ver observacao de saldo)
+salario_medio,caged_municipal,media_mensal,media_ponderada_movimentacoes,ipca,r$_dez_2025,media ponderada por total_movimentacoes — re-mediar os 2 meses sem peso introduziria vies (a fonte regional ja pondera por movimentacoes); cobertura PARCIAL: 18 dos 184 municipios (ver observacao de saldo)
+bf_valor_total,bolsa_familia,fluxo,soma,ipca,r$_dez_2025,
+bf_beneficiarios,bolsa_familia,estoque,ultimo_mes,nao_aplica,beneficiarios,
+bpc_valor_total,bpc,fluxo,soma,ipca,r$_dez_2025,cobertura a partir de 2019
+bpc_beneficiarios,bpc,estoque,ultimo_mes,nao_aplica,beneficiarios,cobertura a partir de 2019
+transf_fed_fpm_dest,transferencias_municipais_stn,fluxo,soma,ipca,r$_dez_2025,set/2024 com erro de unidade na fonte upstream (~100x; ex.: FPM de Fortaleza R$ 12 bi vs R$ 75 mi nos vizinhos) — mes anulado pelo gate de outliers; 24b5 fica vazio no bimestral/xlsx ate correcao do upstream
+transf_fed_fundeb_dest,transferencias_municipais_stn,fluxo,soma,ipca,r$_dez_2025,set/2024 com erro de unidade na fonte upstream (~100x) — mes anulado pelo gate de outliers; 24b5 vazio
+transf_fed_itr_dest,transferencias_municipais_stn,fluxo,soma,ipca,r$_dez_2025,set/2024 com erro de unidade na fonte upstream — mes anulado pelo gate de outliers (via familia da fonte STN); 24b5 vazio
+transf_fed_outros_dest,transferencias_municipais_stn,fluxo,soma,ipca,r$_dez_2025,set/2024 com erro de unidade na fonte upstream — mes anulado pelo gate de outliers (via familia da fonte STN); 24b5 vazio
+transf_fed_royalties_dest,transferencias_municipais_stn,fluxo,soma,ipca,r$_dez_2025,set/2024 com erro de unidade na fonte upstream — mes anulado pelo gate de outliers (via familia da fonte STN); 24b5 vazio
+transf_fed_total,transferencias_municipais_stn,fluxo,soma,ipca,r$_dez_2025,set/2024 com erro de unidade na fonte upstream (total estadual R$ 136.9 bi vs mediana R$ 1.6 bi; ~86x) — mes anulado pelo gate de outliers; 24b5 fica vazio no bimestral/xlsx
+transf_est_icms,sefaz_ce_siconfi_anexo03,fluxo,soma,ipca,r$_dez_2025,cobertura atual apenas 2024
+transf_est_ipva,sefaz_ce_siconfi_anexo03,fluxo,soma,ipca,r$_dez_2025,cobertura atual apenas 2024
+transf_est_total,sefaz_ce_siconfi_anexo03,fluxo,soma,ipca,r$_dez_2025,cobertura atual apenas 2024
+invest_mun_valor,invest_municipal_siconfi,fluxo,soma,ipca,r$_dez_2025,ESTAGIO EMPENHADO: RREO Anexo 01 col. DESPESAS EMPENHADAS ATE O BIMESTRE (f) — o gabarito do Prof. Paulo usa despesa PAGA; empenhado supera o pago em ~7% a 37% a.a. (b1 front-loaded 2-3x; b6 0.6-0.75x); migrar para a coluna de despesas pagas do RREO exige re-coleta SICONFI
+pop,populacao_ibge_sidra_6579,estoque_anual_replicado,ultimo_mes,nao_aplica,habitantes,valor anual replicado nos 12 meses — somar dobraria; 2022 e 2023 sem dado na fonte
+siof_anual_empenhado,siof_ce_seplag,anual_replicado,ultimo_mes,ipca,r$_dez_2025,valor anual replicado nos 12 meses (somar dobraria); cobertura atual so 2026 — sem IPCA de 2026 a coluna _real fica vazia ate a serie cobrir o ano
+siof_anual_pago,siof_ce_seplag,anual_replicado,ultimo_mes,ipca,r$_dez_2025,valor anual replicado nos 12 meses (somar dobraria); cobertura atual so 2026 — sem IPCA de 2026 a coluna _real fica vazia ate a serie cobrir o ano
+siof_anual_dotacao,siof_ce_seplag,anual_replicado,ultimo_mes,ipca,r$_dez_2025,valor anual replicado nos 12 meses (somar dobraria); cobertura atual so 2026 — sem IPCA de 2026 a coluna _real fica vazia ate a serie cobrir o ano
+siof_anual_n_acoes,siof_ce_seplag,anual_replicado,ultimo_mes,nao_aplica,n_acoes,valor anual replicado nos 12 meses
+invest_fed_direto_ce,invest_federal_rreo_portal,fluxo,soma,ipca,r$_dez_2025,serie estadual CE replicada nas 14 regioes
+invest_fed_ne_rateado,invest_federal_rreo_portal,fluxo,soma,ipca,r$_dez_2025,serie estadual CE replicada nas 14 regioes (NE x 0.145)
+invest_fed_nacional_rateado,invest_federal_rreo_portal,fluxo,soma,ipca,r$_dez_2025,serie estadual CE replicada nas 14 regioes (nacional x 0.022)
+invest_fed_total,invest_federal_rreo_portal,fluxo,soma,ipca,r$_dez_2025,serie estadual CE replicada nas 14 regioes
+ibcr_ce,bacen_sgs_25380,indice,media,nao_aplica,indice_com_ajuste_sazonal,media dos 2 meses (decisao T27) — DIVERGE do legado preparacao_modelo.py que usa ultimo_valor para ibcr/ibc_br
+invest_total_ce_r_2010_mi,ipea_fbcf_x_share_pib,fluxo,soma,nao_aplica,r$_2010_milhoes,ja em R$ constantes de 2010 — nao re-deflacionar pelo IPCA; serie estadual replicada nas 14 regioes
+share_pib_ce_br,ibge_contas_regionais,indice,media,nao_aplica,proporcao,share anual interpolado — identico nos 2 meses do bimestre
