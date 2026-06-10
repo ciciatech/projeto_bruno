@@ -1,76 +1,113 @@
-# Tasks · Prisma Regional / Tese DESP-UFC
-
-Roadmap de tarefas. Sincronizado com `.claude/task-pilot/tasks.md`.
-
-> ✅ done · ⏳ em curso · ⏸ aguardando · 🚧 bloqueado por terceiros · 🔴 urgente
-
-> Histórico detalhado da sprint inicial em `docs/changelog.md`.
-
+---
+nome: Prisma Regional — Tese Bruno (DESP/UFC)
+categoria: academico
+status: em_andamento
+atualizado_em: 2026-06-10
+cliente: Bruno Cardoso / Prof. Paulo Matos (DESP-UFC)
+prioridade: P1
+repo: ciciatech/projeto_bruno
+producao: https://prisma.bruno.ciciatech.cloud
 ---
 
-## 🔴 BLOQUEADOR CIENTÍFICO (descoberto 2026-05-01)
+# Prisma Regional — Tese Bruno (DESP/UFC)
 
-- 🔴 **SCI-01 SIOF regional ausente em 2015-2025** — SEPLAG-CE só publica detalhamento por região (14 macrorregiões) **a partir de 2026** no SIOF-Web. Anos 2015-2025 só têm nível "secretaria" (8 dígitos) sem desagregação regional. Isso **inviabiliza o exercício causal regional 2015-2025** da tese (regressão emprego × investimento estadual em obras nas 14 regiões). **Mitigação UX implementada** (commit pendente): overlay no mapa coroplético quando período sem dado, botão "Ver 2026", nota editorial. **Decisão pendente do Prof. Paulo + Bruno:** (a) restringir tese só a 2026 [pouco dado], (b) requisição LAI à SEPLAG-CE pelos dados regionais 2015-2025, (c) contato direto IPECE/SEPLAG via vínculo UFC do Bruno, (d) pivotar variável de impacto para outro proxy (ex.: invest. municipal SICONFI por região, que tem 180/184 munic. cobertos 2015-2025). Documentado em `docs/metodologia-composicao-investimento.md`.
+> Legenda: [ ] pendente · [~] em andamento · [x] concluído
 
-## 🔴 URGENTE — segurança (descoberto 2026-05-01)
+Pipeline de coleta + dashboard regional (14 regiões SEPLAG/IPECE do CE) para a tese
+de Bruno Cardoso. Histórico detalhado da sprint inicial em `docs/changelog.md`.
+Sincronizado com `.claude/task-pilot/tasks.md`.
 
-- 🔴 **SEC-01** Rotacionar token Coolify `3|Oq2dlr3X...` — vazado em `.claude/rules/coolify-deploy.md:38` desde commit `f9d813d` em **repo público** `ciciatech/projeto_bruno`. Painel: `painel.ciciacademy.com.br` → API tokens → revogar antigo + gerar novo. Atualizar consumidores: `.mcp.json`, `~/.coolify-tokens`, secret `COOLIFY_TOKEN` no GitHub (usado por `.github/workflows/deploy-coolify.yml`).
-- 🔴 **SEC-02** Remover token hardcoded de `.claude/rules/coolify-deploy.md:38` — substituir por placeholder `${COOLIFY_TOKEN}` ou referência ao keychain. Bloqueado por SEC-01 (rotacionar antes pra não quebrar deploy ativo).
-- 🔴 **SEC-03** Decidir sobre token Hostinger `zaNo8Tk...` — não vazou no repo, mas estava em arquivo plano `notas.txt` (já gitignored). Opções: (a) mover pro keychain via `security add-generic-password -s "ciciatech-hostinger-api"` e deletar `notas.txt`, (b) rotacionar por garantia.
-- 🟡 **SEC-04** (opcional) `git filter-repo` pra remover token do histórico do repo público — só mitiga risco residual a quem clonou; SEC-01 já mata o risco operacional.
+## Urgente — Bloqueadores e segurança
 
-## Concluídas
+### Bloqueador científico
 
-- ✅ **T02** Tela 2 Emprego com CAGED real — mapa divergente, KPIs, tabela 14 regiões. Cobertura 9/14.
-- ✅ **T04** Tela 3 — pivot para "Composição de Receitas Públicas Regionais" (FPM/FUNDEB/royalties/ITR/outros + BF + BPC).
-- ✅ **T05** Tela 4 Causal — OLS univariado real com `simple-statistics`, scatter + linha + IC 95% + tabela β/α/R²/σ. **Especificação preliminar** (multivariada/IV/Granger aguarda Paulo).
-- ✅ **T06** FilterBar funcional (período + recorte com URL state via react-router).
-- ✅ **T08** Decisão sobre invest_privado residual — RESOLVIDA pelos áudios do Paulo (abr/2026): FBCF Brasil mensal × 2,2% (share PIB CE/BR), R$ presente de dez/2024. Documentado em `docs/metodologia-composicao-investimento.md`.
-- ✅ **T09** Plano de descontinuação `bruno-dashboard` Streamlit em `docs/plano-descontinuacao-streamlit.md` (4 etapas A-paridade · B-swap · C-pause · D-remoção).
-- ✅ **T10** `dashboard/prisma-regional/` → `archive/prisma-regional-design/` com README mapeando port.
-- ✅ **T12** Cache HTTP do painel — versionado como `painel.{hash}.json` (1y immutable) + `painel-index.json` (no-store). Reduz transferência de 850KB→<200B em recargas.
-- ✅ **T14** `CLAUDE.md` inicial — stack, comandos, convenções, decisões Paulo.
-- ✅ **T15** Testes mínimos — 5 pytest (smoke, integridade regiões, regressão `agregar_para_regiao`) + 19 Vitest (format, regioes, integridade tile-grid). Quality gate adaptado em `scripts/quality-gate.sh`.
-- ✅ **Coletor populacional IBGE** (SIDRA 6579) — habilita Per capita. Integrado ao painel.
-- ✅ **SEFAZ-CE Cota-Parte ICMS/IPVA via SICONFI Anexo 03** — substitui adapter manual bloqueado por bot. Pronto para rodar (~10 min, 2k requests).
-- ✅ **MapLegend + MapTooltip + "Por zona"** no aside da Tela 1 (fidelidade ao design original `screen01.jsx`).
-- ✅ **Layout responsivo** — `minmax(260px, 320px)` nas colunas, `Panel` com `overflow:auto`, Choropleth com aspect-ratio nativo. Removido clipping silencioso em viewports <1440px.
-- ✅ **Composição com 4 esferas** — Estadual (SIOF) + Federal (RREO) + Municipal (SICONFI) + Privado residual (`inv_total - estadual - federal - municipal`).
-- ✅ **PERIODO_FIM_MENSAL = 2026** — painel agora cobre 14 regiões × 144 meses (2016 linhas), incluindo o ano corrente do SIOF SEPLAG.
-- ✅ **T01 Coletor SICONFI invest_municipal** — terminou no Mac Mini em 2026-05-01 03:57 BRT (6h25min, 19.896 registros, 180 municípios CE, R$ 28,97 bi 2015-2025, 1,0% suspeitos auditados). Painel reconstruído (1.848 linhas). Substitui planilha manual do Bruno.
-- ✅ **Sincronização Mac Mini ↔ local + cleanup do repo (2026-05-01)** — auto-pull travado há 13h por estado sujo no Mac Mini destravado: rsync trouxe outputs de 6h25 de coleta, `git stash -u` preservativo no Mac Mini, pull. Local: removido `python3.13` (binário acidental), `status.md` stale, lock LibreOffice. Outputs organizados em 3 commits temáticos (`eba9dda` data · `de0ce21` docs · `f97233f` chore-quality-gate) pushados pra `dev`.
-- ✅ **`.gitignore`: anexo de 463MB** — `docs/parque_infra_ce/dados/Investimento Governo Federal 2014 - 2025.xlsx` excluído (excede limite 100MB do GitHub). Mantido localmente.
-- ✅ **Plugar `sefaz_ce_siconfi` no painel (2026-05-01)** — validação end-to-end: painel agora tem 35 colunas (era 31, +`transf_est_icms/ipva/total`) × 2016 linhas. Frontend regenerado (`painel.2de8b30f.json`, 947KB). Test smoke robustecido (calcula `n_meses` dinamicamente + asserção do schema sefaz). Outputs municipais (BPC/BF/CAGED/invest_federal) recuperados do stash do Mac Mini e commitados. Stash drop. Commits `ae8ad05` + `6a47f22`.
-- ✅ **Drop stash do Mac Mini** — `auto-stash 2026-05-01` removido após confirmar que todos outputs foram commitados em `ae8ad05`.
-- ✅ **Overlay SIOF sem-dado-regional + descoberta SCI-01** — bug aparente no mapa coroplético virou descoberta de bloqueador científico (SEPLAG-CE só publica detalhamento regional a partir de 2026). Mitigação UX: overlay editorial + botão "Ver 2026" + nota explicativa. Bloqueador científico documentado em `docs/metodologia-composicao-investimento.md` e `tasks.md` SCI-01. Commit `e3c6951`, deployado em `prisma.bruno.ciciatech.cloud`.
-- ✅ **Remover job `bruno-dashboard` do workflow Coolify** — Streamlit em descontinuação (ver `docs/plano-descontinuacao-streamlit.md` + memory). Job removido de `.github/workflows/deploy-coolify.yml`; só `prisma-frontend` deploya. Streamlit congelado em `e3c6951`. Para redeploy emergencial: curl manual com UUID `p4c0o8wkcgos8s0sscws8g8k` (instrução nos comentários do YAML).
-- ✅ **Etapa B-swap da descontinuação Streamlit** (2026-05-02) — `bruno.ciciatech.cloud` agora servido pelo `prisma-frontend` (React/Vite). Operação via API Coolify: PATCH `bruno-dashboard.fqdn=null` + PATCH `prisma-frontend.fqdn="prisma...,bruno..."` + redeploy ambos. TLS válido em ambos URLs. Container Streamlit segue rodando sem domínio (acesso só via painel). `prisma.bruno.ciciatech.cloud` mantido como fallback durante transição. Restam etapas C-pause + D-remoção de `docs/plano-descontinuacao-streamlit.md`.
+- [ ] (P0) [DATA] SCI-01 SIOF regional ausente 2015-2025 — SEPLAG-CE só publica detalhamento por região a partir de 2026 no SIOF-Web; inviabiliza o exercício causal regional 2015-2025 da tese
+  - Mitigação UX implementada (overlay no mapa + botão "Ver 2026" + nota editorial, commit `e3c6951`).
+  - Decisão pendente do Prof. Paulo + Bruno: (a) restringir tese a 2026, (b) LAI à SEPLAG-CE, (c) contato IPECE/SEPLAG via vínculo UFC, (d) pivotar proxy para invest. municipal SICONFI.
+  - Documentado em `docs/metodologia-composicao-investimento.md`.
 
-## Em curso (autônomo)
+### Segurança (descoberto 2026-05-01)
 
-_(nenhuma coleta autônoma rodando no momento)_
+- [ ] (P0) [INFRA] SEC-01 Rotacionar token Coolify vazado em repo público desde commit `f9d813d` — revogar em painel.ciciacademy.com.br + atualizar `.mcp.json`, `~/.coolify-tokens`, secret `COOLIFY_TOKEN` do GitHub
+- [ ] (P0) [INFRA] SEC-02 Remover token hardcoded de `.claude/rules/coolify-deploy.md:38` — substituir por placeholder/keychain (bloqueado por SEC-01)
+- [ ] (P0) [INFRA] SEC-03 Token Hostinger em `notas.txt` (gitignored, não vazou) — mover pro keychain e deletar arquivo, ou rotacionar
+- [ ] (P3) [INFRA] SEC-04 (opcional) `git filter-repo` para limpar token do histórico do repo público
+
+## Dados do Prof. Paulo — planilha bimestral (10/06/2026)
+
+- [x] (P1) [DATA] T18 Estudo de viabilidade: mapear fontes do painel bimestral e automatizar coletas — **concluído**, ver `docs/estudo-viabilidade-painel-bimestral.md`
+  - Recomendação: SEGUIR com ressalvas. 7/14 blocos já cobertos ou adaptação P; gerou T27-T31.
+  - 4 confirmações pendentes com o Paulo: cota-parte ICMS como proxy de "ICMS recolhido"; shares federais 15,4% regional (vs 14,5% NE de abr/2026); base dez/25 substitui dez/24 (a planilha prova dez/25 — 25b6=1,0); investimento municipal EMPENHADO serve ou precisa ser PAGO (recoleta ~13k requests, ver T34).
+- [x] (P1) [DATA] T19 Séries mensais nominais de Bolsa Família e BPC geradas — `docs/dados_prof_paulo/Series mensais nominais - Bolsa Familia e BPC - CE.xlsx` (5 abas: Leia-me, BF/BPC municipal, BF/BPC regional; R$ 54,26 bi BF + R$ 34,21 bi BPC). **Falta só enviar ao Paulo (WhatsApp/e-mail)**
+- [x] (P1) [DATA] T20 Planilha atualizada com aba "Índice de inflação" recebida (10/06) — `docs/dados_prof_paulo/Dados Regionais - CC SEFAZ e Tese Bruno-2.xlsx`: deflator bimestral 15b1+ (66 obs, base dez/25). A versão "-2" é a cópia canônica
+- [x] (P1) [DATA] T21 Tabela "cidades por região" validada contra `pipeline/data/municipios_ce_regioes.csv` — 184/184 municípios, 0 divergências de nome ou código de região. Arquivo em `docs/dados_prof_paulo/Lista de cidades por região.xlsx`
+- [ ] (P1) [DATA] T22 Acompanhar entrega do Magno: investimentos municipais por elemento (equipamentos, obras e residual) — delegado pelo Paulo em 10/06; integrar output ao pipeline quando chegar
+- [ ] (P1) [DATA] T23 Acompanhar entrega do Paulo Ícaro: dados de rendimento por município/região — delegado pelo Paulo em 10/06; integrar output ao pipeline quando chegar
+- [ ] (P2) [BE] T24 Transferência estadual SIOF (célula HH71): despesas correntes Função 08 (Assistência Social), Subfunções 241–244 — programas Mais Infância, Ceará sem Fome e Vale Gás Social
+  - Novo recorte do SIOF; pode esbarrar no SCI-01 (sem desagregação regional antes de 2026). Depende do T18.
+- [ ] (P2) [DATA] T25 Avaliar séries da letter Matos & Araújo (crédito e inadimplência) como insumo do bloco crédito — `docs/dados_prof_paulo/On the indebtedness and delinquency decisions of Brazilian households.pdf`
+  - Letter (CAEN/UFC) com rule-of-thumb para endividamento/inadimplência das famílias; Tabela 1 lista séries BACEN SGS nacionais facilmente automatizáveis: 29027 (renda disponível), 22110 (consumo), 20570/20606 (estoque crédito livre/direcionado), 21112/21145 (inadimplência), 25462/25493 (juros).
+  - Avaliar no T18 se entram como controles/instrumentos do modelo causal junto com SELIC e IBCR-CE; crédito municipal segue via ESTBAN verbete 160 (T16).
+- [x] (P3) [DOC] T26 Arquivos do Paulo organizados em `docs/dados_prof_paulo/` (planilha "-2", lista de cidades, letter PDF, export BF/BPC). Restam 2 duplicatas byte-idênticas (MD5 conferido) aguardando deleção manual: `documento_novo.xlsx` (raiz) e `dados_novos/Dados Regionais - CC SEFAZ e Tese Bruno.xlsx`
+- [x] (P1) [BE] T27 Camada bimestral do painel — `pipeline/transform/painel_bimestral.py` + `pipeline/data/matriz_regras_regional.csv` (31 colunas classificadas; salário por média ponderada; `sum(min_count=1)` preserva NaN das 5 regiões sem CAGED). Saída: `painel_regional_ce_bimestral.csv` (1008×56, 15b1–26b6, 20 colunas `_real` dez/25) + export xlsx layout Paulo (`dados_nordeste/processed/exports/`). 8 testes pytest. Gate de outliers anula transf_fed 24b5 (erro de unidade na fonte, ver T32)
+- [x] (P1) [BE] T28 Deflator bimestral IPCA base dez/25 — `pipeline/transform/deflator.py`: convenção `I(dez/25) ÷ I(último mês do bimestre)` reproduz os 66 valores do Paulo com erro 2×10⁻¹⁵; base pinada e parametrizável (dez/24 pronto se o Paulo preferir); cache offline `pipeline/data/ipca_433_cache.csv`; 8 testes incl. golden test contra fixture
+- [ ] (P2) [BE] T29 Ingerir aba "Instrumentos estaduais" como série canônica de RP+Previdenciário e DCL do CE 2015-2025 — **redimensionada (esforço P)**: RREO/RGF já coletados em `preparacao_modelo.py`, mas RP do CSV só tem 2023+ sem previdenciário (sinais opostos em 12/18 períodos) e DCL repete quadrimestre (só bate em b2/b4/b6); a aba do Paulo é melhor fonte
+- [ ] (P2) [BE] T30 Estoque de empregos regional — RAIS 31/12 como base + saldo CAGED acumulado. Esforço M; **bloqueada por T33** (CAGED 18/184 municípios); coordenar com entrega do Paulo Ícaro (T23)
+- [ ] (P2) [BE] T31 Adicionar séries SGS da letter ao `bacen.py` (29027, 22110, 20570, 20606, 21112, 21145, 25462, 25493) — executa o T25. Esforço P
+
+## Achados da revisão adversarial (workflow 10/06 — upstream do painel)
+
+- [ ] (P1) [BE] T32 Corrigir outlier transf_fed set/2024 na fonte — FPM Fortaleza R$ 12,08 bi (~161×, erro de unidade) contamina `transf_constitucionais_ce_mensal.csv` e o painel MENSAL; a camada bimestral T27 já anula 24b5 visivelmente (log em `dados_nordeste/quality/painel_regional_ce_outliers.csv`). Recoletar o mês na fonte STN
+- [ ] (P1) [BE] T33 CAGED municipal cobre só 18 de 184 municípios — saldo regional é ~6% da variação de estoque do gabarito do Paulo (5 regiões zeradas: Cariri, Litoral Leste, Litoral Oeste, Ibiapaba, Inhamuns). Provável bug no merge município→região do coletor, não falta de dado na fonte. Investigar `caged_municipal.py` e reprocessar; bloqueia T30 e invalida comparações de emprego com o gabarito
+- [ ] (P1) [BE] T34 Investimento municipal: EMPENHADO vs PAGO — extractor usa "DESPESAS EMPENHADAS ATÉ O BIMESTRE"; gabarito do Paulo é pago (+7% a +37% a.a. de divergência, b1 2-3×). Aguarda confirmação do Paulo; se "pago": recoleta SICONFI ~13k requests. Documentado na matriz/Leia-me do xlsx
+- [ ] (P2) [BE] T35 Rodar coleta completa `sefaz_ce_siconfi` — `transf_est_*` hoje só tem Grande Fortaleza × 2024 (12 linhas); a coleta de ~10min/2k requests nunca rodou completa
+- [ ] (P2) [BE] T36 Corrigir grafia "Maciço do Baturité" → "Maciço de Baturité" (forma oficial IPECE, usada pelo Paulo) em `regioes_ce.py`/`municipios_ce_regioes.csv` + regenerar painéis/frontend — quebra joins por nome com fontes externas
+- [ ] (P3) [INFRA] T37 `quality-gate.sh`: adicionar `set -o pipefail` (hoje imprime "Frontend OK" com eslint quebrado) e documentar setup local (venv + `npm install` ausentes nesta máquina)
 
 ## Aguardando terceiros / decisões
 
-- ⏸ **T03** TLS Let's Encrypt em `prisma.bruno.ciciatech.cloud` — emitido na primeira request via DNS público real (já confirmado em produção, mas worth-revalidar).
-- ⏸ **T05 (parte 2)** Especificação econométrica multivariada — Prof. Paulo precisa definir variáveis de controle, defasagens (lag), transformações (log/diff), tratamento de endogeneidade (IV / Arellano-Bond), teste de Granger.
-- ⏸ **T07** Auto-regenerar painel.json após coletas — exige hook local no Mac Mini que comita o painel + dispara `python3 frontend/scripts/build-data.py` + push em dev. Requer setup adicional ou cron local.
-- ⏸ **T11** shadcn/ui — em **WAITING**: sem trigger justificando o refator de tokens (zero forms/dialogs hoje). Re-abrir quando aparecer Dialog/Combobox/DataTable.
+- [ ] (P2) [INFRA] T03 Revalidar TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (já confirmado em produção, worth-revalidar)
+- [ ] (P1) [DATA] T05.2 Especificação econométrica multivariada — Prof. Paulo precisa definir controles, lags, transformações (log/diff), endogeneidade (IV/Arellano-Bond), Granger
+- [ ] (P2) [INFRA] T07 Auto-regenerar painel.json após coletas — hook local no Mac Mini (commit painel + build-data.py + push dev)
+- [ ] (P3) [FE] T11 shadcn/ui — WAITING: sem trigger (zero forms/dialogs hoje); reabrir quando aparecer Dialog/Combobox/DataTable
+- [ ] (P2) [DATA] T16 ESTBAN — série confirmada pelo Paulo (10/06): verbete 160, operações de crédito, por município, agregar mês/cidade
+  - Bloqueado: BCB removeu URL pública estável. Caminhos: download manual (132 arquivos), Selenium scraper (risco), LAI via vínculo UFC do Bruno. Adapter local pronto em `dados_nordeste/raw/estban/`.
+- [ ] (P2) [DATA] T17 SEFAZ-CE adapter manual — destravado parcialmente via SICONFI Anexo 03; adapter manual fica como fallback
 
 ## Pendente
 
-- 🟡 **Resolver warning SIOF "Estado do Ceará"** — linha agregada do PDF SIOF SEPLAG sem código regional. Filtrar antes do `agregar_para_regiao` ou mapear como rateio nas 14 regiões. ~30min.
-- 🟡 **Lint frontend (4 erros pre-existentes)** — `FilterBar.tsx:25,30,54` (react-refresh/only-export-components) + `vite.config.ts:1` (triple-slash-reference). Não-bloqueante, mas suja `npm run lint`. Mover constantes/helpers de `FilterBar.tsx` pra arquivo separado e migrar `vite.config.ts` pra `import` style. ~30min.
-- 🟡 **Deflator IPCA → R$ dez/2024** — harmoniza bases monetárias de SIOF (correntes), invest_municipal (correntes), invest_federal (correntes) e FBCF (R$ 2010). Requer coleta de IPCA mensal (BACEN SGS 433) + aplicação como deflator. ~2h.
-- 🟡 **Tests E2E + Lighthouse CI** — automatizar QA visual no pipeline (Playwright + Lighthouse).
+- [ ] (P2) [BE] Resolver warning SIOF "Estado do Ceará" — linha agregada sem código regional; filtrar antes do `agregar_para_regiao` ou ratear nas 14 regiões. ~30min
+- [ ] (P2) [FE] Lint frontend (4 erros pre-existentes) — `FilterBar.tsx:25,30,54` + `vite.config.ts:1`; mover constantes pra arquivo separado e migrar pra import style. ~30min
+- [ ] (P2) [BE] Deflator IPCA do painel mensal — harmonizar bases monetárias SIOF/invest_municipal/invest_federal/FBCF. **Superseded parcialmente pelo T28**: base provável dez/25 (planilha do Paulo), aguarda mesma confirmação
+- [ ] (P2) [QA] Tests E2E + Lighthouse CI — automatizar QA visual (Playwright + Lighthouse)
 
-## Bloqueado por terceiros
+## Concluídas
 
-- 🚧 **T16 ESTBAN BNB** — BCB removeu URL pública estável. Caminhos: download manual (132 arquivos, ~2h cliques), Selenium scraper (risco), LAI institucional (Bruno tem vínculo UFC). Adapter local pronto em `dados_nordeste/raw/estban/`.
-- 🚧 **T17 SEFAZ-CE adapter manual** — **destravado parcialmente** via SICONFI Anexo 03 (cota-parte ICMS/IPVA). Adapter manual fica como fallback se SICONFI falhar.
+- [x] (P1) [FE] T02 Tela 2 Emprego com CAGED real — mapa divergente, KPIs, tabela 14 regiões (cobertura 9/14)
+- [x] (P1) [FE] T04 Tela 3 — pivot para "Composição de Receitas Públicas Regionais" (FPM/FUNDEB/royalties/ITR/outros + BF + BPC)
+- [x] (P1) [FE] T05 Tela 4 Causal — OLS univariado real com `simple-statistics` (scatter + IC 95% + β/α/R²/σ); especificação preliminar
+- [x] (P1) [FE] T06 FilterBar funcional (período + recorte com URL state via react-router)
+- [x] (P1) [DATA] T08 Decisão invest_privado residual — FBCF Brasil mensal × 2,2% share PIB CE/BR, R$ dez/2024 (áudios Paulo abr/2026, ver `docs/metodologia-composicao-investimento.md`)
+- [x] (P2) [DOC] T09 Plano de descontinuação `bruno-dashboard` Streamlit (`docs/plano-descontinuacao-streamlit.md`, etapas A-D)
+- [x] (P3) [DOC] T10 `dashboard/prisma-regional/` → `archive/prisma-regional-design/` com README de port
+- [x] (P2) [FE] T12 Cache HTTP do painel — `painel.{hash}.json` (1y immutable) + `painel-index.json` (no-store); 850KB→<200B em recargas
+- [x] (P2) [DOC] T14 `CLAUDE.md` inicial — stack, comandos, convenções, decisões Paulo
+- [x] (P1) [QA] T15 Testes mínimos — 5 pytest + 19 Vitest + quality gate em `scripts/quality-gate.sh`
+- [x] (P2) [BE] Coletor populacional IBGE (SIDRA 6579) — habilita Per capita, integrado ao painel
+- [x] (P1) [BE] SEFAZ-CE Cota-Parte ICMS/IPVA via SICONFI Anexo 03 — substitui adapter manual bloqueado por bot
+- [x] (P2) [FE] MapLegend + MapTooltip + "Por zona" no aside da Tela 1 (fidelidade ao design original)
+- [x] (P2) [FE] Layout responsivo — `minmax(260px,320px)`, `Panel` com overflow, Choropleth aspect-ratio nativo; removido clipping <1440px
+- [x] (P1) [BE] Composição com 4 esferas — Estadual (SIOF) + Federal (RREO) + Municipal (SICONFI) + Privado residual
+- [x] (P1) [BE] PERIODO_FIM_MENSAL = 2026 — painel cobre 14 regiões × 144 meses (2016 linhas)
+- [x] (P0) [BE] T01 Coletor SICONFI invest_municipal — 19.896 registros, 180 municípios CE, R$ 28,97 bi 2015-2025; substitui planilha manual do Bruno
+- [x] (P2) [INFRA] Sincronização Mac Mini ↔ local + cleanup do repo (2026-05-01) — rsync de outputs, stash preservativo, 3 commits temáticos
+- [x] (P3) [INFRA] `.gitignore`: anexo de 463MB (`Investimento Governo Federal 2014 - 2025.xlsx`) excluído do repo, mantido local
+- [x] (P1) [BE] Plugar `sefaz_ce_siconfi` no painel — 35 colunas × 2016 linhas, frontend regenerado, smoke test robustecido (commits `ae8ad05` + `6a47f22`)
+- [x] (P3) [INFRA] Drop stash do Mac Mini após confirmar outputs commitados em `ae8ad05`
+- [x] (P1) [FE] Overlay SIOF sem-dado-regional + descoberta SCI-01 — mitigação UX deployada (commit `e3c6951`)
+- [x] (P2) [INFRA] Remover job `bruno-dashboard` do workflow Coolify — só `prisma-frontend` deploya; Streamlit congelado em `e3c6951`
+- [x] (P1) [INFRA] Etapa B-swap da descontinuação Streamlit (2026-05-02) — `bruno.ciciatech.cloud` servido pelo `prisma-frontend` via PATCH fqdn na API Coolify; TLS ok; `prisma.bruno.ciciatech.cloud` mantido como fallback. Restam etapas C-pause + D-remoção
 
 ---
 
-**Total**: 31 itens registrados (20 ✅ done · 0 ⏳ em curso · 4 ⏸ aguardando · 4 🟡 pendente · 2 🚧 bloqueado · 1 destravado parcialmente · **3 🔴 urgente segurança + 1 🟡 opcional segurança**).
-
-**Última atualização**: 2026-05-01 (sessão 2) — sprint sefaz_ce_siconfi end-to-end + recuperação de outputs municipais + drop stash Mac Mini.
+**Última atualização**: 2026-06-10 (sessão 3) — workflow multi-agente entregou T27 (painel bimestral regional 1008×56 + export xlsx layout Paulo) e T28 (deflator dez/25, erro 2×10⁻¹⁵ vs planilha), 28/28 testes verdes. Revisão adversarial achou 5 problemas upstream → T32-T37 (outlier transf_fed set/24, CAGED 18/184 municípios, empenhado vs pago, sefaz_ce_siconfi incompleta, grafia Maciço). T29 redimensionada (RREO/RGF já coletados; aba do Paulo vira fonte canônica). Agora são 4 confirmações pendentes com o Prof. Paulo. Arquivos dele organizados em `docs/dados_prof_paulo/` (T26).

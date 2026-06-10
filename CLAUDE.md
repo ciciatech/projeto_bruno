@@ -10,7 +10,9 @@ e equipamentos sobre o emprego formal nas 14 regiões SEPLAG/IPECE do Ceará.
 projeto-bruno/
 ├── pipeline/         # ETL Python 3.13 — coletas SICONFI, BACEN, STN, MTE, IBGE, IPEA
 │   ├── extract/      # coletores por fonte
-│   ├── transform/    # construção do painel modelo-pronto
+│   ├── transform/    # painel mensal regional + bimestral UF legado (preparacao_modelo)
+│   │                 # + painel_bimestral.py (regional CE, layout Prof. Paulo)
+│   │                 # + deflator.py (IPCA base dez/25 pinada, validado vs planilha Paulo)
 │   ├── regioes_ce.py # mapeamento 184 municípios → 14 regiões SEPLAG
 │   ├── config.py     # constantes (período, paths, UFs)
 │   └── tests/        # smoke tests pytest
@@ -81,8 +83,11 @@ python -m pipeline.run --modulos-ce bolsa_familia_ce
 # Coletor populacional IBGE (anual estática) — habilita Per capita
 python -m pipeline.extract.populacao_ibge
 
+# Painel bimestral regional CE (1008×56) + export xlsx no layout do Prof. Paulo
+python3 -m pipeline.transform.painel_bimestral
+
 # Testes
-python -m pytest pipeline/tests/ -v       # 5 smoke + cobertura ≥10% sobre pipeline/
+python -m pytest pipeline/tests/ -v       # 28 testes + cobertura ≥10% sobre pipeline/
 ```
 
 ### Frontend
@@ -167,6 +172,11 @@ Confirmado em 3 transcrições de áudio (consolidadas em
 
 ## Decisões pendentes (bloqueiam tasks)
 
+- **4 confirmações com o Prof. Paulo** (planilha bimestral jun/2026, ver
+  `docs/estudo-viabilidade-painel-bimestral.md`): cota-parte ICMS como proxy de
+  "ICMS recolhido"; shares federais 15,4% regional (vs 14,5% NE de abr/2026);
+  base monetária dez/25 substitui dez/24 (a planilha dele prova dez/25);
+  investimento municipal EMPENHADO serve ou precisa recoletar PAGO.
 - **Especificação econométrica completa** do modelo causal (Tela 4):
   variáveis de controle, defasagens (lag), transformações (log/diff),
   tratamento de endogeneidade (IV ou Arellano-Bond), teste de Granger.
