@@ -172,10 +172,12 @@ export default function Emprego() {
         footer={
           <>
             <span>
-              Escala divergente · valores em postos de trabalho · 9 regiões com
-              dado de {dados.ultimoAno}
+              Escala divergente · valores em postos de trabalho ·{" "}
+              {dados.regioesComDado} regiões com dado de {dados.ultimoAno}
             </span>
-            <span className="mono">fonte: CAGED/MTE · municipal mensal</span>
+            <span className="mono">
+              fonte: CAGED/MTE · municipal mensal (painel bimestral em construção)
+            </span>
           </>
         }
       >
@@ -363,10 +365,10 @@ export default function Emprego() {
           </div>
           <div className="mt-3">
             <EditorialNote>
-              Cobertura CAGED ainda parcial (9/14 regiões). 5 regiões — Cariri,
-              Litoral Leste, Litoral Oeste, Sertão de Canindé, Sertão dos
-              Inhamuns — não aparecem no recorte municipal usado pelo coletor.
-              Próxima coleta deve ampliar para os 184 municípios.
+              Cobertura CAGED ainda parcial ({dados.regioesComDado}/14 regiões):
+              parte das regiões não aparece no recorte municipal usado pelo
+              coletor. Coleta em background (10/06) amplia para os 184
+              municípios.
             </EditorialNote>
           </div>
         </Panel>

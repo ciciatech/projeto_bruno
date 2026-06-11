@@ -34,9 +34,9 @@ export function AppHeader({ theme, setTheme }: Props) {
       <div className="flex items-baseline gap-2.5">
         <span
           className="serif"
-          style={{ fontSize: 22, fontWeight: 600, letterSpacing: -0.4, color: "var(--ink-1)" }}
+          style={{ fontSize: 18, fontWeight: 600, letterSpacing: -0.3, color: "var(--ink-1)", whiteSpace: "nowrap" }}
         >
-          Prisma<span style={{ color: "var(--seq-3)" }}>·</span>Regional
+          Doutorado Bruno<span style={{ color: "var(--seq-3)" }}> · </span>Investimento e Emprego no CE
         </span>
         <span
           style={{

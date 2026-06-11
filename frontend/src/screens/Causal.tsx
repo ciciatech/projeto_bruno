@@ -14,9 +14,12 @@ import { REGIOES_BY_CODIGO } from "../lib/regioes";
  *     Δ_emprego_{r,t} = α + β · invest_estadual_{r,t} + ε_{r,t}
  *
  * onde Δ_emprego = saldo CAGED (admissões − desligamentos) e
- * invest_estadual = SIOF empenhado replicado anual→mensal. Aguarda
- * validação do Prof. Paulo para incluir controles regionais (BF, BPC,
- * transferências, IBCR) e tratar endogeneidade (lag, IV ou Arellano-Bond).
+ * invest_estadual = SIOF empenhado replicado anual→mensal (migração para
+ * frequência bimestral em curso). Aguarda validação do Prof. Paulo para
+ * incluir controles regionais (BF, BPC, transferências, IBCR) e as séries
+ * da letter do Prof. Paulo (SELIC, ICMS/cota-parte, transferências
+ * estaduais SIOF Função 08/Subf. 241-244) como controles candidatos, e
+ * tratar endogeneidade (lag, IV ou Arellano-Bond).
  *
  * Implementação: OLS via `simple-statistics` no cliente. Resíduos usados
  * para banda de confiança 95% (heurística σ = sd(resíduos)).
@@ -122,9 +125,12 @@ export default function Causal() {
             <EditorialNote>
               Especificação econométrica final aguarda definição do Prof. Paulo:
               defasagens (lag), transformações (log, diff), tratamento de
-              endogeneidade (IV ou Arellano-Bond) e variáveis de controle.
-              Os números acima devem ser lidos como <em>indicativos</em>, não
-              como estimativa final.
+              endogeneidade (IV ou Arellano-Bond) e variáveis de controle —
+              incluindo as séries da letter do Prof. Paulo (SELIC,
+              ICMS/cota-parte, transferências estaduais SIOF Função 08/Subf.
+              241-244) como controles candidatos. Migração para frequência
+              bimestral em curso. Os números acima devem ser lidos como{" "}
+              <em>indicativos</em>, não como estimativa final.
             </EditorialNote>
           </div>
         </Panel>

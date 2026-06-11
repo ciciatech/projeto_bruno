@@ -125,6 +125,14 @@ export default function Investimento() {
               sub="ajuste sazonal · BACEN SGS 25380"
             />
           </div>
+          <div className="mt-3">
+            <EditorialNote>
+              Bases monetárias ainda mistas (SIOF em R$ correntes, FBCF em R$
+              2010) — serão harmonizadas para R$ dez/25 (deflator IPCA
+              validado) na migração ao painel bimestral; a base aguarda
+              confirmação final do Prof. Paulo.
+            </EditorialNote>
+          </div>
         </Panel>
 
         <Panel padding={14} eyebrow="Top 5" title="Concentração regional · SIOF">
@@ -197,7 +205,7 @@ export default function Investimento() {
         footer={
           <>
             <span>Escala sequencial · valores em R$ milhões correntes</span>
-            <span className="mono">fonte: SEPLAN-CE / SIOF · 14 regiões</span>
+            <span className="mono">fonte: SEPLAG-CE / SIOF · 14 regiões</span>
           </>
         }
       >
@@ -480,10 +488,10 @@ export default function Investimento() {
           </div>
           <div className="mt-3">
             <EditorialNote>
-              SIOF cobre apenas o investimento estadual empenhado. As coletas
-              SICONFI (municipal) e RREO (federal) estão em curso no Mac Mini —
-              quando concluídas, a composição mostrará as 4 esferas + residual
-              privado.
+              SIOF cobre apenas o investimento estadual empenhado. RREO federal
+              e SICONFI municipal já foram coletados; a composição usa o
+              invest. municipal EMPENHADO — a substituição por PAGO aguarda
+              confirmação do Prof. Paulo (recoleta ~13 mil requests).
             </EditorialNote>
           </div>
         </Panel>
@@ -731,8 +739,10 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   //
   // ATENÇÃO: bases monetárias ainda mistas (SIOF e municipal em R$ correntes,
   // FBCF em R$ 2010, federal em R$ correntes). Cálculo abaixo é didático;
-  // refinamento monetário (deflator IPCA → R$ dez/2024) entra na próxima
-  // iteração após decisão final do Paulo.
+  // refinamento monetário usa o deflator IPCA base dez/25
+  // (pipeline/transform/deflator.py, T28; base parametrizável, dez/24
+  // disponível se o Paulo preferir) e entra com a migração ao painel
+  // bimestral, após confirmação final do Paulo.
   // Federal e InvTotal são estaduais (idênticos em todas as 14 regiões). Para
   // não somar 14× o mesmo valor, pegamos uma região-âncora ('03' Grande
   // Fortaleza) como representativa por mês. Municipal sim é regional —

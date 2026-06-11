@@ -11,17 +11,20 @@ type Fonte = {
 };
 
 const FONTES_BASE: Fonte[] = [
-  { fonte: "BACEN SGS · IBCR-CE",                  cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "série SGS 25380" },
-  { fonte: "STN · Transferências constitucionais", cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "FPM/FUNDEB/ITR/royalties" },
-  { fonte: "SIOF-CE · Obras e instalações",        cobertura: 100, cadencia: "Anual",     status: "ok",   delta: "14 regiões × ano" },
-  { fonte: "IpeaData FBCF · proxy invest. total",  cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "× share PIB CE/BR" },
-  { fonte: "Bolsa Família · Portal Transp.",       cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "Onda 2 ✓ (4min33s)" },
-  { fonte: "BPC · Portal Transp.",                 cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "Onda 2 ✓" },
-  { fonte: "Invest. federal · RREO",               cobertura: 100, cadencia: "Bimestral", status: "ok",   delta: "Onda 2 ✓ · 132 obs" },
-  { fonte: "CAGED · MTE (mensal municipal)",       cobertura:  10, cadencia: "Mensal",    status: "warn", delta: "18/184 munic. cobertos" },
-  { fonte: "Invest. municipal · SICONFI RREO",     cobertura:   0, cadencia: "Bimestral", status: "info", delta: "código pronto · executar manual" },
-  { fonte: "ESTBAN BNB",                           cobertura:   0, cadencia: "Mensal",    status: "bad",  delta: "BCB removeu URL pública" },
-  { fonte: "SEFAZ-CE · cota-parte ICMS/IPVA (via SICONFI Anexo 03)", cobertura: 0, cadencia: "Mensal", status: "info", delta: "código pronto · executar manual" },
+  { fonte: "BACEN SGS · IBCR-CE + séries da letter",  cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "IBCR-CE (SGS 25380) ✓ · +8 séries da letter ✓ (T31) · 21 séries, 3.528 reg." },
+  { fonte: "STN · Transferências constitucionais",    cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "FPM/FUNDEB/ITR/royalties · set/2024 corrigido ✓ (T32) · 184/184 munic." },
+  { fonte: "SIOF-CE · Obras e instalações",           cobertura:   8, cadencia: "Anual",     status: "bad",  delta: "regional disponível só p/ 2026 · bloqueio institucional SEPLAG (SCI-01)" },
+  { fonte: "IpeaData FBCF · proxy invest. total",     cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "× share PIB CE/BR · extrapolação 2025/26 pendente" },
+  { fonte: "Bolsa Família · Portal Transp.",          cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "2015+ · Onda 2 ✓ (4min33s)" },
+  { fonte: "BPC · Portal Transp.",                    cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "2019+ (limite Portal Transp.) · Onda 2 ✓" },
+  { fonte: "Invest. federal · RREO",                  cobertura: 100, cadencia: "Bimestral", status: "ok",   delta: "Onda 2 ✓ · 132 obs" },
+  { fonte: "CAGED · MTE (mensal municipal)",          cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "recoletado 10/06 ✓ · 184/184 munic. · 136 meses 2015–2026 (bug do dígito IBGE corrigido)" },
+  { fonte: "Invest. municipal · SICONFI RREO",        cobertura: 100, cadencia: "Bimestral", status: "ok",   delta: "coletado (EMPENHADO) ✓ · troca por PAGO aguarda Prof. Paulo (T34)" },
+  { fonte: "SEFAZ-CE · cota-parte ICMS/IPVA (via SICONFI Anexo 03)", cobertura: 92, cadencia: "Mensal", status: "ok", delta: "coletado 10/06 ✓ · 18.252 linhas · 169/184 munic. · 2015–2025" },
+  { fonte: "RP + Previdenciário e DCL · planilha Prof. Paulo", cobertura: 100, cadencia: "Bimestral", status: "ok", delta: "ingerido 10/06 ✓ (T29) · 66 linhas 2015b1–2025b6 · RP+Prev, DCL, SELIC, IBCR-CE · R$ dez/25" },
+  { fonte: "População · IBGE",                        cobertura: 100, cadencia: "Anual",     status: "ok",   delta: "estimativas municipais → 14 regiões" },
+  { fonte: "ESTBAN BNB",                              cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "verbete 160 ✓ · 132/132 meses 2015–2025 · 39 munic. c/ agência BNB → 14 regiões" },
+  { fonte: "RAIS · estoque de vínculos",              cobertura:   0, cadencia: "Anual",     status: "info", delta: "desbloqueada (CAGED ✓) — construir estoque RAIS + CAGED acumulado (T30)" },
 ];
 
 const TONE: Record<Fonte["status"], { bg: string; fg: string; label: string }> = {
@@ -98,6 +101,11 @@ export default function Pipeline() {
               <span className="mono" style={{ color: "var(--ink-3)" }}>cobertura:</span>{" "}
               <span className="mono">14 regiões × {meta ? Math.round(meta.linhas / 14) : "—"} meses</span>
             </div>
+            <div style={{ fontSize: 11, color: "var(--ink-3)", lineHeight: 1.5 }}>
+              Camada bimestral pronta (painel_regional_ce_bimestral.csv · R$
+              dez/25) — frontend migra após regeneração do painel.json; o
+              mensal segue como fonte atual.
+            </div>
           </div>
         </Panel>
 
@@ -111,10 +119,38 @@ export default function Pipeline() {
               lineHeight: 1.7,
             }}
           >
-            <li>Fonte do "investimento total privado" para residual: FBCF nacional × share PIB ✓ (proxy)</li>
-            <li>Ano-base do residual: <strong>2024/2025</strong> ✓</li>
-            <li>CAGED municipal (~24h FTP): <strong>vale o custo</strong> ✓</li>
-            <li>Investimento municipal: <strong>SICONFI</strong> ✓</li>
+            <li>Cota-parte ICMS/IPVA (SICONFI Anexo 03) serve como proxy de <strong>"ICMS recolhido"</strong>?</li>
+            <li>Shares federais: <strong>15,4% regional CE</strong> (planilha) vs 14,5% NE (abr/2026)?</li>
+            <li>Base monetária <strong>dez/25</strong> substitui dez/24?</li>
+            <li>Invest. municipal <strong>EMPENHADO</strong> serve, ou recoletar <strong>PAGO</strong> (~13 mil requests SICONFI)?</li>
+          </ul>
+          <div
+            style={{
+              marginTop: 10,
+              paddingTop: 8,
+              borderTop: "1px solid var(--border-soft)",
+              fontSize: 10,
+              color: "var(--ink-3)",
+              textTransform: "uppercase",
+              letterSpacing: 0.6,
+              fontWeight: 600,
+            }}
+          >
+            Decididas ✓
+          </div>
+          <ul
+            style={{
+              margin: "6px 0 0",
+              paddingLeft: 16,
+              fontSize: 11,
+              color: "var(--ink-3)",
+              lineHeight: 1.6,
+            }}
+          >
+            <li>Invest. total para residual: FBCF nacional × share PIB ✓ (proxy)</li>
+            <li>Ano-base do residual: 2024/2025 ✓</li>
+            <li>CAGED municipal (~24h FTP): vale o custo ✓</li>
+            <li>Investimento municipal: SICONFI ✓</li>
           </ul>
         </Panel>
       </div>
