@@ -31,20 +31,30 @@ do bimestre). Bimestres fora da série IPCA (ex.: 2026) ficam com ``*_real`` NaN
 Gate de qualidade (outliers de unidade): antes da agregação, meses cujo total
 estadual de uma variável monetária de fluxo excede ``LIMIAR_OUTLIER_MENSAL``×
 a mediana da própria série são anulados em TODAS as variáveis da mesma fonte
-(assinatura de erro de unidade upstream). Caso conhecido: set/2024 das
-``transf_fed_*`` (STN), ~100x os meses vizinhos — sem o gate, a célula 24b5
-ficava ~20x os vizinhos no xlsx entregue ao Prof. Paulo. O bimestre que contém
-o mês anulado vira NaN (somar só o mês restante viraria meio-bimestre
-disfarçado de valor válido). Auditoria:
+(assinatura de erro de unidade upstream). O bimestre que contém o mês anulado
+vira NaN (somar só o mês restante viraria meio-bimestre disfarçado de valor
+válido). Caso histórico: set/2024 das ``transf_fed_*`` (STN) era publicado em
+centavos (~100x) e anulava o 24b5; a coleta de jun/2026 corrige a unidade
+(÷100) na origem e o gate não flagra mais nenhum mês — segue ativo como
+proteção contra regressões upstream. Auditoria (só existe quando há flag):
 ``dados_nordeste/quality/painel_regional_ce_outliers.csv``.
 
 Ressalvas documentadas no Leia-me do xlsx e na matriz de regras:
 - ``invest_mun_valor`` é despesa EMPENHADA acumulada por bimestre (RREO Anexo
   01) — o gabarito do Prof. Paulo usa despesa PAGA (empenhado > pago em ~7% a
   37% a.a.; b1 front-loaded). Migrar para a coluna paga exige re-coleta SICONFI.
-- CAGED municipal cobre só 18 dos 184 municípios: 5 regiões sem nenhum
-  município e as outras 9 PARCIAIS — ``saldo``/``salario_medio`` regionais NÃO
-  são comparáveis ao bloco "Estoque de empregos" do gabarito.
+- CAGED municipal: recoleta de jun/2026 (bug do dígito verificador corrigido)
+  cobre 184/184 municípios e 14/14 regiões, série mensal contínua 2015-01 a
+  2026-04 (2025-03 re-baixado após falha transitória de FTP) — ``saldo`` é
+  FLUXO (variação) e segue não diretamente comparável ao bloco "Estoque de
+  empregos" do gabarito (estoque acumulado).
+- Transferências STN: meses 2020-11, 2022-10, 2023-11, 2024-11 e 2025-11 sem
+  publicação upstream (``LACUNAS_UPSTREAM_POR_FONTE``) — bimestres 20b6, 22b5,
+  23b6, 24b6 e 25b6 anulados nas ``transf_fed_*``; 2018-05 reconstruído por
+  inferência item+ordem (validada) e 2021-08 recuperado de arquivo corrigido.
+- Crédito BNB (ESTBAN, verbete 160 e aberturas): saldo registrado no município
+  da AGÊNCIA (39 dos 184 municípios têm agência BNB) — regiões sem agência
+  ficam com 0 por construção; fonte em R$ correntes.
 
 Outputs:
 - ``dados_nordeste/processed/model_ready/painel_regional_ce_bimestral.csv``
@@ -64,6 +74,7 @@ from pathlib import Path
 import pandas as pd
 
 from pipeline.config import PROCESSED_DIR, QUALITY_DIR
+from pipeline.extract.transferencias_municipais import MESES_SEM_PUBLICACAO_UPSTREAM
 from pipeline.regioes_ce import REGIOES_CE
 from pipeline.transform.deflator import BASE_PADRAO, deflator_bimestral
 from pipeline.utils import save_dataframe
@@ -111,6 +122,17 @@ VARIAVEIS_XLSX = [
 
 #: Coluna-peso da média ponderada do salário médio.
 COL_PESO_SALARIO = "total_movimentacoes"
+
+#: Meses cujo conteúdo NUNCA foi publicado pela fonte, por fonte da matriz de
+#: regras. O bimestre que contém um mês não publicado é anulado nas variáveis
+#: da fonte — somar só o mês restante viraria meio-bimestre disfarçado de
+#: valor válido (mesma política do gate de outliers). Caso documentado: STN
+#: publica, em alguns anos, o arquivo AAAAMM com conteúdo de AAAAMM-1 entre
+#: set e nov e re-sincroniza em dez — o mês pulado não existe em arquivo algum
+#: (ver MESES_SEM_PUBLICACAO_UPSTREAM em extract/transferencias_municipais.py).
+LACUNAS_UPSTREAM_POR_FONTE: dict[str, list[tuple[int, int]]] = {
+    "transferencias_municipais_stn": MESES_SEM_PUBLICACAO_UPSTREAM,
+}
 
 
 def carregar_matriz_regras() -> pd.DataFrame:
@@ -372,8 +394,33 @@ def construir_painel_bimestral(
             f"{outliers[['ano', 'mes']].drop_duplicates().shape[0]} mês(es) — "
             f"auditoria salva em {OUTLIERS_AUDIT_CSV}"
         )
+    else:
+        # Sem flags nesta execução: remove auditoria de execuções anteriores
+        # (um CSV obsoleto sugeriria outliers que não existem mais nos dados).
+        if OUTLIERS_AUDIT_CSV.exists():
+            OUTLIERS_AUDIT_CSV.unlink()
+            logger.info(
+                f"Gate de outliers: nenhum mês flagrado — auditoria obsoleta "
+                f"removida ({OUTLIERS_AUDIT_CSV})"
+            )
     painel = agregar_para_bimestre(mensal_limpo, regras)
     painel = _anular_bimestres_afetados(painel, outliers, regras)
+
+    # Lacunas de publicação upstream: mesmo tratamento dos meses-outlier — o
+    # bimestre meio-coberto vira NaN na família da fonte, não meio-valor.
+    lacunas = pd.DataFrame(
+        [
+            {"ano": ano, "mes": mes, "fonte": fonte}
+            for fonte, meses in LACUNAS_UPSTREAM_POR_FONTE.items()
+            for ano, mes in meses
+        ]
+    )
+    if not lacunas.empty:
+        painel = _anular_bimestres_afetados(painel, lacunas, regras)
+        logger.info(
+            f"Lacunas upstream: {len(lacunas)} mês(es) sem publicação na fonte "
+            f"({sorted(lacunas['fonte'].unique())}) — bimestres anulados."
+        )
 
     defl = deflator_bimestral(base=base)
     painel = painel.merge(defl, on=["ano", "bimestre"], how="left")
@@ -398,8 +445,9 @@ def _trim_extremos_vazios(tabela: pd.DataFrame) -> pd.DataFrame:
 
     Bordas vazias refletem a cobertura real da fonte (ex.: BPC só a partir de
     2019, SIOF só 2026). Linhas vazias no MEIO da série são mantidas — marcam
-    período anulado pelo gate de outliers (ex.: 24b5 das ``transf_fed_*``) e
-    não podem sumir silenciosamente do entregável.
+    período anulado pelo gate de outliers (ex. histórico: 24b5 das
+    ``transf_fed_*`` antes da correção de set/2024) e não podem sumir
+    silenciosamente do entregável.
     """
     cheias = tabela.notna().any(axis=1)
     if not cheias.any():
@@ -483,11 +531,12 @@ def exportar_xlsx_paulo(
         "",
         "Gate de qualidade (outliers de unidade): meses cujo total estadual de uma variável",
         f"monetária excede {LIMIAR_OUTLIER_MENSAL:.0f}x a mediana da própria série são ANULADOS em todas as",
-        "variáveis da mesma fonte (assinatura de erro de unidade na origem). Caso conhecido:",
-        "set/2024 das transferências federais STN (~100x; ex.: FPM de Fortaleza R$ 12 bi vs",
-        "R$ 75 mi nos meses vizinhos) — por isso a linha 24b5 da aba transf_fed_total está",
-        "vazia (o bimestre inteiro é anulado para não virar meio-período). Auditoria:",
-        "dados_nordeste/quality/painel_regional_ce_outliers.csv.",
+        "variáveis da mesma fonte (assinatura de erro de unidade na origem). Caso histórico:",
+        "set/2024 das transferências federais STN era publicado em CENTAVOS pela fonte (~100x)",
+        "e anulava a linha 24b5 da aba transf_fed_total; a coleta de jun/2026 corrige a",
+        "unidade (divisão por 100) e o 24b5 voltou a ser válido — nesta versão NENHUM mês é",
+        "anulado pelo gate, que segue ativo como proteção. Auditoria (gerada só quando há",
+        "flag): dados_nordeste/quality/painel_regional_ce_outliers.csv.",
         "",
         "ATENÇÃO — estágio da despesa em invest_mun_valor: são despesas EMPENHADAS acumuladas",
         "até o bimestre (RREO Anexo 01, col. 'DESPESAS EMPENHADAS ATÉ O BIMESTRE (f)'), NÃO",
@@ -496,15 +545,31 @@ def exportar_xlsx_paulo(
         "e b6 abaixo (0,6-0,75x). Migrar para a coluna de despesas pagas do RREO exige",
         "re-coleta SICONFI (pendência documentada na matriz de regras).",
         "",
-        "ATENÇÃO — cobertura PARCIAL do CAGED municipal: a fonte processada cobre só 18 dos",
-        "184 municípios do CE. Além das 5 regiões sem nenhum município (Cariri; Litoral Leste;",
-        "Litoral Oeste / Vale do Curu; Serra da Ibiapaba; Sertão dos Inhamuns), as outras 9 são",
-        "parciais (Grande Fortaleza 5/19; Maciço do Baturité 4/13; Centro Sul 2/13; Sertão",
-        "Central 2/13; Litoral Norte 1/13; Sertão de Canindé 1/6; Sertão de Sobral 1/18;",
-        "Sertão dos Crateús 1/13; Vale do Jaguaribe 1/15). As abas 'saldo' e 'salario_medio'",
-        "refletem APENAS esses municípios — o saldo regional fica na ordem de 6% da variação",
-        "de estoque do gabarito (mediana) e NÃO é comparável ao bloco 'Estoque de empregos'",
-        "da planilha de referência.",
+        "CAGED municipal: recoleta de jun/2026 (bug do dígito verificador na consulta",
+        "corrigido) cobre os 184 dos 184 municípios do CE e as 14 regiões de planejamento,",
+        "com série mensal CONTÍNUA de 2015-01 a 2026-04 (136 meses — o mês 2025-03, perdido",
+        "por falha transitória do FTP do MTE na primeira recoleta, foi re-baixado; um guard",
+        "de continuidade no coletor passa a acusar qualquer mês interior faltante).",
+        "Atenção conceitual: 'saldo' é FLUXO (admissões - desligamentos no bimestre) e NÃO é",
+        "diretamente comparável ao bloco 'Estoque de empregos' da planilha de referência",
+        "(estoque acumulado de vínculos).",
+        "",
+        "Transferências federais STN (transf_fed_*): a fonte (CKAN/Tesouro) NÃO publicou o",
+        "conteúdo dos meses 2020-11, 2022-10, 2023-11, 2024-11 e 2025-11 — nesses anos o",
+        "arquivo nomeado AAAAMM traz conteúdo de AAAAMM-1 entre set e nov e re-sincroniza",
+        "em dezembro, pulando um mês (evidência: o adicional de 1% do FPM de setembro,",
+        "EC 84/2014, aparece no mês rotulado setembro). Os bimestres 20b6, 22b5, 23b6, 24b6",
+        "e 25b6 ficam VAZIOS nas transf_fed_* (somar só o mês restante viraria meio-bimestre",
+        "disfarçado de valor válido). O mês 2018-05 (arquivo publicado sem a coluna",
+        "'Transferência') foi reconstruído por inferência determinística item + ordem de",
+        "ocorrência, validada com zero divergências nos arquivos bem formados de 2018-2021;",
+        "2021-08 foi recuperado do arquivo corrigido pela fonte.",
+        "",
+        "Crédito BNB (ESTBAN/BACEN, verbete 160 e aberturas bnb_*): saldo (estoque) de",
+        "operações de crédito registrado no município da AGÊNCIA — 39 dos 184 municípios do",
+        "CE têm agência BNB; regiões sem agência ficam com 0 por construção. Agregação por",
+        "ÚLTIMO mês do bimestre (estoque — somar dobraria); fonte em R$ correntes,",
+        "deflacionada para R$ dez/2025 nas colunas *_real.",
         "",
         "Cada aba traz uma variável: linhas = bimestre ('15b1' = jan-fev/2015, ...);",
         "colunas = as 14 regiões de planejamento. Abas monetárias em valores REAIS;",
