@@ -58,13 +58,20 @@ export function MapLegend({ scale = "seq", min, max, label = "valores", format =
           border: "1px solid var(--border-soft)",
         }}
       >
-        {stops.map((c, i) => (
-          <div
-            key={i}
-            style={{ flex: 1, background: c }}
-            title={`bin ${i + 1}`}
-          />
-        ))}
+        {stops.map((c, i) => {
+          // Faixa de valores coberta por cada bin (escala linear lo→hi):
+          // legível no hover em vez do antigo "bin N".
+          const passo = (hi - lo) / stops.length;
+          const de = lo + i * passo;
+          const ate = lo + (i + 1) * passo;
+          return (
+            <div
+              key={i}
+              style={{ flex: 1, background: c }}
+              title={`${format(de)} – ${format(ate)}`}
+            />
+          );
+        })}
       </div>
       <div
         className="mono"
@@ -77,6 +84,7 @@ export function MapLegend({ scale = "seq", min, max, label = "valores", format =
         }}
       >
         <span>{format(lo)}</span>
+        <span>{format(lo + (hi - lo) / 2)}</span>
         <span>{format(hi)}</span>
       </div>
       <div

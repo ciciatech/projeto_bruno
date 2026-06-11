@@ -16,7 +16,12 @@ de verdade da classificação de cada variável, no padrão da
   dobraria o valor);
 - **índices** (``ibcr_ce``, ``share_pib_ce_br``) → média dos 2 meses (decisão
   T27 — diverge do legado ``preparacao_modelo.py``, que usa último valor para
-  ibcr/ibc_br; documentado na matriz de regras).
+  ibcr/ibc_br; documentado na matriz de regras);
+- **nativas bimestrais** (``siof_obras_pago``, ``siof_equip_pago``,
+  ``siof_invest_pago`` — fluxo bimestral real do invest. estadual, SIOF
+  rel. 544, 2016-2025) → NÃO passam pelo painel mensal: o dado já é bimestral
+  na fonte e entra por merge direto (``carregar_siof_bimestral_nativo``);
+  documentadas na matriz com ``regra_bimestral = 'nativa_bimestral'``.
 
 A agregação NÃO reusa ``preparacao_modelo.agregar_mensal_para_bimestral``
 porque o ``.agg({col: "sum"})`` de lá zera grupos 100% NaN (``min_count=0``) —
@@ -90,6 +95,15 @@ PAINEL_BIMESTRAL_CSV = MODEL_READY_DIR / "painel_regional_ce_bimestral.csv"
 EXPORTS_DIR = PROCESSED_DIR / "exports"
 XLSX_PAULO_PATH = EXPORTS_DIR / "painel_regional_ce_bimestral.xlsx"
 OUTLIERS_AUDIT_CSV = QUALITY_DIR / "painel_regional_ce_outliers.csv"
+SIOF_REGIAO_BIMESTRAL_CSV = (
+    PROCESSED_DIR / "execucao_orcamentaria" / "ce" / "siof_regiao_bimestral.csv"
+)
+
+#: Valor de ``regra_bimestral`` na matriz para séries NATIVAMENTE bimestrais
+#: (não existem no painel mensal — entram por merge direto no bimestral).
+REGRA_NATIVA_BIMESTRAL = "nativa_bimestral"
+#: Séries de fluxo bimestral real do invest. estadual (SIOF rel. 544, T45).
+COLS_SIOF_NATIVO = ["siof_obras_pago", "siof_equip_pago", "siof_invest_pago"]
 
 #: Gate de qualidade — um mês é outlier quando o total estadual da variável
 #: excede LIMIAR× a mediana da própria série. Calibração no painel real:
@@ -108,6 +122,10 @@ COLS_ID = ["regiao_codigo", "regiao_nome", "ano", "mes"]
 GRUPO_BIMESTRAL = ["regiao_codigo", "regiao_nome", "ano", "bimestre"]
 
 #: Variáveis-chave exportadas como abas do xlsx (layout do Prof. Paulo).
+#: siof_obras_pago / siof_equip_pago / siof_invest_pago são os blocos 4-6 da
+#: planilha do Prof. Paulo ("Investimento real ... pago no bimestre pelo
+#: estado em equipamentos / em obras / total. Fonte: SIOF") — a variável
+#: central da tese, agora com fluxo bimestral REAL nativo do rel. 544.
 VARIAVEIS_XLSX = [
     "invest_mun_valor",
     "transf_est_total",
@@ -118,6 +136,9 @@ VARIAVEIS_XLSX = [
     "invest_fed_total",
     "transf_fed_total",
     "siof_anual_pago",
+    "siof_obras_pago",
+    "siof_equip_pago",
+    "siof_invest_pago",
 ]
 
 #: Coluna-peso da média ponderada do salário médio.
@@ -167,17 +188,25 @@ def rotulo_bimestre(ano: int, bimestre: int) -> str:
 
 
 def _validar_cobertura_regras(cols_valor: list[str], regras: pd.DataFrame) -> None:
-    """Garante que TODA coluna de valor do painel está classificada na matriz.
+    """Garante que TODA coluna de valor do painel mensal está classificada na matriz.
 
     Falha alto em drift de schema (coluna nova sem regra, ou regra órfã).
+    Variáveis com ``regra_bimestral == 'nativa_bimestral'`` são documentadas
+    na matriz mas NÃO existem no painel mensal (entram por merge direto no
+    bimestral — caso SIOF rel. 544); colisão com coluna mensal também falha.
     """
-    classificadas = set(regras["variavel"])
+    nativas = set(
+        regras.loc[regras["regra_bimestral"] == REGRA_NATIVA_BIMESTRAL, "variavel"]
+    )
+    classificadas = set(regras["variavel"]) - nativas
     sem_regra = sorted(set(cols_valor) - classificadas)
     orfas = sorted(classificadas - set(cols_valor))
-    if sem_regra or orfas:
+    colisao = sorted(nativas & set(cols_valor))
+    if sem_regra or orfas or colisao:
         raise ValueError(
             "Matriz de regras regional fora de sincronia com o painel mensal: "
-            f"colunas sem regra={sem_regra}; regras órfãs={orfas}. "
+            f"colunas sem regra={sem_regra}; regras órfãs={orfas}; "
+            f"nativas bimestrais colidindo com coluna mensal={colisao}. "
             f"Atualize {MATRIZ_REGRAS_CSV}."
         )
 
@@ -196,6 +225,69 @@ def _salario_medio_ponderado(
     tmp["_den"] = peso
     ag = tmp.groupby(GRUPO_BIMESTRAL).sum(min_count=1)
     return ag["_num"] / ag["_den"].where(ag["_den"] > 0)
+
+
+def carregar_siof_bimestral_nativo() -> pd.DataFrame:
+    """Fluxo bimestral NATIVO do invest. estadual (SIOF rel. 544, coleta T45).
+
+    Lê ``siof_regiao_bimestral.csv`` (região × bimestre × elemento, fluxos =
+    diff do acumulado entre bimestres) e devolve, por
+    ``(regiao_codigo, ano, bimestre)``:
+
+    - ``siof_obras_pago``  — pago no bimestre em obras (elemento 51);
+    - ``siof_equip_pago``  — pago no bimestre em equipamentos (elemento 52);
+    - ``siof_invest_pago`` — soma 51 + 52.
+
+    NÃO passa pelo painel mensal: o dado já é bimestral na fonte (relatório
+    acumulado coletado nos meses pares) — documentado na matriz de regras com
+    ``regra_bimestral = 'nativa_bimestral'`` e fonte ``siof_regiao_544``.
+    Cobertura 2016-2025 (2015 fica fora: esquema de 8 macrorregiões, códigos
+    A*, crosswalk T47); código 15 "Estado do Ceará (não regionalizado)" é
+    excluído sem rateio. Fluxos negativos (anulações/estornos) são mantidos.
+    """
+    vazio = pd.DataFrame(
+        {
+            "regiao_codigo": pd.Series(dtype=str),
+            "ano": pd.Series(dtype=int),
+            "bimestre": pd.Series(dtype=int),
+            **{c: pd.Series(dtype=float) for c in COLS_SIOF_NATIVO},
+        }
+    )
+    if not SIOF_REGIAO_BIMESTRAL_CSV.exists():
+        logger.warning(
+            f"SIOF rel. 544 bimestral ausente: {SIOF_REGIAO_BIMESTRAL_CSV} — "
+            "colunas siof_*_pago ficarão vazias (rode "
+            "python3 -m pipeline.extract.siof_regiao)."
+        )
+        return vazio
+    df = pd.read_csv(
+        SIOF_REGIAO_BIMESTRAL_CSV, dtype={"regiao_codigo": str}, encoding="utf-8-sig"
+    )
+    df = df[df["regiao_codigo"].isin(REGIOES_CE)]
+    if df.empty:
+        logger.warning("SIOF rel. 544 bimestral: nenhuma linha nas 14 regiões.")
+        return vazio
+
+    piv = df.pivot_table(
+        index=["regiao_codigo", "ano", "bimestre"],
+        columns="elemento", values="pago_fluxo", aggfunc="sum",
+    )
+    out = pd.DataFrame(
+        {
+            "siof_obras_pago": piv.get("obras"),
+            "siof_equip_pago": piv.get("equip"),
+        }
+    )
+    out["siof_invest_pago"] = out["siof_obras_pago"] + out["siof_equip_pago"]
+    out = out.reset_index()
+    out["ano"] = out["ano"].astype(int)
+    out["bimestre"] = out["bimestre"].astype(int)
+    logger.info(
+        f"SIOF rel. 544 bimestral nativo: {len(out)} região-bimestre "
+        f"({out['ano'].min()}-{out['ano'].max()}, "
+        f"{out['regiao_codigo'].nunique()} regiões)"
+    )
+    return out
 
 
 def detectar_meses_outlier(
@@ -422,6 +514,13 @@ def construir_painel_bimestral(
             f"({sorted(lacunas['fonte'].unique())}) — bimestres anulados."
         )
 
+    # Séries NATIVAMENTE bimestrais (SIOF rel. 544): merge direto — não passam
+    # pelo mensal nem pelo gate de outliers (a coleta já valida contra o spike).
+    siof_nativo = carregar_siof_bimestral_nativo()
+    painel = painel.merge(
+        siof_nativo, on=["regiao_codigo", "ano", "bimestre"], how="left"
+    )
+
     defl = deflator_bimestral(base=base)
     painel = painel.merge(defl, on=["ano", "bimestre"], how="left")
 
@@ -525,6 +624,19 @@ def exportar_xlsx_paulo(
         "    ÚLTIMO mês com dado no bimestre (somar valor anual replicado dobraria o valor);",
         "  - índices (IBCR-CE, share PIB CE/BR): MÉDIA dos 2 meses.",
         "",
+        "Investimento estadual SIOF (relatório 544, região × elemento 51/52):",
+        "  - siof_obras_pago / siof_equip_pago / siof_invest_pago (= 51 + 52): FLUXO bimestral",
+        "    REAL pago pelo estado em obras / equipamentos por região, 2016-2025 — dado",
+        "    NATIVAMENTE bimestral (diff do acumulado do relatório entre bimestres; não passa",
+        "    pelo painel mensal). Fluxos negativos = anulações/estornos da fonte (mantidos).",
+        "    Correspondem aos blocos 'Investimento real ... pago no bimestre pelo estado em",
+        "    equipamentos / em obras / total — Fonte: SIOF' da planilha de referência.",
+        "  - siof_anual_* : fechamento ANUAL replicado nos 12 meses — 2016-2025 do rel. 544 +",
+        "    2026 da extração corrente; split anual em siof_obras_pago_anual/siof_equip_pago_anual.",
+        "  - 2015 fica vazio (esquema antigo de 8 macrorregiões — crosswalk 14→8 pendente, T47);",
+        "    a despesa NÃO regionalizada (cód. 15 'Estado do Ceará') é excluída sem rateio —",
+        "    desprezível em obras (0,4-2,3%/ano), até 24,8% (2019) em equipamentos.",
+        "",
         f"Base monetária: valores reais em R$ constantes de dez/2025 (IPCA, SGS 433 BACEN).",
         "Deflator = I(dez/2025) / I(último mês do bimestre), com I = índice IPCA acumulado",
         "fim-de-mês — mesma convenção da aba 'Índice de inflação' da planilha de referência.",
@@ -573,8 +685,9 @@ def exportar_xlsx_paulo(
         "",
         "Cada aba traz uma variável: linhas = bimestre ('15b1' = jan-fev/2015, ...);",
         "colunas = as 14 regiões de planejamento. Abas monetárias em valores REAIS;",
-        "exceções documentadas na coluna 'valores_na_aba' da tabela abaixo",
-        "(ex.: siof_anual_pago em R$ correntes — dado só de 2026, ainda sem IPCA do ano).",
+        "exceções documentadas na coluna 'valores_na_aba' da tabela abaixo. Linhas sem",
+        "valor real nas extremidades são omitidas (ex.: 2026 nas abas siof_* — sem IPCA",
+        "do ano ainda não há valor real; o nominal segue no CSV model-ready).",
         "",
         "Fonte, regra e unidade por variável:",
     ]

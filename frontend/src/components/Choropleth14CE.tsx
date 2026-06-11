@@ -76,6 +76,8 @@ export function Choropleth14CE({
     <svg
       viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="Mapa coroplético das 14 regiões de planejamento do Ceará"
       style={{
         display: "block",
         width: "100%",
@@ -94,6 +96,10 @@ export function Choropleth14CE({
         return (
           <g
             key={r.codigo}
+            role={onSelect ? "button" : undefined}
+            aria-label={`${r.nome}: ${
+              typeof v === "number" ? fmtCompact(v) : "sem cobertura da fonte"
+            }`}
             onClick={() => onSelect?.(r.codigo)}
             onMouseEnter={(e) =>
               onHover?.({ codigo: r.codigo, nome: r.nome, value: v ?? null, x: e.clientX, y: e.clientY })

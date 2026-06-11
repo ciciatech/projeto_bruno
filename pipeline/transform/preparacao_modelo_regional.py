@@ -233,8 +233,81 @@ def _carregar_estban_bnb() -> pd.DataFrame:
     return _agregar_se_municipal(df, cols_valor, "bnb")
 
 
+def _carregar_siof_regiao_544_anual() -> pd.DataFrame:
+    """Fechamento anual do relatório 544 do SIOF (região × elemento 51/52), 2016-2025.
+
+    Fonte: ``siof_regiao_anual.csv`` (coleta T45, validada 318/318 células
+    contra o gabarito do spike SCI-01). Alimenta as MESMAS colunas
+    ``siof_anual_empenhado``/``siof_anual_pago`` do caminho 2026 (semântica
+    idêntica: valor anual replicado nos 12 meses pelo merge por ano) e
+    adiciona o split por elemento ``siof_obras_pago_anual`` (51 - Obras) e
+    ``siof_equip_pago_anual`` (52 - Equipamentos).
+
+    Fora do retorno (por decisão metodológica documentada na matriz de regras):
+    - 2015: esquema antigo de 8 macrorregiões (códigos A1-A8/A22) — fica NaN
+      no painel até o crosswalk 14→8 (T47);
+    - código 15 "Estado do Ceará (não regionalizado)": sem rateio — a grade
+      do painel são as 14 regiões de planejamento.
+    """
+    df = _ler_csv_se_existir(
+        PROCESSED_DIR / "execucao_orcamentaria" / "ce" / "siof_regiao_anual.csv"
+    )
+    if df.empty:
+        return df
+    df = df[df["regiao_codigo"].isin(REGIOES_CE)]
+    if df.empty:
+        logger.warning("SIOF rel. 544 anual: nenhuma linha nas 14 regiões — pulando")
+        return pd.DataFrame()
+
+    emp = df.pivot_table(
+        index=["regiao_codigo", "ano"], columns="elemento",
+        values="empenhado_acum", aggfunc="sum",
+    )
+    pago = df.pivot_table(
+        index=["regiao_codigo", "ano"], columns="elemento",
+        values="pago_acum", aggfunc="sum",
+    )
+    out = pd.DataFrame(
+        {
+            "siof_anual_empenhado": emp.sum(axis=1, min_count=1),
+            "siof_anual_pago": pago.sum(axis=1, min_count=1),
+            "siof_obras_pago_anual": pago.get("obras"),
+            "siof_equip_pago_anual": pago.get("equip"),
+        }
+    ).reset_index()
+    logger.info(
+        f"  SIOF rel. 544 anual: {out['ano'].min()}-{out['ano'].max()} "
+        f"({out['regiao_codigo'].nunique()} regiões, {len(out)} região-ano)"
+    )
+    return out
+
+
 def _carregar_siof_regional() -> pd.DataFrame:
-    """SIOF já vem em região × ano (anual). Convertemos para mensal repetindo o valor."""
+    """Investimento estadual SIOF por região × ano, de duas fontes complementares.
+
+    1. **Histórico 2016-2025** — relatório 544 (``siof_regiao_anual.csv``),
+       com split por elemento (51/52) — fonte validada contra o spike SCI-01;
+    2. **Corrente (2026)** — extração da família "Secretaria"
+       (``siof_obras_regiao.csv``, caminho pré-existente, inalterado).
+
+    Em sobreposição de anos, o 544 prevalece (validado célula a célula);
+    o caminho corrente cobre apenas os anos que o 544 ainda não tem.
+    O merge anual → mensal (replicando o valor nos 12 meses) acontece em
+    ``construir_painel``.
+    """
+    historico = _carregar_siof_regiao_544_anual()
+    corrente = _carregar_siof_regional_corrente()
+    if historico.empty:
+        return corrente
+    if corrente.empty:
+        return historico
+    anos_544 = set(historico["ano"].astype(int))
+    corrente = corrente[~corrente["ano"].astype(int).isin(anos_544)]
+    return pd.concat([historico, corrente], ignore_index=True)
+
+
+def _carregar_siof_regional_corrente() -> pd.DataFrame:
+    """SIOF corrente (2026+) já vem em região × ano (anual). Convertemos para mensal repetindo o valor."""
     path = PROCESSED_DIR / "execucao_orcamentaria" / "ce" / "siof_obras_regiao.csv"
     if not path.exists():
         logger.warning(f"  ausente: {path}")

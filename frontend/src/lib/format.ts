@@ -28,6 +28,21 @@ export const fmtCompact = (v: number): string => {
   return v.toFixed(0);
 };
 
+/**
+ * R$ por extenso (sem abreviação) — para tooltips/atributos title, onde o
+ * leitor quer o valor exato que o KPI mostra compactado. Sem centavos:
+ * ruído irrelevante na escala de milhões do painel.
+ */
+export const fmtBRLFull = (v: number): string =>
+  v == null || Number.isNaN(v)
+    ? "—"
+    : v.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      });
+
 export const fmtMes = (ano: number, mes: number): string => {
   const meses = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
   return `${meses[mes - 1]}/${String(ano).slice(2)}`;

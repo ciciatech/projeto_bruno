@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fmtBRL, fmtCompact, fmtNum, fmtPct, fmtMes } from "./format";
+import { fmtBRL, fmtBRLFull, fmtCompact, fmtNum, fmtPct, fmtMes } from "./format";
 
 describe("format", () => {
   describe("fmtBRL", () => {
@@ -18,6 +18,20 @@ describe("format", () => {
     it("retorna — para NaN/null", () => {
       expect(fmtBRL(NaN)).toBe("—");
       expect(fmtBRL(null as unknown as number)).toBe("—");
+    });
+  });
+
+  describe("fmtBRLFull", () => {
+    const norm = (s: string) => s.replace(/\u00a0|\u202f/g, " ");
+    it("formata o valor exato sem abreviação (para tooltips)", () => {
+      expect(norm(fmtBRLFull(501_682_435.19))).toBe("R$ 501.682.435");
+    });
+    it("não mostra centavos (ruído na escala de milhões)", () => {
+      expect(norm(fmtBRLFull(1234.56))).toBe("R$ 1.235");
+    });
+    it("retorna — para NaN/null", () => {
+      expect(fmtBRLFull(NaN)).toBe("—");
+      expect(fmtBRLFull(null as unknown as number)).toBe("—");
     });
   });
 

@@ -1,68 +1,19 @@
-import { useSearchParams } from "react-router-dom";
+import {
+  DEFAULT_FILTROS,
+  PERIODOS,
+  RECORTES,
+  useFiltros,
+  type Periodo,
+} from "../lib/filtros";
 
-export type Periodo = "1A" | "3A" | "5A" | "10A" | "Tudo";
-export type Recorte = "Bruto" | "Per capita" | "% PIB";
-
-const PERIODOS: { key: Periodo; label: string }[] = [
-  { key: "1A", label: "1A" },
-  { key: "3A", label: "3A" },
-  { key: "5A", label: "5A" },
-  { key: "10A", label: "10A" },
-  { key: "Tudo", label: "Tudo" },
-];
-
-const RECORTES: { key: Recorte; label: string; disabled?: boolean }[] = [
-  { key: "Bruto", label: "Bruto" },
-  { key: "Per capita", label: "Per capita" },
-  { key: "% PIB", label: "% PIB", disabled: true },
-];
-
-export type Filtros = {
-  periodo: Periodo;
-  recorte: Recorte;
+/** Tooltips explicando o que cada recorte de período significa. */
+const HINT_PERIODO: Record<Periodo, string> = {
+  "1A": "ano mais recente da série",
+  "3A": "últimos 3 anos",
+  "5A": "últimos 5 anos",
+  "10A": "últimos 10 anos",
+  Tudo: "série completa disponível",
 };
-
-export const DEFAULT_FILTROS: Filtros = {
-  periodo: "Tudo",
-  recorte: "Bruto",
-};
-
-export function useFiltros(): [Filtros, (f: Partial<Filtros>) => void] {
-  const [params, setParams] = useSearchParams();
-  const filtros: Filtros = {
-    periodo: (params.get("periodo") as Periodo) || DEFAULT_FILTROS.periodo,
-    recorte: (params.get("recorte") as Recorte) || DEFAULT_FILTROS.recorte,
-  };
-  const setFiltros = (patch: Partial<Filtros>) => {
-    const next = new URLSearchParams(params);
-    Object.entries(patch).forEach(([k, v]) => {
-      if (v == null || v === DEFAULT_FILTROS[k as keyof Filtros]) {
-        next.delete(k);
-      } else {
-        next.set(k, String(v));
-      }
-    });
-    setParams(next, { replace: true });
-  };
-  return [filtros, setFiltros];
-}
-
-/**
- * Aplica o recorte de período sobre a lista de anos disponíveis no painel.
- * Retorna o ano-início (inclusivo) e ano-fim (inclusivo).
- */
-export function aplicarPeriodo(
-  todosAnos: number[],
-  periodo: Periodo,
-): { inicio: number; fim: number } {
-  if (todosAnos.length === 0) return { inicio: 0, fim: 0 };
-  const ordenados = [...todosAnos].sort((a, b) => a - b);
-  const fim = ordenados[ordenados.length - 1];
-  const inicio = ordenados[0];
-  if (periodo === "Tudo") return { inicio, fim };
-  const n = parseInt(periodo, 10) - 1;
-  return { inicio: Math.max(inicio, fim - n), fim };
-}
 
 export function FilterBar() {
   const [filtros, setFiltros] = useFiltros();
@@ -83,6 +34,7 @@ export function FilterBar() {
         label="Período"
         value={filtros.periodo}
         options={PERIODOS}
+        hints={HINT_PERIODO}
         onChange={(p) => setFiltros({ periodo: p })}
       />
       <Field
@@ -92,8 +44,18 @@ export function FilterBar() {
         onChange={(r) => setFiltros({ recorte: r })}
       />
       <div style={{ flex: 1 }} />
+      <span
+        className="mono"
+        aria-live="polite"
+        style={{ fontSize: 11, color: "var(--ink-3)", paddingBottom: 5 }}
+      >
+        período: <strong style={{ color: "var(--ink-1)" }}>{filtros.periodo}</strong>
+        {" · "}
+        {HINT_PERIODO[filtros.periodo]}
+      </span>
       <button
         onClick={() => setFiltros(DEFAULT_FILTROS)}
+        aria-label="Limpar filtros e voltar ao padrão"
         style={{
           fontSize: 11,
           color: "var(--ink-3)",
@@ -114,10 +76,11 @@ type FieldProps<T extends string> = {
   label: string;
   value: T;
   options: { key: T; label: string; disabled?: boolean }[];
+  hints?: Partial<Record<T, string>>;
   onChange: (v: T) => void;
 };
 
-function Field<T extends string>({ label, value, options, onChange }: FieldProps<T>) {
+function Field<T extends string>({ label, value, options, hints, onChange }: FieldProps<T>) {
   return (
     <div className="flex flex-col" style={{ gap: 3 }}>
       <span
@@ -131,7 +94,11 @@ function Field<T extends string>({ label, value, options, onChange }: FieldProps
       >
         {label}
       </span>
-      <div style={{ display: "flex", border: "1px solid var(--border-strong)" }}>
+      <div
+        role="group"
+        aria-label={`Filtro de ${label.toLowerCase()}`}
+        style={{ display: "flex", border: "1px solid var(--border-strong)" }}
+      >
         {options.map((o, i) => {
           const sel = value === o.key;
           return (
@@ -139,7 +106,8 @@ function Field<T extends string>({ label, value, options, onChange }: FieldProps
               key={o.key}
               onClick={() => !o.disabled && onChange(o.key)}
               disabled={o.disabled}
-              title={o.disabled ? "Em breve" : undefined}
+              aria-pressed={sel}
+              title={o.disabled ? "Em breve" : hints?.[o.key]}
               style={{
                 background: sel ? "var(--ink-1)" : "transparent",
                 color: o.disabled

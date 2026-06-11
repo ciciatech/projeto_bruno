@@ -2,7 +2,7 @@
 nome: Doutorado Bruno — Investimento Público e Emprego no CE
 categoria: academico
 status: em_andamento
-atualizado_em: 2026-06-10
+atualizado_em: 2026-06-11
 cliente: Bruno Cardoso / Prof. Paulo Matos (CAEN/UFC)
 prioridade: P1
 repo: ciciatech/projeto_bruno
@@ -72,7 +72,7 @@ fonte de verdade do roadmap.
 - [ ] (P3) [BE] T42 (cosmético) Renomear prefixo duplo `bnb_bnb_*` das colunas ESTBAN no painel (builder prefixa colunas já prefixadas) — tocar extractor/builder/matriz/testes num passo só
 - [ ] (P3) [BE] T43 Adicionar aba de crédito BNB (verbete 160) ao xlsx do Paulo (`VARIAVEIS_XLSX` em `painel_bimestral.py`) — trivial; aguarda resposta da pergunta 5 (BNB vs todos os bancos)
 - [ ] (P1) [INFRA] T44 Deploy via GitHub Actions quebrado — runners não alcançam `painel.ciciacademy.com.br:443` (timeout 135s; falhou em 3 pushes seguidos em 10/06, painel ok da rede local). Suspeita: firewall da VPS bloqueando ranges do GitHub. Investigar firewall Hostinger/CSF; enquanto isso, deploy manual via curl da máquina local (CLAUDE.md § Deploy)
-- [ ] (P0) [BE] T45 Coletor `pipeline/extract/siof_regiao.py` — relatório 544 do SIOF (Região × Lei/Empenhado/Pago, grupo 44, elementos 51/52), 2015-2025, parser dual-esquema (8 regiões em 2015, 14 de 2016+). Executa o destravamento do SCI-01. Esforço P (0,5-1 dia); NÃO tocar no `siof.py` legado. Depois: plugar no painel mensal/bimestral e remover overlay "Ver 2026" do mapa
+- [x] (P0) [BE] T45 Coletor `pipeline/extract/siof_regiao.py` **implementado, coletado e integrado (11/06)** — 132/132 relatórios (2015-2025 × 6 bimestres × elementos 51/52), 0 falhas, spike validado 318/318. Descoberta de mecânica: para mês≠12 o servidor descartava o filtro de elemento silenciosamente — corrigido com postback explícito da cascata + validação do rodapé "Critérios" em cada XLS. **TESTE DE OURO vs planilha do Paulo: obras 806/806 células dentro de ±1% (802 dentro de ±0,01%, razão mediana 1,000000); equipamentos 655/656 dentro de ±0,01%** — a variável central da tese está automatizada de ponta a ponta. Painéis: mensal 2016×44 (siof 2016-2026 + split obras/equip), bimestral 1008×80 (fluxos nativos deflacionados), xlsx 13 abas (blocos 4-6 do Paulo completos). Overlay do mapa restrito a 2015 (T47). Cache bruto commitado (2,1MB, reexecução em segundos)
 - [ ] (P2) [BE] T46 Parser do Balanço Geral do Estado (PDF, `pdftotext -layout`) — tabela "Investimentos por Região" 2015-2022 como validação independente do T45 (empenhado, GND 4 sem split 51/52). Esforço P
 - [ ] (P2) [DATA] T47 Crosswalk 2015: 8 macrorregiões antigas → 14 regiões — via relatório 532 ("PA e Região", nível ação/projeto, descrições citam municípios) ou decisão metodológica com o Paulo (descartar 2015? manter nas 8?). Decide a quebra de série da LC 154/2015
 
@@ -89,7 +89,7 @@ fonte de verdade do roadmap.
 ## Pendente
 
 - [ ] (P2) [BE] Resolver warning SIOF "Estado do Ceará" — linha agregada sem código regional; filtrar antes do `agregar_para_regiao` ou ratear nas 14 regiões. ~30min
-- [ ] (P2) [FE] Lint frontend (4 erros pre-existentes) — `FilterBar.tsx:25,30,54` + `vite.config.ts:1`; mover constantes pra arquivo separado e migrar pra import style. ~30min
+- [x] (P2) [FE] Lint frontend zerado (11/06) — constantes/hooks movidos para `lib/filtros.ts`, `vite.config.ts` migrado de triple-slash; `npm run lint` = 0 erros. Revisão de visualização junto: split obras×equipamentos na Síntese, tooltips de valor exato e de "sem cobertura da fonte", legenda do mapa com faixas no hover, aria-labels/aria-pressed, echo do período na FilterBar, fix de bug de unidade ×1e6 na tela Investimento. Vitest 19→37 testes
 - [ ] (P2) [BE] Deflator IPCA do painel mensal — harmonizar bases monetárias SIOF/invest_municipal/invest_federal/FBCF. **Superseded parcialmente pelo T28**: base provável dez/25 (planilha do Paulo), aguarda mesma confirmação
 - [ ] (P2) [QA] Tests E2E + Lighthouse CI — automatizar QA visual (Playwright + Lighthouse)
 
@@ -122,4 +122,4 @@ fonte de verdade do roadmap.
 
 ---
 
-**Última atualização**: 2026-06-10 (madrugada) — **SCI-01 DESTRAVADO**: investigação multi-frente provou que "região só em 2026" era artefato do coletor; o relatório 544 do SIOF entrega Região × Pago para 2012-2026 (spike validado, BGE como contraprova) — o exercício causal 2015-2025 da tese está viável. Abertos T45-T47. Antes disso, dia de virada: T27/T28 (painel bimestral + deflator dez/25 validado em 2×10⁻¹⁵), 6 tasks de dados fechadas (T16 ESTBAN destravado no BCB, T25/T29/T31 instrumentos+séries da letter, T32 set/2024 era centavos na fonte, T33 CAGED 18→184 municípios com recuperação do mar/2025, T35 SEFAZ completa 18,2k linhas), rebranding "Doutorado Bruno — Investimento Público e Emprego no Ceará" aplicado (painel + docs + portal), tela Pipeline com status reais, suíte 73 pytest + 19 vitest. Painel mensal 2016×42, bimestral 1008×70, frontend hash `aeae3233`. Colaterais da fonte STN viram T38-T43. **6 confirmações pendentes com o Prof. Paulo** (ver T18) + enviar xlsx BF/BPC (T19).
+**Última atualização**: 2026-06-11 — **T45 entregue**: coletor SIOF regional (rel. 544) coletado e integrado; teste de ouro vs planilha do Paulo fecha em 1,000000 (obras 806/806 ±1%, equip 655/656 ±0,01%) — a variável central da tese está automatizada. Frontend revisado (lint 0, 37 testes, tela Investimento acesa 2016+, split obras/equip). Incidente grave corrigido: teste do pytest sobrescrevia o CSV real do CAGED (commit anterior está corrompido; este conserta). Antes disso (madrugada 10/06): **SCI-01 DESTRAVADO**: investigação multi-frente provou que "região só em 2026" era artefato do coletor; o relatório 544 do SIOF entrega Região × Pago para 2012-2026 (spike validado, BGE como contraprova) — o exercício causal 2015-2025 da tese está viável. Abertos T45-T47. Antes disso, dia de virada: T27/T28 (painel bimestral + deflator dez/25 validado em 2×10⁻¹⁵), 6 tasks de dados fechadas (T16 ESTBAN destravado no BCB, T25/T29/T31 instrumentos+séries da letter, T32 set/2024 era centavos na fonte, T33 CAGED 18→184 municípios com recuperação do mar/2025, T35 SEFAZ completa 18,2k linhas), rebranding "Doutorado Bruno — Investimento Público e Emprego no Ceará" aplicado (painel + docs + portal), tela Pipeline com status reais, suíte 73 pytest + 19 vitest. Painel mensal 2016×42, bimestral 1008×70, frontend hash `aeae3233`. Colaterais da fonte STN viram T38-T43. **6 confirmações pendentes com o Prof. Paulo** (ver T18) + enviar xlsx BF/BPC (T19).

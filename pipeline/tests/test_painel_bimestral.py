@@ -15,11 +15,15 @@ from pipeline.config import PERIODO_FIM_MENSAL, PERIODO_INICIO_MENSAL
 from pipeline.regioes_ce import REGIOES_CE
 from pipeline.transform.deflator import IPCA_CACHE_CSV
 from pipeline.transform.painel_bimestral import (
+    COLS_SIOF_NATIVO,
     LACUNAS_UPSTREAM_POR_FONTE,
     PAINEL_MENSAL_CSV,
+    REGRA_NATIVA_BIMESTRAL,
+    SIOF_REGIAO_BIMESTRAL_CSV,
     VARIAVEIS_XLSX,
     aplicar_gate_outliers,
     carregar_matriz_regras,
+    carregar_siof_bimestral_nativo,
     construir_painel_bimestral,
     detectar_meses_outlier,
     exportar_xlsx_paulo,
@@ -56,14 +60,26 @@ def test_shape_14_regioes_x_bimestres(painel_bim):
 
 
 def test_matriz_regras_cobre_todas_as_colunas(painel_mensal):
-    """Toda coluna de valor do painel mensal tem regra na matriz regional (e vice-versa)."""
+    """Toda coluna de valor do painel mensal tem regra na matriz regional (e
+    vice-versa). Exceção documentada (T46/SCI-01): variáveis com regra
+    ``nativa_bimestral`` (siof_obras_pago/siof_equip_pago/siof_invest_pago,
+    fonte siof_regiao_544) constam na matriz mas NÃO existem no mensal — o
+    dado é nativamente bimestral e entra por merge direto no bimestral."""
     regras = carregar_matriz_regras()
     cols_valor = [
         c
         for c in painel_mensal.columns
         if c not in {"regiao_codigo", "regiao_nome", "ano", "mes"}
     ]
-    assert set(regras["variavel"]) == set(cols_valor)
+    nativas = set(
+        regras.loc[regras["regra_bimestral"] == REGRA_NATIVA_BIMESTRAL, "variavel"]
+    )
+    assert nativas == set(COLS_SIOF_NATIVO)
+    assert (
+        regras.loc[regras["variavel"].isin(nativas), "fonte"] == "siof_regiao_544"
+    ).all(), "séries nativas bimestrais devem ser documentadas com fonte siof_regiao_544"
+    assert set(regras["variavel"]) - nativas == set(cols_valor)
+    assert not nativas & set(cols_valor), "nativa bimestral não pode existir no mensal"
 
 
 @pytest.mark.parametrize("coluna", ["saldo", "bf_valor_total"])
@@ -104,7 +120,10 @@ def test_colunas_real_existem_e_batem_com_deflator_manual(painel_bim):
     """*_real = nominal × deflator; spot-check com deflator calculado à mão do cache IPCA."""
     regras = carregar_matriz_regras()
     monetarias = regras.loc[regras["deflacionamento"] == "ipca", "variavel"].tolist()
-    assert len(monetarias) == 27  # 20 originais + 7 colunas de crédito BNB (ESTBAN)
+    # 27 (20 originais + 7 crédito BNB) + 5 do SIOF rel. 544 (T46/SCI-01):
+    # split anual siof_obras_pago_anual/siof_equip_pago_anual + fluxos
+    # bimestrais nativos siof_obras_pago/siof_equip_pago/siof_invest_pago.
+    assert len(monetarias) == 32
     for col in monetarias:
         assert f"{col}_real" in painel_bim.columns, f"falta {col}_real"
 
@@ -170,6 +189,127 @@ def test_ultimo_mes_para_anuais_replicados(painel_mensal, painel_bim):
         & (painel_bim["bimestre"] == 1)
     ]["siof_anual_pago"].item()
     assert bim_gf_26b1 == pytest.approx(mensal_gf_26)  # último, NÃO 2× o valor
+
+
+# ---------------------------------------------------------------------------
+# SIOF rel. 544 — fluxo bimestral nativo + fechamento anual (T46/SCI-01)
+# ---------------------------------------------------------------------------
+
+requer_siof_544 = pytest.mark.skipif(
+    not SIOF_REGIAO_BIMESTRAL_CSV.exists(),
+    reason="siof_regiao_bimestral.csv ausente (rode python3 -m pipeline.extract.siof_regiao)",
+)
+
+
+@requer_siof_544
+def test_siof_fluxo_bimestral_nativo_cobertura(painel_bim):
+    """siof_obras_pago/siof_equip_pago/siof_invest_pago: 14 regiões × 6
+    bimestres × 2016-2025 (840 células), nada fora dessa janela (2015 =
+    esquema de 8 macrorregiões, fica NaN até o crosswalk T47; 2026 ainda não
+    coletado no 544); invest = obras + equip."""
+    for col in COLS_SIOF_NATIVO:
+        assert col in painel_bim.columns
+        com_dado = painel_bim[painel_bim[col].notna()]
+        assert len(com_dado) == 14 * 6 * 10, col
+        assert com_dado["regiao_codigo"].nunique() == 14, col
+        assert (com_dado["ano"].min(), com_dado["ano"].max()) == (2016, 2025), col
+        fora = painel_bim[(painel_bim["ano"] < 2016) | (painel_bim["ano"] > 2025)]
+        assert fora[col].isna().all(), f"{col} não pode ter dado fora de 2016-2025"
+    dentro = painel_bim[painel_bim["siof_invest_pago"].notna()]
+    assert np.allclose(
+        dentro["siof_invest_pago"],
+        dentro["siof_obras_pago"] + dentro["siof_equip_pago"],
+        rtol=1e-12,
+    )
+
+
+@requer_siof_544
+def test_siof_fluxo_nativo_bate_com_fonte(painel_bim):
+    """O merge direto preserva o pago_fluxo do CSV da coleta (célula a célula
+    num spot-check) e o loader exclui o cód. 15 (não regionalizado) e 2015."""
+    fonte = pd.read_csv(
+        SIOF_REGIAO_BIMESTRAL_CSV, dtype={"regiao_codigo": str}, encoding="utf-8-sig"
+    )
+    esperado = fonte[
+        (fonte["regiao_codigo"] == "01")
+        & (fonte["ano"] == 2020)
+        & (fonte["bimestre"] == 3)
+        & (fonte["elemento"] == "obras")
+    ]["pago_fluxo"].item()
+    obtido = painel_bim[
+        (painel_bim["regiao_codigo"] == "01")
+        & (painel_bim["ano"] == 2020)
+        & (painel_bim["bimestre"] == 3)
+    ]["siof_obras_pago"].item()
+    assert obtido == pytest.approx(esperado, rel=1e-12)
+
+    nativo = carregar_siof_bimestral_nativo()
+    assert set(nativo["regiao_codigo"]) == set(REGIOES_CE)  # sem "15" nem "A*"
+    assert nativo["ano"].min() == 2016
+
+
+@requer_siof_544
+def test_siof_fluxos_bimestrais_fecham_com_o_anual(painel_bim):
+    """Coerência entre os DOIS caminhos de integração do 544: a soma dos 6
+    fluxos bimestrais do ano (siof_invest_pago, nativo) deve fechar com o
+    fechamento anual replicado (siof_anual_pago, via painel mensal) em TODAS
+    as 140 células região-ano de 2016-2025."""
+    sub = painel_bim[(painel_bim["ano"] >= 2016) & (painel_bim["ano"] <= 2025)]
+    soma_fluxos = sub.groupby(["regiao_codigo", "ano"])["siof_invest_pago"].sum(
+        min_count=6
+    )
+    anual = sub[sub["bimestre"] == 6].set_index(["regiao_codigo", "ano"])[
+        "siof_anual_pago"
+    ]
+    m = pd.concat([soma_fluxos.rename("fluxos"), anual.rename("anual")], axis=1)
+    assert len(m) == 14 * 10
+    assert m.notna().all().all()
+    assert np.allclose(m["fluxos"], m["anual"], rtol=1e-6)
+
+
+@requer_siof_544
+def test_siof_anual_cobertura_2016_2026_e_split(painel_mensal):
+    """siof_anual_empenhado/pago cobrem 2016-2026 (544 em 2016-2025 + caminho
+    corrente 2026, inalterado); 2015 fica NaN; o split por elemento
+    (siof_obras_pago_anual + siof_equip_pago_anual) soma o total em 2016-2025."""
+    anos_pago = sorted(painel_mensal.loc[painel_mensal["siof_anual_pago"].notna(), "ano"].unique())
+    assert anos_pago == list(range(2016, 2027))
+    assert painel_mensal.loc[painel_mensal["ano"] == 2015, "siof_anual_pago"].isna().all()
+    # caminho 2026 (extração corrente) intacto: dotação/n_acoes só em 2026
+    anos_dot = sorted(painel_mensal.loc[painel_mensal["siof_anual_dotacao"].notna(), "ano"].unique())
+    assert anos_dot == [2026]
+
+    sub = painel_mensal[(painel_mensal["ano"] >= 2016) & (painel_mensal["ano"] <= 2025)]
+    assert sub["siof_obras_pago_anual"].notna().all()
+    assert sub["siof_equip_pago_anual"].notna().all()
+    assert np.allclose(
+        sub["siof_obras_pago_anual"] + sub["siof_equip_pago_anual"],
+        sub["siof_anual_pago"],
+        rtol=1e-9,
+    )
+    # split não existe fora de 2016-2025 (2026 vem do caminho corrente, sem split)
+    fora = painel_mensal[(painel_mensal["ano"] < 2016) | (painel_mensal["ano"] > 2025)]
+    assert fora["siof_obras_pago_anual"].isna().all()
+
+
+@requer_siof_544
+def test_xlsx_abas_siof_544(tmp_path, painel_bim):
+    """As abas siof_obras_pago/siof_equip_pago/siof_invest_pago (blocos 4-6 da
+    planilha do Prof. Paulo — variável central da tese) saem em valores REAIS
+    (R$ dez/2025), janela 16b1-25b6, espelhando as colunas *_real do painel."""
+    pytest.importorskip("openpyxl")
+    out = exportar_xlsx_paulo(painel_bim, path=tmp_path / "painel_siof.xlsx")
+    for var in COLS_SIOF_NATIVO:
+        aba = pd.read_excel(out, sheet_name=var, index_col=0)
+        assert list(aba.columns) == list(REGIOES_CE.values())
+        assert str(aba.index[0]) == "16b1"
+        assert str(aba.index[-1]) == "25b6"
+        esperado = painel_bim[
+            (painel_bim["regiao_nome"] == "Grande Fortaleza")
+            & (painel_bim["ano"] == 2024)
+            & (painel_bim["bimestre"] == 6)
+        ][f"{var}_real"].item()
+        assert aba.loc["24b6", "Grande Fortaleza"] == pytest.approx(esperado)
 
 
 def test_gate_nao_flagra_nenhum_mes_no_painel_corrigido(painel_mensal):
@@ -328,10 +468,18 @@ def test_exportar_xlsx_paulo(tmp_path, painel_bim):
     ]["bf_valor_total_real"].item()
     assert bf.loc["24b6", "Grande Fortaleza"] == pytest.approx(esperado_real)
 
-    # siof_anual_pago: só 2026 na fonte → exportado nominal (sem IPCA 2026), não vazio
+    # siof_anual_pago: com o rel. 544 (2016-2025) a aba passa a sair em REAIS.
+    # 2015 (esquema de 8 macrorregiões, NaN) e 2026 (sem IPCA do ano → _real
+    # NaN; nominal segue no CSV) são extremidades vazias e saem da aba.
     siof = pd.read_excel(out, sheet_name="siof_anual_pago", index_col=0)
-    assert len(siof) > 0
-    assert all(str(p).startswith("26b") for p in siof.index)
+    assert str(siof.index[0]) == "16b1"
+    assert str(siof.index[-1]) == "25b6"
+    esperado_siof = painel_bim[
+        (painel_bim["regiao_nome"] == "Grande Fortaleza")
+        & (painel_bim["ano"] == 2024)
+        & (painel_bim["bimestre"] == 6)
+    ]["siof_anual_pago_real"].item()
+    assert siof.loc["24b6", "Grande Fortaleza"] == pytest.approx(esperado_siof)
 
 
 # ---------------------------------------------------------------------------

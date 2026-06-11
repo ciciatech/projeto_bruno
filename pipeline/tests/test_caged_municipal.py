@@ -172,6 +172,13 @@ def test_coletar_ce_loga_error_quando_ha_buraco_interior(
         "_processar_caged_antigo_mes",
         staticmethod(lambda ano, mes: pd.DataFrame()),
     )
+    # save_dataframe resolve o path pelo pipeline.config (NÃO pelo
+    # PROCESSED_DIR monkeypatchado acima) — sem este stub o teste SOBRESCREVE
+    # o caged_municipal_ce_mensal.csv REAL com as 2 linhas sintéticas
+    # (incidente de 2026-06-11: painel regenerado ficou sem CAGED).
+    monkeypatch.setattr(
+        caged_municipal, "save_dataframe", lambda df, *a, **kw: None
+    )
 
     with caplog.at_level(logging.ERROR, logger="pipeline.extract.caged_municipal"):
         out = caged_municipal.coletar_ce(ano_inicio=2015, ano_fim=2015)

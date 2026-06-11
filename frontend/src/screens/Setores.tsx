@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Panel, EditorialNote } from "../components/Panel";
-import { useFiltros } from "../components/FilterBar";
+import { useFiltros } from "../lib/filtros";
 import { fmtCompact } from "../lib/format";
 import { carregarPainel, type Painel } from "../lib/painel";
 import { REGIOES_CE } from "../lib/regioes";

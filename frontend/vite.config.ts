@@ -1,4 +1,5 @@
-/// <reference types="vitest/config" />
+// Tipos do bloco `test` vêm do import de "vitest/config" (sem triple-slash,
+// que o lint @typescript-eslint/triple-slash-reference proíbe).
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";

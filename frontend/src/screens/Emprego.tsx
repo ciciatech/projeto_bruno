@@ -3,7 +3,7 @@ import { Panel, EditorialNote } from "../components/Panel";
 import { KPI } from "../components/KPI";
 import { Choropleth14CE } from "../components/Choropleth14CE";
 import { Sparkline } from "../components/Sparkline";
-import { aplicarPeriodo, useFiltros } from "../components/FilterBar";
+import { aplicarPeriodo, useFiltros } from "../lib/filtros";
 import { fmtNum, fmtPct, fmtMes, fmtBRL } from "../lib/format";
 import { carregarPainel, type Painel } from "../lib/painel";
 import { REGIOES_BY_CODIGO, REGIOES_CE } from "../lib/regioes";

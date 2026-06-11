@@ -5,10 +5,19 @@ import { Choropleth14CE } from "../components/Choropleth14CE";
 import { Sparkline } from "../components/Sparkline";
 import { MapLegend } from "../components/MapLegend";
 import { MapTooltip, type HoverInfo } from "../components/MapTooltip";
-import { aplicarPeriodo, useFiltros } from "../components/FilterBar";
-import { ANO_SIOF_REGIONAL_INICIO } from "../lib/sioCobertura";
-import { fmtBRL, fmtCompact, fmtNum, fmtMes } from "../lib/format";
-import { carregarPainel, snapshotPorRegiao, type Painel } from "../lib/painel";
+import { aplicarPeriodo, useFiltros } from "../lib/filtros";
+import {
+  ANO_SIOF_ESQUEMA_ANTIGO,
+  ANO_SIOF_REGIONAL_INICIO,
+  temCoberturaSiofRegional,
+} from "../lib/sioCobertura";
+import { fmtBRL, fmtBRLFull, fmtCompact, fmtNum, fmtMes } from "../lib/format";
+import {
+  carregarPainel,
+  snapshotPorRegiao,
+  somarAnualDedup,
+  type Painel,
+} from "../lib/painel";
 import { REGIOES_BY_CODIGO, REGIOES_CE } from "../lib/regioes";
 
 export default function Investimento() {
@@ -45,12 +54,22 @@ export default function Investimento() {
         className="mono"
         style={{ fontSize: 16, fontWeight: 600, color: "var(--ink-1)", marginTop: 2 }}
       >
-        {info.value != null ? fmtBRL(info.value * 1e6) : "—"}
+        {info.value != null ? fmtBRLFull(info.value) : "sem cobertura da fonte"}
       </div>
       <div style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 6, lineHeight: 1.5 }}>
-        SIOF empenhado · {dados.periodoLabel}
-        <br />
-        clique para fixar como referência
+        {info.value != null ? (
+          <>
+            SIOF empenhado · {dados.periodoLabel}
+            <br />
+            clique para fixar como referência
+          </>
+        ) : (
+          <>
+            SEPLAG-CE não publica SIOF regional
+            <br />
+            para esta região no período selecionado.
+          </>
+        )}
       </div>
     </>
   );
@@ -83,8 +102,8 @@ export default function Investimento() {
         >
           Investimento estadual em obras e equipamentos · 14 regiões CE
         </h1>
-        <span style={{ fontSize: 12, color: "var(--ink-3)" }}>
-          {dados.periodoLabel} · {fmtBRL(dados.totalSiof * 1e6)} agregado
+        <span style={{ fontSize: 12, color: "var(--ink-3)" }} title={fmtBRLFull(dados.totalSiof)}>
+          {dados.periodoLabel} · {fmtBRL(dados.totalSiof)} agregado
         </span>
         <div style={{ flex: 1 }} />
         <span className="mono" style={{ fontSize: 11, color: "var(--ink-4)" }}>
@@ -98,15 +117,91 @@ export default function Investimento() {
           <div className="flex flex-col gap-3">
             <KPI
               label="Investimento estadual SIOF"
-              value={dados.totalSiof > 0 ? fmtCompact(dados.totalSiof * 1e6) : "—"}
-              unit={dados.totalSiof > 0 ? "(empenhado)" : "histórico pendente"}
+              value={dados.totalSiof > 0 ? fmtCompact(dados.totalSiof) : "—"}
+              unit={dados.totalSiof > 0 ? "R$ (empenhado)" : "sem dado regional"}
               sparkData={dados.totalSiof > 0 ? dados.serieSiof : undefined}
               sub={
                 dados.totalSiof > 0
-                  ? `${dados.anosCobertos} anos · ${dados.regioesAtivas} regiões com dado`
-                  : "SEPLAG-CE publica apenas o ano corrente"
+                  ? `${dados.anosComSiof} anos com dado · ${dados.regioesAtivas} regiões`
+                  : `${ANO_SIOF_ESQUEMA_ANTIGO} em tratamento (T47) · série regional ${ANO_SIOF_REGIONAL_INICIO}+`
               }
             />
+            {dados.split.total > 0 && (
+              <div aria-label="Quebra do SIOF pago entre obras e equipamentos">
+                <div
+                  style={{
+                    fontSize: 10.5,
+                    color: "var(--ink-3)",
+                    textTransform: "uppercase",
+                    letterSpacing: 0.8,
+                    fontWeight: 600,
+                    marginBottom: 6,
+                  }}
+                >
+                  Obras × equipamentos · SIOF pago
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    height: 12,
+                    border: "1px solid var(--border-soft)",
+                    marginBottom: 6,
+                  }}
+                >
+                  <div
+                    title={`Obras: ${fmtBRLFull(dados.split.obras)}`}
+                    style={{
+                      width: `${(dados.split.obras / dados.split.total) * 100}%`,
+                      background: "var(--seq-4)",
+                    }}
+                  />
+                  <div
+                    title={`Equipamentos: ${fmtBRLFull(dados.split.equip)}`}
+                    style={{
+                      width: `${(dados.split.equip / dados.split.total) * 100}%`,
+                      background: "var(--cat-2)",
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col" style={{ gap: 3, fontSize: 11 }}>
+                  {[
+                    { label: "Obras e instalações", v: dados.split.obras, cor: "var(--seq-4)" },
+                    { label: "Equip. e mat. permanente", v: dados.split.equip, cor: "var(--cat-2)" },
+                  ].map((s) => (
+                    <div
+                      key={s.label}
+                      className="grid items-center"
+                      style={{ gridTemplateColumns: "8px 1fr auto auto", gap: 8 }}
+                    >
+                      <span style={{ width: 8, height: 8, background: s.cor }} />
+                      <span style={{ color: "var(--ink-2)" }}>{s.label}</span>
+                      <span
+                        className="mono"
+                        title={fmtBRLFull(s.v)}
+                        style={{ color: "var(--ink-1)", fontWeight: 600 }}
+                      >
+                        {fmtCompact(s.v)}
+                      </span>
+                      <span
+                        className="mono"
+                        style={{ color: "var(--ink-3)", width: 34, textAlign: "right" }}
+                      >
+                        {((s.v / dados.split.total) * 100).toFixed(0)}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                {dados.split.anosSemSplit > 0 && (
+                  <div
+                    className="mono"
+                    style={{ fontSize: 10, color: "var(--ink-4)", marginTop: 4 }}
+                  >
+                    split publicado até {dados.split.anoMax} (rel. 544) — {dados.split.anoMax + 1}+
+                    ainda sem quebra por natureza
+                  </div>
+                )}
+              </div>
+            )}
             <KPI
               label="Investimento total CE estimado"
               value={fmtCompact(dados.totalInvTotal * 1e6)}
@@ -127,10 +222,13 @@ export default function Investimento() {
           </div>
           <div className="mt-3">
             <EditorialNote>
+              A série regional do SIOF agora cobre {ANO_SIOF_REGIONAL_INICIO}–2026
+              (relatório 544 retroativo + extração corrente), validada contra a
+              planilha do Prof. Paulo. {ANO_SIOF_ESQUEMA_ANTIGO} usa a divisão
+              regional antiga (8 macrorregiões) e está em tratamento (T47).
               Bases monetárias ainda mistas (SIOF em R$ correntes, FBCF em R$
-              2010) — serão harmonizadas para R$ dez/25 (deflator IPCA
-              validado) na migração ao painel bimestral; a base aguarda
-              confirmação final do Prof. Paulo.
+              2010) — harmonização para R$ dez/25 na migração ao painel
+              bimestral.
             </EditorialNote>
           </div>
         </Panel>
@@ -168,9 +266,10 @@ export default function Investimento() {
                   </div>
                   <span
                     className="mono"
+                    title={fmtBRLFull(r.valor)}
                     style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-1)", width: 70, textAlign: "right" }}
                   >
-                    {fmtCompact(r.valor * 1e6)}
+                    {fmtCompact(r.valor)}
                   </span>
                 </div>
               );
@@ -187,8 +286,10 @@ export default function Investimento() {
                 </>
               ) : (
                 <>
-                  Sem dado regional do SIOF para este período. SEPLAG-CE só
-                  publica desagregação por região a partir de {ANO_SIOF_REGIONAL_INICIO}.
+                  Sem dado regional do SIOF para este período.{" "}
+                  {ANO_SIOF_ESQUEMA_ANTIGO} usa divisão regional antiga — em
+                  tratamento (T47); a série regional cobre{" "}
+                  {ANO_SIOF_REGIONAL_INICIO} em diante.
                 </>
               )}
             </EditorialNote>
@@ -204,8 +305,8 @@ export default function Investimento() {
         subtitle="Clique numa região para fixar como referência"
         footer={
           <>
-            <span>Escala sequencial · valores em R$ milhões correntes</span>
-            <span className="mono">fonte: SEPLAG-CE / SIOF · 14 regiões</span>
+            <span>Escala sequencial · valores em R$ correntes</span>
+            <span className="mono">fonte: SEPLAG-CE / SIOF · rel. 544 + ano corrente</span>
           </>
         }
       >
@@ -221,8 +322,12 @@ export default function Investimento() {
               tile={72}
               gap={4}
             />
+            {/* Overlay de cobertura: com a série retroativa do rel. 544 (2016+)
+                ele só acende quando a janela NÃO alcança 2016 — hoje, somente
+                2015 (esquema antigo de 8 macrorregiões) ou painel vazio. */}
             {dados.totalSiof === 0 && (
               <div
+                role="status"
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -257,13 +362,25 @@ export default function Investimento() {
                     lineHeight: 1.4,
                   }}
                 >
-                  SEPLAG-CE só publica SIOF por região a partir de{" "}
-                  <strong>{ANO_SIOF_REGIONAL_INICIO}</strong>. Para anos
-                  anteriores existe apenas o nível por secretaria, sem rateio
-                  pelas 14 regiões.
+                  {dados.inicioPeriodo != null &&
+                  dados.fimPeriodo != null &&
+                  !temCoberturaSiofRegional(dados.inicioPeriodo, dados.fimPeriodo) ? (
+                    <>
+                      <strong>{ANO_SIOF_ESQUEMA_ANTIGO}</strong> usa divisão
+                      regional antiga (8 macrorregiões) — em tratamento (T47).
+                      A série nas 14 regiões cobre{" "}
+                      <strong>{ANO_SIOF_REGIONAL_INICIO}</strong> em diante
+                      (relatório 544 + extração corrente).
+                    </>
+                  ) : (
+                    <>
+                      Nenhum dado regional do SIOF foi carregado para este
+                      período — o painel pode estar sendo regenerado.
+                    </>
+                  )}
                 </div>
                 <button
-                  onClick={() => setFiltros({ periodo: "1A" })}
+                  onClick={() => setFiltros({ periodo: "Tudo" })}
                   style={{
                     marginTop: 4,
                     padding: "8px 16px",
@@ -277,7 +394,7 @@ export default function Investimento() {
                     letterSpacing: 0.4,
                   }}
                 >
-                  Ver {ANO_SIOF_REGIONAL_INICIO} →
+                  Ver série {ANO_SIOF_REGIONAL_INICIO}+ →
                 </button>
                 <div
                   className="mono"
@@ -294,7 +411,7 @@ export default function Investimento() {
               scale="seq"
               min={dados.mapaMin}
               max={dados.mapaMax}
-              label="R$ milhões · SIOF"
+              label="R$ correntes · SIOF empenhado"
               format={fmtCompact}
             />
 
@@ -319,10 +436,15 @@ export default function Investimento() {
               </div>
               <div
                 className="mono"
+                title={
+                  dados.mapaSiof[selecionado] != null
+                    ? fmtBRLFull(dados.mapaSiof[selecionado] as number)
+                    : "sem cobertura da fonte no período"
+                }
                 style={{ fontSize: 22, fontWeight: 600, color: "var(--ink-1)", marginTop: 2 }}
               >
                 {dados.mapaSiof[selecionado] != null
-                  ? fmtBRL((dados.mapaSiof[selecionado] as number) * 1e6)
+                  ? fmtBRL(dados.mapaSiof[selecionado] as number)
                   : "—"}
               </div>
               <div
@@ -366,9 +488,10 @@ export default function Investimento() {
                     </span>
                     <span
                       className="mono"
+                      title={fmtBRLFull(z.valor)}
                       style={{ color: "var(--ink-1)", fontWeight: 600 }}
                     >
-                      {fmtCompact(z.valor * 1e6)}
+                      {fmtCompact(z.valor)}
                     </span>
                   </div>
                 ))}
@@ -433,10 +556,26 @@ export default function Investimento() {
                       {r.codigo}
                     </td>
                     <td style={{ padding: "6px 8px", color: "var(--ink-1)" }}>{r.nome}</td>
-                    <td className="mono" style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-1)" }}>
-                      {r.siof != null ? fmtCompact(r.siof * 1e6) : "—"}
+                    <td
+                      className="mono"
+                      title={
+                        r.siof != null
+                          ? fmtBRLFull(r.siof)
+                          : "sem cobertura da fonte (SIOF regional cobre 2016+)"
+                      }
+                      style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-1)" }}
+                    >
+                      {r.siof != null ? fmtCompact(r.siof) : "—"}
                     </td>
-                    <td className="mono" style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}>
+                    <td
+                      className="mono"
+                      title={
+                        r.acoes != null
+                          ? undefined
+                          : "nº de ações publicado apenas na extração do ano corrente"
+                      }
+                      style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}
+                    >
                       {r.acoes != null ? fmtNum(r.acoes) : "—"}
                     </td>
                     <td style={{ padding: "6px 8px", textAlign: "right" }}>
@@ -624,48 +763,37 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   void fator;
   const snapshot = snapshotPorRegiao(rows);
 
-  // Soma SIOF por região: o painel replica o anual; pegamos por (regiao, ano) agg.
-  const siofPorRegiaoAno = new Map<string, number>();
-  for (const r of rows) {
-    const key = `${r.r}-${r.y}`;
-    if (!siofPorRegiaoAno.has(key) && typeof r.siof_emp === "number") {
-      siofPorRegiaoAno.set(key, r.siof_emp);
-    }
-  }
-  const siofAcum = new Map<string, number>();
-  siofPorRegiaoAno.forEach((v, k) => {
-    const cod = k.split("-")[0];
-    siofAcum.set(cod, (siofAcum.get(cod) ?? 0) + v);
-  });
-  const acoesAcum = new Map<string, number>();
-  for (const r of rows) {
-    if (typeof r.siof_n === "number") {
-      const k = `${r.r}-${r.y}`;
-      // count once per region-year
-      const tag = `__${k}`;
-      // @ts-expect-error attach marker
-      if (!acoesAcum[tag]) {
-        // @ts-expect-error attach marker
-        acoesAcum[tag] = true;
-        acoesAcum.set(r.r, (acoesAcum.get(r.r) ?? 0) + r.siof_n);
-      }
-    }
-  }
-
-  const totalSiof = Array.from(siofAcum.values()).reduce((a, b) => a + b, 0);
+  // SIOF (valores em R$ correntes no painel.json): o painel replica o valor
+  // ANUAL em cada mês, então somarAnualDedup conta cada (região, ano) 1×.
+  const siofAgg = somarAnualDedup(rows, "siof_emp");
+  const siofAcum = siofAgg.porRegiao;
+  const acoesAcum = somarAnualDedup(rows, "siof_n").porRegiao;
+  const totalSiof = siofAgg.total;
 
   const mapaSiof: Record<string, number | null> = {};
-  Array.from(siofAcum.entries()).forEach(([cod, v]) => (mapaSiof[cod] = v));
+  siofAcum.forEach((v, cod) => (mapaSiof[cod] = v));
 
   // série SIOF (soma anual)
-  const siofPorAno = new Map<number, number>();
-  siofPorRegiaoAno.forEach((v, k) => {
-    const ano = Number(k.split("-")[1]);
-    siofPorAno.set(ano, (siofPorAno.get(ano) ?? 0) + v);
-  });
-  const serieSiof = Array.from(siofPorAno.entries())
+  const serieSiof = Array.from(siofAgg.porAno.entries())
     .sort((a, b) => a[0] - b[0])
     .map((x) => x[1]);
+  const anosComSiof = siofAgg.porAno.size;
+
+  // Split obras × equipamentos do SIOF PAGO (relatório 544, 2016–2025).
+  // O ano corrente (2026) publica o pago agregado mas ainda sem o split —
+  // sinalizamos isso na UI quando a janela o inclui.
+  const obrasAgg = somarAnualDedup(rows, "siof_obras");
+  const equipAgg = somarAnualDedup(rows, "siof_equip");
+  const pagoAgg = somarAnualDedup(rows, "siof_pago");
+  const split = {
+    obras: obrasAgg.total,
+    equip: equipAgg.total,
+    total: obrasAgg.total + equipAgg.total,
+    anoMax: obrasAgg.porAno.size
+      ? Math.max(...Array.from(obrasAgg.porAno.keys()))
+      : 0,
+    anosSemSplit: Math.max(0, pagoAgg.porAno.size - obrasAgg.porAno.size),
+  };
 
   // invest_total CE (anual) — soma de uma região (já é estadual replicado)
   const ultimaInvTotal = new Map<number, number>();
@@ -751,11 +879,11 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   let totalInvMun = 0;
   for (const r of rows) {
     if (r.r === "03" && typeof r.if_total === "number") totalIfFedRep += r.if_total;
-    if (typeof r.invest_mun_valor === "number") totalInvMun += r.invest_mun_valor;
+    if (typeof r.inv_mun === "number") totalInvMun += r.inv_mun;
   }
-  const totalEstadual = totalSiof;             // R$ mi (SIOF anual replicado)
+  const totalEstadual = totalSiof / 1e6;       // R$ correntes → R$ mi
   const totalFederal = totalIfFedRep / 1e6;    // R$ correntes → R$ mi
-  const totalMunicipal = totalInvMun;          // R$ mi (SICONFI)
+  const totalMunicipal = totalInvMun / 1e6;    // R$ correntes → R$ mi (SICONFI)
   const totalPrivadoEstimado = Math.max(
     0,
     totalInvTotal - totalEstadual - totalFederal - totalMunicipal,
@@ -790,10 +918,12 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
   ];
 
   // periodo
-  const anos = Array.from(new Set(rows.map((r) => r.y))).sort();
+  const anos = Array.from(new Set(rows.map((r) => r.y))).sort((a, b) => a - b);
   const periodoLabel = anos.length
     ? `${anos[0]}–${anos[anos.length - 1]}`
     : "—";
+  const inicioPeriodo = anos.length ? anos[0] : null;
+  const fimPeriodo = anos.length ? anos[anos.length - 1] : null;
 
   // regiões com dado
   const regioesAtivas = Array.from(siofAcum.values()).filter((v) => v > 0).length;
@@ -847,7 +977,10 @@ function computar(painel: Painel, recorte: "Bruto" | "Per capita" | "% PIB" = "B
     tabela,
     composicao,
     periodoLabel,
-    anosCobertos: anos.length,
+    inicioPeriodo,
+    fimPeriodo,
+    anosComSiof,
+    split,
     regioesAtivas,
     atualizado,
   };

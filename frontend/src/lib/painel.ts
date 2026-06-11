@@ -23,11 +23,15 @@ export type PainelRow = {
   tf_outros?: number | null;
   tf_royalties?: number | null;
   tf_total?: number | null;
-  // SIOF (estadual, anual replicado em meses)
+  // SIOF (estadual, anual replicado em meses) — valores em R$ correntes
   siof_emp?: number | null;
   siof_pago?: number | null;
+  siof_obras?: number | null;  // split do pago: obras (elemento 51), 2016–2025
+  siof_equip?: number | null;  // split do pago: equipamentos (elemento 52), 2016–2025
   siof_dot?: number | null;
   siof_n?: number | null;
+  // invest. municipal (SICONFI, empenhado, R$ correntes)
+  inv_mun?: number | null;
   // invest. federal (Portal Transparência / RREO)
   if_direto?: number | null;
   if_ne?: number | null;
@@ -108,6 +112,38 @@ export function snapshotPorRegiao(rows: PainelRow[]): Map<string, PainelRow> {
     }
   }
   return out;
+}
+
+export type AgregadoAnual = {
+  /** Soma por região (cada par região-ano conta uma vez). */
+  porRegiao: Map<string, number>;
+  /** Soma por ano (todas as regiões). */
+  porAno: Map<number, number>;
+  /** Soma geral. */
+  total: number;
+};
+
+/**
+ * Agrega um campo ANUAL replicado em meses (ex.: siof_emp, siof_obras):
+ * o painel mensal repete o valor anual em cada mês, então cada par
+ * (região, ano) deve contar UMA única vez. Ignora null/NaN.
+ */
+export function somarAnualDedup(rows: PainelRow[], campo: keyof PainelRow): AgregadoAnual {
+  const visto = new Set<string>();
+  const porRegiao = new Map<string, number>();
+  const porAno = new Map<number, number>();
+  let total = 0;
+  for (const r of rows) {
+    const v = r[campo];
+    if (typeof v !== "number" || Number.isNaN(v)) continue;
+    const k = `${r.r}-${r.y}`;
+    if (visto.has(k)) continue;
+    visto.add(k);
+    porRegiao.set(r.r, (porRegiao.get(r.r) ?? 0) + v);
+    porAno.set(r.y, (porAno.get(r.y) ?? 0) + v);
+    total += v;
+  }
+  return { porRegiao, porAno, total };
 }
 
 /** Soma um campo numérico (ignorando null/undefined). */

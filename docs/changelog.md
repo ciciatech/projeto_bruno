@@ -2,6 +2,23 @@
 
 Histórico das principais entregas. Datas em America/Fortaleza (UTC-3).
 
+## 2026-06-11 — T45: SIOF regional coletado e integrado (variável central da tese)
+
+- `pipeline/extract/siof_regiao.py`: relatório 544, 132/132 coletas (2015-2025 ×
+  6 bimestres × elementos 51/52), spike validado 318/318. Mecânica nova: postback
+  explícito da cascata de filtros (o servidor descartava o elemento p/ mês≠12) +
+  validação do rodapé "Critérios" por XLS.
+- Teste de ouro vs planilha do orientador: obras razão mediana 1,000000 (806/806
+  células ±1%); equipamentos 655/656 ±0,01%. Mesma fonte/estágio/deflator.
+- Painéis: mensal 2016×44 (siof 2016-2026 + split), bimestral 1008×80 (fluxos
+  nativos `siof_obras_pago`/`siof_equip_pago`/`siof_invest_pago` em R$ dez/25),
+  xlsx do Paulo com 13 abas (blocos 4-6 completos).
+- Frontend: tela Investimento com dado real 2016+ (overlay restrito a 2015/T47),
+  split obras×equipamentos, lint zerado, Vitest 19→37, fix de unidade ×1e6.
+- Incidente corrigido: teste de pytest sobrescrevia `caged_municipal_ce_mensal.csv`
+  real (monkeypatch vazando via config) — o commit `ecca239` levou a versão
+  corrompida (3 linhas); reconstruído do cache (23.987 linhas) + stub no teste.
+
 ## 2026-06-10 (noite) — Correção pós-validação: continuidade de meses por fonte
 
 - **CAGED 2025-03 recuperado**: a recoleta da tarde perdeu o mês 202503 por

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import * as ss from "simple-statistics";
 import { Panel, EditorialNote } from "../components/Panel";
-import { useFiltros, aplicarPeriodo } from "../components/FilterBar";
+import { useFiltros, aplicarPeriodo } from "../lib/filtros";
 import { fmtNum } from "../lib/format";
 import { carregarPainel, type Painel } from "../lib/painel";
 import { REGIOES_BY_CODIGO } from "../lib/regioes";

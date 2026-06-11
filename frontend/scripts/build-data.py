@@ -56,11 +56,15 @@ COL_RENAME = {
     "transf_fed_outros_dest": "tf_outros",
     "transf_fed_royalties_dest": "tf_royalties",
     "transf_fed_total": "tf_total",
-    # SIOF (estadual)
+    # SIOF (estadual) — R$ correntes; split obras/equip do PAGO (rel. 544, 2016-2025)
     "siof_anual_empenhado": "siof_emp",
     "siof_anual_pago": "siof_pago",
+    "siof_obras_pago_anual": "siof_obras",
+    "siof_equip_pago_anual": "siof_equip",
     "siof_anual_dotacao": "siof_dot",
     "siof_anual_n_acoes": "siof_n",
+    # invest. municipal (SICONFI, empenhado) — usado na composição das esferas
+    "invest_mun_valor": "inv_mun",
     # invest. federal (Portal Transp / RREO)
     "invest_fed_direto_ce": "if_direto",
     "invest_fed_ne_rateado": "if_ne",
