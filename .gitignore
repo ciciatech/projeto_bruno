@@ -43,3 +43,13 @@ htmlcov/
 
 # Cache intermediário do coletor CAGED (regenerável)
 dados_nordeste/processed/caged_municipal/_meses_consolidados/
+
+# Logs de coletas locais (10/06+)
+coleta_*.log
+
+# Backups de correção pontual de dados
+*.bak-*
+
+# ESTBAN: zips brutos do BCB (139MB; regeneráveis via pipeline.extract.estban)
+dados_nordeste/raw/**/*.zip
+dados_nordeste/raw/**/*.ZIP

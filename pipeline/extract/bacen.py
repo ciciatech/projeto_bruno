@@ -46,13 +46,35 @@ class BacenSGS:
         20541: "credito_PJ_brasil",
         # IBC-Br — Índice de Atividade Econômica (proxy mensal do PIB)
         24364: "ibc_br",
+        # ----------------------------------------------------------------------
+        # Séries da letter Matos & Araújo (sufixo _letter para rastreabilidade).
+        # Janela usada na letter: 2011T2–2025T4.
+        # ----------------------------------------------------------------------
+        # Renda disponível das famílias — R$ tri constantes, dessazonalizada
+        29027: "renda_disponivel_familias_letter",
+        # Crescimento do consumo das famílias — dessazonalizado (trimestral)
+        22110: "crescimento_consumo_familias_letter",
+        # Estoque de crédito livre às famílias (PF)
+        20570: "estoque_credito_livre_familias_letter",
+        # Estoque de crédito direcionado às famílias (PF)
+        20606: "estoque_credito_direcionado_familias_letter",
+        # Inadimplência do crédito livre às famílias (%)
+        21112: "inadimplencia_credito_livre_familias_letter",
+        # Inadimplência do crédito direcionado às famílias (%)
+        21145: "inadimplencia_credito_direcionado_familias_letter",
+        # Juros do crédito livre às famílias
+        25462: "juros_credito_livre_familias_letter",
+        # Juros do crédito direcionado às famílias
+        25493: "juros_credito_direcionado_familias_letter",
     }
 
     @staticmethod
     def coletar_serie(
         codigo_serie: int,
         nome: str,
-        data_inicio: str = "01/01/2015",
+        # Início em 2011 para cobrir a janela da letter Matos & Araújo
+        # (2011T2–2025T4); as demais séries só ganham histórico extra.
+        data_inicio: str = "01/01/2011",
         data_fim: str = "31/12/2025",
     ) -> pd.DataFrame:
         """Coleta uma série do SGS/BACEN."""

@@ -87,3 +87,34 @@ def save_dataframe(
     csv_path = target_dir / f"{filename}.csv"
     df.to_csv(csv_path, index=False, encoding="utf-8-sig")
     logger.info(f"Salvo: {csv_path} ({len(df)} registros)")
+
+
+def meses_faltantes_interior(df: pd.DataFrame) -> list[str]:
+    """Meses sem NENHUMA linha entre o primeiro e o último mês presentes.
+
+    Para fontes de publicação mensal contínua (CAGED, STN), um buraco no MEIO
+    da série nunca é ausência real de dado — é falha de download/parse engolida
+    por um WARNING (incidente de 2026-06-10: FTP do MTE devolveu 550 transitório
+    em 202503, o pipeline seguiu e o painel saiu com o mês faltando codificado
+    como sucesso). Bordas (antes do primeiro/depois do último mês publicado)
+    não contam: refletem a cobertura real da fonte.
+
+    Espera colunas ``ano`` e ``mes``; retorna chaves ``'AAAAMM'`` ordenadas,
+    vazia quando a série é contínua.
+    """
+    if df is None or df.empty or not {"ano", "mes"}.issubset(df.columns):
+        return []
+    presentes = {
+        (int(a), int(m))
+        for a, m in df[["ano", "mes"]].drop_duplicates().itertuples(index=False)
+    }
+    (ano_i, mes_i), (ano_f, mes_f) = min(presentes), max(presentes)
+    faltantes = []
+    ano, mes = ano_i, mes_i
+    while (ano, mes) <= (ano_f, mes_f):
+        if (ano, mes) not in presentes:
+            faltantes.append(f"{ano:04d}{mes:02d}")
+        mes += 1
+        if mes == 13:
+            ano, mes = ano + 1, 1
+    return faltantes

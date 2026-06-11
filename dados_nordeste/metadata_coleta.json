@@ -1,15 +1,15 @@
 {
-  "data_execucao": "2026-05-01T03:57:29.838164",
-  "duracao_segundos": 23107.557542,
+  "data_execucao": "2026-06-10T20:30:49.942419",
+  "duracao_segundos": 45.680674,
   "escopo": "CE",
   "periodo": "2015-2025",
   "estados": [
     "CE"
   ],
   "modulos_executados": [
-    "invest_municipal"
+    "caged_municipal"
   ],
   "resumo": {
-    "invest_municipal": 19896
+    "caged_municipal": 23987
   }
 }

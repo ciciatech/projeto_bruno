@@ -41,7 +41,7 @@ from pipeline.config import (
 )
 from pipeline.extract.caged_rais import CagedRais
 from pipeline.regioes_ce import get_regiao_info
-from pipeline.utils import save_dataframe
+from pipeline.utils import meses_faltantes_interior, save_dataframe
 
 logger = logging.getLogger(__name__)
 
@@ -182,6 +182,14 @@ def coletar_ce(
         f"{consolidado['cod_ibge'].nunique()} municípios, "
         f"{consolidado.groupby(['ano','mes']).ngroups} meses."
     )
+    faltantes = meses_faltantes_interior(consolidado)
+    if faltantes:
+        logger.error(
+            f"CAGED municipal CE: série DESCONTÍNUA — {len(faltantes)} mês(es) "
+            f"sem dado no interior do período: {faltantes}. Falha de download "
+            f"engolida upstream (o CAGED publica todo mês); re-rode a coleta "
+            f"para preencher antes de regenerar o painel."
+        )
     return consolidado
 
 

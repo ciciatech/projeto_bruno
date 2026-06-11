@@ -41,7 +41,7 @@ from pipeline.config import (
 )
 from pipeline.extract._portal_transp_csv import _info_municipios_ce_indexado
 from pipeline.regioes_ce import _normalizar_nome
-from pipeline.utils import save_dataframe, safe_request
+from pipeline.utils import meses_faltantes_interior, save_dataframe, safe_request
 
 logger = logging.getLogger(__name__)
 
@@ -114,6 +114,22 @@ def _baixar_resource(resource: dict, destino: Path) -> Path | None:
     return destino
 
 
+# Meses cujo CONTEÚDO nunca foi publicado no CKAN/STN (auditoria de jun/2026):
+# em 2020 e 2022-2025 a fonte publica, de ~set a ~nov, o arquivo nomeado AAAAMM
+# com conteúdo (colunas ANO/Mês) de AAAAMM-1 e re-sincroniza em dezembro — o
+# mês "pulado" não existe em arquivo nenhum. Evidência de que o rótulo de
+# conteúdo é o correto (e não o nome do arquivo): o adicional de 1% do FPM de
+# setembro (EC 84/2014) aparece no mês rotulado setembro, e o pico de dezembro
+# (adicional LC 115) no rotulado dezembro. Bimestres que contêm esses meses são
+# anulados no painel bimestral (ver pipeline/transform/painel_bimestral.py).
+MESES_SEM_PUBLICACAO_UPSTREAM: list[tuple[int, int]] = [
+    (2020, 11),
+    (2022, 10),
+    (2023, 11),
+    (2024, 11),
+    (2025, 11),
+]
+
 # Mapeamento "Transferência" (destino — o que o município recebe) → coluna canônica
 _MAPA_DESTINO = {
     "FPM": "fpm_dest",
@@ -122,12 +138,87 @@ _MAPA_DESTINO = {
     "ROYALTIES": "royalties_dest",
 }
 
+# Inferência do destino quando o arquivo vem SEM a coluna "Transferência"
+# (caso conhecido: transferenciamensalmunicipios201805.csv — header e valores
+# da última coluna vazios). O destino é função determinística do "Item
+# transferência", exceto FPM e ITR, que dependem da ordem de ocorrência dentro
+# do município (1ª linha = destino próprio, 2ª = retenção FUNDEB; municípios
+# com linha única de ITR só têm a retenção FUNDEB). Regra validada contra os
+# arquivos bem formados de 2018-2021 (201804, 201806, 202010, 202109): zero
+# linhas divergentes. Universo de itens RESTRITO ao layout 2018-2021 — item
+# fora do mapa aborta o parse (ValueError) em vez de aproximar silenciosamente
+# (itens pós-2021 como "COUN VAAF" mudaram a decomposição).
+_ITENS_DESTINO_FUNDEB = {
+    "COUN", "DEDU", "FPE", "ICMS", "IPI-EXP", "IPVA", "ITCMD", "LC 87",
+}
+_ITENS_DESTINO_ROYALTIES = {"ANP", "CFH", "CFM", "FEP", "ITA", "PEA"}
+_ITENS_DESTINO_OUTROS = {
+    "ICMS/LC 87/96 - LEI KANDIR", "IOF OURO", "CIDE/COMBUSTÍVEL",
+}
+_ITENS_POR_OCORRENCIA = {"FPM", "ITR"}  # 1ª ocorrência = próprio, 2ª = FUNDEB
+
+
+def _inferir_destino_sem_coluna(df: pd.DataFrame, origem: str) -> pd.Series:
+    """Reconstrói a coluna ``destino`` a partir de ``item`` + ordem de ocorrência.
+
+    Levanta ``ValueError`` se aparecer item fora do universo validado — melhor
+    falhar alto (mês fica de fora e o guard de continuidade acusa) do que
+    aproximar a decomposição silenciosamente.
+    """
+    item = df["item"].astype(str).str.strip().str.upper()
+    desconhecidos = sorted(
+        set(item)
+        - _ITENS_DESTINO_FUNDEB
+        - _ITENS_DESTINO_ROYALTIES
+        - _ITENS_DESTINO_OUTROS
+        - _ITENS_POR_OCORRENCIA
+    )
+    if desconhecidos:
+        raise ValueError(
+            f"{origem}: arquivo sem coluna destino com itens fora do universo "
+            f"validado (2018-2021): {desconhecidos}. Não inferir — revisar layout."
+        )
+    occ = item.groupby([df["municipio"], df["uf"], item]).cumcount()
+    destino = pd.Series("OUTROS", index=df.index)
+    destino[item.isin(_ITENS_DESTINO_FUNDEB)] = "FUNDEB"
+    destino[item.isin(_ITENS_DESTINO_ROYALTIES)] = "ROYALTIES"
+    n_itr = (
+        (item == "ITR").groupby([df["municipio"], df["uf"]]).transform("sum")
+    )
+    destino[(item == "FPM") & (occ == 0)] = "FPM"
+    destino[(item == "FPM") & (occ > 0)] = "FUNDEB"
+    # ITR: com 2 linhas, a 1ª é o destino próprio; com linha única é só a
+    # retenção FUNDEB (todos os municípios têm a linha FUNDEB; nem todos a ITR)
+    destino[(item == "ITR") & (n_itr >= 2) & (occ == 0)] = "ITR"
+    destino[(item == "ITR") & ((n_itr < 2) | (occ > 0))] = "FUNDEB"
+    return destino
+
 
 def _mapear_destino(dest: str) -> str:
     if not isinstance(dest, str):
         return "outros_dest"
     s = dest.strip().upper()
     return _MAPA_DESTINO.get(s, "outros_dest")
+
+
+def _detectar_centavos(df: pd.DataFrame) -> bool:
+    """
+    Detecta arquivos publicados com valores inteiros em centavos.
+
+    Alguns CSVs do CKAN/STN (ex.: dados de set/2024) trazem os decêndios como
+    inteiros em centavos ("70201795" = R$ 702.017,95) em vez de decimais.
+    Heurística a nível de arquivo: se <1% dos valores brutos não vazios de
+    dec1/dec2/dec3 contém separador decimal ('.' ou ','), é centavos.
+    """
+    cols = [c for c in ("dec1", "dec2", "dec3") if c in df.columns]
+    if not cols:
+        return False
+    vals = pd.concat([df[c] for c in cols], ignore_index=True).dropna()
+    vals = vals.astype(str).str.strip()
+    vals = vals[vals != ""]
+    if vals.empty:
+        return False
+    return bool(vals.str.contains(r"[.,]", regex=True).mean() < 0.01)
 
 
 def _processar_csv_ce(path: Path) -> pd.DataFrame:
@@ -158,10 +249,25 @@ def _processar_csv_ce(path: Path) -> pd.DataFrame:
             rename[c] = "item"
     df = df.rename(columns=rename)
 
-    obrig = ["municipio", "uf", "ano", "mes", "destino"]
+    obrig = ["municipio", "uf", "ano", "mes"]
     falt = [c for c in obrig if c not in df.columns]
     if falt:
         raise ValueError(f"Colunas ausentes em {path.name}: {falt}. Colunas: {list(df.columns)}")
+
+    if "destino" not in df.columns or df["destino"].isna().all():
+        if "item" not in df.columns:
+            raise ValueError(
+                f"Colunas ausentes em {path.name}: ['destino'] (e sem 'item' "
+                f"para inferir). Colunas: {list(df.columns)}"
+            )
+        logger.warning(
+            f"  {path.name}: sem coluna 'Transferência' (destino) — "
+            f"reconstruindo por item + ordem de ocorrência (regra validada "
+            f"nos arquivos bem formados de 2018-2021)"
+        )
+        df["destino"] = _inferir_destino_sem_coluna(df, path.name)
+
+    em_centavos = _detectar_centavos(df)
 
     ce = df[df["uf"].astype(str).str.strip().str.upper() == "CE"].copy()
     if ce.empty:
@@ -178,6 +284,12 @@ def _processar_csv_ce(path: Path) -> pd.DataFrame:
         else:
             ce[col] = 0
     ce["valor"] = ce["dec1"] + ce["dec2"] + ce["dec3"]
+    if em_centavos:
+        logger.warning(
+            f"  {path.name}: valores inteiros em centavos detectados "
+            f"(<1% com separador decimal) — dividindo por 100"
+        )
+        ce["valor"] = ce["valor"] / 100
     ce["dest_canon"] = ce["destino"].apply(_mapear_destino)
 
     return ce.groupby(
@@ -275,6 +387,24 @@ def coletar_ce(
         f"STN consolidado: {len(out)} linhas, {out['cod_ibge'].nunique()} municípios CE, "
         f"{out.groupby(['ano','mes']).ngroups} meses, total R$ {out['total'].sum():,.2f}"
     )
+    documentados = {f"{a:04d}{m:02d}" for a, m in MESES_SEM_PUBLICACAO_UPSTREAM}
+    faltantes = set(meses_faltantes_interior(out))
+    conhecidos = sorted(faltantes & documentados)
+    novos = sorted(faltantes - documentados)
+    if conhecidos:
+        logger.warning(
+            f"STN: {len(conhecidos)} mês(es) sem publicação upstream "
+            f"(documentado em MESES_SEM_PUBLICACAO_UPSTREAM): {conhecidos} — "
+            f"bimestres correspondentes são anulados no painel bimestral."
+        )
+    if novos:
+        logger.error(
+            f"STN: série DESCONTÍNUA — {len(novos)} mês(es) sem dado no "
+            f"interior do período e FORA da lista documentada: {novos}. "
+            f"Download/parse falhou e foi engolido; re-rode a coleta (ou, se a "
+            f"fonte não publicou o conteúdo, documente em "
+            f"MESES_SEM_PUBLICACAO_UPSTREAM) antes de gerar o painel."
+        )
     return out
 
 

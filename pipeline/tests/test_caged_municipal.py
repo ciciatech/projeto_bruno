@@ -119,3 +119,65 @@ def test_mes_vazio_nao_e_cacheado(tmp_path, monkeypatch):
 
     cache_dir = tmp_path / "caged_municipal" / "_meses_consolidados"
     assert list(cache_dir.glob("*.csv")) == []
+
+
+# ---------------------------------------------------------------------------
+# Continuidade da série (regressão do incidente de 2026-06-10: 202503 perdido
+# por 550 transitório do FTP e painel publicado com o buraco como sucesso)
+# ---------------------------------------------------------------------------
+
+
+def test_meses_faltantes_interior_detecta_buraco():
+    from pipeline.utils import meses_faltantes_interior
+
+    df = pd.DataFrame(
+        {"ano": [2025, 2025, 2025], "mes": [2, 4, 5], "x": [1, 1, 1]}
+    )
+    assert meses_faltantes_interior(df) == ["202503"]
+
+
+def test_meses_faltantes_interior_serie_continua_e_bordas():
+    from pipeline.utils import meses_faltantes_interior
+
+    # contínua (inclusive virada de ano) → nada; bordas fora do range não contam
+    df = pd.DataFrame({"ano": [2024, 2024, 2025], "mes": [11, 12, 1]})
+    assert meses_faltantes_interior(df) == []
+    # degeneradas
+    assert meses_faltantes_interior(pd.DataFrame()) == []
+    assert meses_faltantes_interior(None) == []
+
+
+def test_coletar_ce_loga_error_quando_ha_buraco_interior(
+    tmp_path, monkeypatch, caplog: pytest.LogCaptureFixture
+):
+    """Cache com jan e mar (fev perdido) + downloads indisponíveis: o coletor
+    deve consolidar os 2 meses MAS gritar ERROR com o mês faltante — o
+    incidente de 2026-06-10 passou porque a falha era só um WARNING de
+    download no meio de centenas de linhas de log."""
+    from pipeline.extract import caged_municipal
+
+    cache_dir = tmp_path / "caged_municipal" / "_meses_consolidados"
+    cache_dir.mkdir(parents=True)
+    linha = (
+        "cod_ibge,regiao_codigo,regiao_nome,ano,mes,admissoes,desligamentos,"
+        "saldo,total_movimentacoes,salario_medio\n"
+        "2304400,03,Grande Fortaleza,2015,{mes},10,5,5,15,1500.0\n"
+    )
+    (cache_dir / "201501.csv").write_text(linha.format(mes=1))
+    (cache_dir / "201503.csv").write_text(linha.format(mes=3))
+
+    monkeypatch.setattr(caged_municipal, "PROCESSED_DIR", tmp_path)
+    monkeypatch.setattr(
+        caged_municipal.CagedRais,
+        "_processar_caged_antigo_mes",
+        staticmethod(lambda ano, mes: pd.DataFrame()),
+    )
+
+    with caplog.at_level(logging.ERROR, logger="pipeline.extract.caged_municipal"):
+        out = caged_municipal.coletar_ce(ano_inicio=2015, ano_fim=2015)
+
+    assert sorted(out["mes"].unique()) == [1, 3]
+    erros = [r for r in caplog.records if r.levelno == logging.ERROR]
+    assert erros, "buraco interior na série tem de virar ERROR, não passar batido"
+    msg = " ".join(r.getMessage() for r in erros)
+    assert "201502" in msg and "DESCONTÍNUA" in msg

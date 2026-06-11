@@ -15,7 +15,7 @@ from pipeline.config import PERIODO_FIM_MENSAL, PERIODO_INICIO_MENSAL
 from pipeline.regioes_ce import REGIOES_CE
 from pipeline.transform.deflator import IPCA_CACHE_CSV
 from pipeline.transform.painel_bimestral import (
-    LIMIAR_OUTLIER_MENSAL,
+    LACUNAS_UPSTREAM_POR_FONTE,
     PAINEL_MENSAL_CSV,
     VARIAVEIS_XLSX,
     aplicar_gate_outliers,
@@ -83,17 +83,28 @@ def test_consistencia_soma_anual_mensal_vs_bimestral(painel_mensal, painel_bim, 
     assert np.allclose(ok["mensal"], ok["bimestral"], rtol=1e-9)
 
 
-def test_soma_nao_zera_regioes_sem_caged(painel_bim):
-    """Regiões 100% sem CAGED na fonte ficam NaN no bimestral (não 0)."""
-    cariri = painel_bim[painel_bim["regiao_nome"] == "Cariri"]
-    assert cariri["saldo"].isna().all()
+def test_caged_cobre_todas_as_regioes(painel_bim):
+    """Recoleta de jun/2026 (bug do DV corrigido): CAGED cobre as 14 regiões.
+
+    Substitui o teste que assumia Cariri 100% NaN — aquilo codificava o bug de
+    cobertura (18/184 municípios) da coleta antiga.
+    """
+    com_saldo = painel_bim.loc[painel_bim["saldo"].notna(), "regiao_nome"]
+    assert com_saldo.nunique() == 14
+
+
+def test_soma_nao_zera_ausencia_estrutural(painel_bim):
+    """Ausência estrutural fica NaN no bimestral (não 0): BPC só existe a
+    partir de 2019 na fonte — bimestres anteriores não podem virar 0."""
+    pre_2019 = painel_bim[painel_bim["ano"] < 2019]
+    assert pre_2019["bpc_valor_total"].isna().all()
 
 
 def test_colunas_real_existem_e_batem_com_deflator_manual(painel_bim):
     """*_real = nominal × deflator; spot-check com deflator calculado à mão do cache IPCA."""
     regras = carregar_matriz_regras()
     monetarias = regras.loc[regras["deflacionamento"] == "ipca", "variavel"].tolist()
-    assert len(monetarias) == 20
+    assert len(monetarias) == 27  # 20 originais + 7 colunas de crédito BNB (ESTBAN)
     for col in monetarias:
         assert f"{col}_real" in painel_bim.columns, f"falta {col}_real"
 
@@ -161,64 +172,60 @@ def test_ultimo_mes_para_anuais_replicados(painel_mensal, painel_bim):
     assert bim_gf_26b1 == pytest.approx(mensal_gf_26)  # último, NÃO 2× o valor
 
 
-def test_gate_detecta_apenas_set2024(painel_mensal):
-    """No painel real, o gate flagra exatamente set/2024 (transf_fed_*, erro ~100x).
+def test_gate_nao_flagra_nenhum_mes_no_painel_corrigido(painel_mensal):
+    """Com set/2024 das transf_fed_* corrigido na coleta (fonte publicava
+    CENTAVOS; ÷100 aplicado em jun/2026), o painel real não tem mais nenhum
+    mês-outlier: a auditoria deve sair VAZIA.
 
-    Qualquer outro mês flagrado = falso positivo (regressão de calibração);
-    set/2024 não flagrado = o outlier de R$ 136,9 bi volta ao entregável.
+    Qualquer mês flagrado aqui = falso positivo (regressão de calibração) OU
+    novo erro de unidade upstream — investigar antes de relaxar o teste.
+    A mecânica do gate continua coberta por dados sintéticos em
+    ``test_gate_sintetico_erro_de_unidade``.
     """
     regras = carregar_matriz_regras()
     auditoria = detectar_meses_outlier(painel_mensal, regras)
-    assert not auditoria.empty
-    assert set(zip(auditoria["ano"], auditoria["mes"])) == {(2024, 9)}
-    assert set(auditoria["fonte"]) == {"transferencias_municipais_stn"}
-    assert "transf_fed_total" in set(auditoria["variavel"])
-    assert (auditoria["razao"] > LIMIAR_OUTLIER_MENSAL).all()
+    assert auditoria.empty, (
+        f"gate flagrou meses no painel corrigido:\n{auditoria}"
+    )
 
 
-def test_gate_anula_familia_da_fonte_no_mensal(painel_mensal):
-    """set/2024 vira NaN em TODAS as transf_fed_* (inclusive as séries miúdas);
-    meses vizinhos e outras fontes ficam intactos."""
+def test_gate_nao_altera_painel_limpo(painel_mensal):
+    """Sem outliers, aplicar_gate_outliers devolve os dados intactos (e não
+    modifica o painel original in place)."""
     regras = carregar_matriz_regras()
     limpo, auditoria = aplicar_gate_outliers(painel_mensal, regras)
-    assert not auditoria.empty
+    assert auditoria.empty
 
     set24 = limpo[(limpo["ano"] == 2024) & (limpo["mes"] == 9)]
-    for col in [
-        "transf_fed_fpm_dest",
-        "transf_fed_fundeb_dest",
-        "transf_fed_itr_dest",
-        "transf_fed_outros_dest",
-        "transf_fed_royalties_dest",
-        "transf_fed_total",
-    ]:
-        assert set24[col].isna().all(), f"{col} deveria estar anulada em set/2024"
-
-    out24 = limpo[(limpo["ano"] == 2024) & (limpo["mes"] == 10)]
-    assert out24["transf_fed_total"].notna().any()
-
     orig_set24 = painel_mensal[
         (painel_mensal["ano"] == 2024) & (painel_mensal["mes"] == 9)
     ]
+    # set/2024 corrigido permanece válido (era anulado quando vinha em centavos)
+    assert set24["transf_fed_total"].notna().all()
+    assert set24["transf_fed_total"].equals(orig_set24["transf_fed_total"])
     assert set24["bf_valor_total"].equals(orig_set24["bf_valor_total"])
-    # e o painel original não foi modificado in place
-    assert orig_set24["transf_fed_total"].notna().any()
 
 
-def test_bimestre_24b5_anulado_no_painel(painel_bim):
-    """O bimestre que contém o mês-outlier fica NaN (nominal e real) em todas
-    as regiões — somar só outubro viraria meio-bimestre disfarçado."""
+def test_bimestre_24b5_valido_no_painel(painel_bim):
+    """24b5 (set-out/2024) volta a ser válido após a correção do set/2024:
+    não pode mais ser anulado pelo gate, e deve ficar na ordem de grandeza
+    dos bimestres vizinhos (sem resíduo do erro de 100x).
+
+    24b6 NÃO serve de vizinho: nov/2024 não foi publicado pela fonte e o
+    bimestre é anulado (LACUNAS_UPSTREAM_POR_FONTE) — usamos 24b4 e 25b1.
+    """
     b5 = painel_bim[(painel_bim["ano"] == 2024) & (painel_bim["bimestre"] == 5)]
     assert len(b5) == 14
-    assert b5["transf_fed_total"].isna().all()
-    assert b5["transf_fed_total_real"].isna().all()
-    assert b5["transf_fed_fpm_dest"].isna().all()
-    # vizinhos preservados
+    assert b5["transf_fed_total"].notna().all()
+    assert b5["transf_fed_total_real"].notna().all()
+    assert b5["transf_fed_fpm_dest"].notna().all()
+    # ordem de grandeza coerente com os vizinhos (erro de centavos era ~100x)
     b4 = painel_bim[(painel_bim["ano"] == 2024) & (painel_bim["bimestre"] == 4)]
-    b6 = painel_bim[(painel_bim["ano"] == 2024) & (painel_bim["bimestre"] == 6)]
-    assert b4["transf_fed_total"].notna().all()
-    assert b6["transf_fed_total"].notna().all()
-    # outras fontes intactas no próprio 24b5
+    b1_25 = painel_bim[(painel_bim["ano"] == 2025) & (painel_bim["bimestre"] == 1)]
+    razao_b4 = b5["transf_fed_total"].sum() / b4["transf_fed_total"].sum()
+    razao_25b1 = b5["transf_fed_total"].sum() / b1_25["transf_fed_total"].sum()
+    assert 0.2 < razao_b4 < 5
+    assert 0.2 < razao_25b1 < 5
     assert b5["bf_valor_total"].notna().all()
 
 
@@ -252,20 +259,26 @@ def test_gate_sintetico_erro_de_unidade():
     assert limpo.loc[limpo["mes"] != 9, "bf_valor_total"].notna().all()
 
 
-def test_xlsx_24b5_vazio_mas_visivel(tmp_path, painel_bim):
-    """Na aba transf_fed_total o período 24b5 aparece (não some) e está vazio."""
+def test_xlsx_24b5_preenchido(tmp_path, painel_bim):
+    """Na aba transf_fed_total o período 24b5 aparece E está preenchido —
+    set/2024 foi corrigido na coleta (fonte publicava centavos; ÷100), então
+    o gate não anula mais o bimestre. Já 24b6 fica VISÍVEL e VAZIO: nov/2024
+    nunca foi publicado pela fonte (lacuna upstream documentada) e somar só
+    dezembro seria meio-bimestre disfarçado de valor válido."""
     pytest.importorskip("openpyxl")
     out = exportar_xlsx_paulo(painel_bim, path=tmp_path / "painel_gate.xlsx")
     tf = pd.read_excel(out, sheet_name="transf_fed_total", index_col=0)
-    assert "24b5" in tf.index, "linha 24b5 não pode sumir silenciosamente da aba"
-    assert tf.loc["24b5"].isna().all()
+    assert "24b5" in tf.index
+    assert tf.loc["24b5"].notna().all(), "24b5 corrigido não pode voltar a ser anulado"
     assert tf.loc["24b4"].notna().all()
-    assert tf.loc["24b6"].notna().all()
+    assert "24b6" in tf.index, "lacuna interior não pode sumir do entregável"
+    assert tf.loc["24b6"].isna().all(), "24b6 (nov/2024 não publicado) deve ficar vazio"
 
 
 def test_leia_me_documenta_ressalvas(tmp_path, painel_bim):
-    """Leia-me declara estágio EMPENHADO do invest_mun_valor, cobertura parcial
-    do CAGED (18/184) e o gate de outliers (24b5 anulado)."""
+    """Leia-me declara estágio EMPENHADO do invest_mun_valor, cobertura plena
+    do CAGED recoletado (184/184), o gate de outliers (caso histórico 24b5
+    corrigido) e a convenção do crédito BNB (município da agência)."""
     openpyxl = pytest.importorskip("openpyxl")
     out = exportar_xlsx_paulo(painel_bim, path=tmp_path / "painel_leiame.xlsx")
     wb = openpyxl.load_workbook(out, read_only=True)
@@ -278,9 +291,10 @@ def test_leia_me_documenta_ressalvas(tmp_path, painel_bim):
     )
     wb.close()
     assert "EMPENHADAS" in texto  # estágio da despesa (finding empenhado vs pago)
-    assert "18 dos" in texto and "184" in texto  # cobertura parcial CAGED
-    assert "24b5" in texto  # gate de outliers documentado
-    assert "Estoque de empregos" in texto  # não comparável ao gabarito
+    assert "184 dos 184" in texto  # CAGED recoletado: cobertura plena
+    assert "24b5" in texto  # gate de outliers documentado (caso histórico)
+    assert "Estoque de empregos" in texto  # saldo = fluxo, não comparável
+    assert "AGÊNCIA" in texto  # crédito BNB no município da agência
 
 
 def test_exportar_xlsx_paulo(tmp_path, painel_bim):
@@ -318,3 +332,130 @@ def test_exportar_xlsx_paulo(tmp_path, painel_bim):
     siof = pd.read_excel(out, sheet_name="siof_anual_pago", index_col=0)
     assert len(siof) > 0
     assert all(str(p).startswith("26b") for p in siof.index)
+
+
+# ---------------------------------------------------------------------------
+# Continuidade de meses por fonte (regressão do incidente CAGED 2025-03)
+# ---------------------------------------------------------------------------
+
+#: Lacunas interiores ACEITAS por fonte — toda exceção aqui precisa estar
+#: documentada na matriz de regras (coluna observacao). Qualquer buraco fora
+#: desta lista é falha de coleta engolida (caso CAGED 2025-03: FTP devolveu
+#: 550 transitório, o WARNING passou e o painel saiu sem o mês — distorcendo
+#: o bimestre 25b2 em ~metade sem nenhum aviso).
+LACUNAS_DOCUMENTADAS = {
+    # SIDRA 6579 não publicou estimativas municipais para 2022-2023 (Censo).
+    "populacao_ibge_sidra_6579": {(2022, m) for m in range(1, 13)}
+    | {(2023, m) for m in range(1, 13)},
+    # STN: conteúdo dos meses nunca publicado no CKAN (arquivo AAAAMM traz
+    # conteúdo AAAAMM-1 de ~set a ~nov e re-sincroniza em dez).
+    "transferencias_municipais_stn": {
+        (a, m) for a, m in LACUNAS_UPSTREAM_POR_FONTE["transferencias_municipais_stn"]
+    },
+}
+
+
+def _meses_interiores_faltantes(meses_presentes: set[tuple[int, int]]):
+    """(ano, mes) ausentes entre o primeiro e o último mês presentes."""
+    (ano_i, mes_i), (ano_f, mes_f) = min(meses_presentes), max(meses_presentes)
+    faltantes = []
+    ano, mes = ano_i, mes_i
+    while (ano, mes) <= (ano_f, mes_f):
+        if (ano, mes) not in meses_presentes:
+            faltantes.append((ano, mes))
+        mes += 1
+        if mes == 13:
+            ano, mes = ano + 1, 1
+    return faltantes
+
+
+def test_continuidade_mensal_por_fonte(painel_mensal):
+    """Para cada fonte da matriz, os meses com dado no painel mensal formam
+    uma série CONTÍNUA (sem buraco interior), exceto as lacunas documentadas.
+
+    Bordas não contam (cobertura real da fonte: BPC desde 2019, SIOF só 2026,
+    CAGED até o último mês publicado). Um buraco interior novo = coleta que
+    falhou silenciosamente → este teste fica vermelho em vez de o painel sair
+    com meio-bimestre disfarçado de valor válido.
+    """
+    regras = carregar_matriz_regras()
+    problemas = {}
+    for fonte, grupo in regras.groupby("fonte"):
+        cols = [v for v in grupo["variavel"] if v in painel_mensal.columns]
+        com_dado = painel_mensal[painel_mensal[cols].notna().any(axis=1)]
+        if com_dado.empty:
+            continue
+        presentes = {
+            (int(a), int(m))
+            for a, m in com_dado[["ano", "mes"]].drop_duplicates().itertuples(index=False)
+        }
+        faltantes = set(_meses_interiores_faltantes(presentes))
+        nao_documentados = faltantes - LACUNAS_DOCUMENTADAS.get(fonte, set())
+        if nao_documentados:
+            problemas[fonte] = sorted(nao_documentados)
+    assert not problemas, (
+        "Buraco de mês NÃO documentado no interior da série (falha de coleta "
+        f"engolida — caso CAGED 2025-03): {problemas}"
+    )
+
+
+def test_caged_2025_03_presente(painel_mensal):
+    """Regressão do incidente de 2026-06-10: 2025-03 tem CAGED nas 14 regiões
+    (a primeira recoleta perdeu o mês por 550 transitório do FTP e o bimestre
+    25b2 saiu com fluxos pela metade)."""
+    m = painel_mensal[(painel_mensal["ano"] == 2025) & (painel_mensal["mes"] == 3)]
+    assert len(m) == 14
+    for col in ["admissoes", "desligamentos", "saldo", "total_movimentacoes"]:
+        assert m[col].notna().all(), f"2025-03 sem {col} — mês perdido de novo"
+
+
+def test_bimestre_25b2_ordem_de_grandeza(painel_bim):
+    """25b2 (mar-abr/2025) com os 2 meses: fluxos na ordem dos vizinhos.
+
+    Com o mês 2025-03 perdido, as admissões estaduais de 25b2 caíam para
+    ~56 mil contra 112-121 mil dos vizinhos (erro de ~2x — invisível para o
+    gate de outliers, calibrado para erros de unidade ~100x)."""
+    adm = painel_bim.groupby(["ano", "bimestre"])["admissoes"].sum()
+    razao_b1 = adm.loc[(2025, 2)] / adm.loc[(2025, 1)]
+    razao_b3 = adm.loc[(2025, 2)] / adm.loc[(2025, 3)]
+    assert 0.7 < razao_b1 < 1.4
+    assert 0.7 < razao_b3 < 1.4
+
+
+def test_bimestres_lacuna_upstream_anulados(painel_bim):
+    """Bimestres com mês não publicado pela STN ficam NaN em TODA a família
+    transf_fed_* (meio-bimestre não pode passar por valor válido); as demais
+    fontes do mesmo bimestre ficam intactas."""
+    regras = carregar_matriz_regras()
+    vars_stn = [
+        v
+        for v in regras.loc[
+            regras["fonte"] == "transferencias_municipais_stn", "variavel"
+        ]
+        if v in painel_bim.columns
+    ]
+    assert vars_stn
+    for ano, mes in LACUNAS_UPSTREAM_POR_FONTE["transferencias_municipais_stn"]:
+        bimestre = (mes + 1) // 2
+        sub = painel_bim[
+            (painel_bim["ano"] == ano) & (painel_bim["bimestre"] == bimestre)
+        ]
+        assert len(sub) == 14
+        for v in vars_stn:
+            assert sub[v].isna().all(), f"{ano}b{bimestre} {v} deveria ser NaN"
+        assert sub["bf_valor_total"].notna().all(), "outras fontes não podem ser afetadas"
+
+
+def test_meses_stn_backfillados_presentes(painel_mensal):
+    """2018-05 (reconstruído por inferência item+ordem: arquivo sem coluna
+    destino) e 2021-08 (arquivo corrigido pela fonte) entram no painel."""
+    for ano, mes in [(2018, 5), (2021, 8)]:
+        m = painel_mensal[(painel_mensal["ano"] == ano) & (painel_mensal["mes"] == mes)]
+        assert m["transf_fed_total"].notna().any(), f"{ano}-{mes:02d} sem transf_fed"
+        # ordem de grandeza estadual coerente (sem erro de unidade da inferência)
+        total = m["transf_fed_total"].sum()
+        vizinhos = painel_mensal[
+            (painel_mensal["ano"] == ano)
+            & (painel_mensal["mes"].isin([mes - 1, mes + 1]))
+        ]["transf_fed_total"].sum() / 2
+        assert 0.2 < total / vizinhos < 5
