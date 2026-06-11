@@ -13,7 +13,7 @@ type Fonte = {
 const FONTES_BASE: Fonte[] = [
   { fonte: "BACEN SGS · IBCR-CE + séries da letter",  cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "IBCR-CE (SGS 25380) ✓ · +8 séries da letter ✓ (T31) · 21 séries, 3.528 reg." },
   { fonte: "STN · Transferências constitucionais",    cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "FPM/FUNDEB/ITR/royalties · set/2024 corrigido ✓ (T32) · 184/184 munic." },
-  { fonte: "SIOF-CE · Obras e instalações",           cobertura:   8, cadencia: "Anual",     status: "bad",  delta: "regional disponível só p/ 2026 · bloqueio institucional SEPLAG (SCI-01)" },
+  { fonte: "SIOF-CE · Obras e instalações",           cobertura:  40, cadencia: "Anual",     status: "warn", delta: "SCI-01 DESTRAVADO 10/06 ✓ — rel. 544 tem Região × Pago 2012-2026; coletor em construção (T45)" },
   { fonte: "IpeaData FBCF · proxy invest. total",     cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "× share PIB CE/BR · extrapolação 2025/26 pendente" },
   { fonte: "Bolsa Família · Portal Transp.",          cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "2015+ · Onda 2 ✓ (4min33s)" },
   { fonte: "BPC · Portal Transp.",                    cobertura: 100, cadencia: "Mensal",    status: "ok",   delta: "2019+ (limite Portal Transp.) · Onda 2 ✓" },

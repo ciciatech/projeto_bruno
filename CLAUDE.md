@@ -178,6 +178,9 @@ Confirmado em 3 transcrições de áudio (consolidadas em
 
 ## Decisões pendentes (bloqueiam tasks)
 
+- **SCI-01 destravado (10/06)**: o SIOF tem regional 2012-2026 via relatório 544
+  ("Região", família "Outros") — ver `docs/decisao-sci01-siof-regional.md` e T45-T47.
+  A nota antiga "regional só 2026" era artefato do coletor.
 - **4 confirmações com o Prof. Paulo** (planilha bimestral jun/2026, ver
   `docs/estudo-viabilidade-painel-bimestral.md`): cota-parte ICMS como proxy de
   "ICMS recolhido"; shares federais 15,4% regional (vs 14,5% NE de abr/2026);
