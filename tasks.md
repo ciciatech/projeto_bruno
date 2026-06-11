@@ -72,6 +72,7 @@ fonte de verdade do roadmap.
 - [ ] (P2) [BE] T41 Risco de dupla contagem em transferencias_municipais: chaves (ano, None) anuais e (ano, mes) mensais coexistem (ex.: 2016) — auditar o merge e deduplicar
 - [ ] (P3) [BE] T42 (cosmético) Renomear prefixo duplo `bnb_bnb_*` das colunas ESTBAN no painel (builder prefixa colunas já prefixadas) — tocar extractor/builder/matriz/testes num passo só
 - [ ] (P3) [BE] T43 Adicionar aba de crédito BNB (verbete 160) ao xlsx do Paulo (`VARIAVEIS_XLSX` em `painel_bimestral.py`) — trivial; aguarda resposta da pergunta 5 (BNB vs todos os bancos)
+- [ ] (P1) [INFRA] T44 Deploy via GitHub Actions quebrado — runners não alcançam `painel.ciciacademy.com.br:443` (timeout 135s; falhou em 3 pushes seguidos em 10/06, painel ok da rede local). Suspeita: firewall da VPS bloqueando ranges do GitHub. Investigar firewall Hostinger/CSF; enquanto isso, deploy manual via curl da máquina local (CLAUDE.md § Deploy)
 
 ## Aguardando terceiros / decisões
 
