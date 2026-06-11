@@ -55,6 +55,12 @@ projeto-bruno/
 
 ## Aplicações em produção
 
+> ⚠️ **11/06/2026 — FORA DO AR (INC-01)**: a VPS (72.60.152.227) foi suspensa pela
+> Hostinger por falso-positivo de phishing em subdomínio vizinho (`pagbankjcln`,
+> projeto Cazuzua — sem relação com o Bruno). É suspensão de **infra, não de código**:
+> o deploy `painel.bcbca74b.json` está íntegro e congelado. Religação esperada ao
+> resolver o recurso; o Coolify reativa o serviço sozinho. Detalhes em `tasks.md` INC-01.
+
 | App | Stack | URL primário | URL secundário | Coolify UUID |
 |-----|-------|--------------|----------------|--------------|
 | `prisma-frontend` (oficial) | React/Vite/TS | https://bruno.ciciatech.cloud | https://prisma.bruno.ciciatech.cloud | `eomewrww9ecurlqvhb6vusml` |
