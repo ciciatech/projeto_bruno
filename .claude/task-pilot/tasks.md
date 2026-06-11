@@ -1,18 +1,21 @@
-# Tasks · Prisma Regional / Tese DESP-UFC
+# Tasks · Doutorado Bruno — Investimento Público e Emprego no CE (task-pilot)
 
+> ⚠️ **Snapshot da sprint de abr/2026 — defasado.** A fonte de verdade do roadmap
+> é o `tasks.md` da raiz (T01/T02/T04-T06/T08-T10/T12/T14-T15 concluídas;
+> T18-T37 criadas em 2026-06-10). Mantido como histórico do task-pilot.
 > Roadmap pra `ciciatech-task-pilot`. Formato `- [ ]` (pendente), `- [x]` (done), `- [!]` (bloqueada).
 > Tasks marcadas `- [!]` exigem terceiros (Prof. Paulo, infra externa) ou ações no Mac Mini que o pilot remoto não tem acesso.
 
 ## Backlog
 
-- [!] T01: Disparar coletor SICONFI invest_municipal no Mac Mini (~2h, 12k requests via SSH; manual)
+- [x] T01: Disparar coletor SICONFI invest_municipal no Mac Mini — concluída (19.896 registros, 180 municípios CE, R$ 28,97 bi 2015-2025)
 - [x] T02: Migrar Tela 2 (Emprego) de placeholder para dados reais CAGED usando campos adm/des/sal/mov/sal_med do painel.json
 - [!] T03: Forçar emissão TLS Let's Encrypt em prisma.bruno.ciciatech.cloud (depende de request via DNS público real)
 - [x] T04: Tela 3 — pivot para "Composição de Receitas Públicas Regionais" usando tf_fpm/fundeb/itr/royalties/outros + bf_v + bpc_v (dados já no painel). Stacked bars 14 regiões, tabela agregada, EditorialNote explicando o pivot
 - [x] T05: Tela 4 Causal — OLS univariado (siof_emp → sal) implementado com simple-statistics, scatter + linha + IC 95% + tabela β/α/R²/σ. Especificação multivariada/IV/Granger ainda aguarda Paulo (sinalizado em EditorialNote)
 - [x] T06: FilterBar funcional (período / indicador / recorte) com estado em URL via react-router — depende de T02
 - [!] T07: Auto-regenerar painel.json após coletas no Mac Mini — exige hook local no Mac Mini
-- [x] T08: Decisão sobre invest_privado residual — RESOLVIDA pelos áudios do Paulo (abr/2026): FBCF mensal Brasil × 2,2% (share PIB CE/BR), em R$ presente de dez/2024. Documentado em docs/metodologia-composicao-investimento.md
+- [x] T08: Decisão sobre invest_privado residual — RESOLVIDA pelos áudios do Paulo (abr/2026): FBCF mensal Brasil × 2,2% (share PIB CE/BR), em R$ presente de dez/2024 (base em revisão → dez/25, ver T28 no tasks.md da raiz). Documentado em docs/metodologia-composicao-investimento.md
 - [x] T09: Documentar plano de descontinuação bruno-dashboard Streamlit em docs/plano-descontinuacao-streamlit.md
 - [x] T10: Mover dashboard/prisma-regional/ para archive/ (assets do design já portados em frontend/src/)
 - [!] T11: Adotar shadcn/ui no frontend — em WAITING (sem caso de uso justificando o refator de tokens; ver runs/2026-04-30T12-32/T11.md)

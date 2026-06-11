@@ -1,6 +1,6 @@
 # Metodologia · Composição do investimento total no Ceará
 
-> Consolidação das decisões metodológicas do Prof. Paulo Araújo (orientador)
+> Consolidação das decisões metodológicas do Prof. Paulo Matos (orientador, CAEN/UFC)
 > a partir de 3 transcrições de áudios enviados em abr/2026.
 
 ## Visão geral
@@ -102,8 +102,11 @@ fluxo_bimestre_n = valor_acum_b{n} - valor_acum_b{n-1}
 mes_2n-1 = mes_2n = fluxo_bimestre_n / 2
 ```
 
-**Status**: ✅ coletor implementado em `pipeline/extract/invest_municipal_siconfi.py`.
-Em execução no Mac Mini (PID 82781, ~12k requests, ~1h40, ETA 22:34 BRT).
+**Status**: ✅ coletor implementado em `pipeline/extract/invest_municipal_siconfi.py`
+e coleta concluída (T01): 19.896 registros, 180 municípios CE, R$ 28,97 bi 2015-2025.
+⚠️ Pendência (T34): a coluna coletada é "DESPESAS EMPENHADAS ATÉ O BIMESTRE", mas o
+gabarito do Prof. Paulo usa valores **PAGOS** (divergência +7% a +37% a.a.) — aguarda
+confirmação dele; se "pago", recoleta SICONFI ~13k requests.
 
 ---
 
@@ -133,6 +136,12 @@ Filtros:
 ```
 ne_rateado_ce = invest_NE_indefinido × 0.145
 ```
+
+> **Em revisão (jun/2026)**: a planilha bimestral do Prof. Paulo usa share
+> **regional de 15,4%** para o CE + vetor de pesos regionais embutido no
+> cabeçalho do bloco — confirmação pendente (ver tasks T18 e
+> `docs/estudo-viabilidade-painel-bimestral.md`). As citações de áudio acima
+> ficam como registro histórico de abr/2026.
 
 ### 3.3 Rateio Nacional → CE
 > "Às vezes corta estados de mais de uma região, aí o governo federal não
@@ -191,18 +200,25 @@ para FBCF estadual.
 
 ### 4.2 Base monetária
 
-O áudio do Paulo descreve o IpeaData como já entregando os valores em
-**R$ presente de dezembro/2024**. Verificação no nosso coletor: o IpeaData
-disponibiliza tanto **R$ correntes** quanto **R$ 2010**.
+O áudio do Paulo (abr/2026) descreve o IpeaData como já entregando os valores em
+**R$ presente de dezembro/2024**, e dez/24 foi a base aprovada à época.
+Verificação no nosso coletor: o IpeaData disponibiliza tanto **R$ correntes**
+quanto **R$ 2010**.
 
-**Pendência**: alinhar todas as 4 esferas em **R$ dezembro/2024** (decisão
-aprovada pelo Prof. Paulo) usando IPCA cheio. Trabalho de ~2h:
-1. Coletar série IPCA mensal (BACEN SGS 433).
-2. Aplicar deflator a SIOF, SICONFI, RREO e FBCF.
-3. Adicionar `_real_2024` aos nomes das colunas.
+**Em revisão (jun/2026)**: a planilha bimestral do Prof. Paulo usa base
+**dez/2025** (deflator 25b6 = 1,0 exato) — a **base de trabalho atual é dez/25**,
+com dez/24 superseded salvo decisão contrária dele (confirmação formal pendente,
+ver `docs/estudo-viabilidade-painel-bimestral.md` e tasks T18/T28).
 
-Até essa harmonização, a composição do frontend usa **valores nominais** com
-**aviso visual** ("⚠ bases mistas — refinamento monetário pendente").
+Deflator implementado e validado (T28): `pipeline/transform/deflator.py` — IPCA
+SGS 433 (cache offline `pipeline/data/ipca_433_cache.csv`), base **pinada e
+parametrizável** (default `2025-12`; dez/24 pronto se o Paulo preferir).
+Reproduz os 66 deflatores da planilha dele com erro máximo 2×10⁻¹⁵. O painel
+bimestral (T27) já publica 20 colunas `*_real` nessa base.
+
+No painel mensal e na composição do frontend ainda valem **valores nominais** com
+**aviso visual** ("⚠ bases mistas — refinamento monetário pendente") até a
+harmonização das 4 esferas (ver `tasks.md`, "Deflator IPCA do painel mensal").
 
 ### 4.3 Para 2025
 
@@ -234,6 +250,11 @@ União (aplicações diretas + rateio NE × 14,5% + rateio nacional × 2,2%).
 Investimento privado computado por exclusão.
 ```
 
+> **Em revisão (jun/2026)**: a planilha bimestral do Prof. Paulo usa share
+> regional **15,4% CE** + vetor de pesos regionais no lugar do rateio NE ×
+> 14,5% — confirmação pendente (ver tasks T18 e o estudo de viabilidade).
+> Atualizar este bloco citável quando a confirmação chegar.
+
 ---
 
 ## 6. Status de implementação
@@ -241,10 +262,10 @@ Investimento privado computado por exclusão.
 | Esfera | Coletor | Painel | Status |
 |--------|---------|--------|--------|
 | Estadual (SIOF) | siof.py | `siof_emp` (anual replicado) | ✅ |
-| Federal (RREO) | invest_federal.py | `if_total`, `if_direto`, `if_ne`, `if_nac` | ✅ |
-| Municipal (SICONFI) | invest_municipal_siconfi.py | `invest_mun_valor` (mapeado) | ⏳ rodando no Mac Mini |
-| Privado residual | (cálculo no frontend) | derivado | ⏳ aguarda Municipal + harmonização |
-| Total CE estimado | ipea_fbcf.py | `inv_tot` | ✅ (R$ 2010, falta deflator) |
+| Federal (RREO) | invest_federal.py | `if_total`, `if_direto`, `if_ne`, `if_nac` | ✅ (share 14,5% em revisão → 15,4% regional) |
+| Municipal (SICONFI) | invest_municipal_siconfi.py | `invest_mun_valor` (mapeado) | ✅ concluído (T01 — 19.896 registros; ⚠️ EMPENHADO vs PAGO pendente, T34) |
+| Privado residual | (cálculo no frontend) | derivado | ✅ derivado nas 4 esferas (harmonização monetária do mensal pendente) |
+| Total CE estimado | ipea_fbcf.py | `inv_tot` | ✅ (deflator implementado — T28, base dez/25 pendente de confirmação) |
 | Share PIB CE/BR | pib_shares.py | `share` | ✅ |
 
 ---

@@ -7,7 +7,7 @@ description: Configuração e regras de deploy via Coolify para o projeto Bruno
 ## Coolify
 
 - **Painel**: https://painel.ciciacademy.com.br
-- **Project**: `Projeto Bruno - Tese DESP/UFC` (uuid `zkkg4s0soock4sswg0ossk0g`)
+- **Project**: `Projeto Bruno - Tese DESP/UFC` (uuid `zkkg4s0soock4sswg0ossk0g`) — nome cadastrado na infra; **não renomear** (regra de branding: recursos Coolify mantêm nome/UUID). A marca oficial atual do projeto é "Doutorado Bruno — Investimento Público e Emprego no Ceará"
 - **Server**: localhost (Hostinger srv1068785, IP `72.60.152.227`)
 - **Proxy**: Traefik 3.1.7
 - **Token de API**: armazenado em `~/.coolify-tokens` (NÃO comitar — SEC-01 do `tasks.md` registra que o token vazou no histórico do `.claude/rules/coolify-deploy.md` em commit `f9d813d`, repo público; precisa rotacionar).

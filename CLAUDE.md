@@ -1,8 +1,12 @@
-# Projeto Bruno — Tese DESP/UFC
+# Doutorado Bruno — Investimento Público e Emprego no Ceará
 
-Pipeline de coleta + dashboard regional para a tese de Bruno Cardoso (DESP/UFC,
-orientador Prof. Paulo Araújo) sobre o efeito do investimento estadual em obras
-e equipamentos sobre o emprego formal nas 14 regiões SEPLAG/IPECE do Ceará.
+Pipeline de coleta + dashboard regional do doutorado de Bruno Cardoso (DESP/UFC,
+orientador Prof. Paulo Matos — CAEN/UFC) sobre o efeito do investimento estadual
+em obras e equipamentos sobre o emprego formal nas 14 regiões SEPLAG/IPECE do Ceará.
+
+Header curto da marca: "Doutorado Bruno · Investimento e Emprego no CE".
+Codinome técnico do frontend: `prisma-frontend` / "Prisma Regional" — nomes de
+app/container e UUIDs no Coolify **não mudam** (rastreabilidade da infra).
 
 ## Stack
 
@@ -87,7 +91,7 @@ python -m pipeline.extract.populacao_ibge
 python3 -m pipeline.transform.painel_bimestral
 
 # Testes
-python -m pytest pipeline/tests/ -v       # 28 testes + cobertura ≥10% sobre pipeline/
+python -m pytest pipeline/tests/ -v       # suíte completa + cobertura ≥10% sobre pipeline/
 ```
 
 ### Frontend
@@ -160,15 +164,17 @@ Confirmado em 3 transcrições de áudio (consolidadas em
 `docs/metodologia-composicao-investimento.md`):
 
 - **Investimento total CE** = FBCF Brasil mensal × 2,2% (share PIB CE/BR), em
-  R$ presente de dez/2024.
+  R$ presente de dez/2024 — **base em revisão → dez/25** (ver Decisões pendentes).
 - **Ano-base do residual privado**: R$ 2024/2025 (não R$ 2010 da FBCF nativa).
-  Pendência: aplicar deflator IPCA cheio.
+  Deflator IPCA implementado (`pipeline/transform/deflator.py`, T28, base pinada
+  dez/25 parametrizável) — confirmação formal da base pendente.
 - **CAGED municipal**: vale o custo (~24h FTP MTE — rodou em 59min em 2026-04-30).
 - **SEFAZ-CE**: agora destravado via SICONFI Anexo 03 (substitui adapter manual
   bloqueado por bot). Adapter manual segue como fallback.
 - **Investimento municipal**: SICONFI Anexo 01 automático (não a planilha do Bruno).
 - **Investimento federal**: 3 componentes do RREO União (direto + NE×14,5% +
   nacional×2,2%) — já implementado em `pipeline/extract/invest_federal.py`.
+  Share de 14,5% **em revisão → 15,4% regional** (ver Decisões pendentes).
 
 ## Decisões pendentes (bloqueiam tasks)
 
@@ -206,4 +212,3 @@ Confirmado em 3 transcrições de áudio (consolidadas em
 - `.claude/rules/coolify-deploy.md` — UUIDs, endpoints, SSH, Traefik
 - `.claude/rules/dominio.md` — conceitos canônicos do exercício empírico
 - `.claude/rules/code-style.md` — convenções Python + TS
-- `archive/prisma-regional-design/README.md` — mapeamento JSX original → componente atual

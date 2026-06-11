@@ -55,7 +55,7 @@ Deflator bimestral base dez/25 (66 obs, 15b1+). **Convenção decifrada e valida
 
 1. **SCI-01 segue sendo o risco dominante** — tudo que depende de SIOF regional 2015-2025 (blocos 4-6, 14) fica restrito a 2026+ até decisão LAI/IPECE.
 2. **ESTBAN (T16)** continua bloqueado por acesso, não por engenharia.
-3. **3 confirmações com o Paulo**: (a) cota-parte ICMS serve como proxy de "ICMS recolhido"? (b) shares federais revisados para 15,4% regional? (c) base dez/25 substitui dez/24?
+3. **4 confirmações com o Paulo**: (a) cota-parte ICMS serve como proxy de "ICMS recolhido"? (b) shares federais revisados para 15,4% regional? (c) base dez/25 substitui dez/24? (d) investimento municipal EMPENHADO serve, ou precisa recoletar PAGO (T34, ver Adendo)?
 4. Blocos 3 e 9 (estoque emprego, rendimento) dependem em parte da entrega do **Paulo Ícaro** (T23); bloco de invest. municipal por elemento é do **Magno** (T22).
 
 ## Próximos passos (issues de implementação)
@@ -77,7 +77,7 @@ Workflow multi-agente (3 verificadores → 2 implementadores → 3 revisores adv
 
 - `pipeline/transform/deflator.py` (T28) — base **pinada e parametrizável** (default `2025-12`, corrige a base rolante do legado); reproduz os 66 deflatores do Paulo com erro máx 1,97×10⁻¹⁵; cache offline `pipeline/data/ipca_433_cache.csv`; 8 testes.
 - `pipeline/transform/painel_bimestral.py` + `pipeline/data/matriz_regras_regional.csv` (T27) — painel `dados_nordeste/processed/model_ready/painel_regional_ce_bimestral.csv` (1008 linhas = 14 regiões × 72 bimestres 15b1–26b6, 56 colunas, 20 `*_real` dez/25) + export `dados_nordeste/processed/exports/painel_regional_ce_bimestral.xlsx` (Leia-me + 9 abas no layout do Paulo); salário por média ponderada; anuais-replicados por último mês; 8 testes.
-- Gate de qualidade na camada: outlier de transferências federais de **set/2024 (~86×, erro de unidade na fonte STN)** detectado e anulado de forma visível (24b5 vazio no xlsx); registro em `dados_nordeste/quality/painel_regional_ce_outliers.csv`.
+- Gate de qualidade na camada: outlier de transferências federais de **set/2024** (erro de unidade na fonte STN; **~86× no agregado regional bimestral** — no dado de origem, FPM municipal de Fortaleza R$ 12,08 bi vs ~R$ 75 mi típicos, **~161×**, ver T32) detectado e anulado de forma visível (24b5 vazio no xlsx); registro em `dados_nordeste/quality/painel_regional_ce_outliers.csv`.
 
 ### Achados graves da revisão (upstream, viram tasks)
 
@@ -86,6 +86,10 @@ Workflow multi-agente (3 verificadores → 2 implementadores → 3 revisores adv
 3. **invest_mun é EMPENHADO, o gabarito é PAGO** — divergência sistemática +7% a +37% a.a. (b1 com razão 2-3×, b6 0,6-0,75×). Documentado na matriz/Leia-me; trocar para "pago" exige recoleta SICONFI (~13 mil requests) → **4ª confirmação com o Paulo** + T34.
 4. **transf_est_* só existe para Grande Fortaleza × 2024** — a coleta `sefaz_ce_siconfi` nunca rodou completa → T35.
 5. **Grafia "Maciço do Baturité"** (pipeline) vs "Maciço de Baturité" (Paulo/IPECE oficial) — quebra joins por nome → T36.
+
+### Atualização — fim do dia 10/06 (segunda rodada de execução)
+
+Status dos bloqueios mapeados acima, após as coletas da noite: **bloco 3 (estoque de empregos) desbloqueado** — CAGED recoletado com 184/184 municípios (bug do dígito verificador, T33; incidente mar/2025 recuperado na mesma noite); **bloco 11 (crédito/ESTBAN) destravado** — o BCB voltou a publicar download direto, 132/132 meses coletados (T16; pendem 2 confirmações com o Paulo: só BNB vs todos os bancos, e unidade); **bloco 2 (ICMS) coletado por completo** via SICONFI Anexo 03 (T35, 18.252 linhas — valores antigos de GF×2024 mudaram 1,6-2× com a troca de fonte, reconciliar com o Paulo); **instrumentos estaduais ingeridos** da aba do orientador (T29) e **séries da letter coletadas** (T31). set/2024 das transferências era erro de unidade **da fonte** (centavos sem separador, T32) — corrigido com heurística no parser. Painel mensal final: 2016×42; bimestral 1008×70; confirmações com o Paulo agora são **6** (ver tasks.md T18).
 
 ### Validações que PASSARAM na tentativa de refutação
 

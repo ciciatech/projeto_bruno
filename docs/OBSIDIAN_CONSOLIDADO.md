@@ -1,5 +1,11 @@
 # Tese DESP/UFC — Impactos do Credito e do Emprego no Nordeste
 
+> ⚠️ **Documento histórico (pré-reformulação de abr/2026).** A tese mudou de
+> "crédito → emprego no Nordeste (9 UFs)" para "investimento estadual em obras e
+> equipamentos → emprego formal nas 14 regiões SEPLAG/IPECE do CE", e os papéis
+> citados aqui (orientação) não refletem necessariamente o estado atual.
+> Papéis vigentes e estado do projeto em `CLAUDE.md` e `tasks.md`.
+
 > Documento consolidado do projeto de doutorado de Bruno Cardoso Costa.
 > Gerado em: 15/04/2026 | Ultima atualizacao dos dados: 06/03/2026
 

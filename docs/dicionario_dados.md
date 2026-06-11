@@ -1,5 +1,10 @@
 # Dicionário de Dados — Pipeline Tese DESP/UFC
 
+> ⚠️ **Documento histórico (pré-reformulação de abr/2026).** Cobre a fase
+> "crédito → emprego no Nordeste (9 UFs)". O exercício atual é investimento
+> estadual → emprego formal nas 14 regiões SEPLAG/IPECE do CE — estado vigente
+> em `CLAUDE.md` e `tasks.md`.
+
 **Projeto:** Impactos do Crédito e do Emprego no Nordeste
 **Última atualização:** 06/03/2026
 **Cobertura territorial:** 9 estados do Nordeste (AL, BA, CE, MA, PB, PE, PI, RN, SE)

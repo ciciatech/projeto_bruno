@@ -1,5 +1,11 @@
 # Analise do Projeto — Tese DESP/UFC
 
+> ⚠️ **Documento histórico (pré-reformulação de abr/2026).** A tese mudou de
+> "crédito → emprego no Nordeste (9 UFs)" para "investimento estadual em obras e
+> equipamentos → emprego formal nas 14 regiões SEPLAG/IPECE do CE", e os papéis
+> citados aqui (orientação) não refletem necessariamente o estado atual.
+> Papéis vigentes e estado do projeto em `CLAUDE.md` e `tasks.md`.
+
 **Tese:** Impactos do Credito no Crescimento Economico do Nordeste
 **Autor:** Bruno Cardoso Costa
 **Orientador:** Prof. Dr. Magno Prudencio de Almeida Filho

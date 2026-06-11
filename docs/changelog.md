@@ -1,6 +1,52 @@
-# Changelog · Prisma Regional CE
+# Changelog · Doutorado Bruno — Investimento Público e Emprego no CE (codinome interno: Prisma Regional)
 
 Histórico das principais entregas. Datas em America/Fortaleza (UTC-3).
+
+## 2026-06-10 (noite) — Correção pós-validação: continuidade de meses por fonte
+
+- **CAGED 2025-03 recuperado**: a recoleta da tarde perdeu o mês 202503 por
+  falha transitória do FTP do MTE (`550 semaphore timeout`, tratada como
+  WARNING) e publicou o painel com "135 meses" como sucesso — o bimestre 25b2
+  saía com fluxos ~metade (admissões estaduais 56 mil vs 112-121 mil dos
+  vizinhos). Re-download OK (183 municípios, saldo -2.621); série agora
+  CONTÍNUA 2015-01→2026-04 (136 meses, 23.987 linhas). Regenerados painel
+  mensal, bimestral, xlsx do Prof. Paulo e JSON do frontend.
+- **Guard de continuidade**: `pipeline/utils.meses_faltantes_interior` +
+  ERROR nos coletores CAGED municipal e STN quando há mês interior sem dado;
+  teste `test_continuidade_mensal_por_fonte` cobre TODAS as fontes da matriz
+  (lacunas aceitas só se documentadas).
+- **Auditoria estendida ao STN** (mesma classe de falha, pré-existente):
+  7 meses interiores faltavam desde sempre. Corrigidos 2 (bug nosso):
+  **2018-05** — arquivo publicado sem a coluna "Transferência"; destino
+  reconstruído por inferência item+ordem de ocorrência, validada com zero
+  divergências nos arquivos bem formados 2018-2021 (`ValueError` para itens
+  fora do universo validado); **2021-08** — arquivo corrigido pela fonte
+  desde a coleta original. Documentados 5 (limitação da fonte): **2020-11,
+  2022-10, 2023-11, 2024-11, 2025-11** nunca tiveram o conteúdo publicado
+  (o CKAN/STN publica o arquivo `AAAAMM` com conteúdo `AAAAMM-1` de ~set a
+  ~nov e re-sincroniza em dez; evidência: adicional de 1% do FPM de setembro,
+  EC 84/2014). Bimestres 20b6, 22b5, 23b6, 24b6 e 25b6 **anulados** nas
+  `transf_fed_*` (meio-bimestre não passa por valor válido — mesma política
+  do gate de outliers); documentação na matriz de regras e no Leia-me do xlsx.
+- Suíte: 73 pytest + 19 vitest verdes.
+
+## 2026-06-10 — Sessão 3: painel bimestral + deflator + revisão adversarial
+
+- Planilha bimestral do Prof. Paulo Matos ingerida e organizada em
+  `docs/dados_prof_paulo/` (T19-T21, T26); 14 regiões, R$ dez/25. Geram-se
+  **4 confirmações pendentes** com ele: proxy cota-parte ICMS, share federal
+  15,4% regional (vs 14,5% NE), base dez/25 vs dez/24, EMPENHADO vs PAGO.
+- **T27** `pipeline/transform/painel_bimestral.py` — painel bimestral regional
+  (`painel_regional_ce_bimestral.csv`, 1008×56, 15b1–26b6, 20 colunas `_real`)
+  + export xlsx no layout do Paulo. 28/28 testes pytest verdes à época (suíte do dia fechou em 38).
+- **T28** `pipeline/transform/deflator.py` — IPCA base pinada dez/25
+  (parametrizável); reproduz os 66 deflatores da planilha com erro 2×10⁻¹⁵.
+- Revisão adversarial → **T32-T37**: outlier transf_fed set/24 (anulado em 24b5),
+  CAGED 18/184 municípios (bug 6→7 dígitos corrigido em `d05162c` — o "9/14
+  regiões" da entrada de abril era artefato; recoleta em curso), invest. municipal
+  empenhado vs pago, recoleta `sefaz_ce_siconfi` completa, grafia "Maciço de Baturité".
+- Desde a última entrada: **Etapa B-swap** concluída em 2026-05-02 —
+  `bruno.ciciatech.cloud` passou ao `prisma-frontend`; Streamlit sem domínio.
 
 ## 2026-04-30 / 2026-05-01 — Sprint Prisma Regional CE
 

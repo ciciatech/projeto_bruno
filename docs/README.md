@@ -1,13 +1,25 @@
-# Pipeline de Dados - Tese DESP/UFC
+# Pipeline de Dados — Doutorado Bruno (DESP/UFC)
 
-## Impactos do Credito e do Emprego no Nordeste
+## Investimento Publico e Emprego no Ceara
 
 **Autor:** Bruno Cardoso Costa
-**Orientador:** Prof. Dr. Magno Prudencio de Almeida Filho
+**Orientador:** Prof. Paulo Matos (CAEN/UFC)
 **Programa:** Doutorado Profissional em Economia do Setor Publico (DESP/UFC)
-**Periodo de analise:** 2015-2025 | **Defesa prevista:** marco/2028
+**Periodo de analise:** 2015-2026 | **Defesa prevista:** marco/2028
 
-Pipeline Python para coleta, organizacao, preparacao e auditoria de dados publicos usados na tese de doutorado. O objetivo e sustentar a analise do efeito do credito sobre o emprego formal no Nordeste entre 2015 e 2025, com controles macroeconomicos, fiscais e de transferencias publicas.
+> Nota (jun/2026): documentos da fase NE (2025 — inicio de 2026) citam o
+> Prof. Dr. Magno Prudencio de Almeida Filho como orientador. O estado vigente
+> (`CLAUDE.md`, `tasks.md`) registra o Prof. Paulo Matos como orientador; a
+> natureza da transicao (troca ou co-orientacao) esta pendente de confirmacao
+> com o Bruno.
+
+Pipeline Python para coleta, organizacao, preparacao e auditoria de dados
+publicos usados na tese de doutorado. O exercicio empirico atual (reformulacao
+abr/2026) mede o **efeito do investimento estadual em obras e equipamentos sobre
+o emprego formal nas 14 regioes de planejamento SEPLAG/IPECE do Ceara**
+(2015-2026), com controles macroeconomicos, fiscais e de transferencias
+publicas. O recorte anterior (credito → emprego no Nordeste, 9 UFs) segue
+documentado abaixo como escopo historico/legado.
 
 ---
 
@@ -20,10 +32,10 @@ O pipeline esta organizado em quatro camadas:
 3. `preparacao_modelo`: aplica deflacionamento e harmonizacao temporal para o modelo.
 4. `quality`: audita cobertura, nulos, duplicidade e consistencia minima dos dados coletados.
 
-A pipeline opera em **dois escopos paralelos**:
+A pipeline opera em **dois escopos**:
 
-- **NE legado** (UF x bimestre, 9 estados do Nordeste). Painel: `painel_tese_bimestral.csv`.
-- **CE regional** (municipio -> 14 regioes de planejamento da SEPLAG/IPECE x mes), introduzido em abr/2026 a pedido do Prof. Paulo. Painel: `painel_regional_ce_mensal.csv`.
+- **CE regional (atual — foco da tese)** (municipio -> 14 regioes de planejamento da SEPLAG/IPECE x mes/bimestre), introduzido em abr/2026. Paineis: `painel_regional_ce_mensal.csv` e `painel_regional_ce_bimestral.csv` (T27).
+- **NE legado (historico)** (UF x bimestre, 9 estados do Nordeste). Painel: `painel_tese_bimestral.csv`.
 
 ---
 
@@ -39,17 +51,19 @@ Coletores municipais do Ceara, agregados para 14 regioes via `pipeline/regioes_c
 | `bpc` | Portal da Transparencia (CSV bulk) | BPC municipal mensal |
 | `transferencias_municipais` | CKAN STN / Tesouro Transparente | FPM, FUNDEB, ITR, royalties por municipio mensal |
 | `invest_federal` | Portal da Transparencia (CSV bulk) | transferencias voluntarias federais por municipio mensal |
-| `estban` | BCB Sistema Cosif (manual) | credito BNB municipal mensal — **adapter** |
-| `sefaz_ce` | Ceara Transparente (manual) | ICMS/IPVA cota-parte municipal mensal — **adapter** |
-| `invest_municipal` | planilha do Bruno | investimento municipal mensal — **adapter** |
+| `estban` | BCB/ESTBAN (manual) | credito municipal mensal, **verbete 160** (operacoes de credito — confirmado pelo Prof. Paulo em 10/06) — **adapter**; acesso bloqueado (T16) |
+| `sefaz_ce_siconfi` | SICONFI RREO Anexo 03 (API) | cota-parte ICMS/IPVA municipal — **fonte primaria** desde abr/2026 |
+| `sefaz_ce` | Ceara Transparente (manual) | ICMS/IPVA cota-parte municipal mensal — adapter rebaixado a **fallback** |
+| `invest_municipal_siconfi` | SICONFI RREO Anexo 01 (API) | investimento municipal bimestral -> mensal — **fonte primaria** desde abr/2026 (T01: 19.896 registros, 180 municipios) |
+| `invest_municipal` | planilha do Bruno | investimento municipal mensal — adapter rebaixado a **fallback** |
 
 ### Arquivos manuais
 
-Tres coletores sao **adapters**: nao baixam dados automaticamente, mas processam arquivos que voce coloca em diretorios. Use isso quando a fonte nao tem download programatico estavel.
+Tres coletores sao **adapters**: nao baixam dados automaticamente, mas processam arquivos que voce coloca em diretorios. Desde abr/2026, SEFAZ-CE e investimento municipal tem coletor SICONFI automatico como fonte primaria — os adapters abaixo ficam como **fallback**.
 
-- ESTBAN (BNB): salve CSVs/parquets em `dados_nordeste/raw/estban/`. Origem: Sistema Cosif (https://www.bcb.gov.br/estabilidadefinanceira/sistemacosif) ou Base dos Dados (`basedosdados.br_bcb_estban.municipio` filtrado por `id_uf = '23'`).
-- SEFAZ-CE: salve XLSX/CSV em `dados_nordeste/raw/sefaz_ce/`. Origem: Ceara Transparente, exportacao manual.
-- Investimento municipal: salve a planilha do Bruno em `dados_nordeste/raw/invest_municipal/`.
+- ESTBAN: salve CSVs/parquets em `dados_nordeste/raw/estban/`. Verbete 160 (operacoes de credito) por municipio. Origem: Sistema Cosif (https://www.bcb.gov.br/estabilidadefinanceira/sistemacosif) ou Base dos Dados (`basedosdados.br_bcb_estban.municipio` filtrado por `id_uf = '23'`).
+- SEFAZ-CE (fallback): salve XLSX/CSV em `dados_nordeste/raw/sefaz_ce/`. Origem: Ceara Transparente, exportacao manual.
+- Investimento municipal (fallback): salve a planilha do Bruno em `dados_nordeste/raw/invest_municipal/`.
 
 ### Execucao
 
@@ -67,7 +81,8 @@ python3 -m pipeline.run --painel-ce
 ### Painel resultante
 
 `dados_nordeste/processed/model_ready/painel_regional_ce_mensal.csv`:
-- 14 regioes x 132 meses (2015-01 a 2025-12) = 1.848 linhas.
+- 14 regioes x 144 meses (2015-01 a 2026-12) = 2.016 linhas.
+- Versao bimestral (T27): `painel_regional_ce_bimestral.csv` (1008 x 56, 15b1-26b6, 20 colunas `_real` em R$ dez/25 — base de trabalho, confirmacao formal pendente).
 - Endogenas: `caged_admissoes`, `caged_desligamentos`, `caged_saldo`, `salario_medio`.
 - Variavel de impacto: `siof_anual_empenhado`, `siof_anual_pago` (anual replicado em meses).
 - Controles regionais: `bf_*`, `bpc_*`, `transf_fed_*`, `transf_est_*`, `invest_fed_*`, `invest_mun_*`, `bnb_*`.

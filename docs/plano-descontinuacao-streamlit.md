@@ -1,14 +1,14 @@
 # Plano de descontinuação · `bruno-dashboard` (Streamlit)
 
-> Documento vivo. Atualizado em 2026-04-30 enquanto migramos para o frontend
-> React/Vite (`prisma-frontend`).
+> Documento vivo. Atualizado em 2026-06-10 — Etapa B (swap de domínio) concluída
+> em 2026-05-02; restam etapas C (pause) e D (remoção).
 
 ## Estado atual
 
 | App | Stack | URL | Branch | Coolify UUID | Status |
 |-----|-------|-----|--------|--------------|--------|
-| `bruno-dashboard` | Streamlit 1.54 | https://bruno.ciciatech.cloud | main | `p4c0o8wkcgos8s0sscws8g8k` | 🟢 ativo |
-| `prisma-frontend` | React 19 + Vite + TS + Tailwind | https://prisma.bruno.ciciatech.cloud | main (`base_directory=/frontend`) | `eomewrww9ecurlqvhb6vusml` | 🟢 ativo |
+| `bruno-dashboard` | Streamlit 1.54 | _sem domínio_ (fqdn `null` desde o swap de 2026-05-02) | main | `p4c0o8wkcgos8s0sscws8g8k` | 🟡 congelado (running, sem domínio público) |
+| `prisma-frontend` | React 19 + Vite + TS + Tailwind | https://bruno.ciciatech.cloud (primário) · https://prisma.bruno.ciciatech.cloud (fallback) | main (`base_directory=/frontend`) | `eomewrww9ecurlqvhb6vusml` | 🟢 ativo |
 
 ## Por que descontinuar
 
@@ -32,20 +32,24 @@ condições mínimas para mover `bruno.ciciatech.cloud` para o frontend são:
 - [x] Tela 1 (Investimento) com dados reais 14 regiões CE
 - [x] Tela 2 (Emprego) com dados reais CAGED
 - [x] Tela 5 (Pipeline) listando fontes e status
-- [ ] FilterBar funcional (período / indicador / recorte) — T06
-- [ ] Tela 3 (Setores) com escopo definido — T04 ou substituição
-- [ ] Tela 4 (Causal) com modelo OLS implementado — T05 (aguarda Paulo)
-- [ ] Smoke tests Vitest cobrindo as 5 rotas — T15
+- [x] FilterBar funcional (período / indicador / recorte) — T06
+- [x] Tela 3 (Setores) com escopo definido — T04 (pivot p/ Composição de Receitas)
+- [x] Tela 4 (Causal) com modelo OLS implementado — T05 (OLS univariado preliminar)
+- [x] Smoke tests Vitest cobrindo as 5 rotas — T15
 - [ ] Validação final do Prof. Paulo
 
 ## Etapas (em ordem de execução)
 
-### Etapa A · Paridade visual e de dados (em curso)
+### Etapa A · Paridade visual e de dados (✅ concluída)
 
-- T02 ✅, T06, T11 (shadcn/ui), T12 (cache hash). Continua até as 5 telas
-  rodarem sem placeholders.
+- T02 ✅, T06 ✅, T12 ✅ (cache hash); T11 (shadcn/ui) em WAITING sem trigger.
+  As 5 telas rodam sem placeholders.
 
-### Etapa B · Swap do domínio principal
+### Etapa B · Swap do domínio principal (✅ concluída em 2026-05-02)
+
+> Executado via PATCH fqdn na API Coolify: `bruno.ciciatech.cloud` passou ao
+> `prisma-frontend` (TLS ok); `bruno-dashboard` ficou **sem domínio** (fqdn
+> `null`) em vez do subdomain transitório planejado no passo 2.
 
 1. Atualizar fqdn da app `prisma-frontend` no Coolify para incluir
    `bruno.ciciatech.cloud` (Traefik passa a resolver os dois para o nginx do
@@ -114,13 +118,12 @@ curl -sS -X DELETE -H "Authorization: Bearer $COOLIFY_TOKEN" \
 |-------|-----------|
 | Stakeholder usa página específica do Streamlit que não foi migrada | Manter `bruno-dashboard` parado (não removido) por 14 dias adicionais. |
 | Frontend depende de `painel.json` desatualizado | T07 (auto-regenerar painel.json) automatiza o passo. |
-| Cobertura CAGED ainda parcial (9/14 regiões) | Tela 2 já sinaliza ausência de dado nas 5 regiões faltantes. Não bloqueia o swap. |
+| Cobertura CAGED em recoleta após fix do bug de normalização 6→7 dígitos (T33, commit `d05162c`) — a cobertura "9/14 regiões" anterior era artefato do bug (só 18/184 municípios entravam) | Tela 2 já sinaliza ausência de dado nas regiões faltantes. Não bloqueia o swap. |
 | Decisão pendente do Prof. Paulo (T04, T05, T08) | Tela 3/4 podem ficar como placeholders editoriais até decisão; não bloqueiam paridade do produto. |
 
 ## Cronograma proposto
 
-- **Curto prazo**: Etapa A (continuar T06 / T11 / T12 / T15)
-- **Marco de revisão**: quando Etapa A concluir, conversar com Prof. Paulo
-  + Bruno antes de iniciar Etapa B
-- **Após swap (Etapa B)**: 7 dias de soak + 14 dias com app pausada antes
-  de remover código (Etapa D)
+- **Concluído**: Etapas A e B (swap em 2026-05-02)
+- **Próximo**: Etapa C (pausar `bruno-dashboard`) — aguarda validação final
+  do Prof. Paulo
+- **Depois**: 14 dias com app pausada antes de remover código (Etapa D)

@@ -1,5 +1,11 @@
 # Análise Reversa Completa — Projeto academico-bruno
 
+> ⚠️ **Documento histórico (snapshot de 2026-04-29, pré-reformulação de abr/2026).**
+> A tese mudou de "crédito → emprego no Nordeste (9 UFs)" para "investimento
+> estadual em obras e equipamentos → emprego formal nas 14 regiões SEPLAG/IPECE
+> do CE", e os papéis citados aqui (orientação) não refletem necessariamente o
+> estado atual. Papéis vigentes e estado do projeto em `CLAUDE.md` e `tasks.md`.
+
 **Data:** 2026-04-29  
 **Autor:** Claude Code (Sistema de Análise Reversa Automatizada)  
 **Metodologia:** Legacy Analyzer (6 Fases Estruturadas)
